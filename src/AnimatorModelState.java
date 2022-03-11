@@ -1,5 +1,5 @@
 /**
- *
+ * A representation of the Animation Model State.
  */
 public interface AnimatorModelState {
   /**
