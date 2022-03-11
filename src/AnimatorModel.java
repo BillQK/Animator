@@ -1,5 +1,5 @@
 /**
- *
+ * An interface of an Animator
  */
 public interface AnimatorModel extends AnimatorModelState {
   /**
