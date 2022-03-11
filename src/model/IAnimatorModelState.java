@@ -3,7 +3,7 @@ package model;
 /**
  * A representation of the Animation Model State.
  */
-public interface AnimatorModelState {
+public interface IAnimatorModelState {
   /**
    * Get the position of the pbject.
    */
