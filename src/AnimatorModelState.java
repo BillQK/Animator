@@ -5,40 +5,40 @@ public interface AnimatorModelState {
   /**
    * Get the position of the pbject.
    */
-  public void getPosition();
+  void getPosition();
 
   /**
    * Get the width of the object.
    */
-  public void getWidth();
+  void getWidth();
 
   /**
    * Get the height of the object.
    */
-  public void getHeight();
+  void getHeight();
 
   /**
    * Get the radius of the object.
    */
-  public void getRadius();
+   void getRadius();
 
   /**
    * Get the tick at that moment.
    */
-  public void getTick();
+   void getTick();
 
   /**
    * Get the color of the object.
    */
-  public void getColor();
+   void getColor();
 
   /**
    * Get the time of the animation at that moment.
    */
-  public void getTime();
+   void getTime();
 
   /**
    * Get the shape of th
    */
-  public void getShape();
+   void getShape();
 }
