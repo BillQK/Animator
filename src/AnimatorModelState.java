@@ -38,7 +38,7 @@ public interface AnimatorModelState {
    void getTime();
 
   /**
-   * Get the shape of th
+   * Get the shape of the object.
    */
    void getShape();
 }
