@@ -1,3 +1,5 @@
+package model;
+
 /**
  * A representation of the Animation Model State.
  */

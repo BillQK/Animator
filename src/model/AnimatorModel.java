@@ -1,3 +1,5 @@
+package model;
+
 /**
  * This is the interface of the Animator model.
  */
