@@ -1,9 +1,12 @@
 package model;
 
 /**
- * A representation of the Animation Model State.
+ * This interface represents different operations that an animator model must support to return
+ * various aspects/features of its state. This interface does not provide any operations to
+ * mutate the state of an animator model.
  */
-public interface IAnimatorModelState {
+public interface IAnimatorModelState<K> {
+
   /**
    * Get the position of the pbject.
    */
