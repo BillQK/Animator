@@ -40,7 +40,7 @@ public interface IAnimatorModelState {
    void getTime();
 
   /**
-   * Get the shape of the object.
+   * Get the shape type of the object.
    */
    void getShape();
 }
