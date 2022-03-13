@@ -4,6 +4,7 @@ package model;
  *
  */
 public class AnimatorModel implements IAnimatorModel {
+
   /**
    * Decide when the object to appear.
    */
