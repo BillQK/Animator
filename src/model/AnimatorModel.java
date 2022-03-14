@@ -1,9 +1,20 @@
 package model;
 
+import java.util.List;
+
 /**
  *
  */
 public class AnimatorModel implements IAnimatorModel {
+  private final List<AShape> Shape;
+  private final int width;
+  private final int height;
+
+  public AnimatorModel(List<AShape> shape, int width, int height) {
+    Shape = shape;
+    this.width = width;
+    this.height = height;
+  }
 
   /**
    * Decide when the object to appear.
