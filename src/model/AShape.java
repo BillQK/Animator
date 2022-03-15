@@ -1,34 +1,39 @@
 package model;
 
-import java.awt.Color;
+import java.awt.*;
+import java.sql.Time;
+import java.time.Clock;
 
 public class AShape implements IShape {
   String type;
   Color col;
-  int posX;
-  int posY;
+  int w;
+  int h;
+  Posn pos;
 
 
-  AShape(String type, Color col, int posX, int posY) {
+  public AShape(String type, Color col, int posX, int posY, int width, int height) {
     this.type = type;
     this.col = col;
-    this.posX = posX;
-    this.posY = posY;
+    this.pos = new Posn(posX, posY);
+    this.w = width;
+    this.h = height;
   }
 
 
   @Override
-  public void getType() {
-
+  public String getType() {
+    return this.type;
   }
 
   @Override
-  public void getPosition() {
-
+  public Posn getPosition() {
+    return new Posn(this.pos);
   }
 
   @Override
-  public void getColor() {
+  public Color getColor() {
+    return new Color(this.col.getRGB());
 
   }
 
@@ -36,4 +41,15 @@ public class AShape implements IShape {
   public void getTick() {
 
   }
+
+  @Override
+  public int getWidth() {
+    return this.w;
+  }
+
+  @Override
+  public int getHeight() {
+    return this.h;
+  }
+
 }

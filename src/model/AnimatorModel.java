@@ -1,17 +1,19 @@
 package model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Stack;
 
 /**
  *
  */
 public class AnimatorModel implements IAnimatorModel {
-  private final List<AShape> Shape;
+  private final HashMap<String,AShape> Shape;
   private final int width;
   private final int height;
 
-  public AnimatorModel(List<AShape> shape, int width, int height) {
-    Shape = shape;
+  public AnimatorModel(HashMap<String, AShape> shape, int width, int height) {
+    Shape = new HashMap<>();
     this.width = width;
     this.height = height;
   }

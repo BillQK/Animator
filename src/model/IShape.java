@@ -1,12 +1,19 @@
 package model;
 
+import java.awt.*;
+import java.sql.Time;
+
 public interface IShape {
 
-  void getType();
+  String getType();
 
-  void getPosition();
+  Posn getPosition();
 
-  void getColor();
-
+  Color getColor();
+  // TODO: Don't know how to implement this
   void getTick();
+
+  int getHeight();
+
+  int getWidth();
 }

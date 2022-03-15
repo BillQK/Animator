@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class Ellipse extends AShape {
 
-  Ellipse(String type, Color col, int posX, int posY) {
-    super(type, col, posX, posY);
+  Ellipse(String type, Color col, int posX, int posY, int width, int height) {
+    super(type, col, posX, posY, width, height);
   }
 
 }
