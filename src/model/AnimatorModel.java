@@ -8,12 +8,12 @@ import java.util.Stack;
  *
  */
 public class AnimatorModel implements IAnimatorModel {
-  private final HashMap<String,AShape> Shape;
+  private final HashMap<String,IShape> Shape;
   private final int width;
   private final int height;
 
   public AnimatorModel(HashMap<String, AShape> shape, int width, int height) {
-    Shape = new HashMap<>();
+    this.Shape = new HashMap<>();
     this.width = width;
     this.height = height;
   }
@@ -120,7 +120,7 @@ public class AnimatorModel implements IAnimatorModel {
    * Get the shape of the object.
    */
   @Override
-  public void getShape() {
+  public IShape getShape() {
 
   }
 }

@@ -3,6 +3,9 @@ package model;
 import java.awt.*;
 import java.sql.Time;
 
+/**
+ *
+ */
 public interface IShape {
 
   String getType();
