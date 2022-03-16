@@ -8,6 +8,5 @@ public enum Shape {
   Shape(String type) {
     this.type = type;
   }
-
 }
 
