@@ -8,7 +8,7 @@ import java.sql.Time;
  */
 public interface IShape {
 
-  IShape getType();
+  Shape getType();
 
   Posn getPosition();
 

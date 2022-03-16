@@ -8,4 +8,9 @@ public class Rectangle extends AShape {
     super(type, col, posX, posY, width, height);
   }
 
+  @Override
+  public Shape getType() {
+    return Shape.RECTANGLE;
+  }
+
 }

@@ -9,4 +9,9 @@ public class Ellipse extends AShape {
 
   }
 
+  @Override
+  public Shape getType() {
+    return Shape.ELLIPSE;
+  }
+
 }

@@ -2,7 +2,7 @@ package model;
 
 import java.awt.*;
 
-public class AShape implements IShape {
+public abstract class AShape implements IShape {
   Shape type;
   Color col;
   int w;
@@ -20,9 +20,7 @@ public class AShape implements IShape {
 
 
   @Override
-  public IShape getType() {
-    return this;
-  }
+  public abstract Shape getType();
 
   @Override
   public Posn getPosition() {
