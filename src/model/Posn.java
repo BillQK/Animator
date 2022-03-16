@@ -60,23 +60,25 @@ public class Posn {
   }
 
   /**
-   * A method that takes in a Posn and subtract that position.
+   * A method that takes in a Posn and subtract that position. MUTATING THE POSN!!.
    *
    * @param other a Posn
    * @return a new Posn
    */
-  public Posn minus(Posn other) {
-    return new Posn(this.x - other.getX(), this.y - other.getY());
+  public void minus(Posn other) {
+    this.x -= other.getX();
+    this.y -= other.getY();
   }
 
   /**
-   * A method that takes in a Posn and plus that position.
+   * A method that takes in a Posn and plus that position. MUTATING THE POSN!!.
    *
    * @param other a Posn
    * @return a new Posn
    */
-  public Posn plus(Posn other) {
-    return new Posn(this.x + other.getX(), this.y - other.getY());
+  public void plus(Posn other) {
+    this.x += other.getX();
+    this.y += other.getY();
   }
 
   @Override

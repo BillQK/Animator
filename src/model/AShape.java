@@ -1,8 +1,6 @@
 package model;
 
 import java.awt.*;
-import java.sql.Time;
-import java.time.Clock;
 
 public class AShape implements IShape {
   String type;
