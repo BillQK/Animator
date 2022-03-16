@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class AnimatorModel implements IAnimatorModel {
   private final HashMap<String, IShape> shape;
-  private final HashMap<String, Commands> commands;
+
   private final int width;
   private final int height;
 
@@ -32,7 +32,8 @@ public class AnimatorModel implements IAnimatorModel {
   public void create() {
 
   }
-
+  // TODO: is the user allow to configure how fast and how slow the object moves
+  // TODO: How should we calculate the speed of change using tick. if the Time is only given argument.
   /**
    * Move the object.
    */
@@ -40,7 +41,8 @@ public class AnimatorModel implements IAnimatorModel {
   public void move() {
 
   }
-
+  // TODO: is the user allow to configure how fast and how slow the object changes
+  // TODO: How should we calculate the speed of change using tick. if the Time is only given argument.
   /**
    * Mutate the color/shape for the object.
    */
@@ -48,7 +50,7 @@ public class AnimatorModel implements IAnimatorModel {
   public void changes() {
 
   }
-
+  // TODO: Question for tick.
   /**
    * Decide when the object to disappear.
    */
@@ -73,7 +75,7 @@ public class AnimatorModel implements IAnimatorModel {
    */
   @Override
   public void getWidth() {
-    return
+
   }
 
   /**
