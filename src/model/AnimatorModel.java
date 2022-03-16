@@ -2,13 +2,15 @@ package model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 /**
  *
  */
 public class AnimatorModel implements IAnimatorModel {
-  private final HashMap<String,AShape> Shape;
+  private final HashMap<String, IShape> Shape;
+  private final HashMap<String, Commands> commands;
   private final int width;
   private final int height;
 
@@ -73,7 +75,7 @@ public class AnimatorModel implements IAnimatorModel {
    */
   @Override
   public void getWidth() {
-
+    return
   }
 
   /**
@@ -120,7 +122,11 @@ public class AnimatorModel implements IAnimatorModel {
    * Get the shape of the object.
    */
   @Override
-  public void getShape() {
+  public IShape getShape() {
+
+  }
+
+  public static class AnimatorBuilder {
 
   }
 }

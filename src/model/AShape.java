@@ -3,14 +3,14 @@ package model;
 import java.awt.*;
 
 public class AShape implements IShape {
-  String type;
+  IShape type;
   Color col;
   int w;
   int h;
   Posn pos;
 
 
-  public AShape(String type, Color col, int posX, int posY, int width, int height) {
+  public AShape(IShape type, Color col, int posX, int posY, int width, int height) {
     this.type = type;
     this.col = col;
     this.pos = new Posn(posX, posY);
@@ -20,8 +20,8 @@ public class AShape implements IShape {
 
 
   @Override
-  public String getType() {
-    return this.type;
+  public IShape getType() {
+    return this;
   }
 
   @Override

@@ -45,5 +45,5 @@ public interface IAnimatorModelState<K> {
   /**
    * Get the shape type of the object.
    */
-   void getShape();
+   IShape getShape();
 }
