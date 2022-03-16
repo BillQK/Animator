@@ -1,9 +1,6 @@
 package model;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Stack;
 
 /**
  *
@@ -126,7 +123,14 @@ public class AnimatorModel implements IAnimatorModel {
 
   }
 
-  public static class AnimatorBuilder {
+  public static class AnimatorModelBuilder {
+    private HashMap<String, IShape> shapes;
+    private int width = 1000;
+    private int height = 500;
+
+    public AnimatorModelBuilder() {
+      this.shapes = new HashMap<>();
+    }
 
   }
 }
