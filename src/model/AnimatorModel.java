@@ -59,6 +59,7 @@ public class AnimatorModel implements IAnimatorModel {
 
 
   //------------------------------ANIMATOR MODEL STATE METHOD--------------------------------//
+
   /**
    * Get the position of the pbject.
    */
