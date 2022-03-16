@@ -6,13 +6,13 @@ import java.util.HashMap;
  *
  */
 public class AnimatorModel implements IAnimatorModel {
-  private final HashMap<String, IShape> Shape;
+  private final HashMap<String, IShape> shape;
   private final HashMap<String, Commands> commands;
   private final int width;
   private final int height;
 
   public AnimatorModel(HashMap<String, AShape> shape, int width, int height) {
-    this.Shape = new HashMap<>();
+    this.shape = new HashMap<>();
     this.width = width;
     this.height = height;
   }
@@ -119,8 +119,8 @@ public class AnimatorModel implements IAnimatorModel {
    * Get the shape of the object.
    */
   @Override
-  public IShape getShape() {
-
+  public IShape getShape(String id) {
+    return this.shape.getOrDefault(id, null);
   }
 
   public static class AnimatorModelBuilder {
