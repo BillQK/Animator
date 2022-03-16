@@ -20,8 +20,8 @@ public class AShape implements IShape {
 
 
   @Override
-  public String getType() {
-    return this.type;
+  public IShape getType() {
+    return this;
   }
 
   @Override
