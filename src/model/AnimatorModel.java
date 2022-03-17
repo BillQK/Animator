@@ -22,37 +22,39 @@ public class AnimatorModel implements IAnimatorModel {
    */
   @Override
   public void appears() {
-    
+
   }
 
   /**
    * Create the object.
    */
-   // add arguments 
-   // create object and put it into the HashMap  
+  // add arguments
+  // create object and put it into the HashMap
   @Override
-  public void create(String id, Shape type, Posn pos, int width, int height, Color color) {
-    if (type == "" || pos == null || color == null || width < 0 || height < 0) {
-      throw new IllegalArgumentException("Invalid arguments to create shape"); 
+  public void create(String id, Shape type, int x, int y, int width, int height, Color color) {
+    if (id == "" || type == null || x < 0 || y < 0 || color == null || width < 0 || height < 0) {
+      throw new IllegalArgumentException("Invalid arguments to create shape");
     }
+    IShape object;
     switch (type) {
-      case type == Shape.RECTANGLE:
-        IShape object = new Rectangle(type,color, pos, width, height);
+      case RECTANGLE:
+        object = new Rectangle(type, color, x, y, width, height);
         shape.put(id, object);
-        break; 
-      case type == Shape.ELLIPSE: 
-        IShape ojbect = new Ellipse(type, color, pos, width, height); 
-        shape.put(id, object); 
-        break; 
-      default:
-        throw new IllegalArgumentException("Something wrong"); 
         break;
-    } 
-      
+      case ELLIPSE:
+        object = new Ellipse(type, color, x, y, width, height);
+        shape.put(id, object);
+        break;
+      default:
+        throw new IllegalArgumentException("Something wrong");
+
+    }
+
 
   }
   // TODO: is the user allow to configure how fast and how slow the object moves
   // TODO: How should we calculate the speed of change using tick. if the Time is only given argument.
+
   /**
    * Move the object.
    */
@@ -62,6 +64,7 @@ public class AnimatorModel implements IAnimatorModel {
   }
   // TODO: is the user allow to configure how fast and how slow the object changes
   // TODO: How should we calculate the speed of change using tick. if the Time is only given argument.
+
   /**
    * Mutate the color/shape for the object.
    */
@@ -70,6 +73,7 @@ public class AnimatorModel implements IAnimatorModel {
 
   }
   // TODO: Question for tick.
+
   /**
    * Decide when the object to disappear.
    */
@@ -87,12 +91,12 @@ public class AnimatorModel implements IAnimatorModel {
   @Override
   // add id to get which shape
   public Posn getPosition(String id) {
-    IShape shape = this.shape.getOrDefault(id, null); 
+    IShape shape = this.shape.getOrDefault(id, null);
     if (shape == null) {
       throw new IllegalArgumentException("Invalid Shape id");
     }
     Posn posn = shape.getPosition();
-    return posn; 
+    return posn;
   }
 
   /**
@@ -101,12 +105,12 @@ public class AnimatorModel implements IAnimatorModel {
   @Override
   // add argument id to know which shape to get
   public int getWidth(String id) {
-    IShape shape = this.shape.getOrDefault(id, null); 
+    IShape shape = this.shape.getOrDefault(id, null);
     if (shape == null) {
       throw new IllegalArgumentException("Invalid Shape id");
     }
-    int width = shape.getWidth(); 
-    return width; 
+    int width = shape.getWidth();
+    return width;
   }
 
   /**
@@ -114,9 +118,9 @@ public class AnimatorModel implements IAnimatorModel {
    */
   @Override
   public int getHeight(String id) {
-    IShape shape = this.shape.getOrDefault(id, null); 
+    IShape shape = this.shape.getOrDefault(id, null);
     if (shape == null) {
-      throw new IllegalArgumentException("Invalid Shape id"); 
+      throw new IllegalArgumentException("Invalid Shape id");
     }
     int height = shape.getHeight();
     return height;
@@ -145,10 +149,10 @@ public class AnimatorModel implements IAnimatorModel {
   public Color getColor(String id) {
     IShape shape = this.shape.getOrDefault(id, null);
     if (shape == null) {
-      throw new IllegalArgumentException("Invalid Shape id"); 
+      throw new IllegalArgumentException("Invalid Shape id");
     }
     Color color = shape.getColor();
-    return color; 
+    return color;
   }
 
   /**
