@@ -13,7 +13,7 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
   /**
    * Create the object.
    */
-  void create();
+  void create(String id, Shape type, Posn pos, int width, int height, Color color);
 
   /**
    * Move the object.
