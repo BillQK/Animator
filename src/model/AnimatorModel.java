@@ -21,7 +21,7 @@ public class AnimatorModel implements IAnimatorModel {
    */
   @Override
   public void appears() {
-
+    
   }
 
   /**
@@ -62,27 +62,44 @@ public class AnimatorModel implements IAnimatorModel {
   //------------------------------ANIMATOR MODEL STATE METHOD--------------------------------//
 
   /**
-   * Get the position of the pbject.
+   * Get the position of the object.
    */
   @Override
-  public void getPosition() {
-
+  // add id to get which shape
+  public int getPosition(String id) {
+    IShape shape = this.shape.getOrDefault(id, null); 
+    if (shape == null) {
+      throw new IllegalArgumentException("Invalid Shape id");
+    }
+    Posn posn = shape.getPosition();
+    return posn; 
   }
 
   /**
    * Get the width of the object.
    */
   @Override
-  public void getWidth() {
-
+  // add argument id to know which shape to get
+  public int getWidth(String id) {
+    IShape shape = this.shape.getOrDefault(id, null); 
+    if (shape == null) {
+      throw new IllegalArgumentException("Invalid Shape id");
+    }
+    int width = shape.getWidth(); 
+    return width; 
   }
 
   /**
    * Get the height of the object.
    */
   @Override
-  public void getHeight() {
-
+  public int getHeight(String id) {
+    IShape shape = this.shape.getOrDefault(id, null); 
+    if (shape == null) {
+      throw new IllegalArgumentException("Invalid Shape id"); 
+    }
+    int height = shape.getHeight();
+    return height;
   }
 
   /**
@@ -105,8 +122,13 @@ public class AnimatorModel implements IAnimatorModel {
    * Get the color of the object.
    */
   @Override
-  public void getColor() {
-
+  public Color getColor(String id) {
+    IShape shape = this.shape.getOrDefault(id, null);
+    if (shape == null) {
+      throw new IllegalArgumentException("Invalid Shape id"); 
+    }
+    Color color = shape.getColor();
+    return color; 
   }
 
   /**

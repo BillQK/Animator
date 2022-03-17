@@ -10,17 +10,17 @@ public interface IAnimatorModelState<K> {
   /**
    * Get the position of the pbject.
    */
-  void getPosition();
+  Posn getPosition();
 
   /**
    * Get the width of the object.
    */
-  void getWidth();
+  int getWidth();
 
   /**
    * Get the height of the object.
    */
-  void getHeight();
+  int getHeight();
 
   /**
    * Get the radius of the object.
@@ -35,7 +35,7 @@ public interface IAnimatorModelState<K> {
   /**
    * Get the color of the object.
    */
-   void getColor();
+   Color getColor();
 
   /**
    * Get the time of the animation at that moment.
