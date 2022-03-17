@@ -11,7 +11,7 @@ public class AnimatorModel implements IAnimatorModel {
   private final int width;
   private final int height;
 
-  public AnimatorModel(HashMap<String, AShape> shape, int width, int height) {
+  public AnimatorModel(HashMap<String, IShape> shape, int width, int height) {
     this.shape = new HashMap<>();
     this.width = width;
     this.height = height;
@@ -28,8 +28,27 @@ public class AnimatorModel implements IAnimatorModel {
   /**
    * Create the object.
    */
+   // add arguments 
+   // create object and put it into the HashMap  
   @Override
-  public void create() {
+  public void create(String id, Shape type, Posn pos, int width, int height, Color color) {
+    if (type == "" || pos == null || color == null || width < 0 || height < 0) {
+      throw new IllegalArgumentException("Invalid arguments to create shape"); 
+    }
+    switch (type) {
+      case type == Shape.RECTANGLE:
+        IShape object = new Rectangle(type,color, pos, width, height);
+        shape.put(id, object);
+        break; 
+      case type == Shape.ELLIPSE: 
+        IShape ojbect = new Ellipse(type, color, pos, width, height); 
+        shape.put(id, object); 
+        break; 
+      default:
+        throw new IllegalArgumentException("Something wrong"); 
+        break;
+    } 
+      
 
   }
   // TODO: is the user allow to configure how fast and how slow the object moves
