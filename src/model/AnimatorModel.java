@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.util.HashMap;
 
 /**
@@ -66,7 +67,7 @@ public class AnimatorModel implements IAnimatorModel {
    */
   @Override
   // add id to get which shape
-  public int getPosition(String id) {
+  public Posn getPosition(String id) {
     IShape shape = this.shape.getOrDefault(id, null); 
     if (shape == null) {
       throw new IllegalArgumentException("Invalid Shape id");

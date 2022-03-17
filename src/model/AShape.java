@@ -18,7 +18,6 @@ public abstract class AShape implements IShape {
     this.h = height;
   }
 
-
   @Override
   public abstract Shape getType();
 

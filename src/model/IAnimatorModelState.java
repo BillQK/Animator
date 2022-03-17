@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 /**
  * This interface represents different operations that an animator model must support to return
  * various aspects/features of its state. This interface does not provide any operations to
@@ -10,17 +12,17 @@ public interface IAnimatorModelState<K> {
   /**
    * Get the position of the pbject.
    */
-  Posn getPosition();
+  Posn getPosition(String id);
 
   /**
    * Get the width of the object.
    */
-  int getWidth();
+  int getWidth(String id);
 
   /**
    * Get the height of the object.
    */
-  int getHeight();
+  int getHeight(String id);
 
   /**
    * Get the radius of the object.
@@ -35,7 +37,7 @@ public interface IAnimatorModelState<K> {
   /**
    * Get the color of the object.
    */
-   Color getColor();
+   Color getColor(String id);
 
   /**
    * Get the time of the animation at that moment.
