@@ -34,11 +34,6 @@ public abstract class AShape implements IShape {
   }
 
   @Override
-  public void getTick() {
-
-  }
-
-  @Override
   public int getWidth() {
     return this.w;
   }
@@ -46,6 +41,38 @@ public abstract class AShape implements IShape {
   @Override
   public int getHeight() {
     return this.h;
+  }
+
+  @Override
+  public void setWidth(int width) {
+    if (width < 0) {
+      throw new IllegalArgumentException("The width of the shape cannot be negative.");
+    }
+    this.w = width;
+  }
+
+  @Override
+  public void setHeight(int height) {
+    if (height < 0) {
+      throw new IllegalArgumentException("The height of the shape cannot be negative.");
+    }
+    this.h = height;
+  }
+
+  @Override
+  public void setColor(Color color) {
+    if (color == null) {
+      throw new IllegalArgumentException("The color of the shape cannot be null.");
+    }
+    this.col = color;
+  }
+
+  @Override
+  public void setPosn(Posn pos) {
+    if (pos == null) {
+      throw new IllegalArgumentException("The Posn of the shape cannot be null.");
+    }
+    this.pos = pos;
   }
 
 }

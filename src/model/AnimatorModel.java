@@ -7,7 +7,6 @@ import java.util.HashMap;
  */
 public class AnimatorModel implements IAnimatorModel {
   private final HashMap<String, IShape> shape;
-
   private final int width;
   private final int height;
 

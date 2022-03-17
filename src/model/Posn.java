@@ -21,6 +21,14 @@ public class Posn {
   }
 
   /**
+   * An empty argument constructor for Posn.
+   */
+  public Posn() {
+    this.x = 0;
+    this.y = 0;
+  }
+
+  /**
    * A copy constructor.
    *
    * @param posn a Posn
@@ -63,7 +71,6 @@ public class Posn {
    * A method that takes in a Posn and subtract that position. MUTATING THE POSN!!.
    *
    * @param other a Posn
-   * @return a new Posn
    */
   public void minus(Posn other) {
     this.x -= other.getX();
@@ -74,7 +81,6 @@ public class Posn {
    * A method that takes in a Posn and plus that position. MUTATING THE POSN!!.
    *
    * @param other a Posn
-   * @return a new Posn
    */
   public void plus(Posn other) {
     this.x += other.getX();
@@ -97,6 +103,5 @@ public class Posn {
   public int hashCode() {
     return Objects.hash(this.x, this.y);
   }
-
 
 }

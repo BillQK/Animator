@@ -1,12 +1,12 @@
 import org.junit.Test;
 
 import model.Posn;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class PosnTest {
   Posn posn;
+  Posn mtposn;
 
   @Test
   public void getX() {
@@ -23,8 +23,8 @@ public class PosnTest {
   @Test
   public void moved() {
     posn = new Posn(1, 2);
-    assertEquals(posn.moved(3, 2).getX(), 3);
-    assertEquals(posn.moved(3, 2).getY(), 2);
+    assertEquals(posn.moved(3,2).getX(), 3);
+    assertEquals(posn.moved(3,2).getY(), 2);
   }
 
   @Test
@@ -47,7 +47,14 @@ public class PosnTest {
   @Test
   public void testEquals() {
     posn = new Posn(1, 2);
+    mtposn = new Posn();
     assertTrue(posn.equals(new Posn(1, 2)));
+  }
+
+  @Test
+  public void testEquals1() {
+    mtposn = new Posn();
+    assertTrue(mtposn.equals(new Posn(0, 0)));
   }
 
 }
