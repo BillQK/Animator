@@ -8,15 +8,26 @@ import java.util.HashMap;
  */
 public class AnimatorModel implements IAnimatorModel {
   private final HashMap<String, IShape> shape;
+  private final HashMap<String, Animation> animation;
   private final int width;
   private final int height;
+  private final Time time;
 
-  public AnimatorModel(HashMap<String, IShape> shape, int width, int height) {
+  public AnimatorModel(HashMap<String, IShape> shape, int width, int height, int start, int end) {
     this.shape = new HashMap<>();
     this.width = width;
     this.height = height;
-  }
+    this.time = new Time(start, end);
+    this.animation = new HashMap<String, Animation>();
 
+  }
+  // Create --> add a shape to the animator model
+  // Appears, move, changes --> add an animation to the animation model
+  // add animation need to operate on the added shape in the model.
+  // Animation need to take in a start and end time that is within model's start and end time.
+  // Model should have a start method that plays all the animation, or one of the animation.
+  // Keep track of the time and check which animation should the model execute.
+  // The animation class should have the appears, move, changes.
   /**
    * Decide when the object to appear.
    */
