@@ -10,7 +10,8 @@ public abstract class AShape implements IShape {
   Posn pos;
 
   public AShape(Shape type, Color col, int posX, int posY, int width, int height) {
-    if (type == null || type.getShapeType().equals("") || col == null || width < 0 || height < 0) {
+    if (type == null || type.getShapeType().equals("") || col == null || width < 0 || height < 0
+            || posX < 0 || posY < 0) {
       throw new IllegalArgumentException("The given arguments cannot be null/empty/negative");
     }
     this.type = type;
@@ -70,8 +71,9 @@ public abstract class AShape implements IShape {
 
   @Override
   public void setPosn(Posn pos) {
-    if (pos == null) {
-      throw new IllegalArgumentException("The Posn of the shape cannot be null.");
+    if (pos == null || pos.getY() < 0 || pos.getX() < 0) {
+      throw new IllegalArgumentException("The Posn of the shape cannot be null or the X and Y " +
+              "cannot be negative.");
     }
     this.pos = pos;
   }
