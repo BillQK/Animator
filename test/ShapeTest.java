@@ -28,7 +28,7 @@ public class ShapeTest {
   IShape ellipShape = new Ellipse(Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
           ellipW, ellipH);
 
-  //-----------------------TEST for SHAPE INTERFACE----------------------------//
+  //-----------------------TEST FOR SHAPE INTERFACE----------------------------//
   @Test
   public void testGetType() {
     assertEquals(recShape.getType(), Shape.RECTANGLE);
@@ -129,6 +129,6 @@ public class ShapeTest {
     assertEquals(negH.getPosition(), new Posn(ellipPosX, ellipPosY));
   }
 
-  //
+  //-------------------------TEST FOR
 
 }

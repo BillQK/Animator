@@ -25,16 +25,6 @@ public interface IAnimatorModelState<K> {
   int getHeight(String id);
 
   /**
-   * Get the radius of the object.
-   */
-   void getRadius();
-
-  /**
-   * Get the tick at that moment.
-   */
-   void getTick();
-
-  /**
    * Get the color of the object.
    */
    Color getColor(String id);
