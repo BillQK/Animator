@@ -28,6 +28,7 @@ public class AnimatorModel implements IAnimatorModel {
   // Model should have a start method that plays all the animation, or one of the animation.
   // Keep track of the time and check which animation should the model execute.
   // The animation class should have the appears, move, changes.
+
   /**
    * Decide when the object to appear.
    */
@@ -60,7 +61,10 @@ public class AnimatorModel implements IAnimatorModel {
         throw new IllegalArgumentException("Something wrong");
     }
 
+
   }
+
+
   // TODO: is the user allow to configure how fast and how slow the object moves
   // TODO: How should we calculate the speed of change using tick. if the Time is only given argument.
 

@@ -1,7 +1,7 @@
 package model;
 
 /**
- * This enumerated type represents the two different shapes in the model: Rectangle and Ellipse
+ * This enumerated type represents the two different shapes in the model: Rectangle and Ellipse.
  */
 public enum Shape {
   RECTANGLE("Rectangle"), ELLIPSE("Ellipse");
