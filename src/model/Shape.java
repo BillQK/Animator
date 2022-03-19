@@ -13,6 +13,9 @@ public enum Shape {
    * @param type the given type of the shape
    */
   Shape(String type) {
+    if (type == null || type.equals("")) {
+      throw new IllegalArgumentException("The type of the shape cannot be null or empty");
+    }
     this.type = type;
   }
 

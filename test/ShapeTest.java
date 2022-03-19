@@ -85,10 +85,5 @@ public class ShapeTest {
     ellipShape.setPosn(pos);
     assertEquals(ellipShape.getPosition(), new Posn(60, 60));
   }
-  //  /**
-  //   * Set the position of the shape to the given position.
-  //   * @param pos the given position
-  //   */
-  //  void setPosn(Posn pos);
 
 }

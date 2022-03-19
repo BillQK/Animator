@@ -31,24 +31,24 @@ public class AnimatorModel implements IAnimatorModel {
    // add arguments 
    // create object and put it into the HashMap  
   @Override
-  public void create(String id, Shape type, Posn pos, int width, int height, Color color) {
-    if (type == "" || pos == null || color == null || width < 0 || height < 0) {
+  public void create(String id, Shape type, int posX, int posY,  int width, int height, Color color) {
+    if (type.getShapeType() == "" || color == null || width < 0 || height < 0 || posX < 0
+            || posY < 0) {
       throw new IllegalArgumentException("Invalid arguments to create shape"); 
     }
-    switch (type) {
-      case type == Shape.RECTANGLE:
-        IShape object = new Rectangle(type,color, pos, width, height);
-        shape.put(id, object);
+    switch (type.getShapeType()) {
+      case "Rectangle":
+        IShape recobject = new Rectangle(type, color, posX, posY, width, height);
+        shape.put(id, recobject);
         break; 
-      case type == Shape.ELLIPSE: 
-        IShape ojbect = new Ellipse(type, color, pos, width, height); 
-        shape.put(id, object); 
+      case "Ellipse":
+        IShape ellipobject = new Ellipse(type, color, posX, posY, width, height);
+        shape.put(id, ellipobject);
         break; 
       default:
         throw new IllegalArgumentException("Something wrong"); 
         break;
     } 
-      
 
   }
   // TODO: is the user allow to configure how fast and how slow the object moves
