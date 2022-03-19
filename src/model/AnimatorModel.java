@@ -12,18 +12,20 @@ public class AnimatorModel implements IAnimatorModel {
   private final int width;
   private final int height;
   private final Time time;
+  private int currentTime;
 
-  public AnimatorModel(HashMap<String, IShape> shape, int width, int height, int start, int end) {
+  public AnimatorModel(HashMap<String, IShape> shape, int width, int height, int end) {
     this.shape = new HashMap<>();
     this.width = width;
     this.height = height;
-    this.time = new Time(start, end);
-    this.animation = new HashMap<String, Animation>();
+    this.time = new Time(0, end);
+    this.animation = new HashMap<>();
+    this.currentTime = 0;
 
   }
 
   // Create --> add a shape to the animator model
-  // Appears, move, changes --> add an animation to the animation model
+  // Appears, move, changes, disappear --> add an animation to the animation model
   // add animation need to operate on the added shape in the model.
   // Animation need to take in a start and end time that is within model's start and end time.
   // Model should have a start method that plays all the animation, or one of the animation.
