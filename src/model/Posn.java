@@ -64,7 +64,24 @@ public class Posn {
    * @return a Posn
    */
   public Posn moved(int dx, int dy) {
+    if (dx < 0 || dy < 0) {
+      throw new IllegalArgumentException("The given x and y position cannot be negative");
+    }
     return new Posn(dx, dy);
+  }
+
+  /**
+   * A method to set the current position to the new given position. MUTATING THE POSN!!.
+   *
+   * @param x the given new x coordinate
+   * @param y the given new y coordinate
+   */
+  public void setPosn(int x, int y) {
+    if (x < 0 || y < 0) {
+      throw new IllegalArgumentException("The given x and y position cannot be negative");
+    }
+    this.x = x;
+    this.y = y;
   }
 
   /**

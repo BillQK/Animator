@@ -28,6 +28,7 @@ public class ShapeTest {
   IShape ellipShape = new Ellipse(Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
           ellipW, ellipH);
 
+  //-----------------------TEST for SHAPE INTERFACE----------------------------//
   @Test
   public void testGetType() {
     assertEquals(recShape.getType(), Shape.RECTANGLE);
@@ -85,5 +86,49 @@ public class ShapeTest {
     ellipShape.setPosn(pos);
     assertEquals(ellipShape.getPosition(), new Posn(60, 60));
   }
+
+  //Test given a null Type
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullType() {
+    IShape nT = new Rectangle(null, recCol, recPosX, recPosY, recW, recH);
+    assertEquals(nT.getColor(), recCol);
+  }
+
+  //Test given a null Color
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullColor() {
+    IShape nC = new Rectangle(Shape.RECTANGLE, null, recPosX, recPosY, recW, recH);
+    assertEquals(nC.getType(), Shape.RECTANGLE);
+  }
+
+  //Test given a negative x position
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegPosX() {
+    IShape nnPosX = new Ellipse(Shape.ELLIPSE, ellipCol, -10, ellipPosY, ellipW, ellipH);
+    assertEquals(nnPosX.getType(), Shape.ELLIPSE);
+  }
+
+  //Test given a negative y position
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegPosY() {
+    IShape nnPosY = new Ellipse(Shape.ELLIPSE, ellipCol, ellipPosX, -10, ellipW, ellipH);
+    assertEquals(nnPosY.getType(), Shape.ELLIPSE);
+  }
+
+  //Test given a negative Width
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegWidth() {
+    IShape negW = new Rectangle(Shape.RECTANGLE, recCol, recPosX, recPosY, -10, recH);
+    assertEquals(negW.getPosition(), new Posn(recPosX, recPosY));
+  }
+
+  //Test given a negative Height
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegHeight() {
+    IShape negH = new Ellipse(Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY, ellipW, -10);
+    assertEquals(negH.getPosition(), new Posn(ellipPosX, ellipPosY));
+  }
+
+  //
 
 }
