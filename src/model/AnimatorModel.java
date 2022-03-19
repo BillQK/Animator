@@ -21,6 +21,7 @@ public class AnimatorModel implements IAnimatorModel {
     this.animation = new HashMap<String, Animation>();
 
   }
+
   // Create --> add a shape to the animator model
   // Appears, move, changes --> add an animation to the animation model
   // add animation need to operate on the added shape in the model.
@@ -28,7 +29,6 @@ public class AnimatorModel implements IAnimatorModel {
   // Model should have a start method that plays all the animation, or one of the animation.
   // Keep track of the time and check which animation should the model execute.
   // The animation class should have the appears, move, changes.
-
   /**
    * Decide when the object to appear.
    */
