@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 /**
  * This is the interface of the Animator model. It is parameterized over the object/shape type,
  * i.e. when you implement it, you can substitute K with the implementation of the object/shape.
@@ -13,7 +15,7 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
   /**
    * Create the object.
    */
-  void create(String id, Shape type, Posn pos, int width, int height, Color color);
+  void create(String id, Shape type, int x, int y, int width, int height, Color color);
 
   /**
    * Move the object.
