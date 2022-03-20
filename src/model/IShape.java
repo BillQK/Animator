@@ -10,6 +10,12 @@ import java.awt.*;
 public interface IShape {
 
   /**
+   * Get the name of the shape.
+   * @return the specific name of the according Shape
+   */
+  String getName();
+
+  /**
    * Get the type of the shape.
    * @return the specific type of the according Shape
    */

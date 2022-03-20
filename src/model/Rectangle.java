@@ -8,8 +8,8 @@ import java.awt.*;
  */
 public class Rectangle extends AShape {
 
-  public Rectangle(Shape type, Color col, int posX, int posY, int width, int height) {
-    super(type, col, posX, posY, width, height);
+  public Rectangle(String name, Shape type, Color col, int posX, int posY, int width, int height) {
+    super(name, type, col, posX, posY, width, height);
   }
 
   @Override

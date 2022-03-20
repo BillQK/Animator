@@ -3,22 +3,29 @@ package model;
 import java.awt.*;
 
 public abstract class AShape implements IShape {
-  Shape type;
-  Color col;
-  int w;
-  int h;
-  Posn pos;
+  private final String name;
+  private final Shape type;
+  private Color col;
+  private int w;
+  private int h;
+  private Posn pos;
 
-  public AShape( Shape type, Color col, int posX, int posY, int width, int height) {
-    if (type == null || type.getShapeType().equals("")
+  public AShape(String name, Shape type, Color col, int posX, int posY, int width, int height) {
+    if (name == null || name.equals("") || type == null || type.getShapeType().equals("")
             || col == null || width < 0 || height < 0 || posX < 0 || posY < 0) {
       throw new IllegalArgumentException("The given arguments cannot be null/empty/negative");
     }
+    this.name = name;
     this.type = type;
     this.col = col;
     this.pos = new Posn(posX, posY);
     this.w = width;
     this.h = height;
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
   }
 
   @Override
