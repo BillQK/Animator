@@ -1,5 +1,6 @@
 package model;
 
-public interface IAnimations {
+public interface IAnimations extends IAnimationsState{
+  void animate(Time time);
 
 }
