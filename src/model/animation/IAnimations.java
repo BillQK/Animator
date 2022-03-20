@@ -1,8 +1,6 @@
 package model.animation;
 
-import model.utils.Time;
-
-public interface IAnimations extends IAnimationsState{
+public interface IAnimations extends IAnimationsState {
   void animate(double time);
 
 }
