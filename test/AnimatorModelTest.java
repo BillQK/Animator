@@ -1,6 +1,10 @@
 import org.junit.Test;
 
+import java.awt.*;
+
 import model.AShape;
+import model.Rectangle;
+import model.Shape;
 import model.SimpleAnimatorModel;
 import model.Time;
 
@@ -21,7 +25,7 @@ public class AnimatorModelTest {
     s.getShapes();
     s.getShapes().get(0).setHeight(3);
 
-    assertEquals(s.getShapes().get(0), 4);
+    assertEquals(s.getShapes().get(0).getType(), Shape.RECTANGLE);
   }
 
 }

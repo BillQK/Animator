@@ -100,7 +100,8 @@ public abstract class AShape {
   }
 
   public int hashCode() {
-    return Objects.hash(this.name, this.type, this.col, this.w, this.h, this.time, this.pos);
+    return Objects.hash(this.name, this.type, this.col,
+            this.w, this.h, this.time, this.pos);
   }
 
 }

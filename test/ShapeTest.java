@@ -44,11 +44,6 @@ public class ShapeTest {
   }
 
   @Test
-  public void testGetTheShape() {
-
-  }
-
-  @Test
   public void testGetName() {
     assertEquals(recShape.getName(), "R");
     assertEquals(ellipShape.getName(), "E");
@@ -180,6 +175,17 @@ public class ShapeTest {
             ellipW, ellipH, null);
     assertEquals(negH.getPosition(), new Posn(ellipPosX, ellipPosY));
   }
+
+  //Test setWidth with a given negative width
+  @Test(expected = IllegalArgumentException.class)
+  public void testSetWidthWNullWidth() {
+    recShape.setWidth(-10);
+    assertEquals(recShape.getType(), Shape.RECTANGLE);
+  }
+
+  //Test setHeight with a given negative height
+
+
 
   //-------------------------TEST FOR ENUM SHAPE-------------------------//
 
