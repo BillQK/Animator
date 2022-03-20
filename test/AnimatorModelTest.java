@@ -1,12 +1,8 @@
 import org.junit.Test;
 
-import java.awt.*;
-
-import model.AShape;
-import model.Rectangle;
-import model.Shape;
+import model.shape.Shape;
 import model.SimpleAnimatorModel;
-import model.Time;
+import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
 

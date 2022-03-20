@@ -1,4 +1,4 @@
-package model;
+package model.utils;
 
 public class ArgumentsCheck {
   public static void lessThanZero(int... args) {

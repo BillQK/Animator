@@ -1,10 +1,12 @@
-package model;
+package model.shape;
 
 import java.awt.*;
 
+import model.utils.Time;
+
 public class Ellipse extends AShape {
 
-  public Ellipse(String name, Shape type, Color col, int posX, int posY,
+  public Ellipse(String name, model.shape.Shape type, Color col, int posX, int posY,
                  int width, int height, Time time) {
     super(name, type, col, posX, posY, width, height, time);
 
@@ -18,7 +20,7 @@ public class Ellipse extends AShape {
   }
 
   @Override
-  public Shape getType() {
+  public model.shape.Shape getType() {
     return Shape.ELLIPSE;
   }
 

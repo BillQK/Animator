@@ -6,6 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import model.animation.IAnimations;
+import model.shape.AShape;
+import model.shape.Ellipse;
+import model.shape.Shape;
+import model.utils.ArgumentsCheck;
+import model.utils.Time;
+
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final HashMap<String, AShape> shapes;
   private final HashMap<String, IAnimations> animations;
@@ -78,7 +85,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h, time);
+      AShape shape = new model.shape.Rectangle(id, model.shape.Shape.RECTANGLE, c, x, y, w, h, time);
 
       this.shapes.put(id, shape);
       return this;

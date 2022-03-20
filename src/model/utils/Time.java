@@ -1,4 +1,6 @@
-package model;
+package model.utils;
+
+import model.utils.ArgumentsCheck;
 
 public class Time {
   int start;

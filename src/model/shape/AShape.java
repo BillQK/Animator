@@ -1,7 +1,11 @@
-package model;
+package model.shape;
 
 import java.awt.*;
 import java.util.Objects;
+
+import model.utils.ArgumentsCheck;
+import model.utils.Posn;
+import model.utils.Time;
 
 public abstract class AShape {
   private final String name;

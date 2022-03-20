@@ -1,4 +1,7 @@
-package model;
+package model.animation;
+
+import model.shape.AShape;
+import model.utils.Time;
 
 public interface IAnimationsState {
   String getBeginsState();
