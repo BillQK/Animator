@@ -1,8 +1,10 @@
 package model;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   private final HashMap<String, IShape> shapes;
@@ -30,7 +32,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
 
   @Override
   public List<IShape> getShapes() {
-    return null;
+    List<String> myList = shapes.keySet().stream().collect(Collectors.toList());
+    List<IShape> l = new ArrayList<>();
+    for (String s : myList) {
+      IShape shape = shapes.get(s);
+      l.add(shape);
+    }
+    return l;
   }
 
   @Override
