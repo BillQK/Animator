@@ -1,7 +1,10 @@
 import org.junit.Test;
 
+import model.AShape;
 import model.SimpleAnimatorModel;
 import model.Time;
+
+import static org.junit.Assert.assertEquals;
 
 public class AnimatorModelTest {
 
@@ -17,6 +20,8 @@ public class AnimatorModelTest {
             .build();
     s.getShapes();
     s.getShapes().get(0).setHeight(3);
+
+    assertEquals(s.getShapes().get(0), 4);
   }
 
 }

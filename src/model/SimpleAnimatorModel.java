@@ -9,10 +9,12 @@ import java.util.stream.Collectors;
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final HashMap<String, AShape> shapes;
   private final HashMap<String, IAnimations> animations;
+  private final Time time;
 
   private SimpleAnimatorModel(AMBuilder amBuilder) {
     this.shapes = amBuilder.shapes;
     this.animations = amBuilder.animations;
+    this.time = amBuilder.time;
   }
 
   @Override
@@ -54,10 +56,18 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   public static class AMBuilder {
     private final HashMap<String, AShape> shapes;
     private final HashMap<String, IAnimations> animations;
+    private Time time;
 
     public AMBuilder() {
       this.shapes = new HashMap<>();
       this.animations = new HashMap<>();
+      this.time = new Time(0, 1000);
+    }
+
+    public AMBuilder setTime(int end) {
+      ArgumentsCheck.lessThanZero(end);
+      this.time = new Time(0, end);
+      return this;
     }
 
     public AMBuilder addRectangle(String id, int x, int y, int w, int h,

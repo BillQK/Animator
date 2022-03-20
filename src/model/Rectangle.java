@@ -14,7 +14,7 @@ public class Rectangle extends AShape {
   }
 
   @Override
-  protected Rectangle getTheShape() {
+  public Rectangle getTheShape() {
     return new Rectangle(this.getName(), this.getType(), this.getColor(),
             this.getPosition().getX(), this.getPosition().getY(),
             this.getWidth(), this.getHeight(), this.getTime());

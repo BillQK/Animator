@@ -27,7 +27,7 @@ public abstract class AShape {
     this.time = time;
   }
 
-  protected abstract AShape getTheShape();
+  public abstract AShape getTheShape();
 
   public String getName() {
     return this.name;
