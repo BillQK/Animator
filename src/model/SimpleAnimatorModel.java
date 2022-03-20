@@ -67,7 +67,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      IShape shape = new Rectangle(Shape.RECTANGLE, c, x, y, w, h);
+      IShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h);
 
       this.shapes.put(id, shape);
       return this;
@@ -80,7 +80,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      IShape shape = new Rectangle(Shape.ELLIPSE, c, x, y, w, h);
+      IShape shape = new Rectangle(id, Shape.ELLIPSE, c, x, y, w, h);
 
       this.shapes.put(id, shape);
       return this;
