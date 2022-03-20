@@ -77,5 +77,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
       this.shapes.put(id, shape);
       return this;
     }
+
+    public SimpleAnimatorModel build() {
+      return new SimpleAnimatorModel(this);
+    }
   }
 }
