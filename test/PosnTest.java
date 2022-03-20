@@ -70,7 +70,7 @@ public class PosnTest {
   //Test given null x and y position
   @Test(expected = IllegalArgumentException.class)
   public void testNullXYPosn() {
-    posn = new Posn()
+    posn = new Posn();
   }
 
 }
