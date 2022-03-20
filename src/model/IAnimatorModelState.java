@@ -4,7 +4,7 @@ package model;
 import java.util.List;
 
 public interface IAnimatorModelState<K> {
-  String getDescription();
+  String getState();
 
   List<IShape> getShapes();
 

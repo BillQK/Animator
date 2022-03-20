@@ -27,7 +27,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   }
 
   @Override
-  public String getDescription() {
+  public String getState() {
     return null;
   }
 

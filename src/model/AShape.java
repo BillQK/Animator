@@ -9,9 +9,9 @@ public abstract class AShape implements IShape {
   int h;
   Posn pos;
 
-  public AShape(Shape type, Color col, int posX, int posY, int width, int height) {
-    if (type == null || type.getShapeType().equals("") || col == null || width < 0 || height < 0
-            || posX < 0 || posY < 0) {
+  public AShape( Shape type, Color col, int posX, int posY, int width, int height) {
+    if (type == null || type.getShapeType().equals("")
+            || col == null || width < 0 || height < 0 || posX < 0 || posY < 0) {
       throw new IllegalArgumentException("The given arguments cannot be null/empty/negative");
     }
     this.type = type;
@@ -32,7 +32,6 @@ public abstract class AShape implements IShape {
   @Override
   public Color getColor() {
     return new Color(this.col.getRGB());
-
   }
 
   @Override
