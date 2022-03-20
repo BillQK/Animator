@@ -1,4 +1,6 @@
-package model;
+package model.utils;
+
+import model.utils.ArgumentsCheck;
 
 import java.util.Objects;
 

@@ -1,6 +1,8 @@
-package model;
+package model.shape;
 
 import java.awt.*;
+
+import model.utils.Time;
 
 /**
  * This class represents the specific Rectangle shape which have a Rectangle shapetype, color,

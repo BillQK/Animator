@@ -1,4 +1,4 @@
-package model;
+package model.shape;
 
 /**
  * This enumerated type represents the two different shapes in the model: Rectangle and Ellipse.

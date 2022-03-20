@@ -2,12 +2,12 @@ import org.junit.Test;
 
 import java.awt.*;
 
-import model.Ellipse;
-import model.Posn;
-import model.Rectangle;
-import model.Shape;
-import model.AShape;
-import model.Time;
+import model.shape.Ellipse;
+import model.utils.Posn;
+import model.shape.Rectangle;
+import model.shape.Shape;
+import model.shape.AShape;
+import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
