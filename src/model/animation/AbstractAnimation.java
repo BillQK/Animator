@@ -61,7 +61,7 @@ public abstract class AbstractAnimation implements IAnimations {
 
   @Override
   public Time getTime() {
-    return new Time(this.getTime());
+    return new Time(this.shape.getTime());
   }
 
   @Override
