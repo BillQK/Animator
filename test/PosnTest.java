@@ -67,4 +67,10 @@ public class PosnTest {
     assertTrue(mtposn.equals(new Posn(0, 0)));
   }
 
+  //Test given null x and y position
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullXYPosn() {
+    posn = new Posn()
+  }
+
 }

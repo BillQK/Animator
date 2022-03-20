@@ -16,6 +16,7 @@ public class Posn {
    * @param y int y
    */
   public Posn(int x, int y) {
+    ArgumentsCheck.lessThanZero(x, y);
     this.x = x;
     this.y = y;
   }
@@ -34,6 +35,9 @@ public class Posn {
    * @param posn a Posn
    */
   public Posn(Posn posn) {
+    if (posn == null) {
+      throw new IllegalArgumentException("Posn cannot be null");
+    }
     this.x = posn.x;
     this.y = posn.y;
   }
@@ -86,7 +90,10 @@ public class Posn {
    * @param other a Posn
    */
   public void minus(Posn other) {
-    this.x -= other.getX();
+    if (other == null) {
+      throw new IllegalArgumentException("The given Posn cannot be null");
+    }
+     this.x -= other.getX();
     this.y -= other.getY();
   }
 
@@ -96,6 +103,9 @@ public class Posn {
    * @param other a Posn
    */
   public void plus(Posn other) {
+    if (other == null) {
+      throw new IllegalArgumentException("The given Posn cannot be null");
+    }
     this.x += other.getX();
     this.y += other.getY();
   }

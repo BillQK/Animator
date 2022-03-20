@@ -110,14 +110,16 @@ public class ShapeTest {
   //Test given a null Name
   @Test(expected = IllegalArgumentException.class)
   public void testNullName() {
-    AShape nT = new Rectangle(null, Shape.RECTANGLE, recCol, recPosX, recPosY, recW, recH, recT);
+    AShape nT = new Rectangle(null, Shape.RECTANGLE, recCol, recPosX, recPosY,
+            recW, recH, recT);
     assertEquals(nT.getColor(), recCol);
   }
 
   //Test given a empty Name
   @Test(expected = IllegalArgumentException.class)
   public void testEmptyStringName() {
-    AShape nT = new Rectangle("", Shape.RECTANGLE, recCol, recPosX, recPosY, recW, recH, recT);
+    AShape nT = new Rectangle("", Shape.RECTANGLE, recCol, recPosX, recPosY,
+            recW, recH, recT);
     assertEquals(nT.getColor(), recCol);
   }
 
@@ -178,14 +180,32 @@ public class ShapeTest {
 
   //Test setWidth with a given negative width
   @Test(expected = IllegalArgumentException.class)
-  public void testSetWidthWNullWidth() {
+  public void testSetWidthWNegWidth() {
     recShape.setWidth(-10);
     assertEquals(recShape.getType(), Shape.RECTANGLE);
   }
 
+
   //Test setHeight with a given negative height
+  @Test(expected = IllegalArgumentException.class)
+  public void testSetWidthWNegHeight() {
+    recShape.setHeight(-10);
+    assertEquals(recShape.getType(), Shape.RECTANGLE);
+  }
 
+  //Test setColor with a given null Color
+  @Test(expected = IllegalArgumentException.class)
+  public void testSetWidthWNullColor() {
+    ellipShape.setColor(null);
+    assertEquals(ellipShape.getType(), Shape.ELLIPSE);
+  }
 
+  //Test setPosn with a given null Posn
+  @Test(expected = IllegalArgumentException.class)
+  public void testSetWidthWNullPosn() {
+    ellipShape.setPosn(null);
+    assertEquals(ellipShape.getType(), Shape.ELLIPSE);
+  }
 
   //-------------------------TEST FOR ENUM SHAPE-------------------------//
 
