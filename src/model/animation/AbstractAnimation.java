@@ -4,10 +4,10 @@ import java.awt.*;
 
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
+import model.utils.Posn;
 import model.utils.Time;
 
 public abstract class AbstractAnimation implements IAnimations {
-  private final AShape shape;
   private final AnimationType type;
   private final int startTime;
   private final int endTime;
@@ -16,6 +16,7 @@ public abstract class AbstractAnimation implements IAnimations {
   private final int endX;
   private final int endY;
   private final Color endColor;
+  private AShape shape;
 
   public AbstractAnimation(AShape shape,
                            AnimationType type,
@@ -32,8 +33,13 @@ public abstract class AbstractAnimation implements IAnimations {
     }
     this.shape = shape;
     this.type = type;
-    this.startTime = startTime;
-    this.endTime = endTime;
+    if (shape.getTime().getStartTime() < startTime || shape.getTime().getEndTime() > endTime) {
+      this.startTime = startTime;
+      this.endTime = endTime;
+    } else {
+      throw new IllegalArgumentException("Time out of AShape Range");
+    }
+
     this.endW = endW;
     this.endH = endH;
     this.endX = endX;
@@ -42,47 +48,55 @@ public abstract class AbstractAnimation implements IAnimations {
   }
 
   @Override
-  public void animate(Time time) {
-
-  }
+  public abstract void animate(Time time);
 
   @Override
   public String getBeginsState() {
-    return null;
+    return shape.getTime().getStartTime()
+            + shape.getName()
+            + shape.getPosition().toString()
+            + shape.getHeight()
+            + shape.getWidth()
+            + shape.getColor().toString();
   }
 
   @Override
   public String getEndsState() {
-    return null;
+    return shape.getTime().getEndTime()
+            + shape.getName()
+            + new Posn(endX, endY)
+            + endH
+            + endW
+            + endColor.toString();
   }
 
   @Override
   public String getState() {
-    return null;
+    return this.getBeginsState() + this.getEndsState();
   }
 
   @Override
   public AShape getShape() {
-    return null;
+    return shape.getTheShape();
   }
 
   @Override
   public Time getTime() {
-    return null;
+    return new Time(this.getTime());
   }
 
   @Override
   public AnimationType getType() {
-    return null;
+    return this.type;
   }
 
   @Override
   public int getStart() {
-    return 0;
+    return startTime;
   }
 
   @Override
   public int getEnd() {
-    return 0;
+    return endTime;
   }
 }

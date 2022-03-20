@@ -2,8 +2,6 @@ package model.utils;
 
 import java.util.Objects;
 
-import model.utils.ArgumentsCheck;
-
 public class Time {
   int start;
   int end;
@@ -22,6 +20,14 @@ public class Time {
     ArgumentsCheck.lessThanZero(end);
     this.start = 0;
     this.end = end;
+  }
+
+  public Time(Time time) {
+    if (time == null) {
+      throw new IllegalArgumentException("Time cannot be null");
+    }
+    this.start = time.start;
+    this.end = time.end;
   }
 
   public int getStartTime() {
