@@ -4,6 +4,7 @@ import java.awt.*;
 
 import model.shape.AShape;
 import model.utils.Posn;
+import model.utils.RateOfChange;
 
 public class Move extends AbstractAnimation {
   private final Posn original;
@@ -27,13 +28,13 @@ public class Move extends AbstractAnimation {
     double destX = this.destination.getX();
     double destY = this.destination.getY();
 
-    double rateOfChange = (time - start) / (double) (end - start);
+    double rateOfChange = RateOfChange.findRate(time, start, end);
 
-    double changeInX = Math.abs(destX - currentX) * rateOfChange;
+    double changeInX = (destX - currentX) * rateOfChange;
 
-    double changeInY = Math.abs(destY - currentY) * rateOfChange;
+    double changeInY = (destY - currentY) * rateOfChange;
 
-    Posn newPosn = new Posn((int) (currentX + changeInX), (int) ((int) currentY + changeInY));
+    Posn newPosn = new Posn(currentX + changeInX, currentY + changeInY);
 
     s.setPosn(newPosn);
   }
