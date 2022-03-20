@@ -3,9 +3,6 @@ package model;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
-import java.awt.Color;
-
-import java.util.Objects;
 
 public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   private final HashMap<String, IShape> shapes;
@@ -57,7 +54,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
 
     public IAnimatorModel<IShape> addRectangle(String id, int x, int y, int w, int h,
                                                int red, int green, int blue, Time time) {
-
+      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
       Color c = new Color(red, green, blue);
       IShape shape = new Rectangle(Shape.RECTANGLE, c, x, y, w, h);
     }
