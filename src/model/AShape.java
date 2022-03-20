@@ -8,11 +8,13 @@ public abstract class AShape {
   private Color col;
   private int w;
   private int h;
+  private final Time time;
   private Posn pos;
 
-  public AShape(String name, Shape type, Color col, int posX, int posY, int width, int height) {
+  public AShape(String name, Shape type, Color col, int posX, int posY,
+                int width, int height, Time time) {
     if (name == null || name.equals("") || type == null || type.getShapeType().equals("")
-            || col == null || width < 0 || height < 0 || posX < 0 || posY < 0) {
+            || col == null || width < 0 || height < 0 || posX < 0 || posY < 0 || time == null) {
       throw new IllegalArgumentException("The given arguments cannot be null/empty/negative");
     }
     this.name = name;
@@ -21,6 +23,7 @@ public abstract class AShape {
     this.pos = new Posn(posX, posY);
     this.w = width;
     this.h = height;
+    this.time = time;
   }
 
   protected abstract AShape getTheShape();
@@ -45,6 +48,10 @@ public abstract class AShape {
 
   public int getHeight() {
     return this.h;
+  }
+
+  public Time getTime() {
+    return this.time;
   }
 
   public void setWidth(int width) {

@@ -12,4 +12,21 @@ public class Time {
     this.start = start;
     this.end = end;
   }
+
+  public Time(int end) {
+    if (end < 0) {
+      throw new IllegalArgumentException("Start and End time cannot be negative," +
+              "and End time cannot be less than or equal to start");
+    }
+    this.start = 0;
+    this.end = end;
+  }
+
+  public int getStartTime() {
+    return start;
+  }
+
+  public int getEndTime() {
+    return end;
+  }
 }

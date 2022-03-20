@@ -7,6 +7,7 @@ import model.Posn;
 import model.Rectangle;
 import model.Shape;
 import model.AShape;
+import model.Time;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,7 +19,9 @@ public class ShapeTest {
   int recPosY = 10;
   int recW = 40;
   int recH = 20;
-  AShape recShape = new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX, recPosY, recW, recH);
+  Time recT = new Time(10, 40);
+  AShape recShape = new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX, recPosY,
+          recW, recH, recT);
 
   String ellipN = "E";
   Color ellipCol = new Color(225, 0,0);
@@ -26,8 +29,9 @@ public class ShapeTest {
   int ellipPosY = 10;
   int ellipW = 30;
   int ellipH = 20;
+  Time ellipT = new Time(20, 30);
   AShape ellipShape = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
-          ellipW, ellipH);
+          ellipW, ellipH, ellipT);
 
   //-----------------------TEST FOR SHAPE INTERFACE----------------------------//
   @Test
@@ -97,42 +101,47 @@ public class ShapeTest {
   //Test given a null Type
   @Test(expected = IllegalArgumentException.class)
   public void testNullType() {
-    AShape nT = new Rectangle(recN, null, recCol, recPosX, recPosY, recW, recH);
+    AShape nT = new Rectangle(recN, null, recCol, recPosX, recPosY, recW, recH, recT);
     assertEquals(nT.getColor(), recCol);
   }
 
   //Test given a null Color
   @Test(expected = IllegalArgumentException.class)
   public void testNullColor() {
-    AShape nC = new Rectangle(recN, Shape.RECTANGLE, null, recPosX, recPosY, recW, recH);
+    AShape nC = new Rectangle(recN, Shape.RECTANGLE, null, recPosX, recPosY,
+            recW, recH, recT);
     assertEquals(nC.getType(), Shape.RECTANGLE);
   }
 
   //Test given a negative x position
   @Test(expected = IllegalArgumentException.class)
   public void testNegPosX() {
-    AShape nnPosX = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, -10, ellipPosY, ellipW, ellipH);
+    AShape nnPosX = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, -10, ellipPosY,
+            ellipW, ellipH, ellipT);
     assertEquals(nnPosX.getType(), Shape.ELLIPSE);
   }
 
   //Test given a negative y position
   @Test(expected = IllegalArgumentException.class)
   public void testNegPosY() {
-    AShape nnPosY = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, -10, ellipW, ellipH);
+    AShape nnPosY = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, -10,
+            ellipW, ellipH, ellipT);
     assertEquals(nnPosY.getType(), Shape.ELLIPSE);
   }
 
   //Test given a negative Width
   @Test(expected = IllegalArgumentException.class)
   public void testNegWidth() {
-    AShape negW = new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX, recPosY, -10, recH);
+    AShape negW = new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX, recPosY,
+            -10, recH, recT);
     assertEquals(negW.getPosition(), new Posn(recPosX, recPosY));
   }
 
   //Test given a negative Height
   @Test(expected = IllegalArgumentException.class)
   public void testNegHeight() {
-    AShape negH = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY, ellipW, -10);
+    AShape negH = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
+            ellipW, -10, ellipT);
     assertEquals(negH.getPosition(), new Posn(ellipPosX, ellipPosY));
   }
 

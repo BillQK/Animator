@@ -27,7 +27,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public String getState() {
-    return null;
+    return "";
   }
 
   @Override
@@ -67,7 +67,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h);
+      AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h, time);
 
       this.shapes.put(id, shape);
       return this;
@@ -80,7 +80,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      AShape shape = new Ellipse(id, Shape.ELLIPSE, c, x, y, w, h);
+      AShape shape = new Ellipse(id, Shape.ELLIPSE, c, x, y, w, h, time);
 
       this.shapes.put(id, shape);
       return this;

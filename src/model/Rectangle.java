@@ -8,14 +8,16 @@ import java.awt.*;
  */
 public class Rectangle extends AShape {
 
-  public Rectangle(String name, Shape type, Color col, int posX, int posY, int width, int height) {
-    super(name, type, col, posX, posY, width, height);
+  public Rectangle(String name, Shape type, Color col, int posX, int posY,
+                   int width, int height, Time time) {
+    super(name, type, col, posX, posY, width, height, time);
   }
 
   @Override
   protected Rectangle getTheShape() {
     return new Rectangle(this.getName(), this.getType(), this.getColor(),
-            this.getPosition().getX(), this.getPosition().getY(), this.getWidth(), this.getHeight());
+            this.getPosition().getX(), this.getPosition().getY(),
+            this.getWidth(), this.getHeight(), this.getTime());
   }
 
   @Override
