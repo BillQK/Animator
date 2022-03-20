@@ -15,8 +15,8 @@ import static org.junit.Assert.assertTrue;
 public class ShapeTest {
   String recN = "R";
   Color recCol = new Color(0, 0, 225);
-  int recPosX = 10;
-  int recPosY = 10;
+  double recPosX = 10;
+  double recPosY = 10;
   int recW = 40;
   int recH = 20;
   Time recT = new Time(10, 40);
@@ -25,8 +25,8 @@ public class ShapeTest {
 
   String ellipN = "E";
   Color ellipCol = new Color(225, 0,0);
-  int ellipPosX = 20;
-  int ellipPosY = 10;
+  double ellipPosX = 20;
+  double ellipPosY = 10;
   int ellipW = 30;
   int ellipH = 20;
   Time ellipT = new Time(20, 30);

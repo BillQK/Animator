@@ -16,7 +16,7 @@ public abstract class AShape {
   private final Time time;
   private Posn pos;
 
-  public AShape(String name, Shape type, Color col, int posX, int posY,
+  public AShape(String name, Shape type, Color col, double posX, double posY,
                 int width, int height, Time time) {
     if (name == null || type == null || col == null || time == null) {
       throw new IllegalArgumentException("The given arguments cannot be null/empty/negative");

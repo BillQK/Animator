@@ -13,7 +13,7 @@ public class ChangeDimension extends AbstractAnimation {
   }
 
   @Override
-  public void animate(Time time) {
+  public void animate(double time) {
 
   }
 

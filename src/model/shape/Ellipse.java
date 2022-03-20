@@ -6,7 +6,7 @@ import model.utils.Time;
 
 public class Ellipse extends AShape {
 
-  public Ellipse(String name, model.shape.Shape type, Color col, int posX, int posY,
+  public Ellipse(String name, model.shape.Shape type, Color col, double posX, double posY,
                  int width, int height, Time time) {
     super(name, type, col, posX, posY, width, height, time);
 

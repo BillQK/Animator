@@ -7,8 +7,8 @@ import model.animation.AbstractAnimation;
  * A Posn class.
  */
 public class Posn {
-  int x;
-  int y;
+  private double x;
+  private double y;
 
   /**
    * A constructor for Posn.
@@ -16,7 +16,7 @@ public class Posn {
    * @param x int x
    * @param y int y
    */
-  public Posn(int x, int y) {
+  public Posn(double x, double y) {
     ArgumentsCheck.lessThanZero(x, y);
     this.x = x;
     this.y = y;
@@ -48,7 +48,7 @@ public class Posn {
    *
    * @return an int
    */
-  public int getX() {
+  public double getX() {
     return x;
   }
 
@@ -57,7 +57,7 @@ public class Posn {
    *
    * @return an int
    */
-  public int getY() {
+  public double getY() {
     return y;
   }
 
@@ -68,7 +68,7 @@ public class Posn {
    * @param dy A new y coordinate
    * @return a Posn
    */
-  public Posn moved(int dx, int dy) {
+  public Posn moved(double dx, double dy) {
     ArgumentsCheck.lessThanZero(dx, dy);
     return new Posn(dx, dy);
   }
@@ -79,7 +79,7 @@ public class Posn {
    * @param x the given new x coordinate
    * @param y the given new y coordinate
    */
-  public void setPosn(int x, int y) {
+  public void setPosn(double x, double y) {
     ArgumentsCheck.lessThanZero(x, y);
     this.x = x;
     this.y = y;

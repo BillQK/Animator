@@ -34,7 +34,7 @@ public abstract class AbstractAnimation implements IAnimations {
   }
 
   @Override
-  public abstract void animate(Time time);
+  public abstract void animate(double time);
 
   @Override
   public String getBeginsState() {

@@ -1,8 +1,8 @@
 package model.utils;
 
 public class ArgumentsCheck {
-  public static void lessThanZero(int... args) {
-    for (int a : args) {
+  public static void lessThanZero(double... args) {
+    for (double a : args) {
       if (a < 0) {
         throw new IllegalArgumentException("Cannot be less than Zero");
       }

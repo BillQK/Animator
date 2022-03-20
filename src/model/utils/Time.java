@@ -3,10 +3,10 @@ package model.utils;
 import java.util.Objects;
 
 public class Time {
-  int start;
-  int end;
+  double start;
+  double end;
 
-  public Time(int start, int end) {
+  public Time(double start, double end) {
     if (end <= start) {
       throw new IllegalArgumentException("Start and End time cannot be negative," +
               "and End time cannot be less than or equal to start");
@@ -16,7 +16,7 @@ public class Time {
     this.end = end;
   }
 
-  public Time(int end) {
+  public Time(double end) {
     ArgumentsCheck.lessThanZero(end);
     this.start = 0;
     this.end = end;
@@ -30,11 +30,11 @@ public class Time {
     this.end = time.end;
   }
 
-  public int getStartTime() {
+  public double getStartTime() {
     return start;
   }
 
-  public int getEndTime() {
+  public double getEndTime() {
     return end;
   }
 
