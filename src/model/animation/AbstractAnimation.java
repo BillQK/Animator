@@ -4,6 +4,7 @@ import model.shape.AShape;
 import model.utils.Time;
 
 public abstract class AbstractAnimation implements IAnimations {
+  
   @Override
   public void animate(Time time) {
 
