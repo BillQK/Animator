@@ -64,9 +64,7 @@ public class Posn {
    * @return a Posn
    */
   public Posn moved(int dx, int dy) {
-    if (dx < 0 || dy < 0) {
-      throw new IllegalArgumentException("The given x and y position cannot be negative");
-    }
+    ArgumentsCheck.lessThanZero(dx, dy);
     return new Posn(dx, dy);
   }
 
@@ -77,9 +75,7 @@ public class Posn {
    * @param y the given new y coordinate
    */
   public void setPosn(int x, int y) {
-    if (x < 0 || y < 0) {
-      throw new IllegalArgumentException("The given x and y position cannot be negative");
-    }
+    ArgumentsCheck.lessThanZero(x, y);
     this.x = x;
     this.y = y;
   }

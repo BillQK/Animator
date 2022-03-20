@@ -8,4 +8,13 @@ public class ArgumentsCheck {
       }
     }
   }
+
+  public static void emptyString(String... args) {
+    for (String s : args) {
+      if (s.equals("")) {
+        throw new IllegalArgumentException("Cannot be empty");
+      }
+    }
+  }
+
 }

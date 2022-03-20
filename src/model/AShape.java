@@ -13,10 +13,11 @@ public abstract class AShape {
 
   public AShape(String name, Shape type, Color col, int posX, int posY,
                 int width, int height, Time time) {
-    if (name == null || name.equals("") || type == null || type.getShapeType().equals("")
-            || col == null || width < 0 || height < 0 || posX < 0 || posY < 0 || time == null) {
+    if (name == null || type == null || col == null || time == null) {
       throw new IllegalArgumentException("The given arguments cannot be null/empty/negative");
     }
+    ArgumentsCheck.lessThanZero(width, height, posX, posY);
+    ArgumentsCheck.emptyString(name, type.getShapeType());
     this.name = name;
     this.type = type;
     this.col = col;
