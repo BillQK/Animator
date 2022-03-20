@@ -1,6 +1,7 @@
 package model.utils;
 
 import java.util.Objects;
+import model.animation.AbstractAnimation;
 
 /**
  * A Posn class.
@@ -38,6 +39,7 @@ public class Posn {
     if (posn == null) {
       throw new IllegalArgumentException("Posn cannot be null");
     }
+    ArgumentsCheck.lessThanZero(posn.x, posn.y);
     this.x = posn.x;
     this.y = posn.y;
   }
