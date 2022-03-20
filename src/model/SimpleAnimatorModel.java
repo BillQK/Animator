@@ -35,7 +35,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     List<String> myList = shapes.keySet().stream().collect(Collectors.toList());
     List<AShape> l = new ArrayList<>();
     for (String s : myList) {
-      AShape shape = shapes.get(s);
+      AShape shape = shapes.get(s).getTheShape();
       l.add(shape);
     }
     return l;
@@ -80,7 +80,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      AShape shape = new Rectangle(id, Shape.ELLIPSE, c, x, y, w, h);
+      AShape shape = new Ellipse(id, Shape.ELLIPSE, c, x, y, w, h);
 
       this.shapes.put(id, shape);
       return this;
