@@ -8,9 +8,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   private final HashMap<String, IShape> shapes;
   private final HashMap<String, IAnimations> animations;
 
-  private SimpleAnimatorModel(AnimatorModelBuilder animatorModelBuilder) {
-    this.shapes = animatorModelBuilder.shapes;
-    this.animations = animatorModelBuilder.animations;
+  private SimpleAnimatorModel(AMBuilder amBuilder) {
+    this.shapes = amBuilder.shapes;
+    this.animations = amBuilder.animations;
   }
 
   @Override
@@ -43,17 +43,17 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
     return null;
   }
 
-  public static class AnimatorModelBuilder {
+  public static class AMBuilder {
     private final HashMap<String, IShape> shapes;
     private final HashMap<String, IAnimations> animations;
 
-    public AnimatorModelBuilder() {
+    public AMBuilder() {
       this.shapes = new HashMap<>();
       this.animations = new HashMap<>();
     }
 
-    public AnimatorModelBuilder addRectangle(String id, int x, int y, int w, int h,
-                                             int red, int green, int blue, Time time) {
+    public AMBuilder addRectangle(String id, int x, int y, int w, int h,
+                                  int red, int green, int blue, Time time) {
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
       if (time == null) {
         throw new IllegalArgumentException("Time cannot be null");
@@ -65,8 +65,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
       return this;
     }
 
-    public AnimatorModelBuilder addEllipse(String id, int x, int y, int w, int h,
-                                           int red, int green, int blue, Time time) {
+    public AMBuilder addEllipse(String id, int x, int y, int w, int h,
+                                int red, int green, int blue, Time time) {
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
       if (time == null) {
         throw new IllegalArgumentException("Time cannot be null");
