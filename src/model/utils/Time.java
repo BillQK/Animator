@@ -1,5 +1,7 @@
 package model.utils;
 
+import java.util.Objects;
+
 import model.utils.ArgumentsCheck;
 
 public class Time {
@@ -29,4 +31,22 @@ public class Time {
   public int getEndTime() {
     return end;
   }
+
+  @Override
+  public boolean equals(Object other) {
+    if (this == other) {
+      return true;
+    }
+    if (other == null) {
+      return false;
+    } else {
+      Time time = (Time) other;
+      return Objects.equals(this.start, time.start) && Objects.equals(this.end, time.end);
+    }
+  }
+
+  public int hashCode() {
+    return Objects.hash(this.start, this.end);
+  }
+
 }
