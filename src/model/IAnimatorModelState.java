@@ -6,7 +6,7 @@ import java.util.List;
 public interface IAnimatorModelState<K> {
   String getState();
 
-  List<IShape> getShapes();
+  List<AShape> getShapes();
 
   List<IAnimations> getAnimations();
 

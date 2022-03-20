@@ -2,7 +2,7 @@ package model;
 
 import java.awt.*;
 
-public abstract class AShape implements IShape {
+public abstract class AShape {
   private final String name;
   private final Shape type;
   private Color col;
@@ -23,35 +23,30 @@ public abstract class AShape implements IShape {
     this.h = height;
   }
 
-  @Override
+  protected abstract AShape getTheShape();
+
   public String getName() {
     return this.name;
   }
 
-  @Override
   public abstract Shape getType();
 
-  @Override
   public Posn getPosition() {
     return new Posn(this.pos);
   }
 
-  @Override
   public Color getColor() {
     return new Color(this.col.getRGB());
   }
 
-  @Override
   public int getWidth() {
     return this.w;
   }
 
-  @Override
   public int getHeight() {
     return this.h;
   }
 
-  @Override
   public void setWidth(int width) {
     if (width < 0) {
       throw new IllegalArgumentException("The width of the shape cannot be negative.");
@@ -59,7 +54,6 @@ public abstract class AShape implements IShape {
     this.w = width;
   }
 
-  @Override
   public void setHeight(int height) {
     if (height < 0) {
       throw new IllegalArgumentException("The height of the shape cannot be negative.");
@@ -67,7 +61,6 @@ public abstract class AShape implements IShape {
     this.h = height;
   }
 
-  @Override
   public void setColor(Color color) {
     if (color == null) {
       throw new IllegalArgumentException("The color of the shape cannot be null.");
@@ -75,7 +68,6 @@ public abstract class AShape implements IShape {
     this.col = color;
   }
 
-  @Override
   public void setPosn(Posn pos) {
     if (pos == null || pos.getY() < 0 || pos.getX() < 0) {
       throw new IllegalArgumentException("The Posn of the shape cannot be null or the X and Y " +

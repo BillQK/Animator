@@ -13,6 +13,11 @@ public class Rectangle extends AShape {
   }
 
   @Override
+  protected Rectangle getTheShape() {
+    return this;
+  }
+
+  @Override
   public Shape getType() {
     return Shape.RECTANGLE;
   }

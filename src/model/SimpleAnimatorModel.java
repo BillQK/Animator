@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
-  private final HashMap<String, IShape> shapes;
+public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
+  private final HashMap<String, AShape> shapes;
   private final HashMap<String, IAnimations> animations;
 
   private SimpleAnimatorModel(AMBuilder amBuilder) {
@@ -16,7 +16,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   }
 
   @Override
-  public void addShape(String id, IShape s) {
+  public void addShape(String id, AShape s) {
     this.shapes.put(id, s);
   }
 
@@ -31,11 +31,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   }
 
   @Override
-  public List<IShape> getShapes() {
+  public List<AShape> getShapes() {
     List<String> myList = shapes.keySet().stream().collect(Collectors.toList());
-    List<IShape> l = new ArrayList<>();
+    List<AShape> l = new ArrayList<>();
     for (String s : myList) {
-      IShape shape = shapes.get(s);
+      AShape shape = shapes.get(s);
       l.add(shape);
     }
     return l;
@@ -52,7 +52,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   }
 
   public static class AMBuilder {
-    private final HashMap<String, IShape> shapes;
+    private final HashMap<String, AShape> shapes;
     private final HashMap<String, IAnimations> animations;
 
     public AMBuilder() {
@@ -67,7 +67,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      IShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h);
+      AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h);
 
       this.shapes.put(id, shape);
       return this;
@@ -80,7 +80,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
         throw new IllegalArgumentException("Time cannot be null");
       }
       Color c = new Color(red, green, blue);
-      IShape shape = new Rectangle(id, Shape.ELLIPSE, c, x, y, w, h);
+      AShape shape = new Rectangle(id, Shape.ELLIPSE, c, x, y, w, h);
 
       this.shapes.put(id, shape);
       return this;

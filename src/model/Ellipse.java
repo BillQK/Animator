@@ -10,6 +10,11 @@ public class Ellipse extends AShape {
   }
 
   @Override
+  protected Ellipse getTheShape() {
+    return this;
+  }
+
+  @Override
   public Shape getType() {
     return Shape.ELLIPSE;
   }
