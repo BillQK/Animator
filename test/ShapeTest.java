@@ -34,6 +34,15 @@ public class ShapeTest {
           ellipW, ellipH, ellipT);
 
   //-----------------------TEST FOR SHAPE INTERFACE----------------------------//
+
+  @Test
+  public void testGetTheShape() {
+    assertEquals(recShape.getTheShape(), new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX,
+            recPosY, recW, recH, recT));
+    assertEquals(ellipShape.getTheShape(), new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX,
+            ellipPosY, ellipW, ellipH, ellipT));
+  }
+
   @Test
   public void testGetName() {
     assertEquals(recShape.getName(), "R");
@@ -98,6 +107,20 @@ public class ShapeTest {
     assertEquals(ellipShape.getPosition(), new Posn(60, 60));
   }
 
+  //Test given a null Name
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullName() {
+    AShape nT = new Rectangle(null, Shape.RECTANGLE, recCol, recPosX, recPosY, recW, recH, recT);
+    assertEquals(nT.getColor(), recCol);
+  }
+
+  //Test given a empty Name
+  @Test(expected = IllegalArgumentException.class)
+  public void testEmptyStringName() {
+    AShape nT = new Rectangle("", Shape.RECTANGLE, recCol, recPosX, recPosY, recW, recH, recT);
+    assertEquals(nT.getColor(), recCol);
+  }
+
   //Test given a null Type
   @Test(expected = IllegalArgumentException.class)
   public void testNullType() {
@@ -145,6 +168,14 @@ public class ShapeTest {
     assertEquals(negH.getPosition(), new Posn(ellipPosX, ellipPosY));
   }
 
-  //-------------------------TEST FOR
+  //Test given a null Time
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullTime() {
+    AShape negH = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
+            ellipW, ellipH, null);
+    assertEquals(negH.getPosition(), new Posn(ellipPosX, ellipPosY));
+  }
+
+  //-------------------------TEST FOR ENUM SHAPE-------------------------//
 
 }

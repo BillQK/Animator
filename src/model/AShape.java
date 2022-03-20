@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.util.Objects;
 
 public abstract class AShape {
   private final String name;
@@ -27,7 +28,7 @@ public abstract class AShape {
     this.time = time;
   }
 
-  protected abstract AShape getTheShape();
+  public abstract AShape getTheShape();
 
   public String getName() {
     return this.name;
@@ -82,6 +83,24 @@ public abstract class AShape {
               "cannot be negative.");
     }
     this.pos = pos;
+  }
+
+  public boolean equals(Object shape) {
+    if (this == shape) {
+      return true;
+    } else if (shape == null) {
+      return false;
+    } else {
+      AShape shapes = (AShape) shape;
+      return Objects.equals(this.name, shapes.name) && Objects.equals(this.type, shapes.type)
+              && Objects.equals(this.col, shapes.col) && Objects.equals(this.w, shapes.w)
+              && Objects.equals(this.h, shapes.h) && Objects.equals(this.time, shapes.time)
+              && Objects.equals(this.pos, shapes.pos);
+    }
+  }
+
+  public int hashCode() {
+    return Objects.hash(this.name, this.type, this.col, this.w, this.h, this.time, this.pos);
   }
 
 }

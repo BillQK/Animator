@@ -10,6 +10,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final HashMap<String, AShape> shapes;
   private final HashMap<String, IAnimations> animations;
 
+
   private SimpleAnimatorModel(AMBuilder amBuilder) {
     this.shapes = amBuilder.shapes;
     this.animations = amBuilder.animations;
