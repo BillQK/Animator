@@ -11,7 +11,8 @@ public class Ellipse extends AShape {
 
   @Override
   protected Ellipse getTheShape() {
-    return this;
+    return new Ellipse(this.getName(), this.getType(), this.getColor(),
+            this.getPosition().getX(), this.getPosition().getY(), this.getWidth(), this.getHeight());
   }
 
   @Override
