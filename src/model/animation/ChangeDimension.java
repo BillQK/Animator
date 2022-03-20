@@ -6,13 +6,19 @@ import model.shape.AShape;
 import model.utils.Time;
 
 public class ChangeDimension extends AbstractAnimation {
-  public ChangeDimension(AShape shape, AnimationType type, int startTime, int endTime,
-                         int endW, int endH, int endX, int endY, Color endColor) {
-    super(shape, type, startTime, endTime, endW, endH, endX, endY, endColor);
+
+  public ChangeDimension(AShape shape, AnimationType type,
+                         int startTime, int endTime, Color endColor) {
+    super(shape, type, startTime, endTime, endColor);
   }
 
   @Override
   public void animate(Time time) {
 
+  }
+
+  @Override
+  public String getEndsState() {
+    return null;
   }
 }

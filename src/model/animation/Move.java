@@ -10,14 +10,18 @@ public class Move extends AbstractAnimation {
   private final Posn original;
   private final Posn destination;
 
+  public Move(AShape shape, AnimationType type, int startTime, int endTime, Color endColor) {
+    super(shape, type, startTime, endTime, endColor);
 
-  public Move(AShape shape, AnimationType type, int startTime, int endTime,
-              int endW, int endH, int endX, int endY, Color endColor) {
-    super(shape, type, startTime, endTime, endW, endH, endX, endY, endColor);
   }
 
   @Override
   public void animate(Time time) {
 
+  }
+
+  @Override
+  public String getEndsState() {
+    return null;
   }
 }
