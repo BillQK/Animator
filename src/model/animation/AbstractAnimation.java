@@ -3,7 +3,7 @@ package model.animation;
 import model.shape.AShape;
 import model.utils.Time;
 
-public class AbstractAnimation implements IAnimations {
+public abstract class AbstractAnimation implements IAnimations {
   @Override
   public void animate(Time time) {
 
