@@ -3,27 +3,24 @@ package model;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
-import java.awt.Color;
-
-import java.util.Objects;
 
 public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
   private final HashMap<String, IShape> shapes;
   private final HashMap<String, IAnimations> animations;
 
-  private SimpleAnimatorModel(AnimatorModelBuilder<IShape> animatorModelBuilder) {
+  private SimpleAnimatorModel(AnimatorModelBuilder animatorModelBuilder) {
     this.shapes = animatorModelBuilder.shapes;
     this.animations = animatorModelBuilder.animations;
   }
 
   @Override
-  public void addShape(IShape s) {
-
+  public void addShape(String id, IShape s) {
+    this.shapes.put(id, s);
   }
 
   @Override
-  public void addAnimations(IAnimations a) {
-
+  public void addAnimations(String id, IAnimations a) {
+    this.animations.put(id, a);
   }
 
   @Override
@@ -46,7 +43,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
     return null;
   }
 
-  public static class AnimatorModelBuilder<K> {
+  public static class AnimatorModelBuilder {
     private final HashMap<String, IShape> shapes;
     private final HashMap<String, IAnimations> animations;
 
@@ -55,11 +52,30 @@ public class SimpleAnimatorModel implements IAnimatorModel<IShape> {
       this.animations = new HashMap<>();
     }
 
-    public IAnimatorModel<IShape> addRectangle(String id, int x, int y, int w, int h,
-                                               int red, int green, int blue, Time time) {
-
+    public AnimatorModelBuilder addRectangle(String id, int x, int y, int w, int h,
+                                             int red, int green, int blue, Time time) {
+      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
+      if (time == null) {
+        throw new IllegalArgumentException("Time cannot be null");
+      }
       Color c = new Color(red, green, blue);
       IShape shape = new Rectangle(Shape.RECTANGLE, c, x, y, w, h);
+
+      this.shapes.put(id, shape);
+      return this;
+    }
+
+    public AnimatorModelBuilder addEllipse(String id, int x, int y, int w, int h,
+                                           int red, int green, int blue, Time time) {
+      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
+      if (time == null) {
+        throw new IllegalArgumentException("Time cannot be null");
+      }
+      Color c = new Color(red, green, blue);
+      IShape shape = new Rectangle(Shape.ELLIPSE, c, x, y, w, h);
+
+      this.shapes.put(id, shape);
+      return this;
     }
   }
 }

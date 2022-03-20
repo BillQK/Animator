@@ -1,7 +1,7 @@
 package model;
 
 public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
-  void addShape(IShape s);
+  void addShape(String id, IShape s);
 
-  void addAnimations(IAnimations a);
+  void addAnimations(String id, IAnimations a);
 }
