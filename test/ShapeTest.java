@@ -44,6 +44,11 @@ public class ShapeTest {
   }
 
   @Test
+  public void testGetTheShape() {
+
+  }
+
+  @Test
   public void testGetName() {
     assertEquals(recShape.getName(), "R");
     assertEquals(ellipShape.getName(), "E");
