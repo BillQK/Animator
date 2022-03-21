@@ -35,12 +35,12 @@ public class AnimatorModelTest {
                     5, 5, 6, new Time(2, 3))
             .addRectangle("1", 1, 4, 5, 6,
                     6, 7, 5, new Time(19, 40))
-            .addMove("moveX", "1", 2, 3, 0, 1)
+            .addMove("1", 2, 3, 0, 1)
             .build();
     s.getShapes();
     s.getShapes().get(0).setHeight(3);
-     String command = new ChangeDimension(ellipShape,
-            CommandType.CHANGE_DIMENSION, 1, 2,10, 10).getEndsState();
+     String command = new ChangeDimension(ellipShape, 1, 2,
+             10, 10).getEndsState();
     System.out.println(command);
     assertEquals(s.getShapes().get(0).getType(), Shape.RECTANGLE);
 

@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import model.command.ChangeColor;
+import model.command.ChangeDimension;
 import model.command.ICommands;
 import model.command.Move;
 import model.shape.AShape;
@@ -18,7 +20,7 @@ import model.utils.Time;
 
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final HashMap<String, AShape> shapes;
-  private final HashMap<String, ICommands> commands;
+  private final HashMap<String, List<ICommands>> commands;
   private final Time time;
 
 
@@ -34,7 +36,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   @Override
-  public void addAnimations(String id, ICommands a) {
+  public void addCommands(String id, List<ICommands> a) {
     this.commands.put(id, a);
   }
 
@@ -55,7 +57,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   @Override
-  public List<ICommands> getAnimations() {
+  public List<ICommands> getCommands() {
     return null;
   }
 
@@ -66,7 +68,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   public static class AMBuilder {
     private final HashMap<String, AShape> shapes;
-    private final HashMap<String, ICommands> commands;
+    private final HashMap<String, List<ICommands>> commands;
     private Time time;
 
     public AMBuilder() {
@@ -90,7 +92,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       Color c = new Color(red, green, blue);
       AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h, time);
 
+      List<ICommands> mtRL = new ArrayList<>();
       this.shapes.put(id, shape);
+      this.commands.put(id, mtRL);
       return this;
     }
 
@@ -107,16 +111,66 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-    public AMBuilder addMove(String id, String idShape,
+    public AMBuilder addMove(String idShape,
                              double destX, double destY,
                              double startTime, double endTime) {
+
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       AShape shape = shapes.get(idShape);
+
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
-      ICommands command = new Move(shape, startTime,endTime, new Posn(destX, destY));
-      this.commands.put(id, command);
+      double shapeStart = shape.getTime().getStartTime();
+      double shapeEnd = shape.getTime().getEndTime();
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
+
+      ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
+      //One method to check if any overlap
+      //One method for sorting the list based on the times of animations.
+      this.commands.get(idShape).add(command);
+      return this;
+    }
+
+    public AMBuilder addChangeColor(String idShape,
+                                    Color color, double startTime, double endTime) {
+      if (!shapes.containsKey(idShape)) {
+        throw new IllegalArgumentException("Invalid Shape");
+      }
+      AShape shape = shapes.get(idShape);
+
+      if (color == null) {
+        throw new IllegalArgumentException("The given ending color cannot be null");
+      }
+      ArgumentsCheck.lessThanZero(color.getRed(), color.getGreen(), color.getBlue(),
+              startTime, endTime);
+      double shapeStart = shape.getTime().getStartTime();
+      double shapeEnd = shape.getTime().getEndTime();
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
+
+      ICommands command = new ChangeColor(shape, startTime, endTime, color);
+      //One method to check if any overlap
+      //One method for sorting the list based on the times of animations.
+      this.commands.get(idShape).add(command);
+      return this;
+    }
+
+    public AMBuilder addChangeDimension(String idShape,
+                                    double endW, double endH, double startTime, double endTime) {
+      if (!shapes.containsKey(idShape)) {
+        throw new IllegalArgumentException("Invalid Shape");
+      }
+
+      AShape shape = shapes.get(idShape);
+      ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
+      double shapeStart = shape.getTime().getStartTime();
+      double shapeEnd = shape.getTime().getEndTime();
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
+
+      ICommands command = new ChangeDimension(shape, startTime, endTime, endW, endH);
+      //One method to check if any overlap
+      //One method for sorting the list based on the times of animations.
+      this.commands.get(idShape).add(command);
       return this;
     }
 

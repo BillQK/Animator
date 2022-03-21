@@ -8,9 +8,8 @@ import model.utils.RateOfChange;
 public class ChangeColor extends ACommand {
   private final Color endColor;
 
-  public ChangeColor(AShape shape, CommandType type,
-                     double startTime, double endTime, Color endColor) {
-    super(shape, type, startTime, endTime);
+  public ChangeColor(AShape shape, double startTime, double endTime, Color endColor) {
+    super(shape, CommandType.CHANGE_COLOR, startTime, endTime);
     this.endColor = endColor;
   }
 
