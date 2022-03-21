@@ -41,6 +41,12 @@ public class Move extends AbstractAnimation {
 
   @Override
   public String getEndsState() {
-    return null;
+    String a = "";
+    a += super.shape.getName() + super.endTime + super.shape.getPosition().getX()
+            + super.shape.getPosition().getY()
+            + super.shape.getWidth()
+            + super.shape.getHeight()
+            + super.shape.getColor().toString();
+    return a;
   }
 }

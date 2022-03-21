@@ -10,8 +10,8 @@ import model.utils.Time;
 public abstract class AbstractAnimation implements IAnimations {
   private final AnimationType type;
   private final int startTime;
-  private final int endTime;
-  private AShape shape;
+  protected final int endTime;
+  protected AShape shape;
 
   public AbstractAnimation(AShape shape,
                            AnimationType type,
