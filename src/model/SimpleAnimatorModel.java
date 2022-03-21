@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
+import model.command.CommandType;
 import model.command.ICommands;
 import model.command.Move;
 import model.shape.AShape;
@@ -111,6 +112,19 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
+    private boolean overlap(CommandType type, double startTime, double endTime, List<ICommands> iCommands) {
+      for (ICommands c : iCommands) {
+        if (c.getType() == type) {
+          try {
+            ArgumentsCheck.withinShapeTime(c.getStart(), c.getEnd(), startTime, endTime);
+          } catch (IllegalArgumentException e) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
     public AMBuilder addMove(String idShape,
                              double destX, double destY,
                              double startTime, double endTime) {
@@ -160,6 +174,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
+      if (overlap(CommandType.CHANGE_DIMENSION, startTime, endTime, this.commands.get(idShape))) {
+        throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
+      }
 
       AShape shape = shapes.get(idShape);
       ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
@@ -173,6 +190,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       this.commands.get(idShape).add(command);
       return this;
     }
+
 
     public SimpleAnimatorModel build() {
       return new SimpleAnimatorModel(this);
