@@ -59,12 +59,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public List<ICommands> getCommands() {
-    return null;
+  return null;
   }
 
   @Override
   public Time getTime() {
-    return null;
+    return new Time(this.time);
   }
 
   public static class AMBuilder {
@@ -75,7 +75,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder() {
       this.shapes = new HashMap<>();
       this.commands = new HashMap<>();
-      this.time = new Time(0, 1000);
     }
 
     public AMBuilder setTime(int end) {
@@ -120,11 +119,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
           try {
             ArgumentsCheck.overlappingTime(c.getStart(), c.getEnd(), startTime, endTime);
           } catch (IllegalArgumentException e) {
-            return false;
+            return true;
           }
         }
       }
-      return true;
+      return false;
     }
 
     public AMBuilder addMove(String idShape,
@@ -207,6 +206,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
 
     public SimpleAnimatorModel build() {
+      if (this.time == null) {
+        throw new IllegalArgumentException("Need to set time");
+      }
       return new SimpleAnimatorModel(this);
     }
   }
