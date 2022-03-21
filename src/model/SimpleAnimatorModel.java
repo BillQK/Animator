@@ -123,7 +123,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
       double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd startTime, endTime);
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
 
       ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
       //One method to check if any overlap
@@ -146,7 +146,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
               startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
       double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd startTime, endTime);
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
 
       ICommands command = new ChangeColor(shape, startTime, endTime, color);
       //One method to check if any overlap
@@ -165,7 +165,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
       double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd startTime, endTime);
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
 
       ICommands command = new ChangeDimension(shape, startTime, endTime, endW, endH);
       //One method to check if any overlap
