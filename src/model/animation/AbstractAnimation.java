@@ -1,25 +1,21 @@
 package model.animation;
 
-import java.awt.*;
-
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
-import model.utils.Posn;
 import model.utils.Time;
 
 public abstract class AbstractAnimation implements IAnimations {
+  protected final double endTime;
   private final AnimationType type;
   private final double startTime;
-  protected final double endTime;
   protected AShape shape;
 
   public AbstractAnimation(AShape shape,
                            AnimationType type,
                            double startTime,
-                           double endTime,
-                           Color endColor) {
+                           double endTime) {
     ArgumentsCheck.lessThanZero(startTime, endTime);
-    if (endColor == null || type == null || shape == null) {
+    if (type == null || shape == null) {
       throw new IllegalArgumentException("Invalid Arguments: Cannot be null");
     }
     this.shape = shape;
