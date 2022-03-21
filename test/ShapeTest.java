@@ -17,8 +17,8 @@ public class ShapeTest {
   Color recCol = new Color(0, 0, 225);
   double recPosX = 10;
   double recPosY = 10;
-  int recW = 40;
-  int recH = 20;
+  double recW = 40;
+  double recH = 20;
   Time recT = new Time(10, 40);
   AShape recShape = new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX, recPosY,
           recW, recH, recT);
@@ -27,12 +27,13 @@ public class ShapeTest {
   Color ellipCol = new Color(225, 0,0);
   double ellipPosX = 20;
   double ellipPosY = 10;
-  int ellipW = 30;
-  int ellipH = 20;
+  double ellipW = 30;
+  double ellipH = 20;
   Time ellipT = new Time(20, 30);
   AShape ellipShape = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
           ellipW, ellipH, ellipT);
 
+  double DELTA = Integer.MIN_VALUE;
   //-----------------------TEST FOR SHAPE INTERFACE----------------------------//
 
   @Test
@@ -69,28 +70,28 @@ public class ShapeTest {
 
   @Test
   public void testGetHeight() {
-    assertEquals(recShape.getHeight(), 20);
-    assertEquals(ellipShape.getHeight(), 20);
+    assertEquals(recShape.getHeight(), 20, DELTA);
+    assertEquals(ellipShape.getHeight(), 20, DELTA);
   }
 
   @Test
   public void testGetWidth() {
-    assertEquals(recShape.getWidth(), 40);
-    assertEquals(ellipShape.getWidth(), 30);
+    assertEquals(recShape.getWidth(), 40, DELTA);
+    assertEquals(ellipShape.getWidth(), 30, DELTA);
   }
 
   @Test
   public void testSetWidth() {
     int givw = 50;
     recShape.setWidth(givw);
-    assertEquals(recShape.getWidth(), 50);
+    assertEquals(recShape.getWidth(), 50, DELTA);
   }
 
   @Test
   public void testSetHeight() {
     int givh = 5;
     ellipShape.setHeight(givh);
-    assertEquals(ellipShape.getHeight(), 5);
+    assertEquals(ellipShape.getHeight(), 5, DELTA);
   }
 
   @Test

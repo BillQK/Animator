@@ -79,7 +79,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-    public AMBuilder addRectangle(String id, int x, int y, int w, int h,
+    public AMBuilder addRectangle(String id, double x, double y, double w, double h,
                                   int red, int green, int blue, Time time) {
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
       if (time == null) {
@@ -92,7 +92,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-    public AMBuilder addEllipse(String id, int x, int y, int w, int h,
+    public AMBuilder addEllipse(String id, double x, double y, double w, double h,
                                 int red, int green, int blue, Time time) {
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
       if (time == null) {

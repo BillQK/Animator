@@ -11,7 +11,7 @@ import model.utils.Time;
 public class Rectangle extends AShape {
 
   public Rectangle(String name, Shape type, Color col, double posX, double posY,
-                   int width, int height, Time time) {
+                   double width, double height, Time time) {
     super(name, type, col, posX, posY, width, height, time);
   }
 
