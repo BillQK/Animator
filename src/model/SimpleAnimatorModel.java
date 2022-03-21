@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import model.animation.IAnimations;
+import model.animation.Move;
 import model.shape.AShape;
 import model.shape.Ellipse;
 import model.shape.Rectangle;
 import model.shape.Shape;
 import model.utils.ArgumentsCheck;
+import model.utils.Posn;
 import model.utils.Time;
 
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
@@ -102,6 +104,19 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       AShape shape = new Ellipse(id, Shape.ELLIPSE, c, x, y, w, h, time);
 
       this.shapes.put(id, shape);
+      return this;
+    }
+
+    public AMBuilder addMove(String id, String idShape,
+                             double destX, double destY,
+                             double startTime, double endTime) {
+      if (!shapes.containsKey(idShape)) {
+        throw new IllegalArgumentException("Invalid Shape");
+      }
+      AShape shape = shapes.get(idShape);
+      ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
+      IAnimations animations = new Move(shape,startTime,endTime, new Posn(destX, destY));
+      this.animations.put(id, animations);
       return this;
     }
 
