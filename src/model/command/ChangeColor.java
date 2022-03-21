@@ -10,7 +10,7 @@ public class ChangeColor extends AbstractCommand {
 
   public ChangeColor(AShape shape, CommandType type,
                      double startTime, double endTime, Color endColor) {
-    super(shape, type, startTime, endTime);
+    super(shape, CommandType.CHANGE_COLOR, startTime, endTime);
     this.endColor = endColor;
   }
 

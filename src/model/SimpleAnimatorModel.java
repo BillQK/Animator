@@ -18,7 +18,7 @@ import model.utils.Time;
 
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final HashMap<String, AShape> shapes;
-  private final HashMap<String, ICommands> commands;
+  private final HashMap<String, List<ICommands>> commands;
   private final Time time;
 
 
@@ -34,7 +34,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   @Override
-  public void addAnimations(String id, ICommands a) {
+  public void addCommands(String id, List<ICommands> a) {
     this.commands.put(id, a);
   }
 
@@ -55,7 +55,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   @Override
-  public List<ICommands> getAnimations() {
+  public List<ICommands> getCommands() {
     return null;
   }
 
@@ -66,7 +66,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   public static class AMBuilder {
     private final HashMap<String, AShape> shapes;
-    private final HashMap<String, ICommands> commands;
+    private final HashMap<String, List<ICommands>> commands;
     private Time time;
 
     public AMBuilder() {
@@ -90,7 +90,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       Color c = new Color(red, green, blue);
       AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h, time);
 
+      List<ICommands> mtRL = new ArrayList<>();
       this.shapes.put(id, shape);
+      this.commands.put(id, mtRL);
       return this;
     }
 
@@ -107,7 +109,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-    public AMBuilder addMove(String id, String idShape,
+    public AMBuilder addMove(String idShape,
                              double destX, double destY,
                              double startTime, double endTime) {
       if (!shapes.containsKey(idShape)) {
@@ -116,7 +118,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       AShape shape = shapes.get(idShape);
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
       ICommands command = new Move(shape, startTime,endTime, new Posn(destX, destY));
-      this.commands.put(id, command);
+
+      this.commands.get(idShape).add(command);
       return this;
     }
 
