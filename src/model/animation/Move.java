@@ -7,13 +7,10 @@ import model.utils.Posn;
 import model.utils.RateOfChange;
 
 public class Move extends AbstractAnimation {
-  private final Posn original;
   private final Posn destination;
 
-  public Move(AShape shape, double startTime, double endTime,
-              Color endColor, Posn original, Posn destination) {
-    super(shape, AnimationType.MOVE, startTime, endTime, endColor);
-    this.original = original;
+  public Move(AShape shape, double startTime, double endTime, Posn original, Posn destination) {
+    super(shape, AnimationType.MOVE, startTime, endTime);
     this.destination = destination;
   }
 
@@ -23,8 +20,8 @@ public class Move extends AbstractAnimation {
     double start = super.getStart();
     double end = super.getEnd();
 
-    double currentX = this.original.getX();
-    double currentY = this.original.getY();
+    double currentX = this.shape.getPosition().getX();
+    double currentY = this.shape.getPosition().getY();
 
     double destX = this.destination.getX();
     double destY = this.destination.getY();

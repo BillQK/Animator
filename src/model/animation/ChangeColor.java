@@ -3,12 +3,13 @@ package model.animation;
 import java.awt.*;
 
 import model.shape.AShape;
-import model.utils.Time;
 
 public class ChangeColor extends AbstractAnimation {
+  private final Color endColor;
 
   public ChangeColor(AShape shape, AnimationType type, double startTime, double endTime, Color endColor) {
-    super(shape, type, startTime, endTime, endColor);
+    super(shape, type, startTime, endTime);
+    this.endColor = endColor;
   }
 
   @Override
