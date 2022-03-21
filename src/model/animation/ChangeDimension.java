@@ -8,7 +8,7 @@ import model.utils.Time;
 public class ChangeDimension extends AbstractAnimation {
 
   public ChangeDimension(AShape shape, AnimationType type,
-                         int startTime, int endTime, Color endColor) {
+                         double startTime, double endTime, Color endColor) {
     super(shape, type, startTime, endTime, endColor);
   }
 

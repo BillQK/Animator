@@ -38,7 +38,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public String getState() {
-    return "";
+    return null;
   }
 
   @Override

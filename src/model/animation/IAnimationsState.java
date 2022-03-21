@@ -46,12 +46,12 @@ public interface IAnimationsState {
    * Get the time when the Animation start.
    * @return the start time of the animation
    */
-  int getStart();
+  double getStart();
 
   /**
    * Get the time when the Animation end.
    * @return the end time of the animation
    */
-  int getEnd();
+  double getEnd();
 
 }

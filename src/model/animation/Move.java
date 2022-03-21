@@ -10,7 +10,8 @@ public class Move extends AbstractAnimation {
   private final Posn original;
   private final Posn destination;
 
-  public Move(AShape shape, int startTime, int endTime, Color endColor, Posn original, Posn destination) {
+  public Move(AShape shape, double startTime, double endTime,
+              Color endColor, Posn original, Posn destination) {
     super(shape, AnimationType.MOVE, startTime, endTime, endColor);
     this.original = original;
     this.destination = destination;
@@ -19,8 +20,8 @@ public class Move extends AbstractAnimation {
   @Override
   public void animate(double time) {
     AShape s = super.getShape();
-    int start = super.getStart();
-    int end = super.getEnd();
+    double start = super.getStart();
+    double end = super.getEnd();
 
     double currentX = this.original.getX();
     double currentY = this.original.getY();
@@ -42,11 +43,13 @@ public class Move extends AbstractAnimation {
   @Override
   public String getEndsState() {
     String a = "";
-    a += super.shape.getName() + super.endTime + super.shape.getPosition().getX()
-            + super.shape.getPosition().getY()
-            + super.shape.getWidth()
-            + super.shape.getHeight()
-            + super.shape.getColor().toString();
+    a += endTime
+            + " " + shape.getPosition().toString()
+            + shape.getWidth()
+            + " " + shape.getHeight()
+            + " " + shape.getColor().getRed()
+            + " " + shape.getColor().getGreen()
+            + " " + shape.getColor().getBlue() + " ";
     return a;
   }
 }

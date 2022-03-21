@@ -37,6 +37,11 @@ public class ShapeTest {
   //-----------------------TEST FOR SHAPE INTERFACE----------------------------//
 
   @Test
+  public void testadf() {
+    System.out.println(ellipShape.getPosition().toString());
+  }
+
+  @Test
   public void testGetTheShape() {
     assertEquals(recShape.getTheShape(), new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX,
             recPosY, recW, recH, recT));

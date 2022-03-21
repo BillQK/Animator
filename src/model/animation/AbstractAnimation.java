@@ -9,14 +9,14 @@ import model.utils.Time;
 
 public abstract class AbstractAnimation implements IAnimations {
   private final AnimationType type;
-  private final int startTime;
-  protected final int endTime;
+  private final double startTime;
+  protected final double endTime;
   protected AShape shape;
 
   public AbstractAnimation(AShape shape,
                            AnimationType type,
-                           int startTime,
-                           int endTime,
+                           double startTime,
+                           double endTime,
                            Color endColor) {
     ArgumentsCheck.lessThanZero(startTime, endTime);
     if (endColor == null || type == null || shape == null) {
@@ -38,12 +38,14 @@ public abstract class AbstractAnimation implements IAnimations {
 
   @Override
   public String getBeginsState() {
-    return shape.getTime().getStartTime()
-            + shape.getName()
+    return shape.getName() + " "
+            + shape.getTime().getStartTime() + " "
             + shape.getPosition().toString()
-            + shape.getHeight()
-            + shape.getWidth()
-            + shape.getColor().toString();
+            + shape.getWidth() + " "
+            + shape.getHeight() + " "
+            + shape.getColor().getRed() + " "
+            + shape.getColor().getGreen() + " "
+            + shape.getColor().getBlue() + " ";
   }
 
   @Override
@@ -70,12 +72,12 @@ public abstract class AbstractAnimation implements IAnimations {
   }
 
   @Override
-  public int getStart() {
+  public double getStart() {
     return startTime;
   }
 
   @Override
-  public int getEnd() {
+  public double getEnd() {
     return endTime;
   }
 }

@@ -7,7 +7,7 @@ import model.utils.Time;
 
 public class ChangeColor extends AbstractAnimation {
 
-  public ChangeColor(AShape shape, AnimationType type, int startTime, int endTime, Color endColor) {
+  public ChangeColor(AShape shape, AnimationType type, double startTime, double endTime, Color endColor) {
     super(shape, type, startTime, endTime, endColor);
   }
 

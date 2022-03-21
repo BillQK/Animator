@@ -15,5 +15,4 @@ public interface IAnimatorModelState<K> {
   List<IAnimations> getAnimations();
 
   Time getTime();
-
 }

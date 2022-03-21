@@ -112,6 +112,11 @@ public class Posn {
   }
 
   @Override
+  public String toString() {
+    return this.x + " " + this.y + " ";
+  }
+
+  @Override
   public boolean equals(Object other) {
     if (this == other) {
       return true;
