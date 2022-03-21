@@ -5,7 +5,7 @@ import java.awt.*;
 import model.shape.AShape;
 import model.utils.RateOfChange;
 
-public class ChangeColor extends AbstractCommand {
+public class ChangeColor extends ACommand {
   private final Color endColor;
 
   public ChangeColor(AShape shape, double startTime, double endTime, Color endColor) {

@@ -3,7 +3,7 @@ package model.command;
 import model.shape.AShape;
 import model.utils.RateOfChange;
 
-public class ChangeDimension extends AbstractCommand {
+public class ChangeDimension extends ACommand {
   private final double endW;
   private final double endH;
 
