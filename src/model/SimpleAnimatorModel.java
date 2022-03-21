@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.animation.IAnimations;
-import model.animation.Move;
+import model.command.ICommands;
+import model.command.Move;
 import model.shape.AShape;
 import model.shape.Ellipse;
 import model.shape.Rectangle;
@@ -18,13 +18,13 @@ import model.utils.Time;
 
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final HashMap<String, AShape> shapes;
-  private final HashMap<String, IAnimations> animations;
+  private final HashMap<String, ICommands> commands;
   private final Time time;
 
 
   private SimpleAnimatorModel(AMBuilder amBuilder) {
     this.shapes = amBuilder.shapes;
-    this.animations = amBuilder.animations;
+    this.commands = amBuilder.commands;
     this.time = amBuilder.time;
   }
 
@@ -34,8 +34,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   @Override
-  public void addAnimations(String id, IAnimations a) {
-    this.animations.put(id, a);
+  public void addAnimations(String id, ICommands a) {
+    this.commands.put(id, a);
   }
 
   @Override
@@ -55,7 +55,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   @Override
-  public List<IAnimations> getAnimations() {
+  public List<ICommands> getAnimations() {
     return null;
   }
 
@@ -66,12 +66,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   public static class AMBuilder {
     private final HashMap<String, AShape> shapes;
-    private final HashMap<String, IAnimations> animations;
+    private final HashMap<String, ICommands> commands;
     private Time time;
 
     public AMBuilder() {
       this.shapes = new HashMap<>();
-      this.animations = new HashMap<>();
+      this.commands = new HashMap<>();
       this.time = new Time(0, 1000);
     }
 
@@ -115,8 +115,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       AShape shape = shapes.get(idShape);
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
-      IAnimations animations = new Move(shape,startTime,endTime, new Posn(destX, destY));
-      this.animations.put(id, animations);
+      ICommands command = new Move(shape, startTime,endTime, new Posn(destX, destY));
+      this.commands.put(id, command);
       return this;
     }
 

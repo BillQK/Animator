@@ -1,19 +1,18 @@
-package model.animation;
+package model.command;
 
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
-import model.utils.Time;
 
-public abstract class AbstractAnimation implements IAnimations {
-  private final AnimationType type;
+public abstract class AbstractCommand implements ICommands {
+  private final CommandType type;
   private final double startTime;
   protected final double endTime;
   protected AShape shape;
 
-  public AbstractAnimation(AShape shape,
-                           AnimationType type,
-                           double startTime,
-                           double endTime) {
+  public AbstractCommand(AShape shape,
+                         CommandType type,
+                         double startTime,
+                         double endTime) {
     ArgumentsCheck.lessThanZero(startTime, endTime);
     if (type == null || shape == null) {
       throw new IllegalArgumentException("Invalid Arguments: Cannot be null");
@@ -30,7 +29,7 @@ public abstract class AbstractAnimation implements IAnimations {
   }
 
   @Override
-  public abstract void animate(double time);
+  public abstract void execute(double time);
 
   @Override
   public String getBeginsState() {
@@ -52,9 +51,14 @@ public abstract class AbstractAnimation implements IAnimations {
     return this.getBeginsState() + this.getEndsState();
   }
 
+  @Override
+  public AShape getTheShape() {
+    return shape.getTheShape();
+  }
+
 
   @Override
-  public AnimationType getType() {
+  public CommandType getType() {
     return this.type;
   }
 

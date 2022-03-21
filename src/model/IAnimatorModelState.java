@@ -3,7 +3,7 @@ package model;
 
 import java.util.List;
 
-import model.animation.IAnimations;
+import model.command.ICommands;
 import model.shape.AShape;
 import model.utils.Time;
 
@@ -12,7 +12,7 @@ public interface IAnimatorModelState<K> {
 
   List<AShape> getShapes();
 
-  List<IAnimations> getAnimations();
+  List<ICommands> getAnimations();
 
   Time getTime();
 }

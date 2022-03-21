@@ -1,5 +1,13 @@
 import org.junit.Test;
 
+import java.awt.*;
+
+import model.command.ChangeDimension;
+import model.command.CommandType;
+import model.command.ICommands;
+import model.shape.AShape;
+import model.shape.Ellipse;
+import model.shape.Rectangle;
 import model.shape.Shape;
 import model.SimpleAnimatorModel;
 import model.utils.Time;
@@ -10,6 +18,16 @@ public class AnimatorModelTest {
 
   @Test
   public void testBuilder() {
+    String ellipN = "E";
+    Color ellipCol = new Color(225, 0,0);
+    double ellipPosX = 20;
+    double ellipPosY = 10;
+    double ellipW = 30;
+    double ellipH = 20;
+    Time ellipT = new Time(20, 30);
+    AShape ellipShape = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
+            ellipW, ellipH, ellipT);
+
     SimpleAnimatorModel s = new SimpleAnimatorModel.AMBuilder()
             .addRectangle("1,", 1, 3, 4, 4,
                     5, 5, 5, new Time(1, 2))
@@ -21,7 +39,9 @@ public class AnimatorModelTest {
             .build();
     s.getShapes();
     s.getShapes().get(0).setHeight(3);
-
+     String command = new ChangeDimension(ellipShape,
+            CommandType.CHANGE_DIMENSION, 1, 2,10, 10).getEndsState();
+    System.out.println(command);
     assertEquals(s.getShapes().get(0).getType(), Shape.RECTANGLE);
 
 

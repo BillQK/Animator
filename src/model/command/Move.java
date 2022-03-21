@@ -1,21 +1,19 @@
-package model.animation;
-
-import java.awt.*;
+package model.command;
 
 import model.shape.AShape;
 import model.utils.Posn;
 import model.utils.RateOfChange;
 
-public class Move extends AbstractAnimation {
+public class Move extends AbstractCommand {
   private final Posn destination;
 
   public Move(AShape shape, double startTime, double endTime, Posn destination) {
-    super(shape, AnimationType.MOVE, startTime, endTime);
+    super(shape, CommandType.MOVE, startTime, endTime);
     this.destination = destination;
   }
 
   @Override
-  public void animate(double time) {
+  public void execute(double time) {
     double start = super.getStart();
     double end = super.getEnd();
 

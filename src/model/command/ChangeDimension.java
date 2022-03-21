@@ -1,16 +1,13 @@
-package model.animation;
-
-import java.awt.*;
+package model.command;
 
 import model.shape.AShape;
 import model.utils.RateOfChange;
-import model.utils.Time;
 
-public class ChangeDimension extends AbstractAnimation {
+public class ChangeDimension extends AbstractCommand {
   private final double endW;
   private final double endH;
 
-  public ChangeDimension(AShape shape, AnimationType type,
+  public ChangeDimension(AShape shape, CommandType type,
                          double startTime, double endTime, double endW, double endH) {
     super(shape, type, startTime, endTime);
     this.endH = endH;
@@ -18,7 +15,7 @@ public class ChangeDimension extends AbstractAnimation {
   }
 
   @Override
-  public void animate(double time) {
+  public void execute(double time) {
     double start = super.getStart();
     double end = super.getEnd();
 

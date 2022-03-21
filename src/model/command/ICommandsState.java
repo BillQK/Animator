@@ -1,9 +1,8 @@
-package model.animation;
+package model.command;
 
 import model.shape.AShape;
-import model.utils.Time;
 
-public interface IAnimationsState {
+public interface ICommandsState {
   /**
    * Get the begin state before the animation.
    * @return a String with the shape's start time + name + start position + start height +
@@ -25,10 +24,16 @@ public interface IAnimationsState {
   String getState();
 
   /**
+   * Get the state of the shape from the start to the end of the animation.
+   * @return a String with the shape start state and the shape end state
+   */
+  AShape getTheShape();
+
+  /**
    * Get the Animation type.
    * @return the animation that is being used on the shape.
    */
-  AnimationType getType();
+  CommandType getType();
 
   /**
    * Get the time when the Animation start.

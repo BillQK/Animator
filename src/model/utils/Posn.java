@@ -1,7 +1,6 @@
 package model.utils;
 
 import java.util.Objects;
-import model.animation.AbstractAnimation;
 
 /**
  * A Posn class.
