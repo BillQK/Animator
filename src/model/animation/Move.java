@@ -9,7 +9,7 @@ import model.utils.RateOfChange;
 public class Move extends AbstractAnimation {
   private final Posn destination;
 
-  public Move(AShape shape, double startTime, double endTime, Posn original, Posn destination) {
+  public Move(AShape shape, double startTime, double endTime, Posn destination) {
     super(shape, AnimationType.MOVE, startTime, endTime);
     this.destination = destination;
   }

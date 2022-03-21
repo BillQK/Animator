@@ -8,7 +8,8 @@ import model.utils.RateOfChange;
 public class ChangeColor extends AbstractAnimation {
   private final Color endColor;
 
-  public ChangeColor(AShape shape, AnimationType type, double startTime, double endTime, Color endColor) {
+  public ChangeColor(AShape shape, AnimationType type,
+                     double startTime, double endTime, Color endColor) {
     super(shape, type, startTime, endTime);
     this.endColor = endColor;
   }
