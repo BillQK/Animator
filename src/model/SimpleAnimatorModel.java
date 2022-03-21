@@ -114,13 +114,17 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder addMove(String idShape,
                              double destX, double destY,
                              double startTime, double endTime) {
+
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       AShape shape = shapes.get(idShape);
+
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
-      ArgumentsCheck.withinShapeTime(shape.getTime().getStartTime(), shape.getTime().getEndTime(),
-              startTime, endTime);
+      double shapeStart = shape.getTime().getStartTime();
+      double shapeEnd = shape.getTime().getEndTime();
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd startTime, endTime);
+
       ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
       //One method to check if any overlap
       //One method for sorting the list based on the times of animations.
@@ -134,13 +138,16 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Invalid Shape");
       }
       AShape shape = shapes.get(idShape);
+
       if (color == null) {
         throw new IllegalArgumentException("The given ending color cannot be null");
       }
       ArgumentsCheck.lessThanZero(color.getRed(), color.getGreen(), color.getBlue(),
               startTime, endTime);
-      ArgumentsCheck.withinShapeTime(shape.getTime().getStartTime(), shape.getTime().getEndTime(),
-              startTime, endTime);
+      double shapeStart = shape.getTime().getStartTime();
+      double shapeEnd = shape.getTime().getEndTime();
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd startTime, endTime);
+
       ICommands command = new ChangeColor(shape, startTime, endTime, color);
       //One method to check if any overlap
       //One method for sorting the list based on the times of animations.
@@ -153,10 +160,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
+
       AShape shape = shapes.get(idShape);
       ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
-      ArgumentsCheck.withinShapeTime(shape.getTime().getStartTime(), shape.getTime().getEndTime(),
-              startTime, endTime);
+      double shapeStart = shape.getTime().getStartTime();
+      double shapeEnd = shape.getTime().getEndTime();
+      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd startTime, endTime);
+
       ICommands command = new ChangeDimension(shape, startTime, endTime, endW, endH);
       //One method to check if any overlap
       //One method for sorting the list based on the times of animations.
