@@ -17,4 +17,11 @@ public class ArgumentsCheck {
     }
   }
 
+  public static void withinShapeTime(double shapeStart, double shapeEnd,
+                                     double comStart, double comEnd) {
+    if (comStart < shapeStart || comEnd > shapeEnd) {
+      throw new IllegalArgumentException("The Command Time cannot be more that the Shape Time");
+    }
+  }
+
 }

@@ -119,6 +119,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       AShape shape = shapes.get(idShape);
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
+      ArgumentsCheck.withinShapeTime(shape.getTime().getStartTime(), shape.getTime().getEndTime(),
+              startTime, endTime);
       ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
       //One method to check if any overlap
       //One method for sorting the list based on the times of animations.
@@ -135,7 +137,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (color == null) {
         throw new IllegalArgumentException("The given ending color cannot be null");
       }
-      ArgumentsCheck.lessThanZero(color.getRed(), color.getGreen(), color.getBlue());
+      ArgumentsCheck.lessThanZero(color.getRed(), color.getGreen(), color.getBlue(),
+              startTime, endTime);
+      ArgumentsCheck.withinShapeTime(shape.getTime().getStartTime(), shape.getTime().getEndTime(),
+              startTime, endTime);
       ICommands command = new ChangeColor(shape, startTime, endTime, color);
       //One method to check if any overlap
       //One method for sorting the list based on the times of animations.
@@ -149,7 +154,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Invalid Shape");
       }
       AShape shape = shapes.get(idShape);
-      ArgumentsCheck.lessThanZero(endW, endH);
+      ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
+      ArgumentsCheck.withinShapeTime(shape.getTime().getStartTime(), shape.getTime().getEndTime(),
+              startTime, endTime);
       ICommands command = new ChangeDimension(shape, startTime, endTime, endW, endH);
       //One method to check if any overlap
       //One method for sorting the list based on the times of animations.
