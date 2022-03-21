@@ -16,7 +16,6 @@ public class Move extends AbstractAnimation {
 
   @Override
   public void animate(double time) {
-    AShape s = super.getShape();
     double start = super.getStart();
     double end = super.getEnd();
 
@@ -29,19 +28,18 @@ public class Move extends AbstractAnimation {
     double rateOfChange = RateOfChange.findRate(time, start, end);
 
     double changeInX = (destX - currentX) * rateOfChange;
-
     double changeInY = (destY - currentY) * rateOfChange;
 
     Posn newPosn = new Posn(currentX + changeInX, currentY + changeInY);
 
-    s.setPosn(newPosn);
+    this.shape.setPosn(newPosn);
   }
 
   @Override
   public String getEndsState() {
     String a = "";
     a += endTime
-            + " " + shape.getPosition().toString()
+            + " " + destination.toString()
             + shape.getWidth()
             + " " + shape.getHeight()
             + " " + shape.getColor().getRed()

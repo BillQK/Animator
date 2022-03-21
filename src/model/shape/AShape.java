@@ -60,14 +60,14 @@ public abstract class AShape {
     return this.time;
   }
 
-  public void setWidth(int width) {
+  public void setWidth(double width) {
     if (width < 0) {
       throw new IllegalArgumentException("The width of the shape cannot be negative.");
     }
     this.w = width;
   }
 
-  public void setHeight(int height) {
+  public void setHeight(double height) {
     if (height < 0) {
       throw new IllegalArgumentException("The height of the shape cannot be negative.");
     }

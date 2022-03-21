@@ -5,9 +5,9 @@ import model.utils.ArgumentsCheck;
 import model.utils.Time;
 
 public abstract class AbstractAnimation implements IAnimations {
-  protected final double endTime;
   private final AnimationType type;
   private final double startTime;
+  protected final double endTime;
   protected AShape shape;
 
   public AbstractAnimation(AShape shape,
@@ -35,7 +35,7 @@ public abstract class AbstractAnimation implements IAnimations {
   @Override
   public String getBeginsState() {
     return shape.getName() + " "
-            + shape.getTime().getStartTime() + " "
+            + startTime + " "
             + shape.getPosition().toString()
             + shape.getWidth() + " "
             + shape.getHeight() + " "
@@ -52,15 +52,6 @@ public abstract class AbstractAnimation implements IAnimations {
     return this.getBeginsState() + this.getEndsState();
   }
 
-  @Override
-  public AShape getShape() {
-    return shape.getTheShape();
-  }
-
-  @Override
-  public Time getTime() {
-    return new Time(this.shape.getTime());
-  }
 
   @Override
   public AnimationType getType() {

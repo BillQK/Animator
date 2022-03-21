@@ -3,6 +3,7 @@ package model.animation;
 import java.awt.*;
 
 import model.shape.AShape;
+import model.utils.RateOfChange;
 import model.utils.Time;
 
 public class ChangeDimension extends AbstractAnimation {
@@ -18,11 +19,34 @@ public class ChangeDimension extends AbstractAnimation {
 
   @Override
   public void animate(double time) {
+    double start = super.getStart();
+    double end = super.getEnd();
 
+    double currentW = shape.getWidth();
+    double currentH = shape.getHeight();
+
+    double rateOfChange = RateOfChange.findRate(time, start, end);
+
+    double changeInW = (endW - currentW) * rateOfChange;
+    double changeInH = (endH - currentH) * rateOfChange;
+
+    double newW = currentW + changeInW;
+    double newH = currentH + changeInH;
+
+    this.shape.setWidth(newW);
+    this.shape.setHeight(newH);
   }
 
   @Override
   public String getEndsState() {
-    return null;
+    String a = "";
+    a += endTime
+            + " " + shape.getPosition().toString()
+            + endW
+            + " " + endH
+            + " " + shape.getColor().getRed()
+            + " " + shape.getColor().getGreen()
+            + " " + shape.getColor().getBlue() + " ";
+    return a;
   }
 }

@@ -25,18 +25,6 @@ public interface IAnimationsState {
   String getState();
 
   /**
-   * Get the Shape type.
-   * @return the shape type of the according shape
-   */
-  AShape getShape();
-
-  /**
-   * Get the start and end time of the shape.
-   * @return the time of the according shape
-   */
-  Time getTime();
-
-  /**
    * Get the Animation type.
    * @return the animation that is being used on the shape.
    */
