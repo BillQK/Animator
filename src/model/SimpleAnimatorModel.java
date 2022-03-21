@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import model.command.ChangeColor;
+import model.command.ChangeDimension;
 import model.command.ICommands;
 import model.command.Move;
 import model.shape.AShape;
@@ -117,8 +119,40 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       AShape shape = shapes.get(idShape);
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
-      ICommands command = new Move(shape, startTime,endTime, new Posn(destX, destY));
+      ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
+      //One method to check if any overlap
+      //One method for sorting the list based on the times of animations.
+      this.commands.get(idShape).add(command);
+      return this;
+    }
 
+    public AMBuilder addChangeColor(String idShape,
+                                    Color color, double startTime, double endTime) {
+      if (!shapes.containsKey(idShape)) {
+        throw new IllegalArgumentException("Invalid Shape");
+      }
+      AShape shape = shapes.get(idShape);
+      if (color == null) {
+        throw new IllegalArgumentException("The given ending color cannot be null");
+      }
+      ArgumentsCheck.lessThanZero(color.getRed(), color.getGreen(), color.getBlue());
+      ICommands command = new ChangeColor(shape, startTime, endTime, color);
+      //One method to check if any overlap
+      //One method for sorting the list based on the times of animations.
+      this.commands.get(idShape).add(command);
+      return this;
+    }
+
+    public AMBuilder addChangeDimension(String idShape,
+                                    double endW, double endH, double startTime, double endTime) {
+      if (!shapes.containsKey(idShape)) {
+        throw new IllegalArgumentException("Invalid Shape");
+      }
+      AShape shape = shapes.get(idShape);
+      ArgumentsCheck.lessThanZero(endW, endH);
+      ICommands command = new ChangeDimension(shape, startTime, endTime, endW, endH);
+      //One method to check if any overlap
+      //One method for sorting the list based on the times of animations.
       this.commands.get(idShape).add(command);
       return this;
     }

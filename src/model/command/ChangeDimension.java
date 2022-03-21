@@ -7,8 +7,8 @@ public class ChangeDimension extends AbstractCommand {
   private final double endW;
   private final double endH;
 
-  public ChangeDimension(AShape shape, CommandType type,
-                         double startTime, double endTime, double endW, double endH) {
+  public ChangeDimension(AShape shape, double startTime, double endTime,
+                         double endW, double endH) {
     super(shape, CommandType.CHANGE_DIMENSION, startTime, endTime);
     this.endH = endH;
     this.endW = endW;
