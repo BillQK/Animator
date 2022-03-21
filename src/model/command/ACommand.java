@@ -3,16 +3,16 @@ package model.command;
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
 
-public abstract class AbstractCommand implements ICommands {
+public abstract class ACommand implements ICommands {
   private final CommandType type;
   private final double startTime;
   protected final double endTime;
   protected AShape shape;
 
-  public AbstractCommand(AShape shape,
-                         CommandType type,
-                         double startTime,
-                         double endTime) {
+  public ACommand(AShape shape,
+                  CommandType type,
+                  double startTime,
+                  double endTime) {
     ArgumentsCheck.lessThanZero(startTime, endTime);
     if (type == null || shape == null) {
       throw new IllegalArgumentException("Invalid Arguments: Cannot be null");

@@ -4,7 +4,7 @@ import model.shape.AShape;
 import model.utils.Posn;
 import model.utils.RateOfChange;
 
-public class Move extends AbstractCommand {
+public class Move extends ACommand {
   private final Posn destination;
 
   public Move(AShape shape, double startTime, double endTime, Posn destination) {
