@@ -6,9 +6,15 @@ import static org.junit.Assert.assertEquals;
 
 public class ArgumentsCheckTest {
 
+  @Test
+  public void testLessThanZero1() {
+
+  }
+
+
   @Test(expected = IllegalArgumentException.class)
   public void testLessThanZero() {
-    ArgumentsCheck.lessThanZero(0.0, -1.0);
+    ArgumentsCheck.lessThanZero(0.0, 0.0);
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -18,9 +24,9 @@ public class ArgumentsCheckTest {
 
   @Test
   public void testWithinShapeTime() {
-    ArgumentsCheck.withinShapeTime(10.0, 15.0, 11.0, 13);
+    ArgumentsCheck.withinIntervalTime(10.0, 15.0, 11.0, 13);
     try {
-      ArgumentsCheck.withinShapeTime(10.0, 15.0, 9.0, 14.0);
+      ArgumentsCheck.withinIntervalTime(10.0, 15.0, 9.0, 14.0);
     } catch (IllegalArgumentException e) {
       assertEquals(e.getMessage(), "Time does not range within the bigger time frame.");
     }
