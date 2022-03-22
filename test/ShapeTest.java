@@ -10,7 +10,6 @@ import model.shape.AShape;
 import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class ShapeTest {
   String recN = "R";
@@ -226,11 +225,5 @@ public class ShapeTest {
   public void testEllipseShapeinEnum() {
     assertEquals(ellipS.getShapeType(), "Ellipse");
   }
-
-//  @Test(expected = IllegalArgumentException.class)
-//  public void testNullEnumShape1() {
-//    Shape nullRS = null;
-//    nullRS.getShapeType();
-//  }
 
 }
