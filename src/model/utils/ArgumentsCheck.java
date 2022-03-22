@@ -17,11 +17,21 @@ public class ArgumentsCheck {
     }
   }
 
-  public static void withinShapeTime(double shapeStart, double shapeEnd,
-                                     double comStart, double comEnd) {
+  public static void withinShapeTime(double shapeStart, double shapeEnd, double comStart, double comEnd) {
     if (comStart < shapeStart || comEnd > shapeEnd) {
-      throw new IllegalArgumentException("The Command Time cannot be more that the Shape Time");
+      throw new IllegalArgumentException("Time does not range within the bigger time frame.");
     }
   }
 
+
+  public static void overlappingTime(double shapeStart, double shapeEnd, double comStart, double comEnd) {
+    if (shapeStart < comEnd && shapeEnd > comEnd) {
+      throw new IllegalArgumentException("Time is overlapping with another animation.");
+    }
+
+//    if ((shapeStart >= comStart && shapeStart <= comEnd) || (shapeEnd >= comStart && shapeEnd <= comEnd)) {
+//      throw new IllegalArgumentException("Time is overlapping with another animation.");
+//    }
+
+  }
 }

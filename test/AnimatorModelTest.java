@@ -2,14 +2,11 @@ import org.junit.Test;
 
 import java.awt.*;
 
-import model.command.ChangeDimension;
+import model.SimpleAnimatorModel;
 import model.command.CommandType;
-import model.command.ICommands;
-import model.shape.AShape;
 import model.shape.Ellipse;
 import model.shape.Rectangle;
 import model.shape.Shape;
-import model.SimpleAnimatorModel;
 import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
@@ -17,34 +14,24 @@ import static org.junit.Assert.assertEquals;
 public class AnimatorModelTest {
 
   @Test
-  public void testBuilder() {
-    String ellipN = "E";
-    Color ellipCol = new Color(225, 0,0);
-    double ellipPosX = 20;
-    double ellipPosY = 10;
-    double ellipW = 30;
-    double ellipH = 20;
-    Time ellipT = new Time(20, 30);
-    AShape ellipShape = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
-            ellipW, ellipH, ellipT);
-
-    SimpleAnimatorModel s = new SimpleAnimatorModel.AMBuilder()
-            .addRectangle("1,", 1, 3, 4, 4,
-                    5, 5, 5, new Time(1, 2))
-            .addEllipse("2", 1, 3, 3, 4,
-                    5, 5, 6, new Time(2, 3))
-            .addRectangle("1", 1, 4, 5, 6,
-                    6, 7, 5, new Time(19, 40))
-            .addMove("1", 2, 3, 0, 1)
+  public void testBuilderSetTime() {
+    SimpleAnimatorModel s = new SimpleAnimatorModel.AMBuilder().setTime(1000)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10, new Time(0, 10))
+            .addEllipse("2", 15, 15, 100, 200, 10, 40, 30, new Time(0, 10))
+            .addMove("1", 30, 30, 1, 5)
             .build();
-    s.getShapes();
-    s.getShapes().get(0).setHeight(3);
-     String command = new ChangeDimension(ellipShape, 1, 2,
-             10, 10).getEndsState();
-    System.out.println(command);
-    assertEquals(s.getShapes().get(0).getType(), Shape.RECTANGLE);
 
-
+    Color r = new Color(10, 10, 10);
+    Color e = new Color(10, 40, 30);
+    assertEquals(s.getShapes().size(), 2);
+    assertEquals(s.getShapes().get(0),
+            new Rectangle("1",
+                    Shape.RECTANGLE, r, 10, 15, 100, 200, new Time(0, 10)));
+    assertEquals(s.getShapes().get(1),
+            new Ellipse("2",
+                    Shape.ELLIPSE, e, 15, 15, 100, 200, new Time(0, 10)));
+    assertEquals(s.getCommands().get(0).getType(), CommandType.MOVE);
+    assertEquals(s.getTime(), new Time(0, 1000));
   }
 
 }
