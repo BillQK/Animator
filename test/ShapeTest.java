@@ -20,6 +20,7 @@ public class ShapeTest {
   double recW = 40;
   double recH = 20;
   Time recT = new Time(10, 40);
+  Shape recS = Shape.RECTANGLE;
   AShape recShape = new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX, recPosY,
           recW, recH, recT);
 
@@ -30,6 +31,7 @@ public class ShapeTest {
   double ellipW = 30;
   double ellipH = 20;
   Time ellipT = new Time(20, 30);
+  Shape ellipS = Shape.ELLIPSE;
   AShape ellipShape = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
           ellipW, ellipH, ellipT);
 
@@ -214,5 +216,21 @@ public class ShapeTest {
   }
 
   //-------------------------TEST FOR ENUM SHAPE-------------------------//
+
+  @Test
+  public void testRectangleShapeinEnum() {
+    assertEquals(recS.getShapeType(), "Rectangle");
+  }
+
+  @Test
+  public void testEllipseShapeinEnum() {
+    assertEquals(ellipS.getShapeType(), "Ellipse");
+  }
+
+//  @Test(expected = IllegalArgumentException.class)
+//  public void testNullEnumShape1() {
+//    Shape nullRS = null;
+//    nullRS.getShapeType();
+//  }
 
 }
