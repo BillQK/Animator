@@ -59,7 +59,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public List<ICommands> getCommands() {
-  return null;
+    return null;
   }
 
   @Override
