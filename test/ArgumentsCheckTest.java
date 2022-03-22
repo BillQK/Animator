@@ -37,6 +37,7 @@ public class ArgumentsCheckTest {
     } catch (IllegalArgumentException e) {
       assertEquals(e.getMessage(), "Time is overlapping with another animation.");
     }
+
     try {
       ArgumentsCheck.overlappingTime(30, 40, 10, 38);
     } catch (IllegalArgumentException e) {
@@ -49,6 +50,16 @@ public class ArgumentsCheckTest {
     }
     try {
       ArgumentsCheck.overlappingTime(15, 45, 65, 47);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "Invalid time range");
+    }
+    try {
+      ArgumentsCheck.overlappingTime(15, 20, 18, 40);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "Time is overlapping with another animation.");
+    }
+    try {
+      ArgumentsCheck.overlappingTime(15,20, 15, 20);
     } catch (IllegalArgumentException e) {
       assertEquals(e.getMessage(), "Time is overlapping with another animation.");
     }

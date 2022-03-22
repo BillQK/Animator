@@ -36,6 +36,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     this.shapes.put(id, s);
   }
 
+  //Not want to test yet
   @Override
   public void addCommands(String id, List<ICommands> a) {
     this.commands.put(id, a);
@@ -43,6 +44,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public String getState() {
+//    String finalString = "";
+//    for (String s : this.shapes.keySet()) {
+//      finalString += "Shape: " + s + this.shapes.get(s).getType().getShapeType();
+//
+//    }
     return null;
   }
 
@@ -58,8 +64,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   @Override
-  public List<ICommands> getCommands() {
-    return null;
+  public List<List<ICommands>> getCommands() {
+    List<List<ICommands>> answer = new ArrayList<>();
+    for (String c : this.commands.keySet()) {
+      answer.add(this.commands.get(c));
+    }
+    return answer;
   }
 
   @Override
@@ -112,6 +122,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       this.commands.put(id, mtRL);
       return this;
     }
+
 
 
     private boolean overlap(CommandType type, double startTime,

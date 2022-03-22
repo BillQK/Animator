@@ -12,7 +12,7 @@ public interface IAnimatorModelState<K> {
 
   List<AShape> getShapes();
 
-  List<ICommands> getCommands();
+  List<List<ICommands>> getCommands();
 
   Time getTime();
 }
