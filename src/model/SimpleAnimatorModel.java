@@ -82,15 +82,16 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    * Sorting method.
    * @param l the list of commands of a shape
    */
-  public void sortCommandList(List<ICommands> l) {
+  public List<ICommands> sortCommandList(List<ICommands> l) {
     Collections.sort(l);
+    return l;
   }
 
   @Override
   public List<List<ICommands>> getCommands() {
     List<List<ICommands>> answer = new ArrayList<>();
     for (String c : this.commands.keySet()) {
-      answer.add(this.commands.get(c));
+      answer.add(sortCommandList(this.commands.get(c)));
     }
     return answer;
   }
