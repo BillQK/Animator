@@ -65,6 +65,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
           finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n";
+          this.commands.get(s).get(i).execute(this.commands.get(s).get(i).getEnd());
         } else {
           finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n\n";
         }

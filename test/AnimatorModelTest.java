@@ -52,8 +52,6 @@ public class AnimatorModelTest {
     assertEquals(s.getShapes().get(0),
             new Rectangle("1",
                     Shape.RECTANGLE, r, 10, 15, 100, 200, new Time(0, 10)));
-
-
   }
 
   @Test(expected = IllegalArgumentException.class)
