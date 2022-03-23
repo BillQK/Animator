@@ -2,6 +2,7 @@ package model;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,6 +49,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     for (String s : this.shapes.keySet()) {
       finalString += "Shape: " + s + this.shapes.get(s).getType().getShapeType() + "\n";
 
+      sortCommandList(this.commands.get(s));
       for (int i = 0; i < this.commands.get(s).size(); i++) {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
@@ -70,6 +72,14 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       l.add(shape);
     }
     return l;
+  }
+
+  /**
+   * Sorting method.
+   * @param l the list of commands of a shape
+   */
+  public void sortCommandList(List<ICommands> l) {
+    Collections.sort(l);
   }
 
   @Override
@@ -131,7 +141,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       this.commands.put(id, mtRL);
       return this;
     }
-
 
 
     private boolean overlap(CommandType type, double startTime,

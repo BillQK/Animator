@@ -3,11 +3,19 @@ import org.junit.Test;
 import model.utils.ArgumentsCheck;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ArgumentsCheckTest {
 
-  @Test(expected = IllegalArgumentException.class)
+  //No Exception was thrown so it work
+  @Test
   public void testLessThanZero() {
+    ArgumentsCheck.lessThanZero(0.0, 10.0, 0.2, 20.0);
+    assertTrue(true);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testLessThanZeroWithNeg() {
     ArgumentsCheck.lessThanZero(0.0, -1.0);
   }
 

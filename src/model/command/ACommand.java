@@ -32,6 +32,21 @@ public abstract class ACommand implements ICommands {
   public abstract void execute(double time);
 
   @Override
+  public int compareTo(ICommands o) {
+    if (startTime > o.getStart()) {
+      return 1;
+    } else if (startTime == o.getStart()) {
+      if (endTime > o.getEnd()) {
+        return 1;
+      } else {
+        return 0;
+      }
+    } else {
+      return -1;
+    }
+  }
+
+  @Override
   public String getBeginsState() {
     return shape.getName() + " "
             + startTime + " "
