@@ -8,13 +8,6 @@ import static org.junit.Assert.assertTrue;
 public class ArgumentsCheckTest {
 
   @Test
-  public void testLessThanZero1() {
-
-  }
-
-
-
-  @Test
   public void testLessThanZero() {
     ArgumentsCheck.lessThanZero(0.0, 10.0, 0.2, 20.0);
     assertTrue(true);

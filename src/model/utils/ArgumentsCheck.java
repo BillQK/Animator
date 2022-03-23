@@ -25,10 +25,6 @@ public class ArgumentsCheck {
   }
 
 
-<<<<<<< HEAD
-  public static void overlappingTime(double shapeStart, double shapeEnd, double comStart, double comEnd) {
-    if ((shapeStart < comEnd && shapeEnd > comEnd) || (comStart > comEnd) || (shapeStart > shapeEnd)) {
-=======
   public static void overlappingTime(double shapeStart, double shapeEnd,
                                      double comStart, double comEnd) {
 //    if ((shapeStart < comEnd && shapeEnd > comEnd)
@@ -41,7 +37,6 @@ public class ArgumentsCheck {
     }
     //    if (shapeStart <= comEnd && comStart <= shapeEnd) {
     if (shapeStart < comEnd && comStart < shapeEnd) {
->>>>>>> abdca77069d73b7a743354b862d85102a3590e90
       throw new IllegalArgumentException("Time is overlapping with another animation.");
     }
   }
