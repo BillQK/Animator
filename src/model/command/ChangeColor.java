@@ -5,6 +5,9 @@ import java.awt.*;
 import model.shape.AShape;
 import model.utils.RateOfChange;
 
+/**
+ * Represents the ChangeColor command class called on a shape.
+ */
 public class ChangeColor extends ACommand {
   private final Color endColor;
 

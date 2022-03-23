@@ -3,10 +3,22 @@ package model.command;
 import model.shape.AShape;
 import model.utils.RateOfChange;
 
+/**
+ * Represents the ChangeDimension command class called on a shape.
+ */
 public class ChangeDimension extends ACommand {
   private final double endW;
   private final double endH;
 
+  /**
+   * A constructor for ChangeDimension.
+   *
+   * @param shape AShape - the shape to called the changeDimension command on
+   * @param startTime the start time of the command
+   * @param endTime the end time of the command
+   * @param endW the given end width to change the shape's width to
+   * @param endH the given end height to change the shape's height to
+   */
   public ChangeDimension(AShape shape, double startTime, double endTime,
                          double endW, double endH) {
     super(shape, CommandType.CHANGE_DIMENSION, startTime, endTime);

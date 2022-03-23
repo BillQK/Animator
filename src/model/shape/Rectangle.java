@@ -10,6 +10,18 @@ import model.utils.Time;
  */
 public class Rectangle extends AShape {
 
+  /**
+   * A constructor for Rectangle.
+   *
+   * @param name the name of the shape
+   * @param type the type of the shape (Rectangle or Ellipse)
+   * @param col the color of the shape
+   * @param posX the x position of the shape
+   * @param posY the y position of the shape
+   * @param width the width of the shape
+   * @param height the height of the shape
+   * @param time the Time of the shape
+   */
   public Rectangle(String name, Shape type, Color col, double posX, double posY,
                    double width, double height, Time time) {
     super(name, type, col, posX, posY, width, height, time);

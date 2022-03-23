@@ -20,12 +20,19 @@ import model.utils.ArgumentsCheck;
 import model.utils.Posn;
 import model.utils.Time;
 
+/**
+ * Represents the main model class which implemented the IAnimationModel<AShape> </AShape>.
+ */
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final HashMap<String, AShape> shapes;
   private final HashMap<String, List<ICommands>> commands;
   private final Time time;
 
-
+  /**
+   * A constructor for SimpleAnimationModel class with the given builder.
+   *
+   * @param amBuilder the builder pattern builder
+   */
   private SimpleAnimatorModel(AMBuilder amBuilder) {
     this.shapes = amBuilder.shapes;
     this.commands = amBuilder.commands;
@@ -100,22 +107,48 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     return new Time(this.time);
   }
 
+  /**
+   * Represents the SimpleAnimationModel builder class.
+   */
   public static class AMBuilder {
     private final HashMap<String, AShape> shapes;
     private final HashMap<String, List<ICommands>> commands;
     private Time time;
 
+    /**
+     * A constructor for SimpleAnimationModel builder class.
+     */
     public AMBuilder() {
       this.shapes = new HashMap<>();
       this.commands = new HashMap<>();
     }
 
+    /**
+     * A method to set the end time of the model to the given end time.
+     *
+     * @param end the given end time
+     * @return the builder with a new Time with the set new given end time
+     */
     public AMBuilder setTime(int end) {
       ArgumentsCheck.lessThanZero(end);
       this.time = new Time(0, end);
       return this;
     }
 
+    /**
+     * A method to add a Rectangle shape to the model.
+     *
+     * @param id the id to map it with this new shape
+     * @param x the shape start X position
+     * @param y the shape start Y position
+     * @param w the shape start width
+     * @param h the shape start height
+     * @param red the shape start red color
+     * @param green the shape start green color
+     * @param blue the shape start blue color
+     * @param time the shape start time
+     * @return the builder with an addRectangle shape
+     */
     public AMBuilder addRectangle(String id, double x, double y, double w, double h,
                                   int red, int green, int blue, Time time) {
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
@@ -131,6 +164,20 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
+    /**
+     * A method to add an Ellipse shape to the model.
+     *
+     * @param id the id to map it with this new shape
+     * @param x the shape start X position
+     * @param y the shape start Y position
+     * @param w the shape start width
+     * @param h the shape start height
+     * @param red the shape start red color
+     * @param green the shape start green color
+     * @param blue the shape start blue color
+     * @param time the shape start time
+     * @return the builder with an addEllipse shape
+     */
     public AMBuilder addEllipse(String id, double x, double y, double w, double h,
                                 int red, int green, int blue, Time time) {
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
@@ -146,7 +193,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-
     private boolean overlap(CommandType type, double startTime,
                             double endTime, List<ICommands> iCommands) {
       for (ICommands c : iCommands) {
@@ -161,6 +207,16 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return false;
     }
 
+    /**
+     * A method to add the Move command to the model.
+     *
+     * @param idShape the shape to add the move method on
+     * @param destX the destination X position for the shape
+     * @param destY the destination Y position for the shape
+     * @param startTime the start time of the command
+     * @param endTime the end time of the command
+     * @return the builder with an addMove command
+     */
     public AMBuilder addMove(String idShape,
                              double destX, double destY,
                              double startTime, double endTime) {
@@ -185,7 +241,15 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-
+    /**
+     * A method to add the ChangeColor command to the model.
+     *
+     * @param idShape the shape to add the ChangeColor method on
+     * @param color the new given color to set the shape to
+     * @param startTime the start time of the command
+     * @param endTime the end time of the command
+     * @return the builder with an addChangeColor command
+     */
     public AMBuilder addChangeColor(String idShape,
                                     Color color, double startTime, double endTime) {
 
@@ -214,7 +278,16 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-
+    /**
+     * A method to add the ChangeDimension command to the model.
+     *
+     * @param idShape the shape to add the ChangeDimension method on
+     * @param endW the given end width to set the shape width to
+     * @param endH the given end height to set the shape height to
+     * @param startTime the start time of the command
+     * @param endTime the end time of the command
+     * @return the builder with an addChangeDimension command
+     */
     public AMBuilder addChangeDimension(String idShape,
                                         double endW, double endH, double startTime, double endTime) {
       if (!shapes.containsKey(idShape)) {
@@ -238,7 +311,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-
+    /**
+     * A method to start build the builder.
+     *
+     * @return a SimpleAnimatorModel - the model
+     */
     public SimpleAnimatorModel build() {
       if (this.time == null) {
         throw new IllegalArgumentException("Need to set time");
