@@ -130,6 +130,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @return the builder with a new Time with the set new given end time
      */
     public AMBuilder setTime(int end) {
+      // Arguments check
       ArgumentsCheck.lessThanZero(end);
       this.time = new Time(0, end);
       return this;
@@ -151,16 +152,23 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      */
     public AMBuilder addRectangle(String id, double x, double y, double w, double h,
                                   int red, int green, int blue, Time time) {
-      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
-      if (time == null) {
-        throw new IllegalArgumentException("Time cannot be null");
+      // Argument and Object check
+      if (this.time == null) {
+        throw new IllegalArgumentException("Need to set time");
       }
+      ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
+              time.getStartTime(), time.getEndTime());
+      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
+
+      // Assign Variable
       Color c = new Color(red, green, blue);
       AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h, time);
 
+      // Add Variable into data structure
       List<ICommands> mtRL = new ArrayList<>();
       this.shapes.put(id, shape);
       this.commands.put(id, mtRL);
+
       return this;
     }
 
@@ -180,16 +188,23 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      */
     public AMBuilder addEllipse(String id, double x, double y, double w, double h,
                                 int red, int green, int blue, Time time) {
-      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
-      if (time == null) {
-        throw new IllegalArgumentException("Time cannot be null");
+      // Argument and Object check
+      if (this.time == null) {
+        throw new IllegalArgumentException("Need to set time");
       }
+      ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
+              time.getStartTime(), time.getEndTime());
+      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
+
+      // Assign Variable
       Color c = new Color(red, green, blue);
       AShape shape = new Ellipse(id, Shape.ELLIPSE, c, x, y, w, h, time);
 
+      // Add Variable into data structure
       List<ICommands> mtRL = new ArrayList<>();
       this.shapes.put(id, shape);
       this.commands.put(id, mtRL);
+
       return this;
     }
 
@@ -232,7 +247,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
       double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
+      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
 
       ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
       //One method for sorting the list based on the times of animations.
@@ -269,7 +284,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
               startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
       double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
+      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
 
       ICommands command = new ChangeColor(shape, startTime, endTime, color);
       //One method for sorting the list based on the times of animations.
@@ -302,10 +317,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
       double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinShapeTime(shapeStart, shapeEnd, startTime, endTime);
+      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
 
       ICommands command = new ChangeDimension(shape, startTime, endTime, endW, endH);
-      //One method for sorting the list based on the times of animations.
+
 
       this.commands.get(idShape).add(command);
       return this;

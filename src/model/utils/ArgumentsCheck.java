@@ -26,6 +26,7 @@ public class ArgumentsCheck {
     }
   }
 
+<<<<<<< HEAD
   /**
    * Check if one given start and end time is within
    * the range of another given start and end time.
@@ -39,6 +40,11 @@ public class ArgumentsCheck {
                                      double comStart, double comEnd) {
     if (comStart < shapeStart || comEnd > shapeEnd
             || comStart > comEnd || shapeStart > shapeEnd) {
+=======
+  public static void withinIntervalTime(double shapeStart, double shapeEnd, double comStart, double comEnd) {
+
+    if (comStart < shapeStart || comEnd > shapeEnd || comStart > comEnd || shapeStart > shapeEnd) {
+>>>>>>> a3e5f125a30fef7e6c34696944991dc84e850f1a
       throw new IllegalArgumentException("Time does not range within the bigger time frame.");
     }
   }
@@ -68,10 +74,5 @@ public class ArgumentsCheck {
     if (shapeStart < comEnd && comStart < shapeEnd) {
       throw new IllegalArgumentException("Time is overlapping with another animation.");
     }
-
-//    if ((shapeStart >= comStart && shapeStart <= comEnd) || (shapeEnd >= comStart && shapeEnd <= comEnd)) {
-//      throw new IllegalArgumentException("Time is overlapping with another animation.");
-//    }
-
   }
 }

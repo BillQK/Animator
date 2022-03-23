@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 public class ArgumentsCheckTest {
 
-  //No Exception was thrown so it work
   @Test
   public void testLessThanZero() {
     ArgumentsCheck.lessThanZero(0.0, 10.0, 0.2, 20.0);
@@ -26,9 +25,9 @@ public class ArgumentsCheckTest {
 
   @Test
   public void testWithinShapeTime() {
-    ArgumentsCheck.withinShapeTime(10.0, 15.0, 11.0, 13);
+    ArgumentsCheck.withinIntervalTime(10.0, 15.0, 11.0, 13);
     try {
-      ArgumentsCheck.withinShapeTime(10.0, 15.0, 9.0, 14.0);
+      ArgumentsCheck.withinIntervalTime(10.0, 15.0, 9.0, 14.0);
     } catch (IllegalArgumentException e) {
       assertEquals(e.getMessage(), "Time does not range within the bigger time frame.");
     }
@@ -67,7 +66,7 @@ public class ArgumentsCheckTest {
       assertEquals(e.getMessage(), "Time is overlapping with another animation.");
     }
     try {
-      ArgumentsCheck.overlappingTime(15,20, 15, 20);
+      ArgumentsCheck.overlappingTime(15, 20, 15, 20);
     } catch (IllegalArgumentException e) {
       assertEquals(e.getMessage(), "Time is overlapping with another animation.");
     }
