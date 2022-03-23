@@ -44,12 +44,21 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public String getState() {
-//    String finalString = "";
-//    for (String s : this.shapes.keySet()) {
-//      finalString += "Shape: " + s + this.shapes.get(s).getType().getShapeType();
-//
-//    }
-    return null;
+    String finalString = "";
+    for (String s : this.shapes.keySet()) {
+      finalString += "Shape: " + s + this.shapes.get(s).getType().getShapeType() + "\n";
+
+      for (int i = 0; i < this.commands.get(s).size(); i++) {
+        ICommands com = this.commands.get(s).get(i);
+        if (i != (this.commands.get(s).size() - 1)) {
+          finalString += "motion " + com.getBeginsState() + " " + com.getEndsState() + "\n";
+        } else {
+          finalString += "motion " + com.getBeginsState() + " " + com.getEndsState() + "\n\n";
+        }
+      }
+
+    }
+    return finalString;
   }
 
   @Override

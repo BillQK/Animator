@@ -19,7 +19,9 @@ public class AnimatorModelTest {
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10, new Time(0, 10))
             .addEllipse("2", 15, 15, 100, 200, 10, 40, 30, new Time(0, 10))
             .addMove("1", 30, 30, 1, 5)
+            .addChangeColor("1", new Color(23,123,23), 5, 10)
             .build();
+    System.out.println(s.getState());
 
     Color r = new Color(10, 10, 10);
     Color e = new Color(10, 40, 30);
@@ -30,7 +32,7 @@ public class AnimatorModelTest {
     assertEquals(s.getShapes().get(1),
             new Ellipse("2",
                     Shape.ELLIPSE, e, 15, 15, 100, 200, new Time(0, 10)));
-    assertEquals(s.getCommands().get(0).getType(), CommandType.MOVE);
+    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
     assertEquals(s.getTime(), new Time(0, 1000));
   }
 

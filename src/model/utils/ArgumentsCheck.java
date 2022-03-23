@@ -36,7 +36,8 @@ public class ArgumentsCheck {
     if (shapeEnd <= shapeStart || comEnd <= comStart) {
       throw new IllegalArgumentException("Invalid time range");
     }
-    if (shapeStart <= comEnd && comStart <= shapeEnd) {
+    //    if (shapeStart <= comEnd && comStart <= shapeEnd) {
+    if (shapeStart < comEnd && comStart < shapeEnd) {
       throw new IllegalArgumentException("Time is overlapping with another animation.");
     }
 
