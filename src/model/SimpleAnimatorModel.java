@@ -47,7 +47,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   public String getState() {
     String finalString = "";
     for (String s : this.shapes.keySet()) {
-      finalString += "Shape: " + s + this.shapes.get(s).getType().getShapeType() + "\n";
+      finalString += "Shape: " + s + " " + this.shapes.get(s).getType().getShapeType() + "\n";
+
+      //The order of what we print in one motion
+      finalString += "motion " + s + " t " + "x " + "y " + "w " + "h " + "r " + "g " + "b "
+              + "  " + "t " + "x " + "y " + "w " + "h " + "r " + "g " + "b\n";
 
       sortCommandList(this.commands.get(s));
       for (int i = 0; i < this.commands.get(s).size(); i++) {
