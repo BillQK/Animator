@@ -16,7 +16,6 @@ public class Posn {
    * @param y int y
    */
   public Posn(double x, double y) {
-    ArgumentsCheck.lessThanZero(x, y);
     this.x = x;
     this.y = y;
   }
@@ -68,7 +67,6 @@ public class Posn {
    * @return a Posn
    */
   public Posn moved(double dx, double dy) {
-    ArgumentsCheck.lessThanZero(dx, dy);
     return new Posn(dx, dy);
   }
 
@@ -79,7 +77,6 @@ public class Posn {
    * @param y the given new y coordinate
    */
   public void setPosn(double x, double y) {
-    ArgumentsCheck.lessThanZero(x, y);
     this.x = x;
     this.y = y;
   }
@@ -93,7 +90,7 @@ public class Posn {
     if (other == null) {
       throw new IllegalArgumentException("The given Posn cannot be null");
     }
-     this.x -= other.getX();
+    this.x -= other.getX();
     this.y -= other.getY();
   }
 

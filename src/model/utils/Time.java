@@ -13,7 +13,7 @@ public class Time {
    * A constructor for Time.
    *
    * @param start the given start time
-   * @param end the given end time
+   * @param end   the given end time
    */
   public Time(double start, double end) {
     if (end <= start) {
@@ -74,6 +74,9 @@ public class Time {
       return true;
     }
     if (other == null) {
+      return false;
+    }
+    if (getClass() != other.getClass()) {
       return false;
     } else {
       Time time = (Time) other;

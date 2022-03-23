@@ -124,6 +124,22 @@ public class AnimatorModelTest {
   }
 
   @Test
+  public void testBuilderAddCommandWithOverLappingInterval() {
+    s = new SimpleAnimatorModel.AMBuilder()
+            .setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10, new Time(0, 10))
+            .addChangeColor("1", new Color(20, 20, 20), 1, 3)
+            .addMove("1", 11, 30, 1, 3)
+            .addChangeDimension("1", 150, 250, 1, 3)
+            .build();
+
+    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.CHANGE_COLOR);
+    assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.MOVE);
+    assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
+
+  }
+
+  @Test
   public void testBuilderAddCommand() {
     s = new SimpleAnimatorModel.AMBuilder()
             .setTime(100)
@@ -155,6 +171,8 @@ public class AnimatorModelTest {
     assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.CHANGE_COLOR);
     assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
+
+    System.out.println(s.getState());
 
   }
 

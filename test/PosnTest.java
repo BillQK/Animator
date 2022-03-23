@@ -3,7 +3,6 @@ import org.junit.Test;
 import model.utils.Posn;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * This is the test class for Posn class.
@@ -28,14 +27,14 @@ public class PosnTest {
   }
 
   //Test create a new Posn with the given negative X and Y.
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void movedNegX() {
     posn = new Posn(1, 2);
     assertEquals(posn.moved(-3, 2).getY(), 2, DELTA);
   }
 
   //Test create a new Posn with the given X and negative Y.
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void movedNegY() {
     posn = new Posn(1, 2);
     assertEquals(posn.moved(3, -2).getX(), 3, DELTA);
@@ -50,7 +49,7 @@ public class PosnTest {
   }
 
   //Test set the Posn to a new Posn with the given negative X and Y.
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void setPosnNegX() {
     posn = new Posn(1, 2);
     posn.setPosn(-3, 2);
@@ -58,7 +57,7 @@ public class PosnTest {
   }
 
   //Test set the Posn to a new Posn with the given X and negative Y.
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void setPosnNegY() {
     posn = new Posn(1, 2);
     posn.setPosn(3, -2);
@@ -115,32 +114,32 @@ public class PosnTest {
   public void testEquals() {
     posn = new Posn(1, 2);
     mtposn = new Posn();
-    assertTrue(posn.equals(new Posn(1, 2)));
+    assertEquals(posn, new Posn(1, 2));
   }
 
   //Test check if two position is equals with the default constructor.
   @Test
   public void testEquals1() {
     mtposn = new Posn();
-    assertTrue(mtposn.equals(new Posn(0, 0)));
+    assertEquals(mtposn, new Posn(0, 0));
   }
 
   //Test given negative x position
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testNegXPosn() {
     posn = new Posn(-10, 5);
     assertEquals(posn.getY(), 5, DELTA);
   }
 
   //Test given negative y position
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testNegYPosn() {
     posn = new Posn(10, -5);
     assertEquals(posn.getX(), 10, DELTA);
   }
 
   //Test given negative x and y position
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testNegXYPosn() {
     posn = new Posn(-10, -5);
     assertEquals(posn.getX(), -10, DELTA);
@@ -154,7 +153,7 @@ public class PosnTest {
   }
 
   //Test given negative position X constructor
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testNullPosnXConstructor() {
     mtposn = new Posn(-10, 0);
     posn = new Posn(mtposn);
@@ -162,7 +161,7 @@ public class PosnTest {
   }
 
   //Test given negative position Y constructor
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testNullPosnYConstructor() {
     mtposn = new Posn(10, -10);
     posn = new Posn(mtposn);

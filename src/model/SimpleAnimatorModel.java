@@ -44,7 +44,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     this.shapes.put(id, s);
   }
 
-  //Not want to test yet
+
   @Override
   public void addCommands(String id, List<ICommands> a) {
     this.commands.put(id, a);
@@ -56,17 +56,17 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     for (String s : this.shapes.keySet()) {
       finalString += "Shape: " + s + " " + this.shapes.get(s).getType().getShapeType() + "\n";
 
+      finalString += "         START                                  END \n";
       //The order of what we print in one motion
-      finalString += "motion " + s + " t " + "x " + "y " + "w " + "h " + "r " + "g " + "b "
-              + "  " + "t " + "x " + "y " + "w " + "h " + "r " + "g " + "b\n";
+      finalString += "motion " + s + " Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue "
+              + "  " + "Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue\n";
 
-      sortCommandList(this.commands.get(s));
       for (int i = 0; i < this.commands.get(s).size(); i++) {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
-          finalString += "motion " + com.getBeginsState() + " " + com.getEndsState() + "\n";
+          finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n";
         } else {
-          finalString += "motion " + com.getBeginsState() + " " + com.getEndsState() + "\n\n";
+          finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n\n";
         }
       }
 
@@ -85,20 +85,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     return l;
   }
 
-  /**
-   * Sorting method.
-   * @param l the list of commands of a shape
-   */
-  public List<ICommands> sortCommandList(List<ICommands> l) {
-    Collections.sort(l);
-    return l;
-  }
-
   @Override
   public List<List<ICommands>> getCommands() {
     List<List<ICommands>> answer = new ArrayList<>();
     for (String c : this.commands.keySet()) {
-      answer.add(sortCommandList(this.commands.get(c)));
+      Collections.sort(this.commands.get(c));
+      answer.add(this.commands.get(c));
     }
     return answer;
   }
@@ -140,15 +132,15 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     /**
      * A method to add a Rectangle shape to the model.
      *
-     * @param id the id to map it with this new shape
-     * @param x the shape start X position
-     * @param y the shape start Y position
-     * @param w the shape start width
-     * @param h the shape start height
-     * @param red the shape start red color
+     * @param id    the id to map it with this new shape
+     * @param x     the shape start X position
+     * @param y     the shape start Y position
+     * @param w     the shape start width
+     * @param h     the shape start height
+     * @param red   the shape start red color
      * @param green the shape start green color
-     * @param blue the shape start blue color
-     * @param time the shape start time
+     * @param blue  the shape start blue color
+     * @param time  the shape start time
      * @return the builder with an addRectangle shape
      */
     public AMBuilder addRectangle(String id, double x, double y, double w, double h,
@@ -176,15 +168,15 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     /**
      * A method to add an Ellipse shape to the model.
      *
-     * @param id the id to map it with this new shape
-     * @param x the shape start X position
-     * @param y the shape start Y position
-     * @param w the shape start width
-     * @param h the shape start height
-     * @param red the shape start red color
+     * @param id    the id to map it with this new shape
+     * @param x     the shape start X position
+     * @param y     the shape start Y position
+     * @param w     the shape start width
+     * @param h     the shape start height
+     * @param red   the shape start red color
      * @param green the shape start green color
-     * @param blue the shape start blue color
-     * @param time the shape start time
+     * @param blue  the shape start blue color
+     * @param time  the shape start time
      * @return the builder with an addEllipse shape
      */
     public AMBuilder addEllipse(String id, double x, double y, double w, double h,
@@ -226,11 +218,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     /**
      * A method to add the Move command to the model.
      *
-     * @param idShape the shape to add the move method on
-     * @param destX the destination X position for the shape
-     * @param destY the destination Y position for the shape
+     * @param idShape   the shape to add the move method on
+     * @param destX     the destination X position for the shape
+     * @param destY     the destination Y position for the shape
      * @param startTime the start time of the command
-     * @param endTime the end time of the command
+     * @param endTime   the end time of the command
      * @return the builder with an addMove command
      */
     public AMBuilder addMove(String idShape,
@@ -260,10 +252,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     /**
      * A method to add the ChangeColor command to the model.
      *
-     * @param idShape the shape to add the ChangeColor method on
-     * @param color the new given color to set the shape to
+     * @param idShape   the shape to add the ChangeColor method on
+     * @param color     the new given color to set the shape to
      * @param startTime the start time of the command
-     * @param endTime the end time of the command
+     * @param endTime   the end time of the command
      * @return the builder with an addChangeColor command
      */
     public AMBuilder addChangeColor(String idShape,
@@ -297,11 +289,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     /**
      * A method to add the ChangeDimension command to the model.
      *
-     * @param idShape the shape to add the ChangeDimension method on
-     * @param endW the given end width to set the shape width to
-     * @param endH the given end height to set the shape height to
+     * @param idShape   the shape to add the ChangeDimension method on
+     * @param endW      the given end width to set the shape width to
+     * @param endH      the given end height to set the shape height to
      * @param startTime the start time of the command
-     * @param endTime the end time of the command
+     * @param endTime   the end time of the command
      * @return the builder with an addChangeDimension command
      */
     public AMBuilder addChangeDimension(String idShape,

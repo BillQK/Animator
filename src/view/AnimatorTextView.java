@@ -13,6 +13,6 @@ public class AnimatorTextView implements IAnimatorView {
 
   @Override
   public String toString() {
-    return "";
+    return model.getState();
   }
 }
