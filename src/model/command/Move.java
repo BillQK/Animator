@@ -4,9 +4,20 @@ import model.shape.AShape;
 import model.utils.Posn;
 import model.utils.RateOfChange;
 
+/**
+ * Represents the Move command class called on a shape.
+ */
 public class Move extends ACommand {
   private final Posn destination;
 
+  /**
+   * A constructor for Move.
+   *
+   * @param shape AShape - the shape to called the move command on
+   * @param startTime the start time of the command
+   * @param endTime the end time of the command
+   * @param destination the destination position that the shape need to move to
+   */
   public Move(AShape shape, double startTime, double endTime, Posn destination) {
     super(shape, CommandType.MOVE, startTime, endTime);
     this.destination = destination;

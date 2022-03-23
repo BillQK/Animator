@@ -3,12 +3,24 @@ package model.command;
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
 
+/**
+ * Represents an Abstract command class which is being implemented
+ * by Move, ChangeDimension and ChangeColor command class.
+ */
 public abstract class ACommand implements ICommands {
   private final CommandType type;
   private final double startTime;
   protected final double endTime;
   protected AShape shape;
 
+  /**
+   * A constructor for ACommand class.
+   *
+   * @param shape the given shape to call the command on
+   * @param type the type of the command
+   * @param startTime the start time of the command
+   * @param endTime the end time of the command
+   */
   public ACommand(AShape shape,
                   CommandType type,
                   double startTime,
@@ -19,7 +31,6 @@ public abstract class ACommand implements ICommands {
     }
     this.shape = shape;
     this.type = type;
-
     if (shape.getTime().getStartTime() < startTime || shape.getTime().getEndTime() > endTime) {
       this.startTime = startTime;
       this.endTime = endTime;
@@ -70,7 +81,6 @@ public abstract class ACommand implements ICommands {
   public AShape getTheShape() {
     return shape.getTheShape();
   }
-
 
   @Override
   public CommandType getType() {
