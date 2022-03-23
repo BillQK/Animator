@@ -25,8 +25,23 @@ public class ArgumentsCheck {
   }
 
 
+<<<<<<< HEAD
   public static void overlappingTime(double shapeStart, double shapeEnd, double comStart, double comEnd) {
     if ((shapeStart < comEnd && shapeEnd > comEnd) || (comStart > comEnd) || (shapeStart > shapeEnd)) {
+=======
+  public static void overlappingTime(double shapeStart, double shapeEnd,
+                                     double comStart, double comEnd) {
+//    if ((shapeStart < comEnd && shapeEnd > comEnd)
+//            || (shapeStart < comStart && shapeEnd > comStart)
+//            || (comStart > comEnd) || (shapeStart > shapeEnd)
+//            || (comStart < shapeStart && comEnd > shapeEnd)
+//            || (comStart == shapeStart && comEnd == shapeEnd))
+    if (shapeEnd <= shapeStart || comEnd <= comStart) {
+      throw new IllegalArgumentException("Invalid time range");
+    }
+    //    if (shapeStart <= comEnd && comStart <= shapeEnd) {
+    if (shapeStart < comEnd && comStart < shapeEnd) {
+>>>>>>> abdca77069d73b7a743354b862d85102a3590e90
       throw new IllegalArgumentException("Time is overlapping with another animation.");
     }
   }

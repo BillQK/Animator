@@ -3,6 +3,7 @@ import org.junit.Test;
 import java.awt.*;
 
 import model.SimpleAnimatorModel;
+import model.command.CommandType;
 import model.shape.Ellipse;
 import model.shape.Rectangle;
 import model.shape.Shape;
@@ -52,6 +53,7 @@ public class AnimatorModelTest {
             new Rectangle("1",
                     Shape.RECTANGLE, r, 10, 15, 100, 200, new Time(0, 10)));
 
+
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -96,6 +98,12 @@ public class AnimatorModelTest {
             .setTime(100)
             .addEllipse("1", 10, 15, 100, 200, 10, 10, 10, new Time(90, 110))
             .build();
+    Color e = new Color(10, 10, 10);
+    assertEquals(s.getShapes().get(1),
+            new Ellipse("2",
+                    Shape.ELLIPSE, e, 15, 15, 100, 200, new Time(0, 10)));
+    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
+    assertEquals(s.getTime(), new Time(0, 1000));
   }
 
 
@@ -114,8 +122,6 @@ public class AnimatorModelTest {
 
     assertEquals(s.getShapes().size(), 7);
   }
-
-
 
 
 }

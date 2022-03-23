@@ -2,6 +2,7 @@ package model;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     this.shapes.put(id, s);
   }
 
+  //Not want to test yet
   @Override
   public void addCommands(String id, List<ICommands> a) {
     this.commands.put(id, a);
@@ -43,7 +45,26 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public String getState() {
-    return null;
+    String finalString = "";
+    for (String s : this.shapes.keySet()) {
+      finalString += "Shape: " + s + " " + this.shapes.get(s).getType().getShapeType() + "\n";
+
+      //The order of what we print in one motion
+      finalString += "motion " + s + " t " + "x " + "y " + "w " + "h " + "r " + "g " + "b "
+              + "  " + "t " + "x " + "y " + "w " + "h " + "r " + "g " + "b\n";
+
+      sortCommandList(this.commands.get(s));
+      for (int i = 0; i < this.commands.get(s).size(); i++) {
+        ICommands com = this.commands.get(s).get(i);
+        if (i != (this.commands.get(s).size() - 1)) {
+          finalString += "motion " + com.getBeginsState() + " " + com.getEndsState() + "\n";
+        } else {
+          finalString += "motion " + com.getBeginsState() + " " + com.getEndsState() + "\n\n";
+        }
+      }
+
+    }
+    return finalString;
   }
 
   @Override
@@ -57,9 +78,21 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     return l;
   }
 
+  /**
+   * Sorting method.
+   * @param l the list of commands of a shape
+   */
+  public void sortCommandList(List<ICommands> l) {
+    Collections.sort(l);
+  }
+
   @Override
-  public List<ICommands> getCommands() {
-    return null;
+  public List<List<ICommands>> getCommands() {
+    List<List<ICommands>> answer = new ArrayList<>();
+    for (String c : this.commands.keySet()) {
+      answer.add(this.commands.get(c));
+    }
+    return answer;
   }
 
   @Override
