@@ -28,7 +28,6 @@ public class ArgumentsCheck {
     }
   }
 
-
   /**
    * Check if one given start and end time is within
    * the range of another given start and end time.

@@ -56,4 +56,5 @@ public class Move extends ACommand {
             + " " + shape.getColor().getBlue() + " ";
     return a;
   }
+
 }
