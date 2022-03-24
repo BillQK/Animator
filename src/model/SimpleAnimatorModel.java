@@ -41,6 +41,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   @Override
   public void addShape(String id, AShape s) {
+    if (shapes.containsKey(id)) {
+      throw new IllegalArgumentException("Shape has already been set");
+    }
     this.shapes.put(id, s);
   }
 
@@ -67,7 +70,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
           finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n";
-          this.commands.get(s).get(i).execute(this.commands.get(s).get(i+1).getStart());
+          this.commands.get(s).get(i).execute(this.commands.get(s).get(i + 1).getStart());
         } else {
           finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n\n";
         }
@@ -92,7 +95,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   public List<List<ICommands>> getCommands() {
     List<List<ICommands>> answer = new ArrayList<>();
     for (String c : this.commands.keySet()) {
-//      this.commands.get(c).sort(Comparable::compareTo);
       Collections.sort(this.commands.get(c));
       answer.add(this.commands.get(c));
     }
@@ -155,7 +157,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
               time.getStartTime(), time.getEndTime());
-      ArgumentsCheck.colorRange(red,green,blue);
+      ArgumentsCheck.colorRange(red, green, blue);
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
 
       // Assign Variable
@@ -192,7 +194,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
               time.getStartTime(), time.getEndTime());
-      ArgumentsCheck.colorRange(red,green,blue);
+      ArgumentsCheck.colorRange(red, green, blue);
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
 
       // Assign Variable

@@ -64,11 +64,11 @@ public abstract class ACommand implements ICommands {
     return shape.getName() + " "
             + startTime + " "
             + shape.getPosition().toString()
-            + Math.round(shape.getWidth()) + " "
-            + Math.round(shape.getHeight()) + " "
-            + Math.round(shape.getColor().getRed()) + " "
-            + Math.round(shape.getColor().getGreen()) + " "
-            + Math.round(shape.getColor().getBlue()) + " ";
+            + shape.getWidth() + " "
+            + shape.getHeight() + " "
+            + shape.getColor().getRed() + " "
+            + shape.getColor().getGreen() + " "
+            + shape.getColor().getBlue() + " ";
   }
 
   @Override

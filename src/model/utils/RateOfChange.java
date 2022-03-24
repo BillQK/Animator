@@ -5,6 +5,9 @@ package model.utils;
  */
 public class RateOfChange {
   public static double findRate(double current, double start, double end) {
+    if (current < start) {
+      return 0;
+    }
     return Math.abs((current - start) / (end - start));
   }
 
