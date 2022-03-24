@@ -40,6 +40,7 @@ public class ShapeTest {
   double DELTA = Integer.MIN_VALUE;
   //-----------------------TEST FOR SHAPE INTERFACE----------------------------//
 
+  //Test get the shape method
   @Test
   public void testGetTheShape() {
     assertEquals(recShape.getTheShape(), new Rectangle(recN, Shape.RECTANGLE, recCol, recPosX,
@@ -48,42 +49,49 @@ public class ShapeTest {
             ellipPosY, ellipW, ellipH, ellipT));
   }
 
+  //Test get name
   @Test
   public void testGetName() {
     assertEquals(recShape.getName(), "R");
     assertEquals(ellipShape.getName(), "E");
   }
 
+  //Test get type
   @Test
   public void testGetType() {
     assertEquals(recShape.getType(), Shape.RECTANGLE);
     assertEquals(ellipShape.getType(), Shape.ELLIPSE);
   }
 
+//Test get position
   @Test
   public void testGetPosition() {
     assertEquals(recShape.getPosition(), new Posn(recPosX, recPosY));
     assertEquals(ellipShape.getPosition(), new Posn(ellipPosX, ellipPosY));
   }
 
+  //Test get color
   @Test
   public void testGetColor() {
     assertEquals(recShape.getColor(), new Color(recCol.getRGB()));
     assertEquals(ellipShape.getColor(), new Color(ellipCol.getRGB()));
   }
 
+  //Test get height
   @Test
   public void testGetHeight() {
     assertEquals(recShape.getHeight(), 20, DELTA);
     assertEquals(ellipShape.getHeight(), 20, DELTA);
   }
 
+  //Test get width
   @Test
   public void testGetWidth() {
     assertEquals(recShape.getWidth(), 40, DELTA);
     assertEquals(ellipShape.getWidth(), 30, DELTA);
   }
 
+  //Test set Width
   @Test
   public void testSetWidth() {
     int givw = 50;
@@ -91,6 +99,7 @@ public class ShapeTest {
     assertEquals(recShape.getWidth(), 50, DELTA);
   }
 
+  //Test set Height
   @Test
   public void testSetHeight() {
     int givh = 5;
@@ -98,6 +107,7 @@ public class ShapeTest {
     assertEquals(ellipShape.getHeight(), 5, DELTA);
   }
 
+  //Test set Color
   @Test
   public void testSetColor() {
     Color col = new Color(10, 10, 10);
@@ -105,6 +115,7 @@ public class ShapeTest {
     assertEquals(recShape.getColor(), new Color(10, 10, 10));
   }
 
+  //Test set position
   @Test
   public void testSetPosn() {
     Posn pos = new Posn(60, 60);
@@ -230,11 +241,13 @@ public class ShapeTest {
 
   //-------------------------TEST FOR ENUM SHAPE-------------------------//
 
+  //Test GetShapeType method in Enum Shape class.
   @Test
   public void testRectangleShapeinEnum() {
     assertEquals(recS.getShapeType(), "Rectangle");
   }
 
+  //Test GetShapeType method in Enum Shape class.
   @Test
   public void testEllipseShapeinEnum() {
     assertEquals(ellipS.getShapeType(), "Ellipse");

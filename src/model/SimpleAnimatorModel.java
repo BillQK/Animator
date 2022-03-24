@@ -289,8 +289,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
 
       this.commands.get(idShape).add(command);
-//      this.commands.get(idShape).sort(Comparable::compareTo);
-
       return this;
     }
 
@@ -329,7 +327,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       //One method for sorting the list based on the times of animations.
 
       this.commands.get(idShape).add(command);
-//      this.commands.get(idShape).sort(Comparable::compareTo);
       return this;
     }
 
@@ -363,7 +360,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
 
       this.commands.get(idShape).add(command);
-//      this.commands.get(idShape).sort(Comparable::compareTo);
       return this;
     }
 
