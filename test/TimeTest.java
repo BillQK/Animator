@@ -14,30 +14,35 @@ public class TimeTest {
   double endTime = 40;
   double DELTA = Integer.MIN_VALUE;
 
+  //Get start time
   @Test
   public void testGetStartTime() {
     Time t = new Time(startTime, endTime);
     assertEquals(t.getStartTime(), startTime, DELTA);
   }
 
+  //Get start time of the constructor with 1 inputs - endTime
   @Test
   public void testGetStartTime1() {
     Time t = new Time(endTime);
     assertEquals(t.getStartTime(), 0, DELTA);
   }
 
+  //Get end time
   @Test
   public void testGetEndTime() {
     Time t = new Time(startTime, endTime);
     assertEquals(t.getEndTime(), endTime, DELTA);
   }
 
+  //Get end time of the constructor with 1 inputs - endTime
   @Test
   public void testGetEndTime1() {
     Time t = new Time(endTime);
     assertEquals(t.getEndTime(), endTime, DELTA);
   }
 
+  //Test equal
   @Test
   public void testEqual() {
     Time t = new Time(startTime, endTime);
@@ -45,6 +50,7 @@ public class TimeTest {
     assertTrue(t.equals(t1));
   }
 
+  //Test equal for the constructor with 1 inputs - endTime
   @Test
   public void testEqual1() {
     Time t = new Time(0, endTime);
@@ -52,42 +58,49 @@ public class TimeTest {
     assertTrue(t.equals(t1));
   }
 
+  //Test constructor when given bigger start time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenStartBiggerThanEndTime() {
     Time t = new Time(40, 30);
     assertEquals(t.getEndTime(), 30, DELTA);
   }
 
+  //Test constructor when given negative start time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNegStartTime() {
     Time t = new Time(-10, endTime);
     assertEquals(t.getEndTime(), endTime, DELTA);
   }
 
+  //Test constructor when given negative end time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNegEndTime() {
     Time t = new Time(startTime, -10);
     assertEquals(t.getStartTime(), startTime, DELTA);
   }
 
+  //Test constructor when given negative start and end time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNegEndAndStartTime() {
     Time t = new Time(-10, -10);
     assertEquals(t.getStartTime(), startTime, DELTA);
   }
 
+  //Test constructor 1 inputs when given negative end time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNegEndTime1Argument() {
     Time t = new Time( -10);
     assertEquals(t.getStartTime(), startTime, DELTA);
   }
 
+  //Test constructor when given null time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNullTime() {
     Time t = new Time(null);
     assertEquals(t.getStartTime(), startTime, DELTA);
   }
 
+  //Test constructor for a time inputs when given negative start time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNegTime1() {
     Time t1 = new Time(-10, endTime);
@@ -95,6 +108,7 @@ public class TimeTest {
     assertEquals(t.getStartTime(), startTime, DELTA);
   }
 
+  //Test constructor for a time inputs when given negative end time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNegTime2() {
     Time t1 = new Time(startTime, -10);
