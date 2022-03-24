@@ -263,17 +263,14 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-    private boolean overlap(CommandType type, double startTime,
-                            double endTime, List<ICommands> iCommands) {
+    private boolean overlap(double startTime, double endTime, List<ICommands> iCommands) {
       for (ICommands c : iCommands) {
-        if (c.getType() == type) {
           try {
             ArgumentsCheck.overlappingTime(c.getStart(), c.getEnd(), startTime, endTime);
           } catch (IllegalArgumentException e) {
             return true;
           }
         }
-      }
       return false;
     }
 
@@ -294,7 +291,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Invalid Shape");
       }
 
-      if (overlap(CommandType.MOVE, startTime, endTime, this.commands.get(idShape))) {
+      if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
       }
       AShape shape = shapes.get(idShape);
@@ -326,7 +323,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Invalid Shape");
       }
 
-      if (overlap(CommandType.MOVE, startTime, endTime, this.commands.get(idShape))) {
+      if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
       }
       AShape shape = shapes.get(idShape);
@@ -364,7 +361,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Invalid Shape");
       }
 
-      if (overlap(CommandType.CHANGE_DIMENSION, startTime, endTime, this.commands.get(idShape))) {
+      if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
       }
       AShape shape = shapes.get(idShape);
