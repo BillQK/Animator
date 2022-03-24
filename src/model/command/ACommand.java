@@ -39,6 +39,7 @@ public abstract class ACommand implements ICommands {
     }
   }
 
+
   @Override
   public abstract void execute(double time);
 

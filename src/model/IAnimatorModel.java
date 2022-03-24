@@ -17,16 +17,26 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
   /**
    * A method to add the specific shape to the model.
    *
-   * @param id a String - the id to map it with the shape.
    * @param s an AShape - the shape to add in the model
+   * @throws IllegalArgumentException if id has already been used
    */
-  void addShape(String id, AShape s);
+  void addShape(AShape s);
 
   /**
    * A method to add the specific List of commands to the model.
    *
    * @param id a String - the id to map it with the list.
    * @param a an AShape - the List of command to add in the model
+   * @throws IllegalArgumentException if the ICommands in the list
+   *                                  is not correlate with the shape inside the model
    */
   void addCommands(String id, List<ICommands> a);
+
+  /**
+   * A method to delete a shape and its commands.
+   * @param id a String
+   * @throws IllegalArgumentException if the id is not valid
+   */
+  void deleteShape(String id);
+
 }

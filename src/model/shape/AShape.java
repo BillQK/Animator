@@ -14,30 +14,30 @@ import model.utils.Time;
 public abstract class AShape {
   private final String name;
   private final Shape type;
+  private final Time time;
   private Color col;
   private double w;
   private double h;
-  private final Time time;
   private Posn pos;
 
   /**
    * A constructor for Ashape.
    *
-   * @param name the name of the shape
-   * @param type the type of the shape (Rectangle or Ellipse)
-   * @param col the color of the shape
-   * @param posX the x position of the shape
-   * @param posY the y position of the shape
-   * @param width the width of the shape
+   * @param name   the name of the shape
+   * @param type   the type of the shape (Rectangle or Ellipse)
+   * @param col    the color of the shape
+   * @param posX   the x position of the shape
+   * @param posY   the y position of the shape
+   * @param width  the width of the shape
    * @param height the height of the shape
-   * @param time the Time of the shape
+   * @param time   the Time of the shape
    */
   public AShape(String name, Shape type, Color col, double posX, double posY,
                 double width, double height, Time time) {
     if (name == null || type == null || col == null || time == null) {
       throw new IllegalArgumentException("The given arguments cannot be null/empty/negative");
     }
-    ArgumentsCheck.lessThanZero(width, height, posX, posY);
+    ArgumentsCheck.lessThanZero(width, height);
     ArgumentsCheck.emptyString(name, type.getShapeType());
     ArgumentsCheck.colorRange(col.getRed(), col.getGreen(), col.getBlue());
     this.name = name;
@@ -91,31 +91,24 @@ public abstract class AShape {
   }
 
   /**
+   * A method to set the color of the shape to a new given color.
+   *
+   * @param color a Color - the new given Color
+   */
+  public void setColor(Color color) {
+    if (color == null) {
+      throw new IllegalArgumentException("The color of the shape cannot be null.");
+    }
+    this.col = color;
+  }
+
+  /**
    * A method to get the width of the shape.
    *
    * @return a double - the shape's width
    */
   public double getWidth() {
     return this.w;
-  }
-
-  /**
-   * A method to get the height of the shape.
-   *
-   * @return a double - the shape's height
-   */
-  public double getHeight() {
-    return this.h;
-  }
-
-
-  /**
-   * A method to get the time of the shape.
-   *
-   * @return a Time - the shape's time
-   */
-  public Time getTime() {
-    return this.time;
   }
 
   /**
@@ -131,6 +124,15 @@ public abstract class AShape {
   }
 
   /**
+   * A method to get the height of the shape.
+   *
+   * @return a double - the shape's height
+   */
+  public double getHeight() {
+    return this.h;
+  }
+
+  /**
    * A method to set the height of the shape to a new given height.
    *
    * @param height a double - the new given height
@@ -143,15 +145,12 @@ public abstract class AShape {
   }
 
   /**
-   * A method to set the color of the shape to a new given color.
+   * A method to get the time of the shape.
    *
-   * @param color a Color - the new given Color
+   * @return a Time - the shape's time
    */
-  public void setColor(Color color) {
-    if (color == null) {
-      throw new IllegalArgumentException("The color of the shape cannot be null.");
-    }
-    this.col = color;
+  public Time getTime() {
+    return this.time;
   }
 
   /**
