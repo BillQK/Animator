@@ -298,7 +298,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Invalid Shape");
       }
 
-      if (this.commands.size() != 0) {
+      if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
         if (!(startTime == value)) {
           throw new IllegalArgumentException("Gap Error");
@@ -336,7 +336,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      if (this.commands.size() != 0) {
+      if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
         if (!(startTime == value)) {
           throw new IllegalArgumentException("Gap Error");
@@ -380,7 +380,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
-      if (this.commands.size() != 0) {
+      if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
         if (!(startTime == value)) {
           throw new IllegalArgumentException("Gap Error");

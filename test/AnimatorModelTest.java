@@ -154,12 +154,12 @@ public class AnimatorModelTest {
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
             .addChangeColor("1", new Color(20, 20, 20), 1, 3)
-            .addChangeDimension("1", 150, 250, 6, 9)
-            .addMove("1", 11, 30, 3, 6)
+            .addChangeDimension("1", 150, 250, 3, 6)
+            .addMove("1", 11, 30, 6, 9)
             .build();
     assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.CHANGE_COLOR);
-    assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.MOVE);
-    assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
+    assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.CHANGE_DIMENSION);
+    assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.MOVE);
   }
 
   @Test
@@ -169,13 +169,13 @@ public class AnimatorModelTest {
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
             .addChangeColor("1", new Color(20, 20, 20), 3, 5)
-            .addMove("1", 11, 30, 1, 3)
+            .addMove("1", 11, 30, 5, 6)
             .addChangeDimension("1", 150, 250, 6, 9)
             .build();
-    assertEquals(s.getCommands().get(0).get(0).getStart(), 1, 0.01);
-    assertEquals(s.getCommands().get(0).get(0).getEnd(), 3, 0.01);
-    assertEquals(s.getCommands().get(0).get(1).getStart(), 3, 0.01);
-    assertEquals(s.getCommands().get(0).get(1).getEnd(), 5, 0.01);
+    assertEquals(s.getCommands().get(0).get(0).getStart(), 3, 0.01);
+    assertEquals(s.getCommands().get(0).get(0).getEnd(), 5, 0.01);
+    assertEquals(s.getCommands().get(0).get(1).getStart(), 5, 0.01);
+    assertEquals(s.getCommands().get(0).get(1).getEnd(), 6, 0.01);
     assertEquals(s.getCommands().get(0).get(2).getStart(), 6, 0.01);
     assertEquals(s.getCommands().get(0).get(2).getEnd(), 9, 0.01);
   }
@@ -187,11 +187,11 @@ public class AnimatorModelTest {
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
             .addChangeColor("1", new Color(20, 20, 20), 3, 5)
-            .addMove("1", 11, 30, 1, 3)
+            .addMove("1", 11, 30, 5, 6)
             .addChangeDimension("1", 150, 250, 6, 9)
             .build();
-    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
-    assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.CHANGE_COLOR);
+    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.CHANGE_COLOR);
+    assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
   }
 
@@ -201,16 +201,16 @@ public class AnimatorModelTest {
             .setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 40))
-            .addChangeColor("1", new Color(20, 20, 20), 9, 20)
-            .addMove("1", 11, 30, 1, 4)
-            .addChangeDimension("1", 150, 250, 30, 40)
-            .addMove("1", 11, 40, 4, 9)
-            .addChangeDimension("1", 200, 200, 20, 30)
+            .addChangeColor("1", new Color(20, 20, 20), 0, 10)
+            .addMove("1", 11, 30, 10, 15)
+            .addChangeDimension("1", 150, 250, 15, 20)
+            .addMove("1", 11, 40, 20, 30)
+            .addChangeDimension("1", 200, 200, 30, 40)
             .build();
-    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
+    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.CHANGE_COLOR);
     assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.MOVE);
-    assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_COLOR);
-    assertEquals(s.getCommands().get(0).get(3).getType(), CommandType.CHANGE_DIMENSION);
+    assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
+    assertEquals(s.getCommands().get(0).get(3).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(4).getType(), CommandType.CHANGE_DIMENSION);
   }
 
@@ -320,12 +320,12 @@ public class AnimatorModelTest {
     s = new SimpleAnimatorModel.AMBuilder().setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addChangeDimension("1",10, 10, 1, 5)
+            .addChangeDimension("1",10, 10, 0, 5)
             .addMove("1", 1, 10, 5, 10)
             .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addMove("2", 20, 20, 5, 10)
-            .addChangeColor("2", new Color(100, 100, 100), 1, 5)
+            .addMove("2", 20, 20, 0, 5)
+            .addChangeColor("2", new Color(100, 100, 100), 5, 10)
             .build();
 
     assertEquals(s.getCommands().size(), 2);
@@ -339,8 +339,8 @@ public class AnimatorModelTest {
             .addChangeDimension("1",10, 10, 1, 5)
             .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addMove("2", 20, 20, 5, 10)
-            .addChangeColor("2", new Color(100, 100, 100), 1, 5)
+            .addMove("2", 20, 20, 1, 5)
+            .addChangeColor("2", new Color(100, 100, 100), 5, 10)
             .build();
 
     assertEquals(s.getCommands().get(0).size(), 1);
@@ -354,8 +354,8 @@ public class AnimatorModelTest {
             .addChangeDimension("1",10, 10, 1, 5)
             .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addMove("2", 20, 20, 5, 10)
-            .addChangeColor("2", new Color(100, 100, 100), 1, 5)
+            .addMove("2", 20, 20, 1, 5)
+            .addChangeColor("2", new Color(100, 100, 100), 5, 10)
             .build();
 
     assertEquals(s.getCommands().get(1).size(), 2);
