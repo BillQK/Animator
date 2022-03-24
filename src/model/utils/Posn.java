@@ -109,7 +109,7 @@ public class Posn {
 
   @Override
   public String toString() {
-    return this.x + " " + this.y + " ";
+    return Math.round(this.x) + " " + Math.round(this.y) + " ";
   }
 
   @Override

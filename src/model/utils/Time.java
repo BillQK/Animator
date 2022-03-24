@@ -2,6 +2,8 @@ package model.utils;
 
 import java.util.Objects;
 
+import model.command.ICommands;
+
 /**
  * A Time class.
  */

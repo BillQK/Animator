@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import model.utils.ArgumentsCheck;
@@ -11,6 +12,36 @@ public class ArgumentsCheckTest {
   public void testLessThanZero() {
     ArgumentsCheck.lessThanZero(0.0, 10.0, 0.2, 20.0);
     assertTrue(true);
+  }
+
+  @Test
+  public void testNoEmptyString() {
+    ArgumentsCheck.emptyString("hello", "world", " - d");
+    assertTrue(true);
+  }
+
+  @Test
+  public void testOutOfIntervalTime() {
+    try {
+      ArgumentsCheck.withinIntervalTime(10.0, 15.0,
+              11.0, 16.0);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "Time does not range within the bigger time frame.");
+    }
+  }
+
+  @Test
+  public void testInIntervalTime() {
+    ArgumentsCheck.withinIntervalTime(10.0, 15.0, 10.0, 15.0);
+    assertTrue(true);
+  }
+
+  @Test
+  public void testNotOverlapTime() {
+    ArgumentsCheck.overlappingTime(30, 40, 10, 20);
+    ArgumentsCheck.overlappingTime(50, 60, 70, 90);
+    ArgumentsCheck.overlappingTime(15, 40, 13, 15);
+    ArgumentsCheck.overlappingTime(15, 20, 20, 40);
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -35,10 +66,6 @@ public class ArgumentsCheckTest {
 
   @Test
   public void testOverlappingTime() {
-    ArgumentsCheck.overlappingTime(30, 40, 10, 20);
-    ArgumentsCheck.overlappingTime(50, 60, 10, 40);
-    ArgumentsCheck.overlappingTime(15, 40, 0, 14);
-    ArgumentsCheck.overlappingTime(15, 20, 25, 40);
     try {
       ArgumentsCheck.overlappingTime(0, 20, 1, 19);
     } catch (IllegalArgumentException e) {

@@ -29,6 +29,19 @@ public class ArgumentsCheck {
   }
 
   /**
+   * Check if the inputs is an invalid color parameter
+   *
+   * @param args the multiple input (int) put in to check
+   */
+  public static void colorRange(int... args) {
+    for (int i : args) {
+      if (i < 0 || i > 255) {
+        throw new IllegalArgumentException("Invalid color parameter");
+      }
+    }
+  }
+
+  /**
    * Check if one given start and end time is within
    * the range of another given start and end time.
    *

@@ -39,6 +39,7 @@ public abstract class AShape {
     }
     ArgumentsCheck.lessThanZero(width, height, posX, posY);
     ArgumentsCheck.emptyString(name, type.getShapeType());
+    ArgumentsCheck.colorRange(col.getRed(), col.getGreen(), col.getBlue());
     this.name = name;
     this.type = type;
     this.col = col;

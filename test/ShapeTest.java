@@ -140,6 +140,22 @@ public class ShapeTest {
     assertEquals(nC.getType(), Shape.RECTANGLE);
   }
 
+  //Test setColor with a given invalid parameter Color
+  @Test(expected = IllegalArgumentException.class)
+  public void testSetWidthWInvalidParameterColor() {
+    AShape nC = new Rectangle(recN, Shape.RECTANGLE, new Color(-10, 0, 255),
+            recPosX, recPosY, recW, recH, recT);
+    assertEquals(nC.getType(), Shape.RECTANGLE);
+  }
+
+  //Test setColor with a given invalid parameter Color
+  @Test(expected = IllegalArgumentException.class)
+  public void testSetWidthWInvalidParameterColor1() {
+    AShape nC = new Rectangle(recN, Shape.RECTANGLE, new Color(10, 0, 256),
+            recPosX, recPosY, recW, recH, recT);
+    assertEquals(nC.getType(), Shape.RECTANGLE);
+  }
+
   //Test given a negative x position
   @Test(expected = IllegalArgumentException.class)
   public void testNegPosX() {

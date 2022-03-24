@@ -61,11 +61,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       finalString += "motion " + s + " Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue "
               + "  " + "Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue\n";
 
+//      this.commands.get(s).sort(Comparable::compareTo);
+      Collections.sort(this.commands.get(s));
       for (int i = 0; i < this.commands.get(s).size(); i++) {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
           finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n";
-          this.commands.get(s).get(i).execute(this.commands.get(s).get(i).getEnd());
+          this.commands.get(s).get(i).execute(this.commands.get(s).get(i+1).getStart());
         } else {
           finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n\n";
         }
@@ -90,6 +92,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   public List<List<ICommands>> getCommands() {
     List<List<ICommands>> answer = new ArrayList<>();
     for (String c : this.commands.keySet()) {
+//      this.commands.get(c).sort(Comparable::compareTo);
       Collections.sort(this.commands.get(c));
       answer.add(this.commands.get(c));
     }
@@ -152,6 +155,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
               time.getStartTime(), time.getEndTime());
+      ArgumentsCheck.colorRange(red,green,blue);
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
 
       // Assign Variable
@@ -188,6 +192,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
               time.getStartTime(), time.getEndTime());
+      ArgumentsCheck.colorRange(red,green,blue);
       ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
 
       // Assign Variable
@@ -198,7 +203,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       List<ICommands> mtRL = new ArrayList<>();
       this.shapes.put(id, shape);
       this.commands.put(id, mtRL);
-
       return this;
     }
 
@@ -244,9 +248,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
 
       ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
-      //One method for sorting the list based on the times of animations.
 
       this.commands.get(idShape).add(command);
+//      this.commands.get(idShape).sort(Comparable::compareTo);
+
       return this;
     }
 
@@ -274,6 +279,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (color == null) {
         throw new IllegalArgumentException("The given ending color cannot be null");
       }
+      ArgumentsCheck.colorRange(color.getRed(), color.getGreen(), color.getBlue());
       ArgumentsCheck.lessThanZero(color.getRed(), color.getGreen(), color.getBlue(),
               startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
@@ -284,6 +290,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       //One method for sorting the list based on the times of animations.
 
       this.commands.get(idShape).add(command);
+//      this.commands.get(idShape).sort(Comparable::compareTo);
       return this;
     }
 
@@ -317,6 +324,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
 
       this.commands.get(idShape).add(command);
+//      this.commands.get(idShape).sort(Comparable::compareTo);
       return this;
     }
 

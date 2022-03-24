@@ -49,8 +49,10 @@ public abstract class ACommand implements ICommands {
     } else if (startTime == o.getStart()) {
       if (endTime > o.getEnd()) {
         return 1;
-      } else {
+      } else if (endTime == o.getEnd()) {
         return 0;
+      } else {
+        return -1;
       }
     } else {
       return -1;
@@ -62,11 +64,11 @@ public abstract class ACommand implements ICommands {
     return shape.getName() + " "
             + startTime + " "
             + shape.getPosition().toString()
-            + shape.getWidth() + " "
-            + shape.getHeight() + " "
-            + shape.getColor().getRed() + " "
-            + shape.getColor().getGreen() + " "
-            + shape.getColor().getBlue() + " ";
+            + Math.round(shape.getWidth()) + " "
+            + Math.round(shape.getHeight()) + " "
+            + Math.round(shape.getColor().getRed()) + " "
+            + Math.round(shape.getColor().getGreen()) + " "
+            + Math.round(shape.getColor().getBlue()) + " ";
   }
 
   @Override

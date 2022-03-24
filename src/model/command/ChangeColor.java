@@ -3,6 +3,7 @@ package model.command;
 import java.awt.*;
 
 import model.shape.AShape;
+import model.utils.ArgumentsCheck;
 import model.utils.RateOfChange;
 
 /**
@@ -13,6 +14,7 @@ public class ChangeColor extends ACommand {
 
   public ChangeColor(AShape shape, double startTime, double endTime, Color endColor) {
     super(shape, CommandType.CHANGE_COLOR, startTime, endTime);
+    ArgumentsCheck.colorRange(endColor.getRed(), endColor.getGreen(), endColor.getBlue());
     this.endColor = endColor;
   }
 
@@ -35,9 +37,12 @@ public class ChangeColor extends ACommand {
     double changeInGreen = (destG - currentG) * rateOfChange;
     double changeInBlue = (destB - currentB) * rateOfChange;
 
-    Color newColor = new Color((int) (currentR + changeInRed),
-            (int) (currentG + changeInGreen),
-            (int) (currentB + changeInBlue));
+    int newR = (int) (currentR + changeInRed);
+    int newG = (int) (currentG + changeInGreen);
+    int newB = (int) (currentB + changeInBlue);
+
+    ArgumentsCheck.colorRange(newR, newG, newB);
+    Color newColor = new Color(newR, newG, newB);
 
     shape.setColor(newColor);
   }

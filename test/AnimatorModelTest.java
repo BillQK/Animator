@@ -174,5 +174,26 @@ public class AnimatorModelTest {
 
   }
 
+  @Test
+  public void testBuilderGetCommand1() {
+    s = new SimpleAnimatorModel.AMBuilder()
+            .setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10, new Time(0, 10))
+            .addChangeColor("1", new Color(20, 20, 20), 4, 10)
+            .addMove("1", 11, 30, 1, 4)
+            .addChangeDimension("1", 150, 250, 5, 9)
+            .addMove("1", 11, 40, 4, 9)
+            .addChangeDimension("1", 15, 15, 4, 5)
+            .build();
+
+
+//    assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
+//    assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.CHANGE_COLOR);
+//    assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
+
+    System.out.println(s.getState());
+
+  }
+
 
 }
