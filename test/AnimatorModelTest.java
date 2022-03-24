@@ -260,7 +260,7 @@ public class AnimatorModelTest {
             Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
             400, new Time(3, 99));
 
-    ICommands c = new Move(rec1, 4, 30, new Posn(1,4));
+    ICommands c = new Move(rec1, 4, 30, new Posn(1, 4));
 
     s.addShape(rec1);
     s.addCommands(c);
@@ -276,7 +276,7 @@ public class AnimatorModelTest {
             Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
             400, new Time(3, 99));
 
-    ICommands c = new Move(rec1, 4, 30, new Posn(1,4));
+    ICommands c = new Move(rec1, 4, 30, new Posn(1, 4));
 
     // Throw IllegalException
     s.addCommands(c);
@@ -290,7 +290,7 @@ public class AnimatorModelTest {
             Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
             400, new Time(3, 99));
 
-    ICommands c = new Move(rec1, 4, 30, new Posn(1,4));
+    ICommands c = new Move(rec1, 4, 30, new Posn(1, 4));
 
     s.addShape(rec1);
     s.addCommands(c);
@@ -305,7 +305,7 @@ public class AnimatorModelTest {
     s = new SimpleAnimatorModel.AMBuilder().setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addChangeDimension("1",10, 10, 1, 5)
+            .addChangeDimension("1", 10, 10, 1, 5)
             .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
             .addRectangle("3", 10, 15, 100, 200, 10, 10, 10,
@@ -320,7 +320,7 @@ public class AnimatorModelTest {
     s = new SimpleAnimatorModel.AMBuilder().setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addChangeDimension("1",10, 10, 0, 5)
+            .addChangeDimension("1", 10, 10, 0, 5)
             .addMove("1", 1, 10, 5, 10)
             .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
@@ -336,7 +336,7 @@ public class AnimatorModelTest {
     s = new SimpleAnimatorModel.AMBuilder().setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addChangeDimension("1",10, 10, 1, 5)
+            .addChangeDimension("1", 10, 10, 1, 5)
             .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
             .addMove("2", 20, 20, 1, 5)
@@ -351,7 +351,7 @@ public class AnimatorModelTest {
     s = new SimpleAnimatorModel.AMBuilder().setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
-            .addChangeDimension("1",10, 10, 1, 5)
+            .addChangeDimension("1", 10, 10, 1, 5)
             .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 10))
             .addMove("2", 20, 20, 1, 5)
@@ -359,6 +359,29 @@ public class AnimatorModelTest {
             .build();
 
     assertEquals(s.getCommands().get(1).size(), 2);
+  }
+
+  @Test
+  public void testUsingBuilderAndInterface() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1", 10, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addMove("2", 20, 20, 1, 5)
+            .addChangeColor("2", new Color(100, 100, 100), 5, 10)
+            .build();
+    AShape ellip = new Ellipse("E", Shape.ELLIPSE, new Color(250, 30, 10),
+            3, 4, 30, 30, new Time(0, 30));
+
+    ICommands c = new Move(ellip, 0, 15, new Posn(30, 20));
+
+    s.addShape(ellip);
+    s.addCommands(c);
+
+    assertEquals(s.getShapes().size(), 3);
+    assertEquals(s.getCommands().size(), 3);
   }
 
 

@@ -53,22 +53,39 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     ArgumentsCheck.withinIntervalTime(time.getStartTime(), time.getEndTime(),
             s.getTime().getStartTime(), s.getTime().getEndTime());
     this.shapes.put(id, s);
+    this.commands.put(id, new ArrayList<>());
   }
 
   /**
    * A method to add the specific List of commands to the model.
    *
-   * @param c an ICommands - the command to be add into the model
-   * @throws IllegalArgumentException if the ICommands in the list
-   *                                  is not correlate with the shape inside the model
+   * @param c an ICommands - the command to be added into the model
+   * @throws IllegalArgumentException if the commands is not correlate with the shape
+   *                                  inside the model, if the command interval create a gap.
+   *
    */
   @Override
   public void addCommands(ICommands c) {
     if (!shapes.containsValue(c.getTheShape())) {
       throw new IllegalArgumentException("Cannot add command.");
     }
+
+    if (this.commands.get(c.getTheShape().getName()).size() != 0) {
+      double value = highestEndTime(this.commands.get(c.getTheShape().getName()));
+      if (!(c.getStart() == value)) {
+        throw new IllegalArgumentException("Gap Error");
+      }
+    }
     this.commands.put(c.getTheShape().getName(), new ArrayList<>());
     this.commands.get(c.getTheShape().getName()).add(c);
+  }
+
+  private double highestEndTime(List<ICommands> commandsList) {
+    List<Double> time = new ArrayList<>();
+    for (ICommands c : commandsList) {
+      time.add(c.getEnd());
+    }
+    return Collections.max(time);
   }
 
   /**
@@ -136,9 +153,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   /**
-   * A method to get the list of list of commands in the model.
+   * A method to get the double list of commands in the model.
    *
-   * @return a List of List - a list of list of command
+   * @return a List of List - a double list of command
    */
   @Override
   public List<List<ICommands>> getCommands() {
@@ -260,25 +277,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       this.shapes.put(id, shape);
       this.commands.put(id, mtRL);
       return this;
-    }
-
-    private double highestEndTime(List<ICommands> commandsList) {
-      List<Double> time = new ArrayList<>();
-      for (ICommands c : commandsList) {
-        time.add(c.getEnd());
-      }
-      return Collections.max(time);
-    }
-
-    private boolean overlap(double startTime, double endTime, List<ICommands> iCommands) {
-      for (ICommands c : iCommands) {
-        try {
-          ArgumentsCheck.overlappingTime(c.getStart(), c.getEnd(), startTime, endTime);
-        } catch (IllegalArgumentException e) {
-          return true;
-        }
-      }
-      return false;
     }
 
     /**
@@ -414,6 +412,26 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("Need to set time");
       }
       return new SimpleAnimatorModel(this);
+    }
+
+
+    private double highestEndTime(List<ICommands> commandsList) {
+      List<Double> time = new ArrayList<>();
+      for (ICommands c : commandsList) {
+        time.add(c.getEnd());
+      }
+      return Collections.max(time);
+    }
+
+    private boolean overlap(double startTime, double endTime, List<ICommands> iCommands) {
+      for (ICommands c : iCommands) {
+        try {
+          ArgumentsCheck.overlappingTime(c.getStart(), c.getEnd(), startTime, endTime);
+        } catch (IllegalArgumentException e) {
+          return true;
+        }
+      }
+      return false;
     }
   }
 }
