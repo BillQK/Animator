@@ -1,6 +1,6 @@
 package model.utils;
 
-public class ArgumentsCheck {
+public final class ArgumentsCheck {
 
   /**
    * Check if the inputs is less than zero.
@@ -73,7 +73,7 @@ public class ArgumentsCheck {
     if (shapeEnd <= shapeStart || comEnd <= comStart) {
       throw new IllegalArgumentException("Invalid time range");
     }
-    //Attention!!!!!!
+
     if (shapeStart < comEnd && comStart < shapeEnd) {
       throw new IllegalArgumentException("Time is overlapping with another animation.");
     }

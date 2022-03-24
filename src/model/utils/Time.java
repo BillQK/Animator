@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * A Time class.
  */
-public class Time {
+public final class Time {
   private double start;
   private double end;
 

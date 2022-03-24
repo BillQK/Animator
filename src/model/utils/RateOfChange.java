@@ -3,7 +3,7 @@ package model.utils;
 /**
  * Represents the calculation of one method to find the rate of change.
  */
-public class RateOfChange {
+public final class RateOfChange {
   public static double findRate(double current, double start, double end) {
     if (current < start) {
       return 0;

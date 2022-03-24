@@ -263,6 +263,14 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
+    private double highestEndTime(List<ICommands> commandsList) {
+      List<Double> time = new ArrayList<>();
+      for (ICommands c : commandsList) {
+        time.add(c.getEnd());
+      }
+      return Collections.max(time);
+    }
+
     private boolean overlap(CommandType type, double startTime,
                             double endTime, List<ICommands> iCommands) {
       for (ICommands c : iCommands) {
@@ -292,6 +300,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                              double startTime, double endTime) {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
+      }
+
+      if (this.commands.size() != 0) {
+        double value = highestEndTime(this.commands.get(idShape));
+        if (!(startTime == value)) {
+          throw new IllegalArgumentException("Gap Error");
+        }
       }
 
       if (overlap(CommandType.MOVE, startTime, endTime, this.commands.get(idShape))) {
@@ -324,6 +339,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
+      }
+      if (this.commands.size() != 0) {
+        double value = highestEndTime(this.commands.get(idShape));
+        if (!(startTime == value)) {
+          throw new IllegalArgumentException("Gap Error");
+        }
       }
 
       if (overlap(CommandType.MOVE, startTime, endTime, this.commands.get(idShape))) {
@@ -362,6 +383,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                         double endW, double endH, double startTime, double endTime) {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
+      }
+      if (this.commands.size() != 0) {
+        double value = highestEndTime(this.commands.get(idShape));
+        if (!(startTime == value)) {
+          throw new IllegalArgumentException("Gap Error");
+        }
       }
 
       if (overlap(CommandType.CHANGE_DIMENSION, startTime, endTime, this.commands.get(idShape))) {

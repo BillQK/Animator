@@ -33,6 +33,7 @@ public class AnimatorTextViewTest {
 
   @Test
   public void testToStringTest() {
+    System.out.println(state.toString());
     assertEquals(state.toString(),
             "Shape: 1 Rectangle\n" +
                     "         START                                  END \n" +

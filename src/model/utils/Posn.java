@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * A Posn class.
  */
-public class Posn {
+public final class Posn {
   private double x;
   private double y;
 
