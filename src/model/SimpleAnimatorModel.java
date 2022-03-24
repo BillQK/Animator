@@ -279,29 +279,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-<<<<<<< HEAD
-    private double highestEndTime(List<ICommands> commandsList) {
-      List<Double> time = new ArrayList<>();
-      for (ICommands c : commandsList) {
-        time.add(c.getEnd());
-      }
-      return Collections.max(time);
-    }
 
-
-    private boolean overlap(double startTime, double endTime, List<ICommands> iCommands) {
-      for (ICommands c : iCommands) {
-        try {
-          ArgumentsCheck.overlappingTime(c.getStart(), c.getEnd(), startTime, endTime);
-        } catch (IllegalArgumentException e) {
-          return true;
-        }
-      }
-      return false;
-    }
-
-=======
->>>>>>> 01d86d18e22c383e3ad2fa7bb4676fb1b64e059f
     /**
      * A method to add the Move command to the model.
      *
@@ -436,8 +414,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       return new SimpleAnimatorModel(this);
     }
-
-
     private double highestEndTime(List<ICommands> commandsList) {
       List<Double> time = new ArrayList<>();
       for (ICommands c : commandsList) {
@@ -445,6 +421,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       return Collections.max(time);
     }
+
 
     private boolean overlap(double startTime, double endTime, List<ICommands> iCommands) {
       for (ICommands c : iCommands) {
@@ -456,5 +433,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       return false;
     }
+
   }
 }

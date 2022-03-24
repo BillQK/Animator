@@ -23,19 +23,11 @@ public class AnimatorTextViewTest {
             .setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 15))
-<<<<<<< HEAD
-            .addChangeColor("1", new Color(20, 20, 20), 8, 9)
-            .addMove("1", 11, 40, 4, 8)
-            .addMove("1", 11, 30, 1, 4)
-            .addChangeDimension("1", 150, 250, 10, 11)
-            .addChangeDimension("1", 200, 200, 11, 15)
-=======
             .addChangeColor("1", new Color(20, 20, 20), 0, 3)
             .addMove("1", 11, 40, 3, 5)
             .addMove("1", 11, 30, 5, 6)
             .addChangeDimension("1", 150, 250, 6, 10)
             .addChangeDimension("1", 200, 200, 10, 15)
->>>>>>> 01d86d18e22c383e3ad2fa7bb4676fb1b64e059f
             .build();
     state = new AnimatorTextView(model);
   }
