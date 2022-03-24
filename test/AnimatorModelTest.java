@@ -4,10 +4,13 @@ import java.awt.*;
 
 import model.SimpleAnimatorModel;
 import model.command.CommandType;
+import model.command.ICommands;
+import model.command.Move;
 import model.shape.AShape;
 import model.shape.Ellipse;
 import model.shape.Rectangle;
 import model.shape.Shape;
+import model.utils.Posn;
 import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
@@ -141,7 +144,6 @@ public class AnimatorModelTest {
             .addEllipse("7", 10, 15, 100, 200, 10, 10, 10,
                     new Time(90, 100))
             .build();
-
     assertEquals(s.getShapes().size(), 7);
   }
 
@@ -155,11 +157,9 @@ public class AnimatorModelTest {
             .addMove("1", 11, 30, 1, 3)
             .addChangeDimension("1", 150, 250, 1, 3)
             .build();
-
     assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.CHANGE_COLOR);
     assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
-
   }
 
   @Test
@@ -172,7 +172,6 @@ public class AnimatorModelTest {
             .addMove("1", 11, 30, 1, 3)
             .addChangeDimension("1", 150, 250, 6, 9)
             .build();
-
     assertEquals(s.getCommands().get(0).get(0).getStart(), 1, 0.01);
     assertEquals(s.getCommands().get(0).get(0).getEnd(), 3, 0.01);
     assertEquals(s.getCommands().get(0).get(1).getStart(), 3, 0.01);
@@ -191,12 +190,9 @@ public class AnimatorModelTest {
             .addMove("1", 11, 30, 1, 3)
             .addChangeDimension("1", 150, 250, 6, 9)
             .build();
-
-
     assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.CHANGE_COLOR);
     assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
-
   }
 
   @Test
@@ -211,15 +207,11 @@ public class AnimatorModelTest {
             .addMove("1", 11, 40, 4, 9)
             .addChangeDimension("1", 200, 200, 10, 15)
             .build();
-
-
     assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_COLOR);
     assertEquals(s.getCommands().get(0).get(3).getType(), CommandType.CHANGE_DIMENSION);
     assertEquals(s.getCommands().get(0).get(4).getType(), CommandType.CHANGE_DIMENSION);
-
-
   }
 
   @Test
@@ -258,6 +250,54 @@ public class AnimatorModelTest {
             400, new Time(3, 101));
 
     s.addShape(rec1);
+  }
+
+  @Test
+  public void testAddCommands() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100).build();
+
+    AShape rec1 = new Rectangle("C",
+            Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
+            400, new Time(3, 99));
+
+    ICommands c = new Move(rec1, 4, 30, new Posn(1,4));
+
+    s.addShape(rec1);
+    s.addCommands(c);
+
+    assertEquals(s.getCommands().size(), 1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddCommandsToShapeThatIsNotInModel() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100).build();
+
+    AShape rec1 = new Rectangle("C",
+            Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
+            400, new Time(3, 99));
+
+    ICommands c = new Move(rec1, 4, 30, new Posn(1,4));
+
+    // Throw IllegalException
+    s.addCommands(c);
+  }
+
+  @Test
+  public void testDeleteShape() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100).build();
+
+    AShape rec1 = new Rectangle("C",
+            Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
+            400, new Time(3, 99));
+
+    ICommands c = new Move(rec1, 4, 30, new Posn(1,4));
+
+    s.addShape(rec1);
+    s.addCommands(c);
+    s.deleteShape("C");
+
+    assertEquals(s.getCommands().size(), 0);
+    assertEquals(s.getShapes().size(), 0);
   }
 
 

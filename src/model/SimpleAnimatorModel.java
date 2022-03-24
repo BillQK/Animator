@@ -59,19 +59,17 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   /**
    * A method to add the specific List of commands to the model.
    *
-   * @param id a String - the id to map it with the list.
-   * @param a  an AShape - the List of command to add in the model
+   * @param c  an AShape - the List of command to add in the model
    * @throws IllegalArgumentException if the ICommands in the list
    *                                  is not correlate with the shape inside the model
    */
   @Override
-  public void addCommands(String id, List<ICommands> a) {
-    for (ICommands c : a) {
+  public void addCommands(ICommands c) {
       if (!shapes.containsValue(c.getTheShape())) {
-        throw new IllegalArgumentException("Cannot add List of animation");
+        throw new IllegalArgumentException("Cannot add command.");
       }
-    }
-    this.commands.put(id, a);
+      this.commands.put(c.getTheShape().getName(), new ArrayList<>());
+      this.commands.get(c.getTheShape().getName()).add(c);
   }
 
   /**
