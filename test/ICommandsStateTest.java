@@ -1,15 +1,13 @@
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
- * A test class for ICommandsState. 
+ * A test class for ICommandsState.
  */
 public class ICommandsStateTest {
 
   @Test
   public void getBeginsState() {
-    
+
   }
 
   @Test

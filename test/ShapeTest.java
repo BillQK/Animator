@@ -63,7 +63,7 @@ public class ShapeTest {
     assertEquals(ellipShape.getType(), Shape.ELLIPSE);
   }
 
-//Test get position
+  //Test get position
   @Test
   public void testGetPosition() {
     assertEquals(recShape.getPosition(), new Posn(recPosX, recPosY));
@@ -175,7 +175,7 @@ public class ShapeTest {
   public void testNegPosX() {
     AShape nnPosX = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, -10, ellipPosY,
             ellipW, ellipH, ellipT);
-    assertEquals(nnPosX.getPosition().getX(), -10,Integer.MIN_VALUE);
+    assertEquals(nnPosX.getPosition().getX(), -10, Integer.MIN_VALUE);
   }
 
   //Test given a negative y position

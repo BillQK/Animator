@@ -13,11 +13,11 @@ public class ChangeDimension extends ACommand {
   /**
    * A constructor for ChangeDimension.
    *
-   * @param shape AShape - the shape to called the changeDimension command on
+   * @param shape     AShape - the shape to called the changeDimension command on
    * @param startTime the start time of the command
-   * @param endTime the end time of the command
-   * @param endW the given end width to change the shape's width to
-   * @param endH the given end height to change the shape's height to
+   * @param endTime   the end time of the command
+   * @param endW      the given end width to change the shape's width to
+   * @param endH      the given end height to change the shape's height to
    */
   public ChangeDimension(AShape shape, double startTime, double endTime,
                          double endW, double endH) {

@@ -13,9 +13,9 @@ public class Move extends ACommand {
   /**
    * A constructor for Move.
    *
-   * @param shape AShape - the shape to called the move command on
-   * @param startTime the start time of the command
-   * @param endTime the end time of the command
+   * @param shape       AShape - the shape to called the move command on
+   * @param startTime   the start time of the command
+   * @param endTime     the end time of the command
    * @param destination the destination position that the shape need to move to
    */
   public Move(AShape shape, double startTime, double endTime, Posn destination) {

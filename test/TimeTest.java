@@ -89,7 +89,7 @@ public class TimeTest {
   //Test constructor 1 inputs when given negative end time
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorGivenNegEndTime1Argument() {
-    Time t = new Time( -10);
+    Time t = new Time(-10);
     assertEquals(t.getStartTime(), startTime, DELTA);
   }
 
