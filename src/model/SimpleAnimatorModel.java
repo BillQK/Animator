@@ -97,7 +97,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
       finalString += "         START                                  END \n";
       //The order of what we print in one motion
-      finalString += "motion " + s + " Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue "
+      finalString += "motion " + s + " Time " + "X " + "Y " + "Width " + "Height " + "Red "
+              + "Green " + "Blue "
               + "  " + "Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue\n";
 
 //      this.commands.get(s).sort(Comparable::compareTo);

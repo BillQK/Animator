@@ -247,5 +247,15 @@ public class AnimatorModelTest {
     s.addShape(rec2);
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddShapeOutSideOfModelInterval() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100).build();
+    AShape rec1 = new Rectangle("C",
+            Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
+            400, new Time(3, 101));
+
+    s.addShape(rec1);
+  }
+
 
 }
