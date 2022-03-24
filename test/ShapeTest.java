@@ -2,11 +2,11 @@ import org.junit.Test;
 
 import java.awt.*;
 
+import model.shape.AShape;
 import model.shape.Ellipse;
-import model.utils.Posn;
 import model.shape.Rectangle;
 import model.shape.Shape;
-import model.shape.AShape;
+import model.utils.Posn;
 import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
@@ -24,7 +24,7 @@ public class ShapeTest {
           recW, recH, recT);
 
   String ellipN = "E";
-  Color ellipCol = new Color(225, 0,0);
+  Color ellipCol = new Color(225, 0, 0);
   double ellipPosX = 20;
   double ellipPosY = 10;
   double ellipW = 30;
@@ -97,9 +97,9 @@ public class ShapeTest {
 
   @Test
   public void testSetColor() {
-    Color col = new Color(10,10, 10);
+    Color col = new Color(10, 10, 10);
     recShape.setColor(col);
-    assertEquals(recShape.getColor(), new Color(10, 10,10));
+    assertEquals(recShape.getColor(), new Color(10, 10, 10));
   }
 
   @Test
@@ -157,19 +157,19 @@ public class ShapeTest {
   }
 
   //Test given a negative x position
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testNegPosX() {
     AShape nnPosX = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, -10, ellipPosY,
             ellipW, ellipH, ellipT);
-    assertEquals(nnPosX.getType(), Shape.ELLIPSE);
+    assertEquals(nnPosX.getPosition().getX(), -10,Integer.MIN_VALUE);
   }
 
   //Test given a negative y position
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testNegPosY() {
     AShape nnPosY = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, -10,
             ellipW, ellipH, ellipT);
-    assertEquals(nnPosY.getType(), Shape.ELLIPSE);
+    assertEquals(nnPosY.getPosition().getY(), -10, Integer.MIN_VALUE);
   }
 
   //Test given a negative Width

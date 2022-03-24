@@ -39,18 +39,54 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     this.time = amBuilder.time;
   }
 
+  /**
+   * A method to add the specific shape to the model.
+   *
+   * @param s an AShape - the shape to add in the model
+   * @throws IllegalArgumentException if id has already been used
+   */
   @Override
-  public void addShape(String id, AShape s) {
+  public void addShape(AShape s) {
+    String id = s.getName();
     if (shapes.containsKey(id)) {
       throw new IllegalArgumentException("Shape has already been set");
     }
+    ArgumentsCheck.withinIntervalTime(time.getStartTime(), time.getEndTime(),
+            s.getTime().getStartTime(), s.getTime().getEndTime());
     this.shapes.put(id, s);
   }
 
-
+  /**
+   * A method to add the specific List of commands to the model.
+   *
+   * @param id a String - the id to map it with the list.
+   * @param a  an AShape - the List of command to add in the model
+   * @throws IllegalArgumentException if the ICommands in the list
+   *                                  is not correlate with the shape inside the model
+   */
   @Override
   public void addCommands(String id, List<ICommands> a) {
+    for (ICommands c : a) {
+      if (!shapes.containsValue(c.getTheShape())) {
+        throw new IllegalArgumentException("Cannot add List of animation");
+      }
+    }
     this.commands.put(id, a);
+  }
+
+  /**
+   * A method to delete a shape and its commands.
+   *
+   * @param id a String
+   * @throws IllegalArgumentException if the id is not valid
+   */
+  @Override
+  public void deleteShape(String id) {
+    if (!this.shapes.containsKey(id)) {
+      throw new IllegalArgumentException("Shapes does not exists.");
+    }
+    this.shapes.remove(id);
+    this.commands.remove(id);
   }
 
   @Override

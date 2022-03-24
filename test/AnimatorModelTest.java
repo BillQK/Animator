@@ -4,6 +4,7 @@ import java.awt.*;
 
 import model.SimpleAnimatorModel;
 import model.command.CommandType;
+import model.shape.AShape;
 import model.shape.Ellipse;
 import model.shape.Rectangle;
 import model.shape.Shape;
@@ -216,6 +217,34 @@ public class AnimatorModelTest {
     assertEquals(s.getCommands().get(0).get(4).getType(), CommandType.CHANGE_DIMENSION);
 
 
+  }
+
+  @Test
+  public void testAddShape() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100).build();
+    AShape rec1 = new Rectangle("C",
+            Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
+            400, new Time(3, 99));
+
+
+    s.addShape(rec1);
+    assertEquals(s.getShapes().size(), 1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddShapeFailedId() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100).build();
+    AShape rec1 = new Rectangle("C",
+            Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
+            400, new Time(3, 99));
+
+    AShape rec2 = new Rectangle("C",
+            Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
+            400, new Time(3, 99));
+
+    s.addShape(rec1);
+    // throw Illegal Exception due to same id
+    s.addShape(rec2);
   }
 
 
