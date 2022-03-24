@@ -300,5 +300,66 @@ public class AnimatorModelTest {
     assertEquals(s.getShapes().size(), 0);
   }
 
+  @Test
+  public void testGetShapes() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1",10, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addRectangle("3", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .build();
+
+    assertEquals(s.getShapes().size(), 3);
+  }
+
+  @Test
+  public void testGetCommands() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1",10, 10, 1, 5)
+            .addMove("1", 1, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addMove("2", 20, 20, 5, 10)
+            .addChangeColor("2", new Color(100, 100, 100), 1, 5)
+            .build();
+
+    assertEquals(s.getCommands().size(), 2);
+  }
+
+  @Test
+  public void testGetCommandsOfTheInsideList() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1",10, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addMove("2", 20, 20, 5, 10)
+            .addChangeColor("2", new Color(100, 100, 100), 1, 5)
+            .build();
+
+    assertEquals(s.getCommands().get(0).size(), 1);
+  }
+
+  @Test
+  public void testGetCommandsOfTheInsideList1() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1",10, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addMove("2", 20, 20, 5, 10)
+            .addChangeColor("2", new Color(100, 100, 100), 1, 5)
+            .build();
+
+    assertEquals(s.getCommands().get(1).size(), 2);
+  }
+
 
 }
