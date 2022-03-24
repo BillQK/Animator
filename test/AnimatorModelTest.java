@@ -159,7 +159,6 @@ public class AnimatorModelTest {
     assertEquals(s.getCommands().get(0).get(0).getType(), CommandType.CHANGE_COLOR);
     assertEquals(s.getCommands().get(0).get(1).getType(), CommandType.MOVE);
     assertEquals(s.getCommands().get(0).get(2).getType(), CommandType.CHANGE_DIMENSION);
-
   }
 
   @Test
@@ -258,6 +257,11 @@ public class AnimatorModelTest {
             400, new Time(3, 101));
 
     s.addShape(rec1);
+  }
+
+  @Test
+  public void testGetShapes() {
+
   }
 
 

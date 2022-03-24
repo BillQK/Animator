@@ -168,5 +168,4 @@ public class PosnTest {
     assertEquals(posn.getX(), 10, DELTA);
   }
 
-
 }
