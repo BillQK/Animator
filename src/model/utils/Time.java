@@ -6,8 +6,8 @@ import java.util.Objects;
  * A Time class.
  */
 public final class Time {
-  private double start;
-  private double end;
+  private final double start;
+  private final double end;
 
   /**
    * A constructor for Time.
