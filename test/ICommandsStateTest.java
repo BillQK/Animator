@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * A test class for ICommandsState. 
+ * A test class for ICommandsState. This test class is for next homework.
  */
 public class ICommandsStateTest {
 

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 import model.command.ICommands;
 import model.shape.AShape;
 
