@@ -25,12 +25,11 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
   /**
    * A method to add the specific List of commands to the model.
    *
-   * @param id a String - the id to map it with the list.
-   * @param a an AShape - the List of command to add in the model
-   * @throws IllegalArgumentException if the ICommands in the list
+   * @param c an ICommands - the command to add in the model
+   * @throws IllegalArgumentException if the ICommands
    *                                  is not correlate with the shape inside the model
    */
-  void addCommands(String id, List<ICommands> a);
+  void addCommands(ICommands c);
 
   /**
    * A method to delete a shape and its commands.

@@ -11,7 +11,7 @@ public abstract class ACommand implements ICommands {
   private final CommandType type;
   private final double startTime;
   protected final double endTime;
-  protected AShape shape;
+  protected final AShape shape;
 
   /**
    * A constructor for ACommand class.
