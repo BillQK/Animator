@@ -71,7 +71,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     }
 
     if (this.commands.get(c.getTheShape().getName()).size() != 0) {
-      double value = highestEndTime(this.commands.get(c.getTheShape().getName()));
+      double value = biggestEndTime(this.commands.get(c.getTheShape().getName()));
       if (!(c.getStart() == value)) {
         throw new IllegalArgumentException("Gap Error");
       }
@@ -80,7 +80,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     this.commands.get(c.getTheShape().getName()).add(c);
   }
 
-  private double highestEndTime(List<ICommands> commandsList) {
+  private double biggestEndTime(List<ICommands> commandsList) {
     List<Double> time = new ArrayList<>();
     for (ICommands c : commandsList) {
       time.add(c.getEnd());
