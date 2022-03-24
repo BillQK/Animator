@@ -4,11 +4,9 @@ import model.IAnimatorModelState;
 
 public class AnimatorTextView implements IAnimatorView {
   private final IAnimatorModelState<?> model;
-  private Appendable out;
 
-  public AnimatorTextView(IAnimatorModelState<?> model, Appendable out) {
+  public AnimatorTextView(IAnimatorModelState<?> model) {
     this.model = model;
-    this.out = out;
   }
 
   @Override

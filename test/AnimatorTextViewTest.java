@@ -3,19 +3,22 @@ import org.junit.Test;
 
 import java.awt.*;
 
-import model.IAnimatorModelState;
+import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.shape.AShape;
 import model.utils.Time;
+import view.AnimatorTextView;
+import view.IAnimatorView;
 
 import static org.junit.Assert.assertEquals;
 
 public class AnimatorTextViewTest {
-  IAnimatorModelState<AShape> state;
+  IAnimatorModel<AShape> model;
+  IAnimatorView state;
 
   @Before
   public void setUp() {
-    state = new SimpleAnimatorModel.AMBuilder()
+    model = new SimpleAnimatorModel.AMBuilder()
             .setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
                     new Time(0, 15))
@@ -25,11 +28,12 @@ public class AnimatorTextViewTest {
             .addMove("1", 11, 40, 4, 9)
             .addChangeDimension("1", 200, 200, 10, 15)
             .build();
+    state = new AnimatorTextView(model);
   }
 
   @Test
-  public void testToStringShapeTest() {
-    assertEquals(state.getState(),
+  public void testToStringTest() {
+    assertEquals(state.toString(),
             "Shape: 1 Rectangle\n" +
                     "         START                                  END \n" +
                     "motion 1 Time X Y Width Height Red Green Blue " +
