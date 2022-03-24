@@ -31,6 +31,7 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
 
   /**
    * A method to delete a shape and its commands.
+   *
    * @param id a String
    * @throws IllegalArgumentException if the id is not valid
    */

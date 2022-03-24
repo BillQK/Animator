@@ -62,7 +62,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    * @param c an ICommands - the command to be added into the model
    * @throws IllegalArgumentException if the commands is not correlate with the shape
    *                                  inside the model, if the command interval create a gap.
-   *
    */
   @Override
   public void addCommands(ICommands c) {
@@ -414,6 +413,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       return new SimpleAnimatorModel(this);
     }
+
     private double highestEndTime(List<ICommands> commandsList) {
       List<Double> time = new ArrayList<>();
       for (ICommands c : commandsList) {

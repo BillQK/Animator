@@ -10,6 +10,7 @@ public enum Shape {
 
   /**
    * The constructor for the enum class.
+   *
    * @param type the given type of the shape
    */
   Shape(String type) {
@@ -21,6 +22,7 @@ public enum Shape {
 
   /**
    * Get the string of the given shape type.
+   *
    * @return the String of the given shape type
    */
   public String getShapeType() {

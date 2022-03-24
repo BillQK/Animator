@@ -10,6 +10,7 @@ public class AnimatorTextView implements IAnimatorView {
 
   /**
    * A constructor for AnimatorTextView class.
+   *
    * @param model the given model state to operate the operations on
    */
   public AnimatorTextView(IAnimatorModelState<?> model) {
@@ -18,6 +19,7 @@ public class AnimatorTextView implements IAnimatorView {
 
   /**
    * A method that print out the state of the model.
+   *
    * @return a String
    */
   @Override

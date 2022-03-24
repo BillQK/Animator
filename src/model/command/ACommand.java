@@ -16,10 +16,10 @@ public abstract class ACommand implements ICommands {
   /**
    * A constructor for ACommand class.
    *
-   * @param shape the given shape to call the command on
-   * @param type the type of the command
+   * @param shape     the given shape to call the command on
+   * @param type      the type of the command
    * @param startTime the start time of the command
-   * @param endTime the end time of the command
+   * @param endTime   the end time of the command
    */
   public ACommand(AShape shape,
                   CommandType type,
