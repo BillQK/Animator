@@ -5,6 +5,9 @@ import model.utils.Time;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Test class for Time class.
+ */
 public class TimeTest {
 
   double startTime = 10;

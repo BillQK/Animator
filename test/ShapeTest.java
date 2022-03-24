@@ -11,6 +11,9 @@ import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class for Shape and AShape class.
+ */
 public class ShapeTest {
   String recN = "R";
   Color recCol = new Color(0, 0, 225);

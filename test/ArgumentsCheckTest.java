@@ -6,6 +6,9 @@ import model.utils.ArgumentsCheck;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Test class for ArgumentsCheck class.
+ */
 public class ArgumentsCheckTest {
 
   @Test

@@ -11,6 +11,9 @@ import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class for SimpleAnimatorModel class.
+ */
 public class AnimatorModelTest {
   SimpleAnimatorModel s;
 
