@@ -59,17 +59,17 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   /**
    * A method to add the specific List of commands to the model.
    *
-   * @param c  an AShape - the List of command to add in the model
+   * @param c an ICommands - the command to be add into the model
    * @throws IllegalArgumentException if the ICommands in the list
    *                                  is not correlate with the shape inside the model
    */
   @Override
   public void addCommands(ICommands c) {
-      if (!shapes.containsValue(c.getTheShape())) {
-        throw new IllegalArgumentException("Cannot add command.");
-      }
-      this.commands.put(c.getTheShape().getName(), new ArrayList<>());
-      this.commands.get(c.getTheShape().getName()).add(c);
+    if (!shapes.containsValue(c.getTheShape())) {
+      throw new IllegalArgumentException("Cannot add command.");
+    }
+    this.commands.put(c.getTheShape().getName(), new ArrayList<>());
+    this.commands.get(c.getTheShape().getName()).add(c);
   }
 
   /**
@@ -87,6 +87,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     this.commands.remove(id);
   }
 
+  /**
+   * A method to get the whole state of the model.
+   *
+   * @return a String - the model's current state
+   */
   @Override
   public String getState() {
     String finalString = "";
@@ -115,6 +120,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     return finalString;
   }
 
+  /**
+   * A method to get the list of shape in the model.
+   *
+   * @return a List - a list of shape
+   */
   @Override
   public List<AShape> getShapes() {
     List<String> myList = shapes.keySet().stream().collect(Collectors.toList());
@@ -126,6 +136,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     return l;
   }
 
+  /**
+   * A method to get the list of list of commands in the model.
+   *
+   * @return a List of List - a list of list of command
+   */
   @Override
   public List<List<ICommands>> getCommands() {
     List<List<ICommands>> answer = new ArrayList<>();
@@ -136,6 +151,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     return answer;
   }
 
+  /**
+   * A method to get the time of the model.
+   *
+   * @return A time - the model's time
+   */
   @Override
   public Time getTime() {
     return new Time(this.time);

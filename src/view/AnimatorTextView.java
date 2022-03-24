@@ -16,6 +16,10 @@ public class AnimatorTextView implements IAnimatorView {
     this.model = model;
   }
 
+  /**
+   * A method that print out the state of the model.
+   * @return a String
+   */
   @Override
   public String toString() {
     return model.getState();
