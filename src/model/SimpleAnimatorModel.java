@@ -71,7 +71,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
     if (this.commands.get(c.getTheShape().getName()).size() != 0) {
       double value = biggestEndTime(this.commands.get(c.getTheShape().getName()));
-      if (!(c.getStart() == value)) {
+      if (c.getStart() != value) {
         throw new IllegalArgumentException("Gap Error");
       }
     }

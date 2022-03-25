@@ -12,15 +12,21 @@ public class ArgumentsCheckTest {
   //Test arguments are not less than zero
   @Test
   public void testNoLessThanZero() {
-    ArgumentsCheck.lessThanZero(0.0, 10.0, 0.2, 20.0);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.lessThanZero(0.0, 10.0, 0.2, 20.0);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
   }
 
   //Test arguments are not empty String
   @Test
   public void testNoEmptyString() {
-    ArgumentsCheck.emptyString("hello", "world", " - d");
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.emptyString("hello", "world", " - d");
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
   }
 
   //Test arguments are not in the interval time
@@ -37,15 +43,21 @@ public class ArgumentsCheckTest {
   //Test arguments are in the interval time
   @Test
   public void testInIntervalTime() {
-    ArgumentsCheck.withinIntervalTime(10.0, 15.0, 10.0, 15.0);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.withinIntervalTime(10.0, 15.0, 10.0, 15.0);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
   }
 
   //Test arguments are in the interval time
   @Test
   public void testInIntervalTime1() {
-    ArgumentsCheck.withinIntervalTime(10.0, 15.0, 12.0, 13.0);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.withinIntervalTime(10.0, 15.0, 12.0, 13.0);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
   }
 
   //Test not overlap time
@@ -56,7 +68,6 @@ public class ArgumentsCheckTest {
     } catch (IllegalArgumentException e) {
       assertEquals(e.getMessage(), "");
     }
-
   }
 
   //Test not overlap time
@@ -92,12 +103,12 @@ public class ArgumentsCheckTest {
   }
 
   //Test arguments are less than zero
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testLessThanZeroWithNeg() {
     try {
       ArgumentsCheck.lessThanZero(0.0, -1.0);
     } catch (IllegalArgumentException e) {
-      assertEquals(e.getMessage(), "");
+      assertEquals(e.getMessage(), "Cannot be less than Zero");
     }
   }
 

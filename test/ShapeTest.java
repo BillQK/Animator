@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 
 import model.shape.AShape;
 import model.shape.Ellipse;
