@@ -51,43 +51,60 @@ public class ArgumentsCheckTest {
   //Test not overlap time
   @Test
   public void testNotOverlapTime() {
-    ArgumentsCheck.overlappingTime(30, 40, 10, 20);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.overlappingTime(30, 40, 10, 20);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
+
   }
 
   //Test not overlap time
   @Test
   public void testNotOverlapTime1() {
-    ArgumentsCheck.overlappingTime(50, 60, 70, 90);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.overlappingTime(50, 60, 70, 90);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
+
   }
 
   //Test not overlap time
   @Test
   public void testNotOverlapTime2() {
-    ArgumentsCheck.overlappingTime(15, 40, 13, 15);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.overlappingTime(15, 40, 13, 15);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
   }
 
   //Test not overlap time
   @Test
   public void testNotOverlapTime3() {
-    ArgumentsCheck.overlappingTime(15, 20, 20, 40);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.overlappingTime(15, 20, 20, 40);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
+
   }
 
   //Test arguments are less than zero
   @Test(expected = IllegalArgumentException.class)
   public void testLessThanZeroWithNeg() {
-    ArgumentsCheck.lessThanZero(0.0, -1.0);
-    assertEquals(1 + 1, 2);
+    try {
+      ArgumentsCheck.lessThanZero(0.0, -1.0);
+    } catch (IllegalArgumentException e) {
+      assertEquals(e.getMessage(), "");
+    }
   }
 
   //Test arguments are empty String
   @Test(expected = IllegalArgumentException.class)
   public void testEmptyString() {
     ArgumentsCheck.emptyString("");
-    assertEquals(1 + 1, 2);
   }
 
   //Test arguments in and out of shape time
