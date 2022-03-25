@@ -119,7 +119,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
               + "Green " + "Blue "
               + "  " + "Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue\n";
 
-//      this.commands.get(s).sort(Comparable::compareTo);
       Collections.sort(this.commands.get(s));
       for (int i = 0; i < this.commands.get(s).size(); i++) {
         ICommands com = this.commands.get(s).get(i);
@@ -298,7 +297,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
       if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
-        if (!(startTime == value)) {
+        if (startTime != value) {
           throw new IllegalArgumentException("Gap Error");
         }
       }
@@ -336,7 +335,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
       if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
-        if (!(startTime == value)) {
+        if (startTime != value) {
           throw new IllegalArgumentException("Gap Error");
         }
       }
@@ -374,13 +373,14 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @return the builder with an addChangeDimension command
      */
     public AMBuilder addChangeDimension(String idShape,
-                                        double endW, double endH, double startTime, double endTime) {
+                                        double endW, double endH,
+                                        double startTime, double endTime) {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
       if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
-        if (!(startTime == value)) {
+        if (startTime != value) {
           throw new IllegalArgumentException("Gap Error");
         }
       }

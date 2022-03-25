@@ -12,7 +12,9 @@ import view.IAnimatorView;
 
 import static org.junit.Assert.assertEquals;
 
-
+/**
+ * This class test for IAnimatorView class.
+ */
 public class AnimatorTextViewTest {
   IAnimatorModel<AShape> model;
   IAnimatorView state;
