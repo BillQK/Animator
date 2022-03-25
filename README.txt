@@ -69,6 +69,24 @@ less than zero, and Empty String.
 Our RateOfChange class is for calculating the amount of change when executing
 a command at the current time of the model.
 
+Example Output: 
+Shape: 1 Rectangle
+         START                                  END 
+motion 1 Time X Y Width Height Red Green Blue   Time X Y Width Height Red Green Blue
+motion 1 0.0 10.0 15.0 100.0 200.0 10 10 10     3.0 10.0 15.0 100.0 200.0 20 20 20 
+motion 1 3.0 10.0 15.0 100.0 200.0 20 20 20     5.0 11.0 40.0 100.0 200.0 20 20 20 
+motion 1 5.0 11.0 40.0 100.0 200.0 20 20 20     6.0 11.0 30.0 100.0 200.0 20 20 20 
+motion 1 6.0 11.0 30.0 100.0 200.0 20 20 20     10.0 11.0 30.0 150.0 250.0 20 20 20 
+motion 1 10.0 11.0 30.0 150.0 250.0 20 20 20     15.0 11.0 30.0 200.0 200.0 20 20 20 
+
+Shape: 2 Ellipse
+         START                                  END 
+motion 2 Time X Y Width Height Red Green Blue   Time X Y Width Height Red Green Blue
+motion 2 3.0 10.0 40.0 100.0 400.0 10 10 10     30.0 10.0 40.0 400.0 500.0 10 10 10 
+motion 2 30.0 10.0 40.0 400.0 500.0 10 10 10     35.0 10.0 30.0 400.0 500.0 10 10 10 
+motion 2 35.0 10.0 30.0 400.0 500.0 10 10 10     40.0 10.0 30.0 403.0 50.0 10 10 10 
+
+
 Contributors names and contact info
 Khanh Nguyen
 nguyen.khanh1@northeastern.edu
