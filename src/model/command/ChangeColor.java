@@ -18,6 +18,7 @@ public class ChangeColor extends ACommand {
     this.endColor = endColor;
   }
 
+
   @Override
   public void execute(double time) {
     double start = super.getStart();
