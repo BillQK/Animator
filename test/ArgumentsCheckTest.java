@@ -33,8 +33,7 @@ public class ArgumentsCheckTest {
   @Test
   public void testOutOfIntervalTime() {
     try {
-      ArgumentsCheck.withinIntervalTime(10.0, 15.0,
-              11.0, 16.0);
+      ArgumentsCheck.withinIntervalTime(10.0, 15.0, 11.0, 16.0);
     } catch (IllegalArgumentException e) {
       assertEquals(e.getMessage(), "Time does not range within the bigger time frame.");
     }
