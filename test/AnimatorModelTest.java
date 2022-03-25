@@ -384,5 +384,48 @@ public class AnimatorModelTest {
     assertEquals(s.getCommands().size(), 3);
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testOverlappingTime() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1", 10, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addMove("2", 20, 20, 1, 5)
+            // overlapping
+            .addChangeColor("2", new Color(100, 100, 100), 2, 10)
+            .build();
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testOverlappingTimeAnimationInSide() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1", 10, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addMove("2", 20, 20, 1, 5)
+            // overlapping in side the 1 to 5
+            .addChangeColor("2", new Color(100, 100, 100), 2, 3)
+            .build();
+  }
+
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testGapInAnimation() {
+    s = new SimpleAnimatorModel.AMBuilder().setTime(100)
+            .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addChangeDimension("1", 10, 10, 1, 5)
+            .addRectangle("2", 10, 15, 100, 200, 10, 10, 10,
+                    new Time(0, 10))
+            .addMove("2", 20, 20, 1, 5)
+            // 1 sec gap
+            .addChangeColor("2", new Color(100, 100, 100), 6, 10)
+            .build();
+  }
+
 
 }
