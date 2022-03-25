@@ -3,7 +3,6 @@ import org.junit.Test;
 import model.utils.ArgumentsCheck;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Test class for ArgumentsCheck class.
@@ -14,14 +13,14 @@ public class ArgumentsCheckTest {
   @Test
   public void testNoLessThanZero() {
     ArgumentsCheck.lessThanZero(0.0, 10.0, 0.2, 20.0);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test arguments are not empty String
   @Test
   public void testNoEmptyString() {
     ArgumentsCheck.emptyString("hello", "world", " - d");
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test arguments are not in the interval time
@@ -39,56 +38,56 @@ public class ArgumentsCheckTest {
   @Test
   public void testInIntervalTime() {
     ArgumentsCheck.withinIntervalTime(10.0, 15.0, 10.0, 15.0);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test arguments are in the interval time
   @Test
   public void testInIntervalTime1() {
     ArgumentsCheck.withinIntervalTime(10.0, 15.0, 12.0, 13.0);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test not overlap time
   @Test
   public void testNotOverlapTime() {
     ArgumentsCheck.overlappingTime(30, 40, 10, 20);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test not overlap time
   @Test
   public void testNotOverlapTime1() {
     ArgumentsCheck.overlappingTime(50, 60, 70, 90);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test not overlap time
   @Test
   public void testNotOverlapTime2() {
     ArgumentsCheck.overlappingTime(15, 40, 13, 15);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test not overlap time
   @Test
   public void testNotOverlapTime3() {
     ArgumentsCheck.overlappingTime(15, 20, 20, 40);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test arguments are less than zero
   @Test(expected = IllegalArgumentException.class)
   public void testLessThanZeroWithNeg() {
     ArgumentsCheck.lessThanZero(0.0, -1.0);
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test arguments are empty String
   @Test(expected = IllegalArgumentException.class)
   public void testEmptyString() {
     ArgumentsCheck.emptyString("");
-    assertEquals(1+1, 2);
+    assertEquals(1 + 1, 2);
   }
 
   //Test arguments in and out of shape time
