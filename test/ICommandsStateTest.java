@@ -1,7 +1,7 @@
 import org.junit.Test;
 
 /**
- * A test class for ICommandsState.
+ * A test class for ICommandsState. This test class is for next homework.
  */
 public class ICommandsStateTest {
 
