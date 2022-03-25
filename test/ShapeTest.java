@@ -37,7 +37,7 @@ public class ShapeTest {
   AShape ellipShape = new Ellipse(ellipN, Shape.ELLIPSE, ellipCol, ellipPosX, ellipPosY,
           ellipW, ellipH, ellipT);
 
-  double DELTA = Integer.MIN_VALUE;
+  double delta = Integer.MIN_VALUE;
   //-----------------------TEST FOR SHAPE INTERFACE----------------------------//
 
   //Test get the shape method
@@ -80,15 +80,15 @@ public class ShapeTest {
   //Test get height
   @Test
   public void testGetHeight() {
-    assertEquals(recShape.getHeight(), 20, DELTA);
-    assertEquals(ellipShape.getHeight(), 20, DELTA);
+    assertEquals(recShape.getHeight(), 20, delta);
+    assertEquals(ellipShape.getHeight(), 20, delta);
   }
 
   //Test get width
   @Test
   public void testGetWidth() {
-    assertEquals(recShape.getWidth(), 40, DELTA);
-    assertEquals(ellipShape.getWidth(), 30, DELTA);
+    assertEquals(recShape.getWidth(), 40, delta);
+    assertEquals(ellipShape.getWidth(), 30, delta);
   }
 
   //Test set Width
@@ -96,7 +96,7 @@ public class ShapeTest {
   public void testSetWidth() {
     int givw = 50;
     recShape.setWidth(givw);
-    assertEquals(recShape.getWidth(), 50, DELTA);
+    assertEquals(recShape.getWidth(), 50, delta);
   }
 
   //Test set Height
@@ -104,7 +104,7 @@ public class ShapeTest {
   public void testSetHeight() {
     int givh = 5;
     ellipShape.setHeight(givh);
-    assertEquals(ellipShape.getHeight(), 5, DELTA);
+    assertEquals(ellipShape.getHeight(), 5, delta);
   }
 
   //Test set Color

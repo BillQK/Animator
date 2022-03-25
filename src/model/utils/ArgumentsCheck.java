@@ -1,5 +1,9 @@
 package model.utils;
 
+/**
+ * This class represent all the methods to check for less than zero, empty String, out of range,
+ * and within the interval time.
+ */
 public final class ArgumentsCheck {
 
   /**
@@ -16,7 +20,7 @@ public final class ArgumentsCheck {
   }
 
   /**
-   * Check if the inputs is an empty String
+   * Check if the inputs is an empty String.
    *
    * @param args the multiple input (String) put in to check
    */
@@ -29,7 +33,7 @@ public final class ArgumentsCheck {
   }
 
   /**
-   * Check if the inputs is an invalid color parameter
+   * Check if the inputs is an invalid color parameter.
    *
    * @param args the multiple input (int) put in to check
    */
