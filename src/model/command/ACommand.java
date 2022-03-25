@@ -26,7 +26,7 @@ public abstract class ACommand implements ICommands {
                   double startTime,
                   double endTime) {
     ArgumentsCheck.lessThanZero(startTime, endTime);
-    if (endTime > startTime) {
+    if (startTime > endTime) {
       throw new IllegalArgumentException("Invalid time");
     }
     if (type == null || shape == null) {
