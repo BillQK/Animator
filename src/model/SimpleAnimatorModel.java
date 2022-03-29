@@ -109,29 +109,35 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    */
   @Override
   public String getState() {
-    String finalString = "";
+    StringBuilder finalString = new StringBuilder();
     for (String s : this.shapes.keySet()) {
-      finalString += "Shape: " + s + " " + this.shapes.get(s).getType().getShapeType() + "\n";
+      finalString.append("Shape: ").append(s).append(" ").append(this.shapes.get(s).getType().getShapeType()).append("\n");
 
-      finalString += "         START                                  END \n";
+      finalString.append("         START                                  END \n");
       //The order of what we print in one motion
-      finalString += "motion " + s + " Time " + "X " + "Y " + "Width " + "Height " + "Red "
-              + "Green " + "Blue "
-              + "  " + "Time " + "X " + "Y " + "Width " + "Height " + "Red " + "Green " + "Blue\n";
+      finalString.append("motion ").append(s).append(" Time ")
+              .append("X ").append("Y ").append("Width ")
+              .append("Height ").append("Red ")
+              .append("Green ").append("Blue ")
+              .append("  ").append("Time ")
+              .append("X ").append("Y ")
+              .append("Width ")
+              .append("Height ")
+              .append("Red ").append("Green ").append("Blue\n");
 
       Collections.sort(this.commands.get(s));
       for (int i = 0; i < this.commands.get(s).size(); i++) {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
-          finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n";
+          finalString.append("motion ").append(com.getBeginsState()).append("    ").append(com.getEndsState()).append("\n");
           this.commands.get(s).get(i).execute(this.commands.get(s).get(i + 1).getStart());
         } else {
-          finalString += "motion " + com.getBeginsState() + "    " + com.getEndsState() + "\n\n";
+          finalString.append("motion ").append(com.getBeginsState()).append("    ").append(com.getEndsState()).append("\n\n");
         }
       }
 
     }
-    return finalString;
+    return finalString.toString();
   }
 
   /**

@@ -5,5 +5,5 @@ package model.command;
  * Move, ChangeDimension and ChangeColor.
  */
 public enum CommandType {
-  MOVE, CHANGE_COLOR, CHANGE_DIMENSION;
+  MOVE, CHANGE_COLOR, CHANGE_DIMENSION
 }
