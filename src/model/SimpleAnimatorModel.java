@@ -157,6 +157,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    */
   @Override
   public List<List<ICommands>> getCommands() {
+    // Bug Mutating Error
     List<List<ICommands>> answer = new ArrayList<>();
     for (String c : this.commands.keySet()) {
       Collections.sort(this.commands.get(c));
@@ -291,16 +292,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder addMove(String idShape,
                              double destX, double destY,
                              double startTime, double endTime) {
-      if (!shapes.containsKey(idShape)) {
-        throw new IllegalArgumentException("Invalid Shape");
-      }
-
-      if (this.commands.get(idShape).size() != 0) {
-        double value = highestEndTime(this.commands.get(idShape));
-        if (startTime != value) {
-          throw new IllegalArgumentException("Gap Error");
-        }
-      }
+      IdTimeCheck(idShape, startTime);
 
       if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
@@ -330,15 +322,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder addChangeColor(String idShape,
                                     Color color, double startTime, double endTime) {
 
-      if (!shapes.containsKey(idShape)) {
-        throw new IllegalArgumentException("Invalid Shape");
-      }
-      if (this.commands.get(idShape).size() != 0) {
-        double value = highestEndTime(this.commands.get(idShape));
-        if (startTime != value) {
-          throw new IllegalArgumentException("Gap Error");
-        }
-      }
+      IdTimeCheck(idShape, startTime);
 
       if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
@@ -375,15 +359,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder addChangeDimension(String idShape,
                                         double endW, double endH,
                                         double startTime, double endTime) {
-      if (!shapes.containsKey(idShape)) {
-        throw new IllegalArgumentException("Invalid Shape");
-      }
-      if (this.commands.get(idShape).size() != 0) {
-        double value = highestEndTime(this.commands.get(idShape));
-        if (startTime != value) {
-          throw new IllegalArgumentException("Gap Error");
-        }
-      }
+      IdTimeCheck(idShape, startTime);
 
       if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
@@ -400,6 +376,18 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
       this.commands.get(idShape).add(command);
       return this;
+    }
+
+    private void IdTimeCheck(String idShape, double startTime) {
+      if (!shapes.containsKey(idShape)) {
+        throw new IllegalArgumentException("Invalid Shape");
+      }
+      if (this.commands.get(idShape).size() != 0) {
+        double value = highestEndTime(this.commands.get(idShape));
+        if (startTime != value) {
+          throw new IllegalArgumentException("Gap Error");
+        }
+      }
     }
 
     /**
