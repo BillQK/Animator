@@ -1,4 +1,4 @@
-package cs3500.animator.io;
+package model.io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

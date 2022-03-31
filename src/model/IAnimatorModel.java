@@ -36,5 +36,5 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
    * @throws IllegalArgumentException if the id is not valid
    */
   void deleteShape(String id);
-
+//delete command for shape
 }
