@@ -26,4 +26,20 @@ public class AnimatorTextView implements IAnimatorView {
   public String toString() {
     return model.getState();
   }
+
+  /**
+   * Refresh the view to reflect any changes in the game state.
+   */
+  @Override
+  public void refresh() {
+    throw new UnsupportedOperationException("View does not support this method");
+  }
+
+  /**
+   * Make the view visible to start the game session.
+   */
+  @Override
+  public void makeVisible() {
+    throw new UnsupportedOperationException("View does not support this method");
+  }
 }
