@@ -130,12 +130,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       for (int i = 0; i < this.commands.get(s).size(); i++) {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
-          finalString.append("motion ").append(com.getBeginsState()).append("    ")
-                  .append(com.getEndsState()).append("\n");
+          finalString.append("motion ").append(com.getBeginsState())
+                  .append("    ").append(com.getEndsState()).append("\n");
           this.commands.get(s).get(i).execute(this.commands.get(s).get(i + 1).getStart());
         } else {
-          finalString.append("motion ").append(com.getBeginsState()).append("    ")
-                  .append(com.getEndsState()).append("\n\n");
+          finalString.append("motion ").append(com.getBeginsState())
+                  .append("    ").append(com.getEndsState()).append("\n\n");
         }
       }
 
