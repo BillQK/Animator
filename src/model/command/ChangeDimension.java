@@ -26,6 +26,18 @@ public class ChangeDimension extends ACommand {
     this.endW = endW;
   }
 
+  /**
+   * A Copy Constructor.
+   *
+   * @param cd ChangeDimension change dimension command
+   * @param c  ACommand command
+   */
+  public ChangeDimension(ChangeDimension cd, ACommand c) {
+    super(c);
+    this.endH = cd.endH;
+    this.endW = cd.endW;
+  }
+
   @Override
   public void execute(double time) {
     double start = super.getStart();

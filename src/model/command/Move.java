@@ -23,6 +23,17 @@ public class Move extends ACommand {
     this.destination = destination;
   }
 
+  /**
+   * A Copy Constructor.
+   *
+   * @param cm Move move command
+   * @param c  ACommand command
+   */
+  public Move(Move cm, ACommand c) {
+    super(c);
+    this.destination = cm.destination;
+  }
+
   @Override
   public void execute(double time) {
     double start = super.getStart();

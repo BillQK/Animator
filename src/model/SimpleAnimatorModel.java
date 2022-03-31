@@ -111,7 +111,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   public String getState() {
     StringBuilder finalString = new StringBuilder();
     for (String s : this.shapes.keySet()) {
-      finalString.append("Shape: ").append(s).append(" ").append(this.shapes.get(s).getType().getShapeType()).append("\n");
+      finalString.append("Shape: ").append(s).append(" ")
+              .append(this.shapes.get(s).getType().getShapeType()).append("\n");
 
       finalString.append("         START                                  END \n");
       //The order of what we print in one motion
@@ -129,10 +130,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       for (int i = 0; i < this.commands.get(s).size(); i++) {
         ICommands com = this.commands.get(s).get(i);
         if (i != (this.commands.get(s).size() - 1)) {
-          finalString.append("motion ").append(com.getBeginsState()).append("    ").append(com.getEndsState()).append("\n");
+          finalString.append("motion ").append(com.getBeginsState()).append("    ")
+                  .append(com.getEndsState()).append("\n");
           this.commands.get(s).get(i).execute(this.commands.get(s).get(i + 1).getStart());
         } else {
-          finalString.append("motion ").append(com.getBeginsState()).append("    ").append(com.getEndsState()).append("\n\n");
+          finalString.append("motion ").append(com.getBeginsState()).append("    ")
+                  .append(com.getEndsState()).append("\n\n");
         }
       }
 

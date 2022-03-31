@@ -14,16 +14,28 @@ public class ChangeColor extends ACommand {
 
   /**
    * A constructor for ChangeColor class.
-   * @param shape the given shape
+   *
+   * @param shape     the given shape
    * @param startTime the start time of command
-   * @param endTime the end time of command
-   * @param endColor the destination color
+   * @param endTime   the end time of command
+   * @param endColor  the destination color
    * @throws IllegalArgumentException if arguments outside of range
    */
   public ChangeColor(AShape shape, double startTime, double endTime, Color endColor) {
     super(shape, CommandType.CHANGE_COLOR, startTime, endTime);
     ArgumentsCheck.colorRange(endColor.getRed(), endColor.getGreen(), endColor.getBlue());
     this.endColor = endColor;
+  }
+
+  /**
+   * A Copy Constructor.
+   *
+   * @param cc ChangeColor change color command
+   * @param c  ACommand command
+   */
+  public ChangeColor(ChangeColor cc, ACommand c) {
+    super(c);
+    this.endColor = cc.endColor;
   }
 
 

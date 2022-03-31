@@ -42,6 +42,18 @@ public abstract class ACommand implements ICommands {
     }
   }
 
+  /**
+   * A Copy Constructor.
+   *
+   * @param c ACommand command
+   */
+  public ACommand(ACommand c) {
+    this.type = c.type;
+    this.startTime = c.startTime;
+    this.endTime = c.endTime;
+    this.shape = c.shape;
+  }
+
 
   @Override
   public abstract void execute(double time);
