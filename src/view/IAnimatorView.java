@@ -1,5 +1,7 @@
 package view;
 
+import controller.IAnimatorController;
+
 /**
  * Represents a way of presenting the animation in a form useful to end users, i.e.,
  * a human-readable form.
@@ -42,6 +44,14 @@ public interface IAnimatorView {
    * @return the formatted string as above
    */
   String toString();
+
+
+  /**
+   * Set up the controller to handle click events in this view.
+   *
+   * @param listener the controller
+   */
+  void addListener(IAnimatorController listener);
 
   /**
    * Refresh the view to reflect any changes in the game state.

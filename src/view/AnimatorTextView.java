@@ -1,5 +1,6 @@
 package view;
 
+import controller.IAnimatorController;
 import model.IAnimatorModelState;
 
 /**
@@ -25,6 +26,11 @@ public class AnimatorTextView implements IAnimatorView {
   @Override
   public String toString() {
     return model.getState();
+  }
+
+  @Override
+  public void addListener(IAnimatorController listener) {
+   throw new UnsupportedOperationException("View does not support this method");
   }
 
   /**
