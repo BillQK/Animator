@@ -10,7 +10,7 @@ import model.shape.AShape;
  *
  * @param <K> The model type
  */
-public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
+public interface IAnimatorModel<K> extends IAnimatorModelState<K>{
 
   /**
    * A method to add the specific shape to the model.

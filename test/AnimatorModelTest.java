@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.command.CommandType;
 import model.command.ICommands;
@@ -21,7 +22,7 @@ import static org.junit.Assert.assertEquals;
  * Test class for SimpleAnimatorModel class.
  */
 public class AnimatorModelTest {
-  SimpleAnimatorModel s;
+  IAnimatorModel<AShape> s;
 
   @Test
   public void testBuilderSetTime() {
