@@ -59,25 +59,26 @@ public class ChangeColor extends ACommand {
 
   @Override
   public String getSVG(double tempo) {
-    double begin = (this.getStart() / tempo) * 1000;
-    double end = (this.getEnd() / tempo) * 1000;
-    double dur = end - begin;
-
-    String details = "";
-
-    details += "<animate attributeType=\"xml\" "
-            + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
-            + "rx" + "\" "
-            + "from=\"" + this.shape.getWidth()
-            + "\" to=\"" + this.endW + "\" fill=\"freeze\" /> \n";
-
-    details += "<animate attributeType=\"xml\" "
-            + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
-            + "ry" + "\" "
-            + "from=\"" + this.shape.getHeight()
-            + "\" to=\"" + this.endH + "\" fill=\"freeze\" />\n";
-
-    return details;
+//    double begin = (this.getStart() / tempo) * 1000;
+//    double end = (this.getEnd() / tempo) * 1000;
+//    double dur = end - begin;
+//
+//    String details = "";
+//
+//    details += "<animate attributeType=\"xml\" "
+//            + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
+//            + "rx" + "\" "
+//            + "from=\"" + this.shape.getWidth()
+//            + "\" to=\"" + this.endW + "\" fill=\"freeze\" /> \n";
+//
+//    details += "<animate attributeType=\"xml\" "
+//            + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
+//            + "ry" + "\" "
+//            + "from=\"" + this.shape.getHeight()
+//            + "\" to=\"" + this.endH + "\" fill=\"freeze\" />\n";
+//
+//    return details;
+    return "";
   }
 
   private Color calculate(double time) {

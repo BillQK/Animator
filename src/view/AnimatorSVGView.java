@@ -32,6 +32,8 @@ public class AnimatorSVGView extends AnimatorTextView {
         details += c.getSVG(tempo);
       }
     }
+
+    return details;
   }
 
 
