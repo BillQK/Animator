@@ -153,7 +153,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                   .append("    ").append(com.getEndsState()).append("\n\n");
         }
       }
-
     }
     return finalString.toString();
   }
