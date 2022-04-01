@@ -28,19 +28,8 @@ public class ChangeDimension extends ACommand {
 
   @Override
   public void execute(double time) {
-    double start = super.getStart();
-    double end = super.getEnd();
-
-    double currentW = shape.getWidth();
-    double currentH = shape.getHeight();
-
-    double rateOfChange = RateOfChange.findRate(time, start, end);
-
-    double changeInW = (endW - currentW) * rateOfChange;
-    double changeInH = (endH - currentH) * rateOfChange;
-
-    double newW = currentW + changeInW;
-    double newH = currentH + changeInH;
+    double newW = calculateW(time);
+    double newH = calculateH(time);
 
     this.shape.setWidth(newW);
     this.shape.setHeight(newH);
@@ -57,5 +46,48 @@ public class ChangeDimension extends ACommand {
             + " " + shape.getColor().getGreen()
             + " " + shape.getColor().getBlue() + " ";
     return a;
+  }
+
+  @Override
+  public AShape getShapeAtTick(double time) {
+    double newW = calculateW(time);
+    double newH = calculateH(time);
+
+    AShape s = this.shape.getTheShape();
+
+    s.setWidth(newW);
+    s.setHeight(newH);
+
+    return s;
+  }
+
+  private double calculateW(double time) {
+    double start = super.getStart();
+    double end = super.getEnd();
+
+    double currentW = shape.getWidth();
+
+    double rateOfChange = RateOfChange.findRate(time, start, end);
+
+    double changeInW = (endW - currentW) * rateOfChange;
+
+    double newW = currentW + changeInW;
+
+    return newW;
+  }
+
+  private double calculateH(double time) {
+    double start = super.getStart();
+    double end = super.getEnd();
+
+    double currentH = shape.getHeight();
+
+    double rateOfChange = RateOfChange.findRate(time, start, end);
+
+    double changeInH = (endH - currentH) * rateOfChange;
+
+    double newH = currentH + changeInH;
+
+    return newH;
   }
 }

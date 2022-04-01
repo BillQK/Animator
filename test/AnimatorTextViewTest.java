@@ -36,12 +36,12 @@ public class AnimatorTextViewTest {
             .addMove("2", 10, 30, 30, 35)
             .addChangeDimension("2", 403, 50, 35, 40)
             .build();
+
     state = new AnimatorTextView(model);
   }
 
   @Test
   public void testToStringTest() {
-    System.out.println(state.toString());
     assertEquals(state.toString(),
             "Shape: 1 Rectangle\n" +
                     "         START                                  END \n" +

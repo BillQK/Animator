@@ -60,4 +60,7 @@ public interface ICommandsState {
    */
   double getEnd();
 
+
+
+  AShape getShapeAtTick(double start);
 }

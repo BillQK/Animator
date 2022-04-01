@@ -42,4 +42,9 @@ public class EmptyCommand extends ACommand {
             + " " + shape.getColor().getBlue() + " ";
     return a;
   }
+
+  @Override
+  public AShape getShapeAtTick(double time) {
+    return shape.getTheShape();
+  }
 }

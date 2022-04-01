@@ -1,6 +1,6 @@
 package model.command;
 
-import java.awt.Color;
+import java.awt.*;
 
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
@@ -29,6 +29,35 @@ public class ChangeColor extends ACommand {
 
   @Override
   public void execute(double time) {
+    Color newColor = calculate(time);
+
+    shape.setColor(newColor);
+  }
+
+  @Override
+  public String getEndsState() {
+    String a = "";
+    a += endTime
+            + " " + shape.getPosition().toString()
+            + shape.getWidth()
+            + " " + shape.getHeight()
+            + " " + endColor.getRed()
+            + " " + endColor.getGreen()
+            + " " + endColor.getBlue() + " ";
+    return a;
+  }
+
+  @Override
+  public AShape getShapeAtTick(double time) {
+
+    Color newColor = calculate(time);
+
+    AShape s = this.getTheShape();
+    s.setColor(newColor);
+    return s;
+  }
+
+  private Color calculate(double time) {
     double start = super.getStart();
     double end = super.getEnd();
 
@@ -52,20 +81,6 @@ public class ChangeColor extends ACommand {
 
     ArgumentsCheck.colorRange(newR, newG, newB);
     Color newColor = new Color(newR, newG, newB);
-
-    shape.setColor(newColor);
-  }
-
-  @Override
-  public String getEndsState() {
-    String a = "";
-    a += endTime
-            + " " + shape.getPosition().toString()
-            + shape.getWidth()
-            + " " + shape.getHeight()
-            + " " + endColor.getRed()
-            + " " + endColor.getGreen()
-            + " " + endColor.getBlue() + " ";
-    return a;
+    return newColor;
   }
 }

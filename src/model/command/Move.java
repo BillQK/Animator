@@ -25,21 +25,7 @@ public class Move extends ACommand {
 
   @Override
   public void execute(double time) {
-    double start = super.getStart();
-    double end = super.getEnd();
-
-    double currentX = this.shape.getPosition().getX();
-    double currentY = this.shape.getPosition().getY();
-
-    double destX = this.destination.getX();
-    double destY = this.destination.getY();
-
-    double rateOfChange = RateOfChange.findRate(time, start, end);
-
-    double changeInX = (destX - currentX) * rateOfChange;
-    double changeInY = (destY - currentY) * rateOfChange;
-
-    Posn newPosn = new Posn(currentX + changeInX, currentY + changeInY);
+    Posn newPosn = calculate(time);
 
     this.shape.setPosn(newPosn);
   }
@@ -55,6 +41,34 @@ public class Move extends ACommand {
             + " " + shape.getColor().getGreen()
             + " " + shape.getColor().getBlue() + " ";
     return a;
+  }
+
+  @Override
+  public AShape getShapeAtTick(double time) {
+    Posn newPosn = calculate(time);
+
+    AShape s = this.shape.getTheShape();
+    s.setPosn(newPosn);
+    return s;
+  }
+
+  private Posn calculate(double time) {
+    double start = super.getStart();
+    double end = super.getEnd();
+
+    double currentX = this.shape.getPosition().getX();
+    double currentY = this.shape.getPosition().getY();
+
+    double destX = this.destination.getX();
+    double destY = this.destination.getY();
+
+    double rateOfChange = RateOfChange.findRate(time, start, end);
+
+    double changeInX = (destX - currentX) * rateOfChange;
+    double changeInY = (destY - currentY) * rateOfChange;
+
+    Posn newPosn = new Posn(currentX + changeInX, currentY + changeInY);
+    return newPosn;
   }
 
 }

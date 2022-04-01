@@ -50,7 +50,7 @@ public abstract class AShape {
   }
 
   /**
-   * A method to get the specific whole shape.
+   * A method to get the specific new shape.
    *
    * @return the specific shape
    */
