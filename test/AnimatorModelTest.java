@@ -315,6 +315,8 @@ public class AnimatorModelTest {
     assertEquals(s.getShapes().size(), 3);
   }
 
+
+
   @Test
   public void testGetCommands() {
     s = new SimpleAnimatorModel.AMBuilder().setTime(100)
@@ -413,7 +415,7 @@ public class AnimatorModelTest {
   }
 
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testGapInAnimation() {
     s = new SimpleAnimatorModel.AMBuilder().setTime(100)
             .addRectangle("1", 10, 15, 100, 200, 10, 10, 10,
@@ -423,8 +425,9 @@ public class AnimatorModelTest {
                     new Time(0, 10))
             .addMove("2", 20, 20, 1, 5)
             // 1 sec gap
-            .addChangeColor("2", new Color(100, 100, 100), 6, 10)
+            .addChangeColor("2", new Color(100, 100, 100), 7, 10)
             .build();
+    System.out.println(s.getState());
   }
 
 

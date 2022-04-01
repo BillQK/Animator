@@ -32,6 +32,14 @@ public class EmptyCommand extends ACommand {
 
   @Override
   public String getEndsState() {
-    return null;
+    String a = "";
+    a += endTime
+            + " " + shape.getPosition().toString()
+            + " " + shape.getWidth()
+            + " " + shape.getHeight()
+            + " " + shape.getColor().getRed()
+            + " " + shape.getColor().getGreen()
+            + " " + shape.getColor().getBlue() + " ";
+    return a;
   }
 }

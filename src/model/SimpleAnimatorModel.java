@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
+import model.command.CommandType;
+import model.command.EmptyCommand;
 import model.command.ICommands;
 import model.command.Move;
 import model.shape.AShape;
@@ -301,12 +303,14 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder addMove(String idShape,
                              double destX, double destY,
                              double startTime, double endTime) {
-      IdTimeCheck(idShape, startTime);
+      IdCheck(idShape);
 
       if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
       }
       AShape shape = shapes.get(idShape);
+
+      addEmptyCommands(idShape, startTime);
 
       ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
@@ -331,13 +335,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder addChangeColor(String idShape,
                                     Color color, double startTime, double endTime) {
 
-      IdTimeCheck(idShape, startTime);
+      IdCheck(idShape);
 
       if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
       }
       AShape shape = shapes.get(idShape);
-
+      addEmptyCommands(idShape, startTime);
       if (color == null) {
         throw new IllegalArgumentException("The given ending color cannot be null");
       }
@@ -368,11 +372,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     public AMBuilder addChangeDimension(String idShape,
                                         double endW, double endH,
                                         double startTime, double endTime) {
-      IdTimeCheck(idShape, startTime);
+      IdCheck(idShape);
 
       if (overlap(startTime, endTime, this.commands.get(idShape))) {
         throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
       }
+      addEmptyCommands(idShape, startTime);
       AShape shape = shapes.get(idShape);
 
       ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
@@ -387,15 +392,21 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-    private void IdTimeCheck(String idShape, double startTime) {
-      if (!shapes.containsKey(idShape)) {
-        throw new IllegalArgumentException("Invalid Shape");
-      }
+    private void addEmptyCommands(String idShape, double startTime) {
       if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
-        if (startTime != value) {
-          throw new IllegalArgumentException("Gap Error");
+        if (startTime > value) {
+          List<ICommands> l = this.commands.get(idShape);
+          AShape s = this.shapes.get(idShape);
+          ICommands emptyCommand = new EmptyCommand(s, CommandType.EMPTY, value, startTime);
+          l.add(emptyCommand);
         }
+      }
+    }
+
+    private void IdCheck(String idShape) {
+      if (!shapes.containsKey(idShape)) {
+        throw new IllegalArgumentException("Invalid Shape");
       }
     }
 
