@@ -1,13 +1,12 @@
 package model;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.command.ACommand;
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
 import model.command.CommandType;
@@ -26,8 +25,8 @@ import model.utils.Time;
  * Represents the main model class which implemented the IAnimationModel<AShape> </AShape>.
  */
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
-  private final HashMap<String, AShape> shapes;
-  private final HashMap<String, List<ICommands>> commands;
+  private final LinkedHashMap<String, AShape> shapes;
+  private final LinkedHashMap<String, List<ICommands>> commands;
   private final Time time;
 
   /**
@@ -57,6 +56,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
             s.getTime().getStartTime(), s.getTime().getEndTime());
     this.shapes.put(id, s);
     this.commands.put(id, new ArrayList<>());
+
   }
 
   /**
@@ -163,19 +163,17 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   /**
-   * A method to get the double list of commands in the model.
+   * A method to get the list of commands in the model.
    *
-   * @return a List of List - a double list of command
+   * @return a List - a list of command
+   * @param id - String id of the shape
    */
   @Override
   public List<ICommands> getCommands(String id) {
-    List<ICommands> ans = new ArrayList<>();
-    List<ICommands> s = this.commands.get(id);
-    for (ICommands c : s) {
-      ans.add(c.getTheCommand());
-
+    if (this.commands.get(id) == null) {
+      throw new IllegalArgumentException("Illegal Shape");
     }
-    return ans;
+    return this.commands.get(id);
   }
 
   /**
@@ -192,16 +190,16 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    * Represents the SimpleAnimationModel builder class.
    */
   public static class AMBuilder {
-    private final HashMap<String, AShape> shapes;
-    private final HashMap<String, List<ICommands>> commands;
+    private final LinkedHashMap<String, AShape> shapes;
+    private final LinkedHashMap<String, List<ICommands>> commands;
     private Time time;
 
     /**
      * A constructor for SimpleAnimationModel builder class.
      */
     public AMBuilder() {
-      this.shapes = new HashMap<>();
-      this.commands = new HashMap<>();
+      this.shapes = new LinkedHashMap<>();
+      this.commands = new LinkedHashMap<>();
     }
 
     /**

@@ -31,11 +31,12 @@ public interface IAnimatorModelState<K> {
   List<AShape> getShapes();
 
   /**
-   * A method to get the list of list of commands in the model.
-   *
-   * @return a List of List - a list of list of command
+   * A method to get the list of commands in the model.
+   * @Param id - String id of the shape
+   * @return a List - a list of command
+   * @Throws
    */
-  List<List<ICommands>> getCommands();
+  List<ICommands> getCommands(String id);
 
   /**
    * A method to get the time of the model.
