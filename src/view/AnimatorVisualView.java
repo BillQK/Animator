@@ -23,6 +23,15 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(700,700));
 
+    JScrollPane scroll = new JScrollPane(panel);
+    scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+    scroll.setBounds(50, 30, 300, 50);
+
+    this.add(scroll, BorderLayout.CENTER);
+
+//    this.pack();
+
   }
 
   @Override
