@@ -6,7 +6,7 @@ import model.utils.RateOfChange;
 /**
  * Represents the ChangeDimension command class called on a shape.
  */
-public class ChangeDimension extends ACommand {
+public class  ChangeDimension extends ACommand {
   private final double endW;
   private final double endH;
 
@@ -71,13 +71,13 @@ public class ChangeDimension extends ACommand {
 
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
-            + "rx" + "\" "
+            + this.shape.getSVGDstart() + "\" "
             + "from=\"" + this.shape.getWidth()
             + "\" to=\"" + this.endW + "\" fill=\"freeze\" /> \n";
 
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
-            + "ry" + "\" "
+            + this.shape.getSVGDend() + "\" "
             + "from=\"" + this.shape.getHeight()
             + "\" to=\"" + this.endH + "\" fill=\"freeze\" />\n";
 

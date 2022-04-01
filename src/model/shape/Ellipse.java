@@ -46,4 +46,29 @@ public class Ellipse extends AShape {
             + "," + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\" visibility=\"visible\" >\n";
   }
 
+  @Override
+  public String getSVGDstart() {
+    return "xR";
+  }
+
+  @Override
+  public String getSVGDend() {
+    return "yR";
+  }
+
+  @Override
+  public String getSVGX() {
+    return "cx";
+  }
+
+  @Override
+  public String getSVGY() {
+    return "cy";
+  }
+
+  @Override
+  public String getSVGEndShape() {
+    return "</ellipse>";
+  }
+
 }
