@@ -27,18 +27,6 @@ public class ChangeColor extends ACommand {
     this.endColor = endColor;
   }
 
-  /**
-   * A Copy Constructor.
-   *
-   * @param cc ChangeColor change color command
-   * @param c  ACommand command
-   */
-  public ChangeColor(ChangeColor cc, ACommand c) {
-    super(c);
-    this.endColor = cc.endColor;
-  }
-
-
   @Override
   public void execute(double time) {
     double start = super.getStart();

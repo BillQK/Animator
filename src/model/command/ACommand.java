@@ -54,7 +54,6 @@ public abstract class ACommand implements ICommands {
     this.shape = c.shape;
   }
 
-
   @Override
   public abstract void execute(double time);
 
