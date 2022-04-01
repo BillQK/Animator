@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import model.command.ACommand;
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
 import model.command.CommandType;
@@ -167,14 +168,14 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    * @return a List of List - a double list of command
    */
   @Override
-  public List<List<ICommands>> getCommands() {
-    // Bug Mutating Error
-    List<List<ICommands>> answer = new ArrayList<>();
-    for (String c : this.commands.keySet()) {
-      Collections.sort(this.commands.get(c));
-      answer.add(this.commands.get(c));
+  public List<ICommands> getCommands(String id) {
+    List<ICommands> ans = new ArrayList<>();
+    List<ICommands> s = this.commands.get(id);
+    for (ICommands c : s) {
+      ans.add(c.getTheCommand());
+
     }
-    return answer;
+    return ans;
   }
 
   /**
