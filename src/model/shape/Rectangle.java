@@ -1,6 +1,6 @@
 package model.shape;
 
-import java.awt.Color;
+import java.awt.*;
 
 import model.utils.Time;
 
@@ -37,6 +37,13 @@ public class Rectangle extends AShape {
   @Override
   public Shape getType() {
     return Shape.RECTANGLE;
+  }
+
+  @Override
+  public String getSVG() {
+    return "<rect id=\"" + this.getName() + "\" x=\"" + this.getPosition().getX() + "\" y=\"" + this.getPosition().getY()
+            + "\" width=\"" + this.getWidth() + "\" height=\"" + this.getHeight() + "\" fill=\"rgb(" + this.getColor().getRed()
+            + "," + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\" visibility=\"visible\" >\n";
   }
 
 }

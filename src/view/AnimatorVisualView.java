@@ -26,7 +26,12 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   }
 
   @Override
-  public String toString() {
+  public String getDetails() {
+    throw new UnsupportedOperationException("View does not support this method");
+  }
+
+  @Override
+  public void writeFile(String fileName) {
     throw new UnsupportedOperationException("View does not support this method");
   }
 

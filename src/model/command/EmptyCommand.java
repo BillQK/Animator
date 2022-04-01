@@ -27,7 +27,7 @@ public class EmptyCommand extends ACommand {
 
   @Override
   public void execute(double time) {
-
+    // nothing
   }
 
   @Override
@@ -46,5 +46,10 @@ public class EmptyCommand extends ACommand {
   @Override
   public AShape getShapeAtTick(double time) {
     return shape.getTheShape();
+  }
+
+  @Override
+  public String getSVG(double tempo) {
+    return "";
   }
 }

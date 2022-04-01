@@ -186,4 +186,5 @@ public abstract class AShape {
             this.w, this.h, this.time, this.pos);
   }
 
+  public abstract String getSVG();
 }

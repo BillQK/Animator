@@ -1,6 +1,5 @@
 package view;
 
-import java.util.Collections;
 import java.util.List;
 
 import controller.IAnimatorController;
@@ -12,7 +11,7 @@ import model.shape.AShape;
  * Represents the main view class which implemented the IAnimatorView.
  */
 public class AnimatorTextView implements IAnimatorView {
-  private final IAnimatorModelState<?> model;
+  protected final IAnimatorModelState<?> model;
 
   /**
    * A constructor for AnimatorTextView class.
@@ -20,7 +19,11 @@ public class AnimatorTextView implements IAnimatorView {
    * @param model the given model state to operate the operations on
    */
   public AnimatorTextView(IAnimatorModelState<?> model) {
+    if (model == null) {
+      throw new IllegalArgumentException("Model can't be null");
+    }
     this.model = model;
+
   }
 
   /**
@@ -29,7 +32,7 @@ public class AnimatorTextView implements IAnimatorView {
    * @return a String
    */
   @Override
-  public String toString() {
+  public String getDetails() {
     StringBuilder finalString = new StringBuilder();
     for (AShape s : model.getShapes()) {
       finalString.append("Shape: ").append(s.getName()).append(" ")
@@ -62,36 +65,11 @@ public class AnimatorTextView implements IAnimatorView {
     }
     return finalString.toString();
 
-//    for (AShape s : model.getShapes()) {
-//      finalString.append("Shape: ").append(s).append(" ")
-//              .append(this.shapes.get(s).getType().getShapeType()).append("\n");
-//
-//      finalString.append("         START                                  END \n");
-//      //The order of what we print in one motion
-//      finalString.append("motion ").append(s).append(" Time ")
-//              .append("X ").append("Y ").append("Width ")
-//              .append("Height ").append("Red ")
-//              .append("Green ").append("Blue ")
-//              .append("  ").append("Time ")
-//              .append("X ").append("Y ")
-//              .append("Width ")
-//              .append("Height ")
-//              .append("Red ").append("Green ").append("Blue\n");
-//
-//      Collections.sort(this.commands.get(s));
-//      for (int i = 0; i < this.commands.get(s).size(); i++) {
-//        ICommands com = this.commands.get(s).get(i);
-//        if (i != (this.commands.get(s).size() - 1)) {
-//          finalString.append("motion ").append(com.getBeginsState())
-//                  .append("    ").append(com.getEndsState()).append("\n");
-//          this.commands.get(s).get(i).execute(this.commands.get(s).get(i + 1).getStart());
-//        } else {
-//          finalString.append("motion ").append(com.getBeginsState())
-//                  .append("    ").append(com.getEndsState()).append("\n\n");
-//        }
-//      }
-//    }
-//    return finalString.toString();
+  }
+
+  @Override
+  public void writeFile(String fileName) {
+
   }
 
   @Override

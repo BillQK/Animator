@@ -39,4 +39,11 @@ public class Ellipse extends AShape {
     return Shape.ELLIPSE;
   }
 
+  @Override
+  public String getSVG() {
+    return "<ellipse id=\"" + this.getName() + "\" cx=\"" + this.getPosition().getX() + "\" cy=\"" + this.getPosition().getY()
+            + "\" rx=\"" + this.getWidth() + "\" ry=\"" + this.getHeight() + "\" fill=\"rgb(" + this.getColor().getRed()
+            + "," + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\" visibility=\"visible\" >\n";
+  }
+
 }

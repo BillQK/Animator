@@ -31,6 +31,29 @@ public class Move extends ACommand {
   }
 
   @Override
+  public String getSVG(double tempo) {
+    double begin = (this.getStart() / tempo) * 1000;
+    double end = (this.getEnd() / tempo) * 1000;
+    double dur = end - begin;
+
+    String details = "";
+
+    details += "<animate attributeType=\"xml\" "
+            + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
+            + "cx" + "\" "
+            + "from=\"" + this.shape.getPosition().getX()
+            + "\" to=\"" + this.destination.getX() + "\" fill=\"freeze\" /> \n";
+
+    details += "<animate attributeType=\"xml\" "
+            + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
+            + "cy" + "\" "
+            + "from=\"" + this.shape.getPosition().getY()
+            + "\" to=\"" + this.destination.getY() + "\" fill=\"freeze\" />\n";
+
+    return details;
+  }
+
+  @Override
   public String getEndsState() {
     String a = "";
     a += endTime

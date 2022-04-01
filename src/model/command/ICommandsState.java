@@ -63,4 +63,6 @@ public interface ICommandsState {
 
 
   AShape getShapeAtTick(double start);
+
+  String getSVG(double tempo);
 }

@@ -43,7 +43,10 @@ public interface IAnimatorView {
    *
    * @return the formatted string as above
    */
-  String toString();
+  String getDetails();
+
+
+  void writeFile(String fileName);
 
 
   /**

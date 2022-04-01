@@ -42,7 +42,7 @@ public class AnimatorTextViewTest {
 
   @Test
   public void testToStringTest() {
-    assertEquals(state.toString(),
+    assertEquals(state.getDetails(),
             "Shape: 1 Rectangle\n" +
                     "         START                                  END \n" +
                     "motion 1 Time X Y Width Height Red Green Blue   Time X Y Width Height Red Green Blue\n" +
