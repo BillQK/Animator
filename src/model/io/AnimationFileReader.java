@@ -28,7 +28,7 @@ public class AnimationFileReader {
    *                                type
    * @throws IllegalStateException  if an illegal token is read from the file
    */
-  public <T> T readFile(String fileName, TweenModelBuilder<T> builder) throws
+  public <T> T readFile(String fileName, model.io.TweenModelBuilder<T> builder) throws
           FileNotFoundException, IllegalStateException, InputMismatchException {
     Scanner sc;
 

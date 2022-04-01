@@ -31,7 +31,9 @@ public class AnimatorSVGView extends AnimatorTextView {
       for (ICommands c : loc) {
         details += c.getSVG(tempo);
       }
+      details += s.getSVGEndShape() + "\n";
     }
+    details += "</svg>";
 
     return details;
   }

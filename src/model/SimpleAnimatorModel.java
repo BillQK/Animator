@@ -455,7 +455,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
   }
 
-  public class TweenBuilder implements TweenModelBuilder<IAnimatorModel<AShape>> {
+  public static class TweenBuilder implements TweenModelBuilder<IAnimatorModel<AShape>> {
 
     private final LinkedHashMap<String, AShape> shapes;
     private final LinkedHashMap<String, List<ICommands>> commands;
@@ -465,7 +465,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                         LinkedHashMap<String, List<ICommands>> commands) {
       this.shapes = shapes;
       this.commands = commands;
-
+      this.time = new Time(1000);
     }
 
 
@@ -507,18 +507,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return false;
     }
 
-    /**
-     * A method to set the end time of the model to the given end time.
-     *
-     * @param end the given end time
-     * @return the builder with a new Time with the set new given end time
-     */
-    public TweenBuilder setTime(int end) {
-      // Arguments check
-      ArgumentsCheck.lessThanZero(end);
-      this.time = new Time(0, end);
-      return this;
-    }
 
     /**
      * Set the bounds of the canvas for the animation.

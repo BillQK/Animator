@@ -187,4 +187,15 @@ public abstract class AShape {
   }
 
   public abstract String getSVG();
+
+  public abstract String getSVGDstart();
+
+  public abstract String getSVGDend();
+
+  public abstract String getSVGX();
+
+  public abstract String getSVGY();
+
+  public abstract String getSVGEndShape();
+
 }

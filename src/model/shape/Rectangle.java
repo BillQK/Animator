@@ -46,4 +46,29 @@ public class Rectangle extends AShape {
             + "," + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\" visibility=\"visible\" >\n";
   }
 
+  @Override
+  public String getSVGDstart() {
+    return "width";
+  }
+
+  @Override
+  public String getSVGDend() {
+    return "height";
+  }
+
+  @Override
+  public String getSVGX() {
+    return "x";
+  }
+
+  @Override
+  public String getSVGY() {
+    return "y";
+  }
+
+  @Override
+  public String getSVGEndShape() {
+    return "</rect>";
+  }
+
 }
