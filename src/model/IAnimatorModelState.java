@@ -3,6 +3,7 @@ package model;
 
 import java.util.List;
 
+import model.command.ICommands;
 import model.command.ICommandsState;
 import model.shape.AShape;
 import model.utils.Time;

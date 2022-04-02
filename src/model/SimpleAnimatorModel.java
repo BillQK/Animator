@@ -185,7 +185,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     if (this.commands.get(id) == null) {
       throw new IllegalArgumentException("Illegal Shape");
     }
-    return this.commands.get(id);
+    List<ICommandsState> stateList = new ArrayList<>();
+    for (ICommandsState s : this.commands.get(id)) {
+      stateList.add(s);
+    }
+    return stateList;
   }
 
   /**
