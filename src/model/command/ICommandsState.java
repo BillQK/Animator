@@ -1,5 +1,7 @@
 package model.command;
 
+import java.util.List;
+
 import model.shape.AShape;
 
 /**
@@ -62,7 +64,7 @@ public interface ICommandsState {
 
 
 
-  AShape getShapeAtTick(double start);
+  AShape getShapeAtTick(double start, List<ICommandsState> stateList);
 
   String getSVG(double tempo);
 }

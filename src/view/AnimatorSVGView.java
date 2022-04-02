@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.IAnimatorModelState;
 import model.command.ICommands;
+import model.command.ICommandsState;
 import model.shape.AShape;
 
 public class AnimatorSVGView extends AnimatorTextView {
@@ -27,8 +28,8 @@ public class AnimatorSVGView extends AnimatorTextView {
 
     for (AShape s : los) {
       details += s.getSVG();
-      List<ICommands> loc = model.getCommands(s.getName());
-      for (ICommands c : loc) {
+      List<ICommandsState> loc = model.getCommands(s.getName());
+      for (ICommandsState c : loc) {
         details += c.getSVG(tempo);
       }
       details += s.getSVGEndShape() + "\n";

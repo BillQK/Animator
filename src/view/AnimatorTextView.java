@@ -1,10 +1,12 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import controller.IAnimatorController;
 import model.IAnimatorModelState;
 import model.command.ICommands;
+import model.command.ICommandsState;
 import model.shape.AShape;
 
 /**
@@ -12,6 +14,7 @@ import model.shape.AShape;
  */
 public class AnimatorTextView implements IAnimatorView {
   protected final IAnimatorModelState<?> model;
+  private final List<ICommandsState> stateList;
 
   /**
    * A constructor for AnimatorTextView class.
@@ -23,6 +26,7 @@ public class AnimatorTextView implements IAnimatorView {
       throw new IllegalArgumentException("Model can't be null");
     }
     this.model = model;
+    stateList = new ArrayList<>();
 
   }
 
@@ -49,14 +53,15 @@ public class AnimatorTextView implements IAnimatorView {
               .append("Height ")
               .append("Red ").append("Green ").append("Blue\n");
 
-      List<ICommands> c = model.getCommands(s.getName());
+      List<ICommandsState> c = model.getCommands(s.getName());
 
       for (int j = 0; j < c.size(); j++) {
-        ICommands com = c.get(j);
+        ICommandsState com = c.get(j);
         if (j != (c.size() - 1)) {
           finalString.append("motion ").append(com.getBeginsState())
                   .append("    ").append(com.getEndsState()).append("\n");
-          c.get(j).execute(c.get(j + 1).getStart());
+          stateList.add(com);
+          c.get(j).getShapeAtTick(c.get(j + 1).getStart(), stateList);
         } else {
           finalString.append("motion ").append(com.getBeginsState())
                   .append("    ").append(com.getEndsState()).append("\n\n");

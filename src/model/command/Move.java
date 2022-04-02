@@ -67,7 +67,7 @@ public class Move extends ACommand {
   }
 
   @Override
-  public AShape getShapeAtTick(double time) {
+  public AShape getShapeAtTick(double time, List<ICommandsState> stateList) {
     Posn newPosn = calculate(time);
 
     AShape s = this.shape.getTheShape();
