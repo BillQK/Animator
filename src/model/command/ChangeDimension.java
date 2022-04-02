@@ -57,6 +57,11 @@ public class  ChangeDimension extends ACommand {
 
     AShape s = this.shape.getTheShape();
 
+    for (ICommandsState c : stateList){
+      s.setColor(c.getColor());
+      s.setPosn(c.getPosn());
+    }
+
     s.setWidth(newW);
     s.setHeight(newH);
 

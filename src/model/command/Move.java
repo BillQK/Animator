@@ -1,5 +1,7 @@
 package model.command;
 
+import java.util.List;
+
 import model.shape.AShape;
 import model.utils.Posn;
 import model.utils.RateOfChange;
@@ -71,6 +73,12 @@ public class Move extends ACommand {
     Posn newPosn = calculate(time);
 
     AShape s = this.shape.getTheShape();
+
+    for (ICommandsState c : stateList) {
+      s.setWidth(c.getWidth());
+      s.setHeight(c.getHeight());
+      s.setColor(c.getColor());
+    }
     s.setPosn(newPosn);
     return s;
   }
