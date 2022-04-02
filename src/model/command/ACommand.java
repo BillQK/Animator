@@ -1,7 +1,10 @@
 package model.command;
 
+import java.awt.*;
+
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
+import model.utils.Posn;
 
 /**
  * Represents an Abstract command class which is being implemented
@@ -106,5 +109,25 @@ public abstract class ACommand implements ICommands {
   @Override
   public double getEnd() {
     return endTime;
+  }
+
+  @Override
+  public Posn getPosn() {
+    return shape.getPosition();
+  }
+
+  @Override
+  public double getHeight() {
+    return shape.getHeight();
+  }
+
+  @Override
+  public double getWidth() {
+    return shape.getWidth();
+  }
+
+  @Override
+  public Color getColor() {
+    return shape.getColor();
   }
 }

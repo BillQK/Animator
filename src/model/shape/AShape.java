@@ -87,7 +87,8 @@ public abstract class AShape {
    * @return a Color - the shape's color
    */
   public Color getColor() {
-    return new Color(this.col.getRGB());
+    return new Color(this.col.getRed(),
+            this.col.getGreen(), this.col.getBlue());
   }
 
   /**

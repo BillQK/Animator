@@ -25,7 +25,7 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
 
     JScrollPane scroll = new JScrollPane(panel);
     scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     scroll.setBounds(50, 30, 300, 50);
 
     this.add(scroll, BorderLayout.CENTER);

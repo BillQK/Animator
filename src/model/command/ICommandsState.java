@@ -1,8 +1,10 @@
 package model.command;
 
+import java.awt.*;
 import java.util.List;
 
 import model.shape.AShape;
+import model.utils.Posn;
 
 /**
  * This interface represents all the state of the command.
@@ -62,7 +64,13 @@ public interface ICommandsState {
    */
   double getEnd();
 
+  Posn getPosn();
 
+  double getHeight();
+
+  double getWidth();
+
+  Color getColor();
 
   AShape getShapeAtTick(double start, List<ICommandsState> stateList);
 
