@@ -41,9 +41,11 @@ public class Rectangle extends AShape {
 
   @Override
   public String getSVG() {
-    return "<rect id=\"" + this.getName() + "\" x=\"" + this.getPosition().getX() + "\" y=\"" + this.getPosition().getY()
-            + "\" width=\"" + this.getWidth() + "\" height=\"" + this.getHeight() + "\" fill=\"rgb(" + this.getColor().getRed()
-            + "," + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")\" visibility=\"visible\" >\n";
+    return "<rect id=\"" + this.getName() + "\" x=\"" + this.getPosition().getX()
+            + "\" y=\"" + this.getPosition().getY() + "\" width=\"" + this.getWidth()
+            + "\" height=\"" + this.getHeight() + "\" fill=\"rgb(" + this.getColor().getRed()
+            + "," + this.getColor().getGreen() + "," + this.getColor().getBlue()
+            + ")\" visibility=\"visible\" >\n";
   }
 
   @Override

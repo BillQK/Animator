@@ -59,6 +59,8 @@ public class AnimatorTextViewTest {
                     "motion 2 30.0 10.0 40.0 400.0 500.0 10 10 10     35.0 10.0 30.0 400.0 500.0 10 10 10 \n" +
                     "motion 2 35.0 10.0 30.0 400.0 500.0 10 10 10     40.0 10.0 30.0 403.0 50.0 10 10 10 \n" +
                     "\n");
+
+    System.out.println(state.getDetails());
   }
 
 }
