@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.awt.Color;
 
 import model.IAnimatorModel;
+import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.shape.AShape;
 import model.utils.Time;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * This class test for IAnimatorView class.
  */
 public class AnimatorTextViewTest {
-  IAnimatorModel<AShape> model;
+  IAnimatorModelState<AShape> model;
   IAnimatorView state;
 
   @Before

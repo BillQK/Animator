@@ -3,7 +3,7 @@ package model;
 
 import java.util.List;
 
-import model.command.ICommands;
+import model.command.ICommandsState;
 import model.shape.AShape;
 import model.utils.Time;
 
@@ -36,7 +36,7 @@ public interface IAnimatorModelState<K> {
    * @return a List - a list of command
    * @Throws
    */
-  List<ICommands> getCommands(String id);
+  List<ICommandsState> getCommands(String id);
 
   /**
    * A method to get the time of the model.

@@ -12,6 +12,7 @@ import model.command.ChangeDimension;
 import model.command.CommandType;
 import model.command.EmptyCommand;
 import model.command.ICommands;
+import model.command.ICommandsState;
 import model.command.Move;
 import model.io.TweenModelBuilder;
 import model.shape.AShape;
@@ -180,7 +181,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    * @return a List - a list of command
    */
   @Override
-  public List<ICommands> getCommands(String id) {
+  public List<ICommandsState> getCommands(String id) {
     if (this.commands.get(id) == null) {
       throw new IllegalArgumentException("Illegal Shape");
     }
