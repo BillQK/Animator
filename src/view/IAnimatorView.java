@@ -65,4 +65,6 @@ public interface IAnimatorView {
    * Make the view visible to start the game session.
    */
   void makeVisible();
+
+  void showErrorMessage(String error);
 }

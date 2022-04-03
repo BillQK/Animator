@@ -27,19 +27,31 @@ public class Rectangle extends AShape {
     super(name, type, col, posX, posY, width, height, time);
   }
 
-  @Override
+  /**
+   * A method to get the specific new shape.
+   *
+   * @return the specific shape
+   */
   public Rectangle getTheShape() {
     return new Rectangle(this.getName(), this.getType(), this.getColor(),
             this.getPosition().getX(), this.getPosition().getY(),
             this.getWidth(), this.getHeight(), this.getTime());
   }
 
-  @Override
+  /**
+   * A method to get the shape type (Rectangle or Ellipse).
+   *
+   * @return an Enum - the shape's type
+   */
   public Shape getType() {
     return Shape.RECTANGLE;
   }
 
-  @Override
+  /**
+   * Get a textual description of the shape images.
+   *
+   * @return a String - SVG shape description
+   */
   public String getSVG() {
     return "<rect id=\"" + this.getName() + "\" x=\"" + this.getPosition().getX()
             + "\" y=\"" + this.getPosition().getY() + "\" width=\"" + this.getWidth()
@@ -48,27 +60,47 @@ public class Rectangle extends AShape {
             + ")\" visibility=\"visible\" >\n";
   }
 
-  @Override
+  /**
+   * Get a textual description of the shape's width/xRadius dimension.
+   *
+   * @return A String - SVG shape width/xRadius
+   */
   public String getSVGDstart() {
     return "width";
   }
 
-  @Override
+  /**
+   * Get a textual description of the shape's height/yRadius dimension.
+   *
+   * @return A String - SVG shape height/yRadius
+   */
   public String getSVGDend() {
     return "height";
   }
 
-  @Override
+  /**
+   * Get a textual description of the shape's x/cx position.
+   *
+   * @return A String - SVG shape x/cx position
+   */
   public String getSVGX() {
     return "x";
   }
 
-  @Override
+  /**
+   * Get a textual description of the shape's y/cy position.
+   *
+   * @return A String - SVG shape y/cy position
+   */
   public String getSVGY() {
     return "y";
   }
 
-  @Override
+  /**
+   * Get a textual description of the shape's type.
+   *
+   * @return A String - SVG shape type
+   */
   public String getSVGEndShape() {
     return "</rect>";
   }

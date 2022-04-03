@@ -9,18 +9,21 @@ import java.util.List;
 
 import javax.swing.*;
 
+import model.IAnimatorModelState;
 import model.shape.AShape;
 import model.shape.Shape;
 
 public class APanel extends JPanel {
   private List<AShape> shapes;
   Timer time;
+  private final IAnimatorModelState<AShape> model;
 
 
-  public APanel() {
+  public APanel(IAnimatorModelState<AShape> model) {
     super();
     shapes = new ArrayList<>();
     this.setBackground(Color.WHITE);
+    this.model = model;
   }
 
   @Override

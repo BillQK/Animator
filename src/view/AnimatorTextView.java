@@ -137,4 +137,9 @@ public class AnimatorTextView implements IAnimatorView {
   public void makeVisible() {
     throw new UnsupportedOperationException("View does not support this method");
   }
+
+  @Override
+  public void showErrorMessage(String error) {
+    throw new UnsupportedOperationException("View does not support this method");
+  }
 }

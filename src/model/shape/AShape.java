@@ -188,18 +188,54 @@ public abstract class AShape {
             this.w, this.h, this.time, this.pos);
   }
 
+  /**
+   * Get a textual description of the shape images.
+   *
+   * @return a String - SVG shape description
+   */
   public abstract String getSVG();
 
+  /**
+   * Get a textual description of the shape's width/xRadius dimension.
+   *
+   * @return A String - SVG shape width/xRadius
+   */
   public abstract String getSVGDstart();
 
+  /**
+   * Get a textual description of the shape's height/yRadius dimension.
+   *
+   * @return A String - SVG shape height/yRadius
+   */
   public abstract String getSVGDend();
 
+  /**
+   * Get a textual description of the shape's x/cx position.
+   *
+   * @return A String - SVG shape x/cx position
+   */
   public abstract String getSVGX();
 
+  /**
+   * Get a textual description of the shape's y/cy position.
+   *
+   * @return A String - SVG shape y/cy position
+   */
   public abstract String getSVGY();
 
+  /**
+   * Get a textual description of the shape's type.
+   *
+   * @return A String - SVG shape type
+   */
   public abstract String getSVGEndShape();
 
+  /**
+   * Update the copy shape based on the given command.
+   *
+   * @param com the given command
+   * @return the updated copy shape based on the command
+   */
   public AShape updateShape(ICommandsState com) {
     AShape shape = this.getTheShape();
     switch (com.getType()) {

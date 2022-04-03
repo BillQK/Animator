@@ -9,7 +9,8 @@ import model.shape.AShape;
 /**
  * This interface represents all the state of the model.
  * The interface include all the method to get the status of the model state from the
- * List of Shape to the List of Commands.
+ * List of Shape to the List of Commands. In which K represents our Shape type, the shape
+ * that we are going to animate.
  *
  * @param <K> The model type
  */

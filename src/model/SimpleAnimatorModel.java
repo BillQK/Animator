@@ -25,6 +25,9 @@ import model.utils.Time;
 
 /**
  * Represents the Main model class which implemented the IAnimationModel<AShape> </AShape>.
+ * This class will implement all method in IAnimationModelState<AShape> </AShape> which
+ * help the model to get all the model's state and all the method on
+ * IAnimationModel<AShape> </AShape> to add and delete the specific shape and animation.
  */
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final LinkedHashMap<String, AShape> shapes;
@@ -219,6 +222,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      */
     @Override
     public TweenModelBuilder<IAnimatorModel<AShape>> setBounds(int width, int height) {
+      ArgumentsCheck.lessThanZero(width, height);
       this.height = height;
       this.width = width;
       return this;
