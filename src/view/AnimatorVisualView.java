@@ -30,7 +30,7 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
 
     this.add(scroll, BorderLayout.CENTER);
 
-//    this.pack();
+    this.pack();
 
   }
 

@@ -48,7 +48,6 @@ public class AnimatorSVGView extends AnimatorTextView {
       FileWriter output = new FileWriter(fileName + ".svg");
       output.write(this.getDetails());
       output.close();
-
     } catch (IOException e) {
       e.printStackTrace();
     }
