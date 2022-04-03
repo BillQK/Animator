@@ -16,7 +16,7 @@ public class AnimatorSVGView extends AnimatorTextView {
    *
    * @param model the given model state to operate the operations on
    */
-  public AnimatorSVGView(IAnimatorModelState<?> model) {
+  public AnimatorSVGView(IAnimatorModelState<?> model, double tempo) {
     super(model);
     this.tempo = tempo;
   }
@@ -45,7 +45,7 @@ public class AnimatorSVGView extends AnimatorTextView {
   @Override
   public void writeFile(String fileName) {
     try {
-      FileWriter output = new FileWriter(fileName + ".txt");
+      FileWriter output = new FileWriter(fileName + ".svg");
       output.write(this.getDetails());
       output.close();
 
