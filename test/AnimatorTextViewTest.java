@@ -8,6 +8,7 @@ import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.shape.AShape;
 import model.utils.Time;
+import view.AnimatorSVGView;
 import view.AnimatorTextView;
 import view.IAnimatorView;
 
@@ -19,6 +20,8 @@ import static org.junit.Assert.assertEquals;
 public class AnimatorTextViewTest {
   IAnimatorModelState<AShape> model;
   IAnimatorView state;
+  IAnimatorView state2;
+
 
   @Before
   public void setUp() {
@@ -33,6 +36,9 @@ public class AnimatorTextViewTest {
             .build();
 
     state = new AnimatorTextView(model);
+
+    state2 = new AnimatorSVGView(model);
+
   }
 
   @Test
@@ -49,9 +55,9 @@ public class AnimatorTextViewTest {
 //                    "motion 1 15.0 10.0 10.0 100.0 100.0 10 10 10     30.0 10.0 10.0 200.0 200.0 10 10 10 \n" +
 //                    "\n");
 
-    System.out.println(state.getDetails());
-    System.out.println(state.getDetails());
-
+//    System.out.println(state.getDetails());
+//    System.out.println(state.getDetails());
+    System.out.println(model.getShapeAtTick(9.2, "1").getPosition().getX());
   }
 
 }

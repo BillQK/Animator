@@ -3,10 +3,8 @@ package model;
 
 import java.util.List;
 
-import model.command.ICommands;
 import model.command.ICommandsState;
 import model.shape.AShape;
-import model.utils.Time;
 
 /**
  * This interface represents all the state of the model.
@@ -26,12 +24,13 @@ public interface IAnimatorModelState<K> {
 
   /**
    * A method to get the list of commands in the model.
-   * @Param id - String id of the shape
+   *
    * @return a List - a list of command
+   * @Param id - String id of the shape
    * @Throws
    */
   List<ICommandsState> getCommands(String id);
 
-  AShape getShapeAtTick(double time, AShape s);
+  AShape getShapeAtTick(double time, String id);
 
 }

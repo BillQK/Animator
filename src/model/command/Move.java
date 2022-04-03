@@ -1,7 +1,5 @@
 package model.command;
 
-import java.util.List;
-
 import model.shape.AShape;
 import model.utils.Posn;
 import model.utils.RateOfChange;
@@ -27,7 +25,7 @@ public class Move extends ACommand {
 
   @Override
   public void execute(double time) {
-    Posn newPosn = calculate(time);
+    Posn newPosn = calculate(time, this.shape);
 
     this.shape.setPosn(newPosn);
   }
@@ -69,12 +67,12 @@ public class Move extends ACommand {
   }
 
 
-  private Posn calculate(double time) {
+  private Posn calculate(double time, AShape shape) {
     double start = super.getStart();
     double end = super.getEnd();
 
-    double currentX = this.shape.getPosition().getX();
-    double currentY = this.shape.getPosition().getY();
+    double currentX = shape.getPosition().getX();
+    double currentY = shape.getPosition().getY();
 
     double destX = this.destination.getX();
     double destY = this.destination.getY();
@@ -94,6 +92,13 @@ public class Move extends ACommand {
 
   public Posn getNewPosn() {
     return destination;
+  }
+
+  @Override
+  public AShape getShapeAtTick(double time,AShape shape) {
+
+    shape.setPosn(calculate(time,shape));
+    return shape;
   }
 
 }

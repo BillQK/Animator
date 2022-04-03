@@ -131,15 +131,27 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       throw new IllegalArgumentException("Illegal Shape");
     }
     List<ICommandsState> stateList = new ArrayList<>();
-    for (ICommandsState s : this.commands.get(id)) {
-      stateList.add(s);
-    }
+    stateList.addAll(this.commands.get(id));
     return stateList;
   }
 
   @Override
-  public AShape getShapeAtTick(double time, AShape s) {
-    return this.shapes.get("0");
+  public AShape getShapeAtTick(double time, String s) {
+    List<ICommands> commandsList = this.commands.get(s);
+    AShape shape = this.shapes.get(s).getTheShape();
+    for (int i = 0; i < commandsList.size(); i++) {
+      if (time >= commandsList.get(i).getStart() && time <= commandsList.get(i).getEnd()) {
+//        if (commandsList.get(i).getType() == CommandType.MOVE) {
+//
+//        }
+//        RateOfChange.findRate(time, commandsList.get(i).getStart(), commandsList.get(i).getEnd());
+        shape = commandsList.get(i).getShapeAtTick(time, shape);
+        return shape;
+      } else {
+        shape = shape.updateShape(commandsList.get(i));
+      }
+    }
+    return shape;
   }
 
 

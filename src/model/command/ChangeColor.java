@@ -1,7 +1,6 @@
 package model.command;
 
 import java.awt.*;
-import java.util.List;
 
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
@@ -106,4 +105,13 @@ public class ChangeColor extends ACommand {
   public Color getNewColor() {
     return endColor;
   }
+
+  @Override
+  public AShape getShapeAtTick(double time,AShape shape) {
+
+
+      shape.setColor(calculate(time));
+    return shape;
+  }
+
 }

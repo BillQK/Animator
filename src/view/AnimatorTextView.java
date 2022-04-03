@@ -1,5 +1,8 @@
 package view;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,7 +106,16 @@ public class AnimatorTextView implements IAnimatorView {
 
   @Override
   public void writeFile(String fileName) {
-
+    String des = this.getDetails();
+    try {
+//      Appendable a = new FileWriter(fileName+".txt", true);
+//      a.append(this.getDetails());
+      BufferedWriter output = new BufferedWriter(new FileWriter(fileName));
+      output.write(des);
+      output.close();
+    } catch (IOException e) {
+      throw new IllegalStateException("Cannot write file");
+    }
   }
 
   @Override
