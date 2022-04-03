@@ -22,6 +22,8 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
 
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(700, 700));
+    this.add(panel);
+    this.panel.setShapes(shapes);
 
     JScrollPane scroll = new JScrollPane(panel);
     scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -58,4 +60,6 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   public void makeVisible() {
     this.setVisible(true);
   }
+
+
 }

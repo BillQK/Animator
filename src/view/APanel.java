@@ -11,7 +11,7 @@ import model.shape.AShape;
 import model.shape.Shape;
 
 public class APanel extends JPanel {
-  private final List<AShape> shapes;
+  private List<AShape> shapes;
 
   public APanel() {
     super();
@@ -43,6 +43,12 @@ public class APanel extends JPanel {
         g2.fillOval(x,y,w,h);
         g2.drawOval(x,y,w,h);
       }
+
     }
+    g2.setTransform(transform);
+  }
+
+  public List<AShape> setShapes(List<AShape> s) {
+    return this.shapes = s;
   }
 }
