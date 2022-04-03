@@ -1,19 +1,12 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.SQLOutput;
-
-import javax.swing.*;
 
 import model.IAnimatorModel;
 import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
-import model.io.TweenModelBuilder;
 import model.shape.AShape;
 import view.AnimatorSVGView;
 import view.AnimatorTextView;
-import view.AnimatorVisualView;
 import view.IAnimatorView;
 
 public class Main {
@@ -51,8 +44,8 @@ public class Main {
 
     AnimationFileReader fr = new AnimationFileReader();
     try {
-      IAnimatorModel<AShape> model = fr.readFile("resource/toh-3.txt", new SimpleAnimatorModel.TweenBuilder());
-      IAnimatorView textview = new AnimatorTextView(model);
+      IAnimatorModel<AShape> model1 = fr.readFile("resource/toh-3.txt", new SimpleAnimatorModel.TweenBuilder());
+      IAnimatorView textview = new AnimatorTextView(model1);
       textview.writeFile("text-transcript");
 
     } catch (IOException e) {
@@ -61,8 +54,8 @@ public class Main {
 
     AnimationFileReader fr2 = new AnimationFileReader();
     try {
-      IAnimatorModelState<AShape> model = fr2.readFile("resource/toh-8.txt", new SimpleAnimatorModel.TweenBuilder());
-      IAnimatorView textview = new AnimatorSVGView(model, 20);
+      IAnimatorModelState<AShape> model2 = fr2.readFile("resource/toh-8.txt", new SimpleAnimatorModel.TweenBuilder());
+      IAnimatorView textview = new AnimatorSVGView(model2, 20);
       textview.writeFile("toh-at-20");
 
     } catch (IOException e) {
