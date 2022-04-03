@@ -3,7 +3,6 @@ package view;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import controller.IAnimatorController;
@@ -12,7 +11,7 @@ import model.command.ICommandsState;
 import model.shape.AShape;
 
 /**
- * Represents the main view class which implemented the IAnimatorView.
+ * Represents the Main view class which implemented the IAnimatorView.
  */
 public class AnimatorTextView implements IAnimatorView {
   protected final IAnimatorModelState<?> model;
@@ -60,43 +59,43 @@ public class AnimatorTextView implements IAnimatorView {
       for (int j = 0; j < c.size(); j++) {
         ICommandsState com = c.get(j);
         if (j != (c.size() - 1)) {
-          finalString.append("motion ").append(s.getName()+" ")
-                  .append(com.getStart()+" ")
+          finalString.append("motion ").append(s.getName() + " ")
+                  .append(com.getStart() + " ")
                   .append(shape.getPosition().toString())
-                  .append(shape.getWidth()+ " ")
+                  .append(shape.getWidth() + " ")
                   .append(shape.getHeight() + " ")
-                  .append(shape.getColor().getRed()+ " ")
-                  .append(shape.getColor().getGreen()+" ")
+                  .append(shape.getColor().getRed() + " ")
+                  .append(shape.getColor().getGreen() + " ")
                   .append(shape.getColor().getBlue() + "       ");
 
           shape = shape.updateShape(com);
 
           finalString.append(com.getEnd() + " ")
                   .append(shape.getPosition().toString() + " ")
-                  .append(shape.getWidth()+ " ")
+                  .append(shape.getWidth() + " ")
                   .append(shape.getHeight() + " ")
-                  .append(shape.getColor().getRed()+ " ")
-                  .append(shape.getColor().getGreen()+" ")
-                  .append(shape.getColor().getBlue()+"\n");
+                  .append(shape.getColor().getRed() + " ")
+                  .append(shape.getColor().getGreen() + " ")
+                  .append(shape.getColor().getBlue() + "\n");
         } else {
-          finalString.append("motion ").append(s.getName()+" ")
-                  .append(com.getStart()+" ")
+          finalString.append("motion ").append(s.getName() + " ")
+                  .append(com.getStart() + " ")
                   .append(shape.getPosition().toString())
-                  .append(shape.getWidth()+ " ")
+                  .append(shape.getWidth() + " ")
                   .append(shape.getHeight() + " ")
-                  .append(shape.getColor().getRed()+ " ")
-                  .append(shape.getColor().getGreen()+" ")
+                  .append(shape.getColor().getRed() + " ")
+                  .append(shape.getColor().getGreen() + " ")
                   .append(shape.getColor().getBlue() + "       ");
 
           shape = shape.updateShape(com);
 
           finalString.append(com.getEnd() + " ")
                   .append(shape.getPosition().toString() + " ")
-                  .append(shape.getWidth()+ " ")
+                  .append(shape.getWidth() + " ")
                   .append(shape.getHeight() + " ")
-                  .append(shape.getColor().getRed()+ " ")
-                  .append(shape.getColor().getGreen()+" ")
-                  .append(shape.getColor().getBlue()+"\n\n");;
+                  .append(shape.getColor().getRed() + " ")
+                  .append(shape.getColor().getGreen() + " ")
+                  .append(shape.getColor().getBlue() + "\n\n");
         }
       }
     }

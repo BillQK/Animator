@@ -5,13 +5,13 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import model.shape.AShape;
 import model.shape.Shape;
 
 public class APanel extends JPanel {
-  private List<AShape> shapes;
+  private final List<AShape> shapes;
 
   public APanel() {
     super();
@@ -44,6 +44,5 @@ public class APanel extends JPanel {
         g2.drawOval(x,y,w,h);
       }
     }
-
-   }
+  }
 }

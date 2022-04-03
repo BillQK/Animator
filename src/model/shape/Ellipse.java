@@ -1,6 +1,6 @@
 package model.shape;
 
-import java.awt.Color;
+import java.awt.*;
 
 import model.utils.Time;
 
