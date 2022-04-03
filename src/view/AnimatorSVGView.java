@@ -1,23 +1,26 @@
 package view;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 import model.IAnimatorModelState;
-import model.command.ICommands;
 import model.command.ICommandsState;
 import model.shape.AShape;
 
 public class AnimatorSVGView extends AnimatorTextView {
   private double tempo;
+
   /**
    * A constructor for AnimatorTextView class.
    *
    * @param model the given model state to operate the operations on
    */
-  public AnimatorSVGView(IAnimatorModelState<?> model, double tempo) {
+  public AnimatorSVGView(IAnimatorModelState<?> model) {
     super(model);
     this.tempo = tempo;
   }
+
   @Override
   public String getDetails() {
 
@@ -37,6 +40,18 @@ public class AnimatorSVGView extends AnimatorTextView {
     details += "</svg>";
 
     return details;
+  }
+
+  @Override
+  public void writeFile(String fileName) {
+    try {
+      FileWriter output = new FileWriter(fileName + ".txt");
+      output.write(this.getDetails());
+      output.close();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
 

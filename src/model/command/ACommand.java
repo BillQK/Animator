@@ -143,6 +143,6 @@ public abstract class ACommand implements ICommands {
     return null;
   }
 
-//  public abstract AShape getShapeAtTick(double time);
+  public abstract AShape getShapeAtTick(double time,AShape shape);
 
 }

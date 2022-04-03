@@ -45,6 +45,11 @@ public class EmptyCommand extends ACommand {
     return a;
   }
 
+  @Override
+  public AShape getShapeAtTick(double time,AShape shape) {
+    return shape;
+  }
+
 
   @Override
   public String getSVG(double tempo) {

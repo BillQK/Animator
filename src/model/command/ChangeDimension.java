@@ -118,4 +118,12 @@ public class ChangeDimension extends ACommand {
   public double getNewHeight() {
     return endH;
   }
+
+  @Override
+  public AShape getShapeAtTick(double time,AShape shape) {
+
+    shape.setWidth(calculateH(time));
+    shape.setHeight(calculateH(time));
+    return shape;
+  }
 }

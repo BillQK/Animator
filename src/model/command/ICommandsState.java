@@ -80,7 +80,7 @@ public interface ICommandsState {
 
   Color getNewColor();
 
-//  AShape getShapeAtTick(double time);
+  AShape getShapeAtTick(double time, AShape shape);
 
 
   String getSVG(double tempo);
