@@ -37,4 +37,15 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
    */
   void deleteShape(String id);
 //delete command for shape
+
+  /**
+   * A method to delete a specific command of a shape.
+   *
+   * @param id a String
+   * @param orderOfCommands the order of the commands need to be delete in the list of command of
+   *                        the shape (it is not an index, it is the order in the list starting
+   *                        from 1)
+   * @throws IllegalArgumentException if the id and the orderOfCommands is not valid
+   */
+  void deleteCommands(String id, int orderOfCommands);
 }

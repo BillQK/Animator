@@ -577,6 +577,28 @@ public class AnimatorModelTest {
             .addColorChange("2", 10, 10, 10,
                     100, 100, 100, 7, 10)
             .build();
+
+    assertEquals(s.getCommands("2").get(1).getType(), CommandType.EMPTY);
+  }
+
+  @Test
+  public void testDeleteCommands() {
+    s = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10, 15, 100, 200,
+                    10, 10, 10, 0, 10)
+            .addScaleToChange("1", 5, 5, 10, 10,
+                    1, 5)
+            .addRectangle("2", 10, 15, 100, 200,
+                    10, 10, 10, 0, 10)
+            .addMove("2", 10, 10, 20, 20,
+                    1, 5)
+            // 1 sec gap
+            .addColorChange("2", 10, 10, 10,
+                    100, 100, 100, 7, 10)
+            .build();
+
+    s.deleteCommands("2", 3);
+    assertEquals(s.getCommands("2").get(2).getType(), CommandType.EMPTY);
   }
 
 
