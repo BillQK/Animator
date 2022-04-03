@@ -36,30 +36,26 @@ public class AnimatorTextViewTest {
             .build();
 
     state = new AnimatorTextView(model);
-
-    state2 = new AnimatorSVGView(model, 10);
-
   }
 
   @Test
   public void testToStringTest() {
-//    assertEquals(state.getDetails(),
-//            "Shape: 1 Rectangle\n" +
-//                    "         START                                  END \n" +
-//                    "motion 1 Time X Y Width Height Red Green Blue   Time X Y Width Height Red Green Blue\n" +
-//                    "motion 1 0.0 10.0 10.0 100.0 100.0 10 10 10       5.0 10.0 10.0  100.0 100.0 15 15 15\n" +
-//                    "motion 1 5.0 10.0 10.0 100.0 100.0 15 15 15       6.0 10.0 10.0  100.0 100.0 15 15 15\n" +
-//                    "motion 1 6.0 10.0 10.0 100.0 100.0 15 15 15       7.0 15.0 40.0  100.0 100.0 15 15 15\n" +
-//                    "motion 1 7.0 15.0 40.0 100.0 100.0 15 15 15       8.0 15.0 40.0  100.0 100.0 15 15 15\n" +
-//                    "motion 1 8.0 15.0 40.0 100.0 100.0 15 15 15       15.0 10.0 10.0  100.0 100.0 15 15 15\n" +
-//                    "motion 1 15.0 10.0 10.0 100.0 100.0 10 10 10     30.0 10.0 10.0 200.0 200.0 10 10 10 \n" +
-//                    "\n");
-//
-    System.out.println(state.getDetails());
-    System.out.println(state.getDetails());
-    System.out.println(model.getShapeAtTick(9.2, "1").getPosition().getX());
-
-    state2.writeFile("helloworld");
+    assertEquals(state.getDetails(),
+            "Shape: 1 Rectangle\n" +
+                    "         START                                  END \n" +
+                    "motion 1 Time X Y Width Height Red Green Blue   Time X Y Width Height Red Green Blue\n" +
+                    "motion 1 0.0 10.0 10.0 100.0 100.0 10 10 10       5.0 10.0 10.0  100.0 100.0 15 15 15\n" +
+                    "motion 1 5.0 10.0 10.0 100.0 100.0 15 15 15       6.0 10.0 10.0  100.0 100.0 15 15 15\n" +
+                    "motion 1 6.0 10.0 10.0 100.0 100.0 15 15 15       7.0 15.0 40.0  100.0 100.0 15 15 15\n" +
+                    "motion 1 7.0 15.0 40.0 100.0 100.0 15 15 15       8.0 15.0 40.0  100.0 100.0 15 15 15\n" +
+                    "motion 1 8.0 15.0 40.0 100.0 100.0 15 15 15       15.0 10.0 10.0  100.0 100.0 15 15 15\n" +
+                    "motion 1 15.0 10.0 10.0 100.0 100.0 15 15 15       30.0 10.0 10.0  200.0 200.0 15 15 15\n" +
+                    "\n" +
+                    "Shape: 2 Ellipse\n" +
+                    "         START                                  END \n" +
+                    "motion 2 Time X Y Width Height Red Green Blue   Time X Y Width Height Red Green Blue\n" +
+                    "motion 2 0.0 10.0 10.0 10.0 50.0 10 10 10       10.0 50.0 50.0  10.0 50.0 10 10 10\n" +
+                    "\n");
   }
 
 }
