@@ -53,6 +53,7 @@ public class AnimatorSVGViewTest {
   @Test
   public void testWriteFile() {
     view.writeFile("test");
-    assertEquals();
+    File file = new File("test.svg");
+    assertTrue(file.exists());
   }
 }
