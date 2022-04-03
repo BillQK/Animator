@@ -313,7 +313,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
       addEmptyCommands(name, startTime);
 
-      ArgumentsCheck.lessThanZero(moveToX, moveToY, startTime, endTime);
+      ArgumentsCheck.lessThanZero(startTime, endTime);
       double shapeStart = shape.getTime().getStartTime();
       double shapeEnd = shape.getTime().getEndTime();
       ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
