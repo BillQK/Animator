@@ -1,19 +1,12 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.SQLOutput;
-
-import javax.swing.*;
 
 import model.IAnimatorModel;
 import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
-import model.io.TweenModelBuilder;
 import model.shape.AShape;
 import view.AnimatorSVGView;
 import view.AnimatorTextView;
-import view.AnimatorVisualView;
 import view.IAnimatorView;
 
 public class Main {
