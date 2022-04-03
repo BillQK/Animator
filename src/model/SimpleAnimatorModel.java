@@ -29,6 +29,8 @@ import model.utils.Time;
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final LinkedHashMap<String, AShape> shapes;
   private final LinkedHashMap<String, List<ICommands>> commands;
+  private int width;
+  private int height;
 
   /**
    * A constructor for SimpleAnimationModel class with the SimpleAnimator ModelBuilder builder.
@@ -38,6 +40,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private SimpleAnimatorModel(TweenBuilder tweenBuilder) {
     this.shapes = tweenBuilder.shapes;
     this.commands = tweenBuilder.commands;
+    this.width = tweenBuilder.width;
+    this.height = tweenBuilder.height;
   }
 
   /**
@@ -159,6 +163,8 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
     private final LinkedHashMap<String, AShape> shapes;
     private final LinkedHashMap<String, List<ICommands>> commands;
+    private int width;
+    private int height;
 
     public TweenBuilder() {
       this.shapes = new LinkedHashMap<>();
@@ -213,7 +219,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      */
     @Override
     public TweenModelBuilder<IAnimatorModel<AShape>> setBounds(int width, int height) {
-      return null;
+      this.height = height;
+      this.width = width;
+      return this;
     }
 
     /**
