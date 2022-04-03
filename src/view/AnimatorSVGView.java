@@ -9,7 +9,7 @@ import model.command.ICommandsState;
 import model.shape.AShape;
 
 public class AnimatorSVGView extends AnimatorTextView {
-  private double tempo;
+  private final double tempo;
 
   /**
    * A constructor for AnimatorTextView class.

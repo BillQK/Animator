@@ -24,7 +24,7 @@ import model.utils.Posn;
 import model.utils.Time;
 
 /**
- * Represents the main model class which implemented the IAnimationModel<AShape> </AShape>.
+ * Represents the Main model class which implemented the IAnimationModel<AShape> </AShape>.
  */
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final LinkedHashMap<String, AShape> shapes;

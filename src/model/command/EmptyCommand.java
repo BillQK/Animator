@@ -1,7 +1,5 @@
 package model.command;
 
-import java.util.List;
-
 import model.shape.AShape;
 
 public class EmptyCommand extends ACommand {
@@ -46,7 +44,7 @@ public class EmptyCommand extends ACommand {
   }
 
   @Override
-  public AShape getShapeAtTick(double time,AShape shape) {
+  public AShape getShapeAtTick(double time, AShape shape) {
     return shape;
   }
 

@@ -9,19 +9,19 @@ import controller.IAnimatorController;
 import model.shape.AShape;
 
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
-  private APanel panel;
-  private List<AShape> shapes;
+  private final APanel panel;
+  private final List<AShape> shapes;
 
   public AnimatorVisualView(double speed, List<AShape> shapes) {
     super();
 
     this.shapes = shapes;
     this.setTitle("Animation");
-    this.setSize(700,700);
+    this.setSize(700, 700);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     this.panel = new APanel();
-    this.panel.setPreferredSize(new Dimension(700,700));
+    this.panel.setPreferredSize(new Dimension(700, 700));
 
     JScrollPane scroll = new JScrollPane(panel);
     scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

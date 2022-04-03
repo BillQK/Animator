@@ -107,10 +107,10 @@ public class ChangeColor extends ACommand {
   }
 
   @Override
-  public AShape getShapeAtTick(double time,AShape shape) {
+  public AShape getShapeAtTick(double time, AShape shape) {
 
 
-      shape.setColor(calculate(time));
+    shape.setColor(calculate(time));
     return shape;
   }
 

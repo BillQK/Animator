@@ -95,9 +95,9 @@ public class Move extends ACommand {
   }
 
   @Override
-  public AShape getShapeAtTick(double time,AShape shape) {
+  public AShape getShapeAtTick(double time, AShape shape) {
 
-    shape.setPosn(calculate(time,shape));
+    shape.setPosn(calculate(time, shape));
     return shape;
   }
 
