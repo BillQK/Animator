@@ -55,8 +55,8 @@ public class AnimatorTextViewTest {
 //                    "motion 1 15.0 10.0 10.0 100.0 100.0 10 10 10     30.0 10.0 10.0 200.0 200.0 10 10 10 \n" +
 //                    "\n");
 //
-//    System.out.println(state.getDetails());
-//    System.out.println(state.getDetails());
+    System.out.println(state.getDetails());
+    System.out.println(state.getDetails());
     System.out.println(model.getShapeAtTick(9.2, "1").getPosition().getX());
 
     state2.writeFile("helloworld");
