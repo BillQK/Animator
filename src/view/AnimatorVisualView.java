@@ -62,4 +62,5 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   }
 
 
+
 }

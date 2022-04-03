@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ import model.shape.Shape;
 
 public class APanel extends JPanel {
   private List<AShape> shapes;
+  Timer time;
+
 
   public APanel() {
     super();
@@ -51,4 +55,5 @@ public class APanel extends JPanel {
   public List<AShape> setShapes(List<AShape> s) {
     return this.shapes = s;
   }
+
 }
