@@ -111,6 +111,31 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   /**
+   * A method to delete a specific command of a shape.
+   *
+   * @param id a String
+   * @param orderOfCommands the order of the commands need to be delete in the list of command of
+   *                        the shape (it is not an index, it is the order in the list starting
+   *                        from 1)
+   * @throws IllegalArgumentException if the id and the orderOfCommands is not valid
+   */
+  @Override
+  public void deleteCommands(String id, int orderOfCommands) {
+    if (this.commands.get(id) == null) {
+      throw new IllegalArgumentException("Invalid id");
+    }
+    if (orderOfCommands > this.commands.get(id).size()) {
+      throw new IllegalArgumentException("Invalid orderOfCommands");
+    }
+    List<ICommands> s = this.commands.get(id);
+    AShape shape = this.shapes.get(id);
+    ICommands c = s.get(orderOfCommands - 1);
+    s.set(orderOfCommands - 1, new EmptyCommand(shape, CommandType.EMPTY,
+            c.getStart(), c.getEnd()));
+  }
+
+
+  /**
    * A method to get the list of shape in the model.
    *
    * @return a List - a list of shape
