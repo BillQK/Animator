@@ -109,7 +109,7 @@ public class AnimatorTextView implements IAnimatorView {
     try {
 //      Appendable a = new FileWriter(fileName+".txt", true);
 //      a.append(this.getDetails());
-      BufferedWriter output = new BufferedWriter(new FileWriter(fileName));
+      BufferedWriter output = new BufferedWriter(new FileWriter(fileName+".txt"));
       output.write(des);
       output.close();
     } catch (IOException e) {
