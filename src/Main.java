@@ -55,7 +55,7 @@ public class Main {
     AnimationFileReader fr2 = new AnimationFileReader();
     try {
       IAnimatorModelState<AShape> model2 = fr2.readFile("resource/toh-8.txt", new SimpleAnimatorModel.TweenBuilder());
-      IAnimatorView textview = new AnimatorSVGView(model2, 20);
+      IAnimatorView textview = new AnimatorSVGView(model2, 500);
       textview.writeFile("toh-at-20");
 
     } catch (IOException e) {
