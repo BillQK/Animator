@@ -37,7 +37,7 @@ public class AnimatorTextViewTest {
 
     state = new AnimatorTextView(model);
 
-    state2 = new AnimatorSVGView(model);
+    state2 = new AnimatorSVGView(model, 10);
 
   }
 
@@ -58,6 +58,8 @@ public class AnimatorTextViewTest {
 //    System.out.println(state.getDetails());
 //    System.out.println(state.getDetails());
     System.out.println(model.getShapeAtTick(9.2, "1").getPosition().getX());
+
+    state2.writeFile("helloworld");
   }
 
 }
