@@ -8,7 +8,7 @@ import model.utils.RateOfChange;
 /**
  * Represents the ChangeDimension command class called on a shape.
  */
-public class  ChangeDimension extends ACommand {
+public class ChangeDimension extends ACommand {
   private final double endW;
   private final double endH;
 
@@ -48,24 +48,6 @@ public class  ChangeDimension extends ACommand {
             + " " + shape.getColor().getGreen()
             + " " + shape.getColor().getBlue() + " ";
     return a;
-  }
-
-  @Override
-  public AShape getShapeAtTick(double time, List<ICommandsState> stateList) {
-    double newW = calculateW(time);
-    double newH = calculateH(time);
-
-    AShape s = this.shape.getTheShape();
-
-    for (ICommandsState c : stateList){
-      s.setColor(c.getColor());
-      s.setPosn(c.getPosn());
-    }
-
-    s.setWidth(newW);
-    s.setHeight(newH);
-
-    return s;
   }
 
   @Override
@@ -119,5 +101,21 @@ public class  ChangeDimension extends ACommand {
     double newH = currentH + changeInH;
 
     return newH;
+  }
+
+  public double getOldWidth() {
+    return this.shape.getWidth();
+  }
+
+  public double getNewWidth() {
+    return endW;
+  }
+
+  public double getOldHeight() {
+    return this.shape.getHeight();
+  }
+
+  public double getNewHeight() {
+    return endH;
   }
 }

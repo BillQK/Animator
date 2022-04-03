@@ -60,7 +60,6 @@ public abstract class ACommand implements ICommands {
   @Override
   public abstract void execute(double time);
 
-  @Override
   public int compareTo(ICommands o) {
     if (startTime > o.getStart()) {
       return 1;
@@ -111,23 +110,39 @@ public abstract class ACommand implements ICommands {
     return endTime;
   }
 
-  @Override
-  public Posn getPosn() {
-    return shape.getPosition();
+
+  public Posn getOldPosn() {
+    return null;
   }
 
-  @Override
-  public double getHeight() {
-    return shape.getHeight();
+  public Posn getNewPosn() {
+    return null;
   }
 
-  @Override
-  public double getWidth() {
-    return shape.getWidth();
+  public double getOldWidth() {
+    return -1;
   }
 
-  @Override
-  public Color getColor() {
-    return shape.getColor();
+  public double getNewWidth() {
+    return -1;
   }
+
+  public double getOldHeight() {
+    return -1;
+  }
+
+  public double getNewHeight() {
+    return -1;
+  }
+
+  public Color getOldColor() {
+    return null;
+  }
+
+  public Color getNewColor() {
+    return null;
+  }
+
+//  public abstract AShape getShapeAtTick(double time);
+
 }

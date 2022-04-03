@@ -48,21 +48,6 @@ public class ChangeColor extends ACommand {
     return a;
   }
 
-  @Override
-  public AShape getShapeAtTick(double time, List<ICommandsState> stateList) {
-
-    Color newColor = calculate(time);
-
-    AShape s = this.getTheShape();
-
-    for (ICommandsState c : stateList) {
-      s.setPosn(c.getPosn());
-      s.setHeight(c.getHeight());
-      s.setWidth(c.getWidth());
-    }
-    s.setColor(newColor);
-    return s;
-  }
 
   @Override
   public String getSVG(double tempo) {
@@ -89,9 +74,9 @@ public class ChangeColor extends ACommand {
     double start = super.getStart();
     double end = super.getEnd();
 
-    int currentR = shape.getColor().getRed();
-    int currentG = shape.getColor().getGreen();
-    int currentB = shape.getColor().getBlue();
+    int currentR = this.shape.getColor().getRed();
+    int currentG = this.shape.getColor().getGreen();
+    int currentB = this.shape.getColor().getBlue();
 
     int destR = endColor.getRed();
     int destG = endColor.getGreen();
@@ -110,5 +95,15 @@ public class ChangeColor extends ACommand {
     ArgumentsCheck.colorRange(newR, newG, newB);
     Color newColor = new Color(newR, newG, newB);
     return newColor;
+  }
+
+  @Override
+  public Color getOldColor() {
+    return this.shape.getColor();
+  }
+
+  @Override
+  public Color getNewColor() {
+    return endColor;
   }
 }

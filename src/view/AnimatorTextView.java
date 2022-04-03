@@ -13,7 +13,6 @@ import model.shape.AShape;
  */
 public class AnimatorTextView implements IAnimatorView {
   protected final IAnimatorModelState<?> model;
-  private final List<ICommandsState> stateList;
 
   /**
    * A constructor for AnimatorTextView class.
@@ -25,7 +24,6 @@ public class AnimatorTextView implements IAnimatorView {
       throw new IllegalArgumentException("Model can't be null");
     }
     this.model = model;
-    stateList = new ArrayList<>();
 
   }
 
@@ -54,48 +52,50 @@ public class AnimatorTextView implements IAnimatorView {
 
       List<ICommandsState> c = model.getCommands(s.getName());
 
+
+      AShape shape = c.get(0).getTheShape();
       for (int j = 0; j < c.size(); j++) {
         ICommandsState com = c.get(j);
         if (j != (c.size() - 1)) {
-          AShape g = com.getTheShape();
-          finalString.append("motion ").append(com.getStart())
-                  .append("       ")
-                  .append(g.getName())
-                  .append(g.getPosition().toString())
-                  .append(g.getWidth())
-                  .append(g.getHeight())
-                  .append(g.getColor().getRed())
-                  .append(g.getColor().getGreen())
-                  .append(g.getColor().getBlue())
-                  .append("      ")
-                  .append(com.getEnd());
-          stateList.add(com);
-          g = com.getShapeAtTick(c.get(j + 1).getStart(), stateList);
-          finalString.append(g.getPosition().toString())
-                  .append(g.getWidth())
-                  .append(g.getHeight())
-                  .append(g.getColor().getRed())
-                  .append(g.getColor().getGreen())
-                  .append(g.getColor().getBlue() + "\n");
+          finalString.append("motion ").append(s.getName()+" ")
+                  .append(com.getStart()+" ")
+                  .append(shape.getPosition().toString())
+                  .append(shape.getWidth()+ " ")
+                  .append(shape.getHeight() + " ")
+                  .append(shape.getColor().getRed()+ " ")
+                  .append(shape.getColor().getGreen()+" ")
+                  .append(shape.getColor().getBlue() + "       ");
 
+          shape = shape.updateShape(com);
+
+          finalString.append(com.getEnd() + " ")
+                  .append(shape.getPosition().toString() + " ")
+                  .append(shape.getWidth()+ " ")
+                  .append(shape.getHeight() + " ")
+                  .append(shape.getColor().getRed()+ " ")
+                  .append(shape.getColor().getGreen()+" ")
+                  .append(shape.getColor().getBlue()+"\n");
         } else {
-          finalString.append("motion ").append(com.getBeginsState())
-                  .append("    ").append(com.getEndsState()).append("\n\n");
+          finalString.append("motion ").append(s.getName()+" ")
+                  .append(com.getStart()+" ")
+                  .append(shape.getPosition().toString())
+                  .append(shape.getWidth()+ " ")
+                  .append(shape.getHeight() + " ")
+                  .append(shape.getColor().getRed()+ " ")
+                  .append(shape.getColor().getGreen()+" ")
+                  .append(shape.getColor().getBlue() + "       ");
+
+          shape = shape.updateShape(com);
+
+          finalString.append(com.getEnd() + " ")
+                  .append(shape.getPosition().toString() + " ")
+                  .append(shape.getWidth()+ " ")
+                  .append(shape.getHeight() + " ")
+                  .append(shape.getColor().getRed()+ " ")
+                  .append(shape.getColor().getGreen()+" ")
+                  .append(shape.getColor().getBlue()+"\n\n");;
         }
       }
-
-//      for (int j = 0; j < c.size(); j++) {
-//        ICommandsState com = c.get(j);
-//        if (j != (c.size() - 1)) {
-//          finalString.append("motion ").append(com.getBeginsState())
-//                  .append("    ").append(com.getEndsState()).append("\n");
-//          stateList.add(com);
-//          c.get(j).getShapeAtTick(c.get(j + 1).getStart(), stateList);
-//        } else {
-//          finalString.append("motion ").append(com.getBeginsState())
-//                  .append("    ").append(com.getEndsState()).append("\n\n");
-//        }
-//      }
     }
     return finalString.toString();
 

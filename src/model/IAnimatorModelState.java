@@ -18,13 +18,6 @@ import model.utils.Time;
 public interface IAnimatorModelState<K> {
 
   /**
-   * A method to get the whole state of the model.
-   *
-   * @return a String - the model's current state
-   */
-  String getState();
-
-  /**
    * A method to get the list of shape in the model.
    *
    * @return a List - a list of shape
@@ -39,10 +32,6 @@ public interface IAnimatorModelState<K> {
    */
   List<ICommandsState> getCommands(String id);
 
-  /**
-   * A method to get the time of the model.
-   *
-   * @return A time - the model's time
-   */
-  Time getTime();
+  AShape getShapeAtTick(double time, AShape s);
+
 }

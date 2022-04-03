@@ -45,10 +45,6 @@ public class EmptyCommand extends ACommand {
     return a;
   }
 
-  @Override
-  public AShape getShapeAtTick(double time, List<ICommandsState> stateList) {
-    return shape.getTheShape();
-  }
 
   @Override
   public String getSVG(double tempo) {

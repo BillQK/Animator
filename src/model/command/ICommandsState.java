@@ -64,15 +64,24 @@ public interface ICommandsState {
    */
   double getEnd();
 
-  Posn getPosn();
+  Posn getOldPosn();
 
-  double getHeight();
+  Posn getNewPosn();
 
-  double getWidth();
+  double getOldWidth();
 
-  Color getColor();
+  double getNewWidth();
 
-  AShape getShapeAtTick(double start, List<ICommandsState> stateList);
+  double getOldHeight();
+
+  double getNewHeight();
+
+  Color getOldColor();
+
+  Color getNewColor();
+
+//  AShape getShapeAtTick(double time);
+
 
   String getSVG(double tempo);
 }

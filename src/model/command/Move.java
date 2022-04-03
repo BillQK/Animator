@@ -68,20 +68,6 @@ public class Move extends ACommand {
     return a;
   }
 
-  @Override
-  public AShape getShapeAtTick(double time, List<ICommandsState> stateList) {
-    Posn newPosn = calculate(time);
-
-    AShape s = this.shape.getTheShape();
-
-    for (ICommandsState c : stateList) {
-      s.setWidth(c.getWidth());
-      s.setHeight(c.getHeight());
-      s.setColor(c.getColor());
-    }
-    s.setPosn(newPosn);
-    return s;
-  }
 
   private Posn calculate(double time) {
     double start = super.getStart();
@@ -100,6 +86,14 @@ public class Move extends ACommand {
 
     Posn newPosn = new Posn(currentX + changeInX, currentY + changeInY);
     return newPosn;
+  }
+
+  public Posn getOldPosn() {
+    return this.shape.getPosition();
+  }
+
+  public Posn getNewPosn() {
+    return destination;
   }
 
 }

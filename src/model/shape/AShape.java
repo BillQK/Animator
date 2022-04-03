@@ -3,6 +3,7 @@ package model.shape;
 import java.awt.Color;
 import java.util.Objects;
 
+import model.command.ICommandsState;
 import model.utils.ArgumentsCheck;
 import model.utils.Posn;
 import model.utils.Time;
@@ -199,4 +200,21 @@ public abstract class AShape {
 
   public abstract String getSVGEndShape();
 
+  public AShape updateShape(ICommandsState com) {
+    AShape shape = this.getTheShape();
+    switch (com.getType()) {
+      case MOVE:
+        shape.setPosn(com.getNewPosn());
+        return shape;
+      case CHANGE_DIMENSION:
+        shape.setHeight(com.getNewHeight());
+        shape.setWidth(com.getNewWidth());
+        return shape;
+      case CHANGE_COLOR:
+        shape.setColor(com.getNewColor());
+        return shape;
+      default:
+        return shape;
+    }
+  }
 }
