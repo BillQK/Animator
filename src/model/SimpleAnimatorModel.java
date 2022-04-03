@@ -127,7 +127,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   /**
-   * A method to get the list of commands in the model.
+   * A method to get the list of commands of a specific shape.
    *
    * @param id - String id of the shape
    * @return a List - a list of command
