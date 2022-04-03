@@ -44,8 +44,8 @@ public class Main {
 
     AnimationFileReader fr = new AnimationFileReader();
     try {
-      IAnimatorModel<AShape> model = fr.readFile("resource/toh-3.txt", new SimpleAnimatorModel.TweenBuilder());
-      IAnimatorView textview = new AnimatorTextView(model);
+      IAnimatorModel<AShape> model1 = fr.readFile("resource/toh-3.txt", new SimpleAnimatorModel.TweenBuilder());
+      IAnimatorView textview = new AnimatorTextView(model1);
       textview.writeFile("text-transcript");
 
     } catch (IOException e) {
@@ -54,8 +54,8 @@ public class Main {
 
     AnimationFileReader fr2 = new AnimationFileReader();
     try {
-      IAnimatorModelState<AShape> model = fr2.readFile("resource/toh-8.txt", new SimpleAnimatorModel.TweenBuilder());
-      IAnimatorView textview = new AnimatorSVGView(model, 20);
+      IAnimatorModelState<AShape> model2 = fr2.readFile("resource/toh-8.txt", new SimpleAnimatorModel.TweenBuilder());
+      IAnimatorView textview = new AnimatorSVGView(model2, 20);
       textview.writeFile("toh-at-20");
 
     } catch (IOException e) {
