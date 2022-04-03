@@ -63,24 +63,79 @@ public interface ICommandsState {
    */
   double getEnd();
 
+  /**
+   * Get the old posn in the Shape.
+   *
+   * @return a Posn - the old posn of the shape
+   */
   Posn getOldPosn();
 
+
+  /**
+   * Get the new posn in the Shape.
+   *
+   * @return a Posn - the new posn of the shape
+   */
   Posn getNewPosn();
 
+
+  /**
+   * Get the old width in the Shape.
+   *
+   * @return a double - the old width of the shape
+   */
   double getOldWidth();
 
+  /**
+   * Get the new width in the Shape.
+   *
+   * @return a double - the new width of the shape
+   */
   double getNewWidth();
 
+  /**
+   * Get the old height in the Shape.
+   *
+   * @return a double - the old height of the shape
+   */
   double getOldHeight();
 
+  /**
+   * Get the new height in the Shape.
+   *
+   * @return a double - the new height of the shape
+   */
   double getNewHeight();
 
+  /**
+   * Get the old Color in the Shape.
+   *
+   * @return a Color - the old Color of the shape
+   */
   Color getOldColor();
 
+  /**
+   * Get the new Color in the Shape.
+   *
+   * @return a Color - the new Color of the shape
+   */
   Color getNewColor();
 
+
+  /**
+   * Return a new state of the given shape at a specific tick.
+   *
+   * @param time  a double - represent the time
+   * @param shape a AShape - operating shape
+   * @return a updated state copy of the Shape
+   */
   AShape getShapeAtTick(double time, AShape shape);
 
-
+  /**
+   * Get the svg String of the command.
+   *
+   * @param tempo a double - tempo
+   * @return a String
+   */
   String getSVG(double tempo);
 }
