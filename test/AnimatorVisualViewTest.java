@@ -28,7 +28,7 @@ public class AnimatorVisualViewTest {
             .addMove("2", 10, 10, 50, 50, 0, 10)
             .build();
 
-    view = new AnimatorVisualView(10,new ArrayList<>(), model);
+//    view = new AnimatorVisualView(10,new ArrayList<>(), model);
   }
 
   @Test(expected = UnsupportedOperationException.class)

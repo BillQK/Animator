@@ -15,15 +15,16 @@ import model.shape.Shape;
 
 public class APanel extends JPanel {
   private List<AShape> shapes;
-  Timer time;
-  private final IAnimatorModelState<AShape> model;
+//  Timer time;
+//  private final IAnimatorModelState<AShape> model;
+//  IAnimatorModelState<AShape> model
 
 
-  public APanel(IAnimatorModelState<AShape> model) {
+  public APanel() {
     super();
     shapes = new ArrayList<>();
     this.setBackground(Color.WHITE);
-    this.model = model;
+//    this.model = model;
   }
 
   @Override

@@ -11,33 +11,30 @@ import model.shape.AShape;
 
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
   private final APanel panel;
-  private final List<AShape> shapes;
-  private final IAnimatorModelState<AShape> model;
+  private List<AShape> shapes;
 
-  public AnimatorVisualView(double speed, List<AShape> shapes, IAnimatorModelState<AShape> model) {
+  public AnimatorVisualView() {
     super();
 
-    this.shapes = shapes;
-    this.model = model;
+
     this.setTitle("Animation");
     this.setSize(700, 700);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    if (model == null) {
-      throw new IllegalArgumentException("Model cannot be null");
-    }
-    this.panel = new APanel(model);
+
+    this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(700, 700));
     this.add(panel);
 
-    this.panel.setShapes(shapes);
 
     JScrollPane scroll = new JScrollPane(panel);
     scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     scroll.setBounds(50, 30, 300, 50);
 
+
     this.add(scroll, BorderLayout.CENTER);
+
 
     this.pack();
 
@@ -74,6 +71,9 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
             "Error", JOptionPane.ERROR_MESSAGE);
   }
 
-
+  public void setShapes(List<AShape> s) {
+    this.shapes = s;
+    this.panel.setShapes(shapes);
+  }
 
 }

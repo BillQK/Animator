@@ -1,6 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -32,25 +34,29 @@ public class Main {
             .addMove("2", 10,10,
                     50,50,0,10)
             .build();
-    AnimatorVisualView view = new AnimatorVisualView(0, model.getShapes(), model);
+    AnimatorVisualView view = new AnimatorVisualView();
 
     view.makeVisible();
+
+    Tempo t = new Tempo();
 
     ActionListener timeListener = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent ae) {
+        List<AShape> losTempo = new ArrayList<>();
+        AShape shape;
+        for (AShape s : model.getShapes()) {
+          shape = model.getShapeAtTick(t.getTempo(), s.getName());
+          losTempo.add(shape);
+        }
 
-//        int tick = 30;
-//        view.refresh();
-//        view.makeVisible();
-//        for (int i = 0; i < tick; i++) {
-//          System.out.println(model.getShapeAtTick(i, "1").getPosition().getX());
-//        }
-//        System.out.println("hi");
-//        tick++;
+        System.out.println(t.getTempo() + "hi");
+        view.setShapes(losTempo);
+        view.refresh();
+        t.addTempo();
       };
 
-    });
+    };
 
   Timer timer = new Timer(1000, timeListener);
   timer.start();
