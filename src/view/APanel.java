@@ -10,15 +10,27 @@ import javax.swing.*;
 import model.shape.AShape;
 import model.shape.Shape;
 
+/**
+ * Represent the APanel class which extends JPanel, which is where we paint out visual view
+ * according to what we put in.
+ */
 public class APanel extends JPanel {
   private List<AShape> shapes;
 
+  /**
+   * Constructor for APanel class.
+   */
   public APanel() {
     super();
     shapes = new ArrayList<>();
     this.setBackground(Color.WHITE);
   }
 
+  /**
+   * A method to paint our visual view which present the view.
+   *
+   * @param g the given graphics tools to paint the view
+   */
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
@@ -48,6 +60,11 @@ public class APanel extends JPanel {
 
   }
 
+  /**
+   * A method to set the list of shapes field to the given list of shape arguments.
+   *
+   * @param s the given list of Shapes
+   */
   public List<AShape> setShapes(List<AShape> s) {
     if (s == null) {
       throw new IllegalArgumentException("The list of shapes cannot be null");

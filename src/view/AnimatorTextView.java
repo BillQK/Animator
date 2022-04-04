@@ -11,7 +11,7 @@ import model.command.ICommandsState;
 import model.shape.AShape;
 
 /**
- * Represents the Main view class which implemented the IAnimatorView.
+ * Represents the Main textual view class which implemented the IAnimatorView.
  */
 public class AnimatorTextView implements IAnimatorView {
   protected final IAnimatorModelState<?> model;
@@ -102,13 +102,18 @@ public class AnimatorTextView implements IAnimatorView {
 
   }
 
+  /**
+   * A method to based on the given fileName to print out the according view.
+   *
+   * @param fileName String - a given fileName
+   */
   @Override
   public void writeFile(String fileName) {
     String des = this.getDetails();
     try {
 //      Appendable a = new FileWriter(fileName+".txt", true);
 //      a.append(this.getDetails());
-      BufferedWriter output = new BufferedWriter(new FileWriter(fileName+".txt"));
+      BufferedWriter output = new BufferedWriter(new FileWriter(fileName + ".txt"));
       output.write(des);
       output.close();
     } catch (IOException e) {
@@ -116,6 +121,11 @@ public class AnimatorTextView implements IAnimatorView {
     }
   }
 
+  /**
+   * Set up the controller to handle click events in this view.
+   *
+   * @param listener the controller
+   */
   @Override
   public void addListener(IAnimatorController listener) {
     throw new UnsupportedOperationException("View does not support this method");
@@ -137,11 +147,21 @@ public class AnimatorTextView implements IAnimatorView {
     throw new UnsupportedOperationException("View does not support this method");
   }
 
+  /**
+   * A method to show an error message.
+   *
+   * @param error String - the error message
+   */
   @Override
   public void showErrorMessage(String error) {
     throw new UnsupportedOperationException("View does not support this method");
   }
 
+  /**
+   * A method to set the list of shapes field to the given list of shape arguments.
+   *
+   * @param losTempo the given list of Shapes
+   */
   @Override
   public void setShapes(List<AShape> losTempo) {
     throw new UnsupportedOperationException("View does not support this method");

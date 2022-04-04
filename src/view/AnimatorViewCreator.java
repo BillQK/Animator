@@ -10,6 +10,7 @@ import model.shape.AShape;
  * Its usage is to return a instance of Animator View object.
  */
 public class AnimatorViewCreator {
+
   /**
    * A method that return an instance of the given View.
    * @param view a String

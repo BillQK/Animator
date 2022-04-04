@@ -26,6 +26,11 @@ public class ChangeDimension extends ACommand {
     this.endW = endW;
   }
 
+  /**
+   * A method to execute the command on the shape to move/changeDimension/changeColor.
+   *
+   * @param time the current time of the animation
+   */
   @Override
   public void execute(double time) {
     double newW = calculateW(time);
@@ -35,6 +40,12 @@ public class ChangeDimension extends ACommand {
     this.shape.setHeight(newH);
   }
 
+  /**
+   * Get the state of the shape after the command.
+   *
+   * @return a String with the shape's end time + end position + end width +
+   * end height + end color
+   */
   @Override
   public String getEndsState() {
     String a = "";
@@ -48,6 +59,12 @@ public class ChangeDimension extends ACommand {
     return a;
   }
 
+  /**
+   * Get the svg String of the command.
+   *
+   * @param tempo a double - tempo
+   * @return a String
+   */
   @Override
   public String getSVG(double tempo) {
     double begin = (this.getStart() * 1000 / tempo);
@@ -71,6 +88,12 @@ public class ChangeDimension extends ACommand {
     return details;
   }
 
+  /**
+   * A method to calculate the new shape's width at the given time on the given shape.
+   *
+   * @param time the given time to know what the shape's width is
+   * @return a double - new width at the time
+   */
   private double calculateW(double time) {
     double start = super.getStart();
     double end = super.getEnd();
@@ -86,6 +109,12 @@ public class ChangeDimension extends ACommand {
     return newW;
   }
 
+  /**
+   * A method to calculate the new shape's height at the given time on the given shape.
+   *
+   * @param time the given time to know what the shape's height is
+   * @return a double - new height at the time
+   */
   private double calculateH(double time) {
     double start = super.getStart();
     double end = super.getEnd();
@@ -101,22 +130,53 @@ public class ChangeDimension extends ACommand {
     return newH;
   }
 
+  /**
+   * Get the old width in the Shape.
+   *
+   * @return a double - the old width of the shape
+   */
+  @Override
   public double getOldWidth() {
     return this.shape.getWidth();
   }
 
+  /**
+   * Get the new width in the Shape.
+   *
+   * @return a double - the new width of the shape
+   */
+  @Override
   public double getNewWidth() {
     return endW;
   }
 
+  /**
+   * Get the old height in the Shape.
+   *
+   * @return a double - the old height of the shape
+   */
+  @Override
   public double getOldHeight() {
     return this.shape.getHeight();
   }
 
+  /**
+   * Get the new height in the Shape.
+   *
+   * @return a double - the new height of the shape
+   */
+  @Override
   public double getNewHeight() {
     return endH;
   }
 
+  /**
+   * Return a new state of the given shape at a specific tick.
+   *
+   * @param time  a double - represent the time
+   * @param shape a AShape - operating shape
+   * @return a updated state copy of the Shape
+   */
   @Override
   public AShape getShapeAtTick(double time, AShape shape) {
 

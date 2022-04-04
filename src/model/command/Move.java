@@ -24,6 +24,11 @@ public class Move extends ACommand {
     this.destination = destination;
   }
 
+  /**
+   * A method to execute the command on the shape to move/changeDimension/changeColor.
+   *
+   * @param time the current time of the animation
+   */
   @Override
   public void execute(double time) {
     Posn newPosn = calculate(time, this.shape);
@@ -31,6 +36,12 @@ public class Move extends ACommand {
     this.shape.setPosn(newPosn);
   }
 
+  /**
+   * Get the svg String of the command.
+   *
+   * @param tempo a double - tempo
+   * @return a String
+   */
   @Override
   public String getSVG(double tempo) {
     double begin = (this.getStart() * 1000 / tempo);
@@ -53,6 +64,12 @@ public class Move extends ACommand {
     return details;
   }
 
+  /**
+   * Get the state of the shape after the command.
+   *
+   * @return a String with the shape's end time + end position + end width +
+   * end height + end color
+   */
   @Override
   public String getEndsState() {
     String a = "";
@@ -66,7 +83,13 @@ public class Move extends ACommand {
     return a;
   }
 
-
+  /**
+   * A method to calculate the new shape's position at the given time on the given shape.
+   *
+   * @param time  the given time to know where the shape at
+   * @param shape the given shape to return a new position
+   * @return a Posn - new position at the time
+   */
   private Posn calculate(double time, AShape shape) {
     double start = super.getStart();
     double end = super.getEnd();
@@ -86,16 +109,33 @@ public class Move extends ACommand {
     return newPosn;
   }
 
+  /**
+   * Get the old posn in the Shape.
+   *
+   * @return a Posn - the old posn of the shape
+   */
   @Override
   public Posn getOldPosn() {
     return this.shape.getPosition();
   }
 
+  /**
+   * Get the new posn in the Shape.
+   *
+   * @return a Posn - the new posn of the shape
+   */
   @Override
   public Posn getNewPosn() {
     return destination;
   }
 
+  /**
+   * Return a new state of the given shape at a specific tick.
+   *
+   * @param time  a double - represent the time
+   * @param shape a AShape - operating shape
+   * @return a updated state copy of the Shape
+   */
   @Override
   public AShape getShapeAtTick(double time, AShape shape) {
 

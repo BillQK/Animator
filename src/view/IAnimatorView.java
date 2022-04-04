@@ -48,7 +48,11 @@ public interface IAnimatorView {
    */
   String getDetails();
 
-
+  /**
+   * A method to based on the given fileName to print out the according view.
+   *
+   * @param fileName String - a given fileName
+   */
   void writeFile(String fileName);
 
 
@@ -69,7 +73,17 @@ public interface IAnimatorView {
    */
   void makeVisible();
 
+  /**
+   * A method to show an error message.
+   *
+   * @param error String - the error message
+   */
   void showErrorMessage(String error);
 
+  /**
+   * A method to set the list of shapes field to the given list of shape arguments.
+   *
+   * @param losTempo the given list of Shapes
+   */
   void setShapes(List<AShape> losTempo);
 }

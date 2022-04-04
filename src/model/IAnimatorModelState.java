@@ -32,6 +32,13 @@ public interface IAnimatorModelState<K> {
    */
   List<ICommandsState> getCommands(String id);
 
+  /**
+   * Return a new state of the given shape at a specific tick of the specific shape.
+   *
+   * @param time  a double - represent the time
+   * @param id a String - represent the id of the shape
+   * @return a updated state copy of the Shape
+   */
   AShape getShapeAtTick(double time, String id);
 
 }

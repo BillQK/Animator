@@ -27,6 +27,11 @@ public class ChangeColor extends ACommand {
     this.endColor = endColor;
   }
 
+  /**
+   * A method to execute the command on the shape to move/changeDimension/changeColor.
+   *
+   * @param time the current time of the animation
+   */
   @Override
   public void execute(double time) {
     Color newColor = calculate(time);
@@ -34,6 +39,12 @@ public class ChangeColor extends ACommand {
     shape.setColor(newColor);
   }
 
+  /**
+   * Get the state of the shape after the command.
+   *
+   * @return a String with the shape's end time + end position + end width +
+   * end height + end color
+   */
   @Override
   public String getEndsState() {
     String a = "";
@@ -47,7 +58,12 @@ public class ChangeColor extends ACommand {
     return a;
   }
 
-
+  /**
+   * Get the svg String of the command.
+   *
+   * @param tempo a double - tempo
+   * @return a String
+   */
   @Override
   public String getSVG(double tempo) {
     double begin = (this.getStart() * 1000 / tempo);
@@ -69,6 +85,12 @@ public class ChangeColor extends ACommand {
     return details;
   }
 
+  /**
+   * A method to calculate the new shape's color at the given time on the given shape.
+   *
+   * @param time the given time to know where the shape color is
+   * @return a Color - new color at the time
+   */
   private Color calculate(double time) {
     double start = super.getStart();
     double end = super.getEnd();
@@ -96,16 +118,33 @@ public class ChangeColor extends ACommand {
     return newColor;
   }
 
+  /**
+   * Get the old Color in the Shape.
+   *
+   * @return a Color - the old Color of the shape
+   */
   @Override
   public Color getOldColor() {
     return this.shape.getColor();
   }
 
+  /**
+   * Get the new Color in the Shape.
+   *
+   * @return a Color - the new Color of the shape
+   */
   @Override
   public Color getNewColor() {
     return endColor;
   }
 
+  /**
+   * Return a new state of the given shape at a specific tick.
+   *
+   * @param time  a double - represent the time
+   * @param shape a AShape - operating shape
+   * @return a updated state copy of the Shape
+   */
   @Override
   public AShape getShapeAtTick(double time, AShape shape) {
     shape.setColor(calculate(time));

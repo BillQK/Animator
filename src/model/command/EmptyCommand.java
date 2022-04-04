@@ -25,11 +25,22 @@ public class EmptyCommand extends ACommand {
     super(c);
   }
 
+  /**
+   * A method to execute the command on the shape to move/changeDimension/changeColor.
+   *
+   * @param time the current time of the animation
+   */
   @Override
   public void execute(double time) {
     // nothing
   }
 
+  /**
+   * Get the state of the shape after the command.
+   *
+   * @return a String with the shape's end time + end position + end width +
+   * end height + end color
+   */
   @Override
   public String getEndsState() {
     String a = "";
@@ -43,12 +54,24 @@ public class EmptyCommand extends ACommand {
     return a;
   }
 
+  /**
+   * Return a new state of the given shape at a specific tick.
+   *
+   * @param time  a double - represent the time
+   * @param shape a AShape - operating shape
+   * @return a updated state copy of the Shape
+   */
   @Override
   public AShape getShapeAtTick(double time, AShape shape) {
     return shape;
   }
 
-
+  /**
+   * Get the svg String of the command.
+   *
+   * @param tempo a double - tempo
+   * @return a String
+   */
   @Override
   public String getSVG(double tempo) {
     return "";
