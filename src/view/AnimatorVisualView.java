@@ -72,6 +72,9 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   }
 
   public void setShapes(List<AShape> s) {
+    if (s == null) {
+      throw new IllegalArgumentException("The list of shapes cannot be null");
+    }
     this.shapes = s;
     this.panel.setShapes(shapes);
   }

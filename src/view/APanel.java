@@ -15,16 +15,11 @@ import model.shape.Shape;
 
 public class APanel extends JPanel {
   private List<AShape> shapes;
-//  Timer time;
-//  private final IAnimatorModelState<AShape> model;
-//  IAnimatorModelState<AShape> model
-
 
   public APanel() {
     super();
     shapes = new ArrayList<>();
     this.setBackground(Color.WHITE);
-//    this.model = model;
   }
 
   @Override
@@ -57,6 +52,9 @@ public class APanel extends JPanel {
   }
 
   public List<AShape> setShapes(List<AShape> s) {
+    if (s == null) {
+      throw new IllegalArgumentException("The list of shapes cannot be null");
+    }
     return this.shapes = s;
   }
 
