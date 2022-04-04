@@ -1,15 +1,12 @@
 package view;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
 
-import model.IAnimatorModelState;
 import model.shape.AShape;
 import model.shape.Shape;
 
@@ -46,9 +43,9 @@ public class APanel extends JPanel {
         g2.fillOval(x,y,w,h);
         g2.drawOval(x,y,w,h);
       }
-
     }
     g2.setTransform(transform);
+
   }
 
   public List<AShape> setShapes(List<AShape> s) {

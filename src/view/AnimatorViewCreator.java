@@ -1,6 +1,5 @@
 package view;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import model.IAnimatorModelState;
@@ -26,8 +25,8 @@ public class AnimatorViewCreator {
       return new AnimatorSVGView(model, tempo);
     } else if (Objects.equals(view, "text")) {
       return new AnimatorTextView(model);
-//    } else if (Objects.equals(view, "visual")) {
-//      return new AnimatorVisualView(tempo, new ArrayList<>(), model);
+    } else if (Objects.equals(view, "visual")) {
+      return new AnimatorVisualView();
     } else {
       throw new IllegalArgumentException("Invalid view type");
     }

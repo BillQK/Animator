@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.*;
 
 import controller.IAnimatorController;
-import model.IAnimatorModelState;
 import model.shape.AShape;
 
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
