@@ -161,10 +161,6 @@ public abstract class AShape {
    * @param pos a Posn - the new given Posn
    */
   public void setPosn(Posn pos) {
-    if (pos == null || pos.getY() < 0 || pos.getX() < 0) {
-      throw new IllegalArgumentException("The Posn of the shape cannot be null or the X and Y " +
-              "cannot be negative.");
-    }
     this.pos = pos;
   }
 
