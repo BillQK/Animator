@@ -8,6 +8,7 @@ import model.utils.RateOfChange;
  * Represents the Move command class called on a shape.
  */
 public class Move extends ACommand {
+
   private final Posn destination;
 
   /**
@@ -41,13 +42,13 @@ public class Move extends ACommand {
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGX() + "\" "
-            + "from=\"" + this.shape.getPosition().getX()
+            + "from=\"" + this.getOldPosn().getX()
             + "\" to=\"" + this.destination.getX() + "\" fill=\"freeze\" /> \n";
 
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGY() + "\" "
-            + "from=\"" + this.shape.getPosition().getY()
+            + "from=\"" + this.getOldPosn().getY()
             + "\" to=\"" + this.destination.getY() + "\" fill=\"freeze\" />\n";
 
     return details;

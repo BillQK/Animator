@@ -10,15 +10,13 @@ import model.shape.AShape;
  * Its usage is to return a instance of Animator View object.
  */
 public class AnimatorViewCreator {
-  private static final double tempo = 10;
-
   /**
    * A method that return an instance of the given View.
    * @param view a String
    * @param model a IAnimatorModelState model
    * @return IAnimatorView
    */
-  public static IAnimatorView create(String view, IAnimatorModelState<AShape> model) {
+  public static IAnimatorView create(String view, IAnimatorModelState<AShape> model, double tempo) {
     if (Objects.equals(view, "")) {
       throw new IllegalArgumentException("Type of view cannot be empty");
     } else if (Objects.equals(view, "svg")) {
