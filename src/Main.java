@@ -22,6 +22,10 @@ public class Main {
   public static void main(String[] args)   {
     Map<String, String> commandLine = new HashMap<>();
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> f69f1dfcb1e3bc93d4cec8c70fa0379810ea0dc4
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
     IAnimatorModel<AShape> model = null;
