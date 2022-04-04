@@ -161,6 +161,9 @@ public abstract class AShape {
    * @param pos a Posn - the new given Posn
    */
   public void setPosn(Posn pos) {
+    if (pos == null) {
+      throw new IllegalArgumentException("Position cannot be null");
+    }
     this.pos = pos;
   }
 

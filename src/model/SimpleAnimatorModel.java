@@ -365,9 +365,32 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                              float moveToX, float moveToY,
                                                              int startTime, int endTime) {
       IdCheck(name);
-      if (overlap(startTime, endTime, this.commands.get(name))) {
-        throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
+
+
+      if (!this.commands.get(name).isEmpty()) {
+        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
+        if (com.getType() != CommandType.MOVE
+                && (startTime == com.getStart() && endTime == com.getEnd())) {
+          addMoveMethod(name, startTime, endTime, moveToX, moveToY);
+        } else {
+          if (overlap(startTime, endTime, this.commands.get(name))) {
+            throw new IllegalArgumentException("Cannot add animation, " +
+                    "the animation time is overlap");
+          }
+          addMoveMethod(name, startTime, endTime, moveToX, moveToY);
+        }
+      } else {
+        if (overlap(startTime, endTime, this.commands.get(name))) {
+          throw new IllegalArgumentException("Cannot add animation, " +
+                  "the animation time is overlap");
+        }
+        addMoveMethod(name, startTime, endTime, moveToX, moveToY);
       }
+      return this;
+    }
+
+    private void addMoveMethod(String name, int startTime, int endTime,
+                               float moveToX, float moveToY) {
       AShape shape = shapes.get(name);
 
       addEmptyCommands(name, startTime);
@@ -380,7 +403,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ICommands command = new Move(shape, startTime, endTime, new Posn(moveToX, moveToY));
 
       this.commands.get(name).add(command);
-      return this;
     }
 
     /**
@@ -404,9 +426,28 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                                     int startTime, int endTime) {
       IdCheck(name);
 
-      if (overlap(startTime, endTime, this.commands.get(name))) {
-        throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
+      if (!this.commands.get(name).isEmpty()) {
+        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
+        if (com.getType() != CommandType.CHANGE_COLOR
+                && (startTime == com.getStart() && endTime == com.getEnd())) {
+          addChangeColorMethod(name, newR, newG, newB, startTime, endTime);
+        } else {
+          if (overlap(startTime, endTime, this.commands.get(name))) {
+            throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
+          }
+          addChangeColorMethod(name, newR, newG, newB, startTime, endTime);
+        }
+      } else {
+        if (overlap(startTime, endTime, this.commands.get(name))) {
+          throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
+        }
+        addChangeColorMethod(name, newR, newG, newB, startTime, endTime);
       }
+      return this;
+    }
+
+    private void addChangeColorMethod(String name, float newR, float newG, float newB,
+                                      int startTime, int endTime) {
       AShape shape = shapes.get(name);
       addEmptyCommands(name, startTime);
 
@@ -427,7 +468,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       //One method for sorting the list based on the times of animations.
 
       this.commands.get(name).add(command);
-      return this;
     }
 
     /**
@@ -435,7 +475,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * specified target extents. What these extents actually mean depends on the
      * shape, but these are roughly the extents of the box enclosing the shape
      *
-     * @param name
+     * @param name the unique name of the shape whose color is to be changed
      * @param fromSx
      * @param fromSy
      * @param toSx
@@ -450,9 +490,28 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                                       int startTime, int endTime) {
       IdCheck(name);
 
-      if (overlap(startTime, endTime, this.commands.get(name))) {
-        throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
+      if (!this.commands.get(name).isEmpty()) {
+        int highestIndex = this.commands.get(name).size() - 1;
+        ICommands com = this.commands.get(name).get(highestIndex);
+        if (com.getType() != CommandType.CHANGE_DIMENSION
+                && (startTime == com.getStart() && endTime == com.getEnd())) {
+          addScaleToChangeMethod(name, toSx, toSy, startTime, endTime);
+        } else {
+          if (overlap(startTime, endTime, this.commands.get(name))) {
+            throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
+          }
+          addScaleToChangeMethod(name, toSx, toSy, startTime, endTime);
+        }
+      } else {
+        if (overlap(startTime, endTime, this.commands.get(name))) {
+          throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
+        }
+        addScaleToChangeMethod(name, toSx, toSy, startTime, endTime);
       }
+      return this;
+    }
+
+    private void addScaleToChangeMethod(String name, float toSx, float toSy, int startTime, int endTime) {
       addEmptyCommands(name, startTime);
       AShape shape = shapes.get(name);
 
@@ -464,7 +523,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ICommands command = new ChangeDimension(shape, startTime, endTime, (int) toSx, (int) toSy);
 
       this.commands.get(name).add(command);
-      return this;
     }
 
     /**

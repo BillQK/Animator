@@ -46,8 +46,8 @@ public class AnimatorModelTest {
     assertEquals(s.getShapes().get(0).getPosition().getY(), 15, delta);
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  public void testBuilderAddRectangleWithInvalidXPos() {
+  @Test
+  public void testBuilderAddRectangleWithvalidXPos() {
     s = new SimpleAnimatorModel.TweenBuilder()
             .addRectangle("1", -10, 15, 100, 200,
                     10, 10, 10,
@@ -56,8 +56,8 @@ public class AnimatorModelTest {
     assertEquals(s.getShapes().get(0).getPosition().getY(), 15, delta);
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  public void testBuilderAddRectangleWithInvalidYPos() {
+  @Test
+  public void testBuilderAddRectangleWithvalidYPos() {
     s = new SimpleAnimatorModel.TweenBuilder()
             .addRectangle("1", 10, -15, 100, 200,
                     10, 10, 10,
@@ -600,6 +600,22 @@ public class AnimatorModelTest {
     s.deleteCommands("2", 3);
     assertEquals(s.getCommands("2").get(2).getType(), CommandType.EMPTY);
   }
+
+  @Test
+  public void testDeleteCommands1() {
+    s = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10, 15, 100, 200,
+                    10, 10, 10, 0, 10)
+            .addScaleToChange("1", 5, 5, 10, 10,
+                    1, 5)
+            .addMove("1", 3,3,100,100,1,5)
+            .build();
+
+
+
+  }
+
+
 
 
 }
