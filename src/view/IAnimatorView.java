@@ -1,6 +1,9 @@
 package view;
 
+import java.util.List;
+
 import controller.IAnimatorController;
+import model.shape.AShape;
 
 /**
  * Represents a way of presenting the animation in a form useful to end users, i.e.,
@@ -67,4 +70,6 @@ public interface IAnimatorView {
   void makeVisible();
 
   void showErrorMessage(String error);
+
+  void setShapes(List<AShape> losTempo);
 }
