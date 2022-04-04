@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -18,7 +19,7 @@ import view.AnimatorVisualView;
 import view.IAnimatorView;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args)   {
     Map<String, String> commandLine = new HashMap<>();
 
     IAnimatorView view = null;
@@ -34,7 +35,7 @@ public class Main {
 
     if (!commandLine.containsKey("-in") && !commandLine.containsKey("-out")
             && !commandLine.containsKey("-view")) {
-      popUp.showMessageDialog(new AnimatorVisualView(), "Invalid Command",
+      popUp.showMessageDialog(new Panel(), "Invalid Command",
               "Error", JOptionPane.ERROR_MESSAGE);
     }
 
@@ -44,7 +45,7 @@ public class Main {
       model = fr.readFile(commandLine.get("-in"), new SimpleAnimatorModel.TweenBuilder());
 
     } catch (IOException e) {
-      popUp.showMessageDialog(new AnimatorVisualView(), "File Not Found",
+      popUp.showMessageDialog(new Panel(), "File Not Found",
               "Error", JOptionPane.ERROR_MESSAGE);
       System.exit(0);
     }
@@ -53,7 +54,7 @@ public class Main {
     try {
       view = AnimatorViewCreator.create(commandLine.get("-view"), model, sec);
     } catch (IllegalArgumentException e) {
-      popUp.showMessageDialog(new AnimatorVisualView(), "Model can't be null",
+      popUp.showMessageDialog(new Panel(), "Model can't be null",
               "Error", JOptionPane.ERROR_MESSAGE);
       System.exit(0);
     }

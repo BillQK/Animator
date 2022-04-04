@@ -26,7 +26,7 @@ public class AnimatorViewCreator {
     } else if (Objects.equals(view, "text")) {
       return new AnimatorTextView(model);
     } else if (Objects.equals(view, "visual")) {
-      return new AnimatorVisualView();
+      return new AnimatorVisualView(model);
     } else {
       throw new IllegalArgumentException("Invalid view type");
     }

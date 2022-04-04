@@ -41,4 +41,8 @@ public interface IAnimatorModelState<K> {
    */
   AShape getShapeAtTick(double time, String id);
 
+  int getHeight();
+
+  int getWidth();
+
 }
