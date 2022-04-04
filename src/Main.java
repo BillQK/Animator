@@ -21,7 +21,10 @@ public class Main {
   public static void main(String[] args) {
     Map<String, String> commandLine = new HashMap<>();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f69f1dfcb1e3bc93d4cec8c70fa0379810ea0dc4
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
     IAnimatorModel<AShape> model = null;
@@ -33,7 +36,8 @@ public class Main {
       commandLine.put(key, value);
     }
 
-    if (!commandLine.containsKey("-in") && !commandLine.containsKey("-out") && !commandLine.containsKey("-view")) {
+    if (!commandLine.containsKey("-in") && !commandLine.containsKey("-out")
+            && !commandLine.containsKey("-view")) {
       popUp.showMessageDialog(new AnimatorVisualView(), "Invalid Command",
               "Error", JOptionPane.ERROR_MESSAGE);
     }
@@ -65,10 +69,12 @@ public class Main {
     // case out
     switch (commandLine.get("-view")) {
       case "text":
-        System.out.println(view.getDetails());
-        break;
       case "svg":
-        view.writeFile(commandLine.get("-out"));
+        if (!commandLine.containsKey("-out")) {
+          System.out.println(view.getDetails());
+        } else {
+          view.writeFile(commandLine.get("-out"));
+        }
         break;
       default:
         view.makeVisible();

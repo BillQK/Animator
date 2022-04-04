@@ -54,7 +54,6 @@ public class AnimatorTextView implements IAnimatorView {
 
       List<ICommandsState> c = model.getCommands(s.getName());
 
-
       AShape shape = c.get(0).getTheShape();
       for (int j = 0; j < c.size(); j++) {
         ICommandsState com = c.get(j);
