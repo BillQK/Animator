@@ -36,7 +36,7 @@ public class Main {
 
     view.makeVisible();
 
-    Timer t = new Timer(30, new ActionListener() {
+    ActionListener timeListener = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent ae) {
 
@@ -51,10 +51,9 @@ public class Main {
       };
 
     });
-    t.start();
 
-
-    view.makeVisible();
+  Timer timer = new Timer(1000, timeListener);
+  timer.start();
 
     AnimationFileReader fr = new AnimationFileReader();
     try {
