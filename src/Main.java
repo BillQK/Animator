@@ -29,8 +29,6 @@ public class Main {
   public static void main(String[] args) {
     Map<String, String> commandLine = new HashMap<>();
 
-
-
     IAnimatorView view = null;
     IAnimatorModel<AShape> model = null;
     int speed = 1;

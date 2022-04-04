@@ -2,6 +2,8 @@ ANIMATOR (CS3500)
 This program is to animate objects.
 
 SUMMARY/OVERVIEW
+
+ASSIGNMENT 5
 Our Programs allow users to animate Rectangle and Ellipse. Every shape that is declared in
 Our Model has a List of Shape, List of Commands,
 and Time - an existing time (Start Time to End Time).
@@ -86,7 +88,14 @@ motion 2 3.0 10.0 40.0 100.0 400.0 10 10 10     30.0 10.0 40.0 400.0 500.0 10 10
 motion 2 30.0 10.0 40.0 400.0 500.0 10 10 10     35.0 10.0 30.0 400.0 500.0 10 10 10 
 motion 2 35.0 10.0 30.0 400.0 500.0 10 10 10     40.0 10.0 30.0 403.0 50.0 10 10 10 
 
+ASSIGNMENT 6
+We start our assignment 6 by first fixing our builder in the SimpleAnimatorModel class.
+We decide to build a complete new and upgraded builder
+which take in 2 hash map, a width, and a height.
+We then also add an extra method in the IAnimatorModel which will help delete a command.
 
+
+Then we proceed to do our 3 views
 Contributors names and contact info
 Khanh Nguyen
 nguyen.khanh1@northeastern.edu

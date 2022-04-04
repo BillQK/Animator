@@ -86,10 +86,12 @@ public class Move extends ACommand {
     return newPosn;
   }
 
+  @Override
   public Posn getOldPosn() {
     return this.shape.getPosition();
   }
 
+  @Override
   public Posn getNewPosn() {
     return destination;
   }
