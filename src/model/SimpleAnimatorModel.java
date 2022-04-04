@@ -276,6 +276,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (startOfLife > endOfLife) {
         throw new IllegalArgumentException("The start time cannot be bigger than end time");
       }
+      if (red < 1 || green < 1 || blue < 1) {
+        red = red * 255;
+        green = green * 255;
+        blue = blue * 255;
+      }
       ArgumentsCheck.colorRange((int) red, (int) green, (int) blue);
       ArgumentsCheck.lessThanZero(cx, cy, xRadius, yRadius, red, green, blue,
               startOfLife, endOfLife);
@@ -317,8 +322,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (startOfLife > endOfLife) {
         throw new IllegalArgumentException("The start time cannot be bigger than end time");
       }
+      if (red < 1 || green < 1 || blue < 1) {
+        red = red * 255;
+        green = green * 255;
+        blue = blue * 255;
+      }
       ArgumentsCheck.colorRange((int) red, (int) green, (int) blue);
-      ArgumentsCheck.lessThanZero(lx, ly, width, height, red, green, blue);
+      ArgumentsCheck.lessThanZero( width, height, red, green, blue);
 
       // Assign Variable
       Color c = new Color((int) red, (int) green, (int) blue);
@@ -400,6 +410,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       AShape shape = shapes.get(name);
       addEmptyCommands(name, startTime);
 
+      if (newR < 1 || newG < 1 || newB < 1) {
+        newR = newR * 255;
+        newG = newG * 255;
+        newB = newB * 255;
+      }
       ArgumentsCheck.colorRange((int) newR, (int) newG, (int) newB);
       ArgumentsCheck.lessThanZero((int) newR, (int) newG, (int) newB,
               startTime, endTime);

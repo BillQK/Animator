@@ -60,9 +60,9 @@ public class ChangeColor extends ACommand {
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + "rgb" + "\" "
             + "from=\"(" + this.shape.getColor().getRed() + ","
-            + this.shape.getColor().getGreen() + ","
+            + this.shape.getColor().getGreen()  + ","
             + this.shape.getColor().getBlue()
-            + ")\" to=\"(" + endColor.getRed() + ","
+             + ")\" to=\"(" + endColor.getRed() + ","
             + endColor.getGreen() + ","
             + endColor.getBlue() + ")\" fill=\"freeze\" /> \n";
 
