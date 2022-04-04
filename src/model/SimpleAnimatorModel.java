@@ -474,12 +474,12 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * shape, but these are roughly the extents of the box enclosing the shape
      *
      * @param name the unique name of the shape whose color is to be changed
-     * @param fromSx
-     * @param fromSy
-     * @param toSx
-     * @param toSy
-     * @param startTime
-     * @param endTime
+     * @param fromSx the old x-position
+     * @param fromSy the old y-position
+     * @param toSx the new x-position
+     * @param toSy the new y-position
+     * @param startTime the time tick at which this width and height change should start
+     * @param endTime   the time tick at which this width and height change should end
      */
     @Override
     public TweenModelBuilder<IAnimatorModel<AShape>> addScaleToChange(String name,
