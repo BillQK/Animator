@@ -16,7 +16,8 @@ public class AnimatorViewCreator {
    * @param model a IAnimatorModelState model
    * @return IAnimatorView
    */
-  public static IAnimatorView create(String view, IAnimatorModelState<AShape> model, double tempo) {
+  public static IAnimatorView create(String view, IAnimatorModelState<AShape> model,
+                                     double tempo) {
     if (Objects.equals(view, "")) {
       throw new IllegalArgumentException("Type of view cannot be empty");
     } else if (Objects.equals(view, "svg")) {

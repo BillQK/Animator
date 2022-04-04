@@ -122,11 +122,14 @@ makeVisible method which need to be call to be able to see the view, showErrorMe
 method which we show the error message on your view and log you out of the view. Lastly, the
 setShapes(List<AShape> s) method which will set the given shape to the Panel which will present the
 view. We then create a class call APanel which extends JPanel and this class is where we draw the
-given shape that was given through the JFrame.
+given shape that was given through the JFrame. We create a method called setShapes and override
+paintComponent(Graphics g) method. In the paintComponent method, we decide to transform the
+Graphics to Graphics2D for more operations.
 
+We also create a main method which is where we start running our animation and command-line to run
+the view. Beside that, we create an AnimatorViewCreator to make a factory method so that depend on
+what the command-line want to show the view at, we will create the specify view as required.
 
-
-Then we proceed to do our 3 views
 Contributors names and contact info
 Khanh Nguyen
 nguyen.khanh1@northeastern.edu
