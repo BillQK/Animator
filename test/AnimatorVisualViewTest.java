@@ -19,6 +19,7 @@ public class AnimatorVisualViewTest {
   @Before
   public void setUp() {
     model = new SimpleAnimatorModel.TweenBuilder()
+            .setBounds(100,100)
             .addRectangle("1", 10, 10, 100, 100, 10, 10, 10, 0, 100)
             .addColorChange("1", 10, 10, 10, 15, 15, 15, 0, 5)
             .addMove("1", 10, 10, 15, 40, 6, 7)
@@ -29,7 +30,7 @@ public class AnimatorVisualViewTest {
             .addMove("2", 10, 10, 50, 50, 0, 10)
             .build();
 
-    view = new AnimatorVisualView();
+    view = new AnimatorVisualView(model);
     view.makeVisible();
   }
 

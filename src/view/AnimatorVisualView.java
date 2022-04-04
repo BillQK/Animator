@@ -6,16 +6,18 @@ import java.util.List;
 import javax.swing.*;
 
 import controller.IAnimatorController;
+import model.IAnimatorModelState;
 import model.shape.AShape;
 
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
   private final APanel panel;
   private List<AShape> shapes;
+  private IAnimatorModelState<AShape> model;
 
-  public AnimatorVisualView() {
+  public AnimatorVisualView(IAnimatorModelState<AShape> model) {
     super();
     this.setTitle("Animation");
-    this.setSize(700, 700);
+    this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     this.panel = new APanel();

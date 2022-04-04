@@ -32,8 +32,8 @@ import model.utils.Time;
 public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   private final LinkedHashMap<String, AShape> shapes;
   private final LinkedHashMap<String, List<ICommands>> commands;
-  private int width;
-  private int height;
+  private final int width;
+  private final int height;
 
   /**
    * A constructor for SimpleAnimationModel class with the SimpleAnimator ModelBuilder builder.
@@ -162,9 +162,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     if (this.commands.get(id) == null) {
       throw new IllegalArgumentException("Illegal Shape");
     }
-    List<ICommandsState> stateList = new ArrayList<>();
-    stateList.addAll(this.commands.get(id));
-    return stateList;
+    return new ArrayList<>(this.commands.get(id));
   }
 
   @Override
@@ -180,6 +178,16 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
     }
     return shape;
+  }
+
+  @Override
+  public int getHeight() {
+    return height;
+  }
+
+  @Override
+  public int getWidth() {
+    return width;
   }
 
   /**
