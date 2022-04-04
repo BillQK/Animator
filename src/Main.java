@@ -33,7 +33,8 @@ public class Main {
       commandLine.put(key, value);
     }
 
-    if (!commandLine.containsKey("-in") && !commandLine.containsKey("-out") && !commandLine.containsKey("-view")) {
+    if (!commandLine.containsKey("-in") && !commandLine.containsKey("-out")
+            && !commandLine.containsKey("-view")) {
       popUp.showMessageDialog(new AnimatorVisualView(), "Invalid Command",
               "Error", JOptionPane.ERROR_MESSAGE);
     }
