@@ -66,10 +66,12 @@ public class Main {
     // case out
     switch (commandLine.get("-view")) {
       case "text":
-        System.out.println(view.getDetails());
-        break;
       case "svg":
-        view.writeFile(commandLine.get("-out"));
+        if (!commandLine.containsKey("-out")) {
+          System.out.println(view.getDetails());
+        } else {
+          view.writeFile(commandLine.get("-out"));
+        }
         break;
       default:
         view.makeVisible();

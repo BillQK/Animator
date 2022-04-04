@@ -33,10 +33,9 @@ public class Move extends ACommand {
 
   @Override
   public String getSVG(double tempo) {
-    double begin = (this.getStart() / tempo) * 1000;
-    double end = (this.getEnd() / tempo) * 1000;
+    double begin = (this.getStart() * 1000 / tempo);
+    double end = (this.getEnd() * 1000 / tempo);
     double dur = end - begin;
-
     String details = "";
 
     details += "<animate attributeType=\"xml\" "
