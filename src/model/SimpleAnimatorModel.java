@@ -171,22 +171,20 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   public AShape getShapeAtTick(double time, String s) {
     List<ICommands> commandsList = this.commands.get(s);
     AShape shape = this.shapes.get(s).getTheShape();
-    for (int i = 0; i < commandsList.size(); i++) {
-      if (time >= commandsList.get(i).getStart() && time <= commandsList.get(i).getEnd()) {
-//        if (commandsList.get(i).getType() == CommandType.MOVE) {
-//
-//        }
-//        RateOfChange.findRate(time, commandsList.get(i).getStart(), commandsList.get(i).getEnd());
-        shape = commandsList.get(i).getShapeAtTick(time, shape);
+    for (ICommands iCommands : commandsList) {
+      if (time >= iCommands.getStart() && time <= iCommands.getEnd()) {
+        shape = iCommands.getShapeAtTick(time, shape);
         return shape;
       } else {
-        shape = shape.updateShape(commandsList.get(i));
+        shape = shape.updateShape(iCommands);
       }
     }
     return shape;
   }
 
-
+  /**
+   *
+   */
   public static class TweenBuilder implements TweenModelBuilder<IAnimatorModel<AShape>> {
 
     private final LinkedHashMap<String, AShape> shapes;
