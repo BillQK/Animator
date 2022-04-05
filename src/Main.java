@@ -15,11 +15,13 @@ import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
 import model.shape.AShape;
 import view.AnimatorViewCreator;
-import view.AnimatorVisualView;
 import view.IAnimatorView;
 
+/**
+ * The main method class to run the model and view.
+ */
 public class Main {
-  public static void main(String[] args)   {
+  public static void main(String[] args) {
     Map<String, String> commandLine = new HashMap<>();
 
     IAnimatorView view = null;
@@ -108,14 +110,24 @@ public class Main {
 
   }
 
+  /**
+   * Represent the time class of the model state.
+   */
   public static class Tempo {
     double tempo = 0;
 
-
+    /**
+     * A method to get the current tempo.
+     *
+     * @return double - the current method
+     */
     public double getTempo() {
       return this.tempo;
     }
 
+    /**
+     * A method to add one on the tempo everytime it is called.
+     */
     public void addTempo() {
       tempo++;
     }

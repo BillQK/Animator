@@ -1,9 +1,11 @@
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
+/**
+ * Test class for ICommands class.
+ */
 public class ICommandsTest {
 
+  //This test is when we will implerment the controller later
   @Test
   public void execute() {
   }

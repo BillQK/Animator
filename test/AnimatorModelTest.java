@@ -1,8 +1,6 @@
 import org.junit.Test;
 
 import java.awt.*;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
@@ -16,7 +14,6 @@ import model.shape.Shape;
 import model.utils.Posn;
 import model.utils.Time;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -608,14 +605,11 @@ public class AnimatorModelTest {
                     10, 10, 10, 0, 10)
             .addScaleToChange("1", 5, 5, 10, 10,
                     1, 5)
-            .addMove("1", 3,3,100,100,1,5)
+            .addMove("1", 3, 3, 100, 100, 1, 5)
             .build();
 
 
-
   }
-
-
 
 
 }

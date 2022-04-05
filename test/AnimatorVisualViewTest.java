@@ -1,17 +1,15 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.shape.AShape;
-import view.AnimatorTextView;
 import view.AnimatorVisualView;
 import view.IAnimatorView;
 
-import static org.junit.Assert.*;
-
+/**
+ * Test class for AnimatorVisualView class.
+ */
 public class AnimatorVisualViewTest {
   IAnimatorModelState<AShape> model;
   IAnimatorView view;

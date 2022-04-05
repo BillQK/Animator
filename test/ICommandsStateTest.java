@@ -16,6 +16,9 @@ import model.utils.Time;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class ICommandsState class.
+ */
 public class ICommandsStateTest {
   AShape rec;
   ICommandsState changeColor;
