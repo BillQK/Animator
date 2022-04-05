@@ -111,8 +111,6 @@ public class AnimatorTextView implements IAnimatorView {
   public void writeFile(String fileName) {
     String des = this.getDetails();
     try {
-//      Appendable a = new FileWriter(fileName+".txt", true);
-//      a.append(this.getDetails());
       BufferedWriter output = new BufferedWriter(new FileWriter(fileName + ".txt"));
       output.write(des);
       output.close();

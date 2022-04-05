@@ -68,7 +68,7 @@ public class Move extends ACommand {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   * end height + end color
+   *         end height + end color
    */
   @Override
   public String getEndsState() {

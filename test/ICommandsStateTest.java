@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
@@ -52,9 +52,12 @@ public class ICommandsStateTest {
 
   @Test
   public void getState() {
-    assertEquals(changePosn.getState(), "1 15.0 10.0 10.0 100.0 100.0 100 100 100 20.0 40.0 40.0 100.0 100.0 100 100 100 ");
-    assertEquals(changeColor.getState(), "1 0.0 10.0 10.0 100.0 100.0 100 100 100 10.0 10.0 10.0 100.0 100.0 120 120 120 ");
-    assertEquals(changeDimension.getState(), "1 10.0 10.0 10.0 100.0 100.0 100 100 100 15.0 10.0 10.0 150.0 150.0 100 100 100 ");
+    assertEquals(changePosn.getState(), "1 15.0 10.0 10.0 100.0 100.0 100 100 100 20.0 40.0"
+            + " 40.0 100.0 100.0 100 100 100 ");
+    assertEquals(changeColor.getState(), "1 0.0 10.0 10.0 100.0 100.0 100 100 100 10.0 10.0"
+            + " 10.0 100.0 100.0 120 120 120 ");
+    assertEquals(changeDimension.getState(), "1 10.0 10.0 10.0 100.0 100.0 100 100 100 15.0"
+            + " 10.0 10.0 150.0 150.0 100 100 100 ");
   }
 
   @Test
@@ -145,20 +148,30 @@ public class ICommandsStateTest {
   @Test
   public void getShapeAtTick() {
     assertEquals(changePosn.getShapeAtTick(20,rec).getPosition(), new Posn(40,40) );
-    assertEquals(changeColor.getShapeAtTick(10,rec).getColor(), new Color(120,120,120));
-    assertEquals(changeDimension.getShapeAtTick(15,rec).getHeight(), 150, Integer.MIN_VALUE );
-    assertEquals(changeDimension.getShapeAtTick(15,rec).getWidth(), 150,Integer.MIN_VALUE);
+    assertEquals(changeColor.getShapeAtTick(10,rec).getColor(),
+            new Color(120,120,120));
+    assertEquals(changeDimension.getShapeAtTick(15,rec).getHeight(),
+            150, Integer.MIN_VALUE );
+    assertEquals(changeDimension.getShapeAtTick(15,rec).getWidth(),
+            150,Integer.MIN_VALUE);
   }
 
   @Test
   public void getSVG() {
     assertEquals(changePosn.getSVG(10),
-            "<animate attributeType=\"xml\" begin=\"1500.0ms\" dur=\"500.0ms\" attributeName=\"x\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" /> \n" +
-            "<animate attributeType=\"xml\" begin=\"1500.0ms\" dur=\"500.0ms\" attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n");
+            "<animate attributeType=\"xml\" begin=\"1500.0ms\" dur=\"500.0ms\" "
+                    + "attributeName=\"x\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" /> \n" +
+            "<animate attributeType=\"xml\" begin=\"1500.0ms\" dur=\"500.0ms\" "
+                    + "attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n");
     assertEquals(changeColor.getSVG(10),
-            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"1000.0ms\" attributeName=\"rgb\" from=\"(100,100,100)\" to=\"(120,120,120)\" fill=\"freeze\" /> \n");
+            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"1000.0ms\" "
+                    + "attributeName=\"rgb\" from=\"(100,100,100)\" to=\"(120,120,120)\" "
+                    + "fill=\"freeze\" /> \n");
     assertEquals(changeDimension.getSVG(10),
-            "<animate attributeType=\"xml\" begin=\"1000.0ms\" dur=\"500.0ms\" attributeName=\"width\" from=\"100.0\" to=\"150.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"1000.0ms\" dur=\"500.0ms\" attributeName=\"height\" from=\"100.0\" to=\"150.0\" fill=\"freeze\" />\n");
+            "<animate attributeType=\"xml\" begin=\"1000.0ms\" dur=\"500.0ms\" "
+                    + "attributeName=\"width\" from=\"100.0\" to=\"150.0\" fill=\"freeze\" /> \n"
+                    + "<animate attributeType=\"xml\" begin=\"1000.0ms\" dur=\"500.0ms\""
+                    + " attributeName=\"height\" from=\"100.0\" to=\"150.0\" fill=\"freeze\""
+                    + " />\n");
   }
 }

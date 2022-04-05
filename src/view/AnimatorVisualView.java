@@ -1,6 +1,7 @@
 package view;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.util.List;
 
 import javax.swing.*;
@@ -15,8 +16,7 @@ import model.shape.AShape;
  */
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
   private final APanel panel;
-  private List<AShape> shapes;
-  private IAnimatorModelState<AShape> model;
+  private final IAnimatorModelState<AShape> model;
 
   /**
    * Constructor of the AnimatorVisualView. This is where we set up our JFrame and adding our
@@ -26,6 +26,7 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
    */
   public AnimatorVisualView(IAnimatorModelState<AShape> model) {
     super();
+    this.model = model;
     this.setTitle("Animation");
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,7 +141,7 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     if (s == null) {
       throw new IllegalArgumentException("The list of shapes cannot be null");
     }
-    this.shapes = s;
+    List<AShape> shapes = s;
     this.panel.setShapes(shapes);
   }
 

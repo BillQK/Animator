@@ -1,4 +1,5 @@
-import java.awt.*;
+
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -8,7 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.swing.*;
+
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
@@ -21,6 +24,12 @@ import view.IAnimatorView;
  * The main method class to run the model and view.
  */
 public class Main {
+
+  /**
+   * The main method to run the model.
+   *
+   * @param args the given array of arguments to run the main method through
+   */
   public static void main(String[] args) {
     Map<String, String> commandLine = new HashMap<>();
 

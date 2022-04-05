@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -169,7 +169,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    * Return a new state of the given shape at a specific tick of the specific shape.
    *
    * @param time a double - represent the time
-   * @param id   a String - represent the id of the shape
+   * @param s a String - represent the id of the shape
    * @return a updated state copy of the Shape
    */
   @Override
@@ -231,11 +231,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     }
 
     /**
-     * A method to check if there exist a shape based on the given key - id of the shape
+     * A method to check if there exist a shape based on the given key - id of the shape.
      *
      * @param idShape String - id of the shape
      */
-    private void IdCheck(String idShape) {
+    private void idCheck(String idShape) {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
@@ -402,7 +402,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                              float moveFromX, float moveFromY,
                                                              float moveToX, float moveToY,
                                                              int startTime, int endTime) {
-      IdCheck(name);
+      idCheck(name);
 
 
       if (!this.commands.get(name).isEmpty()) {
@@ -472,7 +472,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                                     float oldB, float newR,
                                                                     float newG, float newB,
                                                                     int startTime, int endTime) {
-      IdCheck(name);
+      idCheck(name);
 
       if (!this.commands.get(name).isEmpty()) {
         ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
@@ -548,7 +548,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                                       float fromSx, float fromSy,
                                                                       float toSx, float toSy,
                                                                       int startTime, int endTime) {
-      IdCheck(name);
+      idCheck(name);
 
       if (!this.commands.get(name).isEmpty()) {
         int highestIndex = this.commands.get(name).size() - 1;

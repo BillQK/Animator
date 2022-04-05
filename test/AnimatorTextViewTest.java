@@ -39,7 +39,8 @@ public class AnimatorTextViewTest {
                     15, 15, 15, 0, 5)
             .addMove("1", 10, 10,
                     15, 40, 6, 7)
-            .addColorChange("1", 5,5,5,200,200,200, 6,7)
+            .addColorChange("1", 5, 5, 5, 200, 200, 200,
+                    6, 7)
             .addMove("1", 15, 40,
                     10, 10, 8, 15)
             .addScaleToChange("1", 100, 100,
@@ -52,8 +53,9 @@ public class AnimatorTextViewTest {
 
     view = new AnimatorTextView(model);
 
-    try{
-      inputFileToModel = new AnimationFileReader().readFile("resource/toh-3.txt", new SimpleAnimatorModel.TweenBuilder());
+    try {
+      inputFileToModel = new AnimationFileReader().readFile("resource/toh-3.txt",
+              new SimpleAnimatorModel.TweenBuilder());
     } catch (FileNotFoundException e) {
       System.out.println("fail");
     }

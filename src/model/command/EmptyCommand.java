@@ -2,6 +2,10 @@ package model.command;
 
 import model.shape.AShape;
 
+/**
+ * Represent an emptyCommand class which represent a constant state of the shape which the shape
+ * doesn't do anything.
+ */
 public class EmptyCommand extends ACommand {
 
   /**
@@ -39,7 +43,7 @@ public class EmptyCommand extends ACommand {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   * end height + end color
+   *         end height + end color
    */
   @Override
   public String getEndsState() {

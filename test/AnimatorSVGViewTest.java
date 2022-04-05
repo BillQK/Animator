@@ -134,9 +134,9 @@ public class AnimatorSVGViewTest {
                     "<rect id=\"1\" x=\"10.0\" y=\"10.0\" width=\"100.0\" " +
                     "height=\"100.0\" fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
                     "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"250.0ms\"" +
-                    " attributeName=\"rgb\" from=\"(10,10,10)\" to=\"(15,15,15)\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"300.0ms\" dur=\"50.0ms\" " +
-                    "attributeName=\"x\" from=\"10.0\" to=\"15.0\" fill=\"freeze\" /> \n" +
+                    " attributeName=\"rgb\" from=\"(10,10,10)\" to=\"(15,15,15)\" fill=\"freeze\" "
+                    + "/> \n" + "<animate attributeType=\"xml\" begin=\"300.0ms\" dur=\"50.0ms\" "
+                    + "attributeName=\"x\" from=\"10.0\" to=\"15.0\" fill=\"freeze\" /> \n" +
                     "<animate attributeType=\"xml\" begin=\"300.0ms\" dur=\"50.0ms\" " +
                     "attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n" +
                     "<animate attributeType=\"xml\" begin=\"400.0ms\" dur=\"350.0ms\"" +

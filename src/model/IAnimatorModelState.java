@@ -41,8 +41,18 @@ public interface IAnimatorModelState<K> {
    */
   AShape getShapeAtTick(double time, String id);
 
+  /**
+   * A method to get the height of the canvas.
+   *
+   * @return int - the height of the canvas
+   */
   int getHeight();
 
+  /**
+   * A method to get the width of the canvas.
+   *
+   * @return int - the width of the canvas
+   */
   int getWidth();
 
 }

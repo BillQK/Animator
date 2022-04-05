@@ -1,6 +1,6 @@
 package model.command;
 
-import java.awt.*;
+import java.awt.Color;
 
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
@@ -60,21 +60,11 @@ public abstract class ACommand implements ICommands {
   @Override
   public abstract void execute(double time);
 
-  public int compareTo(ICommands o) {
-    if (startTime > o.getStart()) {
-      return 1;
-    } else if (startTime == o.getStart()) {
-      return Double.compare(endTime, o.getEnd());
-    } else {
-      return -1;
-    }
-  }
-
   /**
    * Get the begin state before the command.
    *
    * @return a String with the shape's start time + name + start position + start width +
-   * start height + start color
+   *         start height + start color
    */
   @Override
   public String getBeginsState() {
@@ -92,7 +82,7 @@ public abstract class ACommand implements ICommands {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   * end height + end color
+   *         end height + end color
    */
   @Override
   public abstract String getEndsState();

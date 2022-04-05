@@ -1,6 +1,6 @@
 package model.command;
 
-import java.awt.*;
+import java.awt.Color;
 
 import model.shape.AShape;
 import model.utils.Posn;
@@ -16,7 +16,7 @@ public interface ICommandsState {
    * Get the begin state before the command.
    *
    * @return a String with the shape's start time + name + start position + start width +
-   * start height + start color
+   *         start height + start color
    */
   String getBeginsState();
 
@@ -24,7 +24,7 @@ public interface ICommandsState {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   * end height + end color
+   *         end height + end color
    */
   String getEndsState();
 
