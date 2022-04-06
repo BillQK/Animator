@@ -102,6 +102,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         ArgumentsCheck.overlappingTime(start, end, cStart, cEnd);
       }
     }
+
     List<ICommands> commandsList = this.commands.get(addShape.getName());
     for (int i = 0; i < size; i++) {
       ICommands current = commandsList.get(i);
@@ -353,7 +354,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         blue = blue * 255;
       }
       ArgumentsCheck.colorRange((int) red, (int) green, (int) blue);
-      ArgumentsCheck.lessThanZero(cx, cy, xRadius, yRadius, red, green, blue,
+      ArgumentsCheck.lessThanZero(xRadius, yRadius, red, green, blue,
               startOfLife, endOfLife);
 
       // Assign Variable
@@ -415,6 +416,31 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
+
+    private void addCommands(ICommands com, String id) {
+      CommandType comType = com.getType();
+      AShape comShape = com.getTheShape();
+      double comStart = com.getStart();
+
+      for (int i = 0; i < this.commands.get(id).size(); i++) {
+        ICommands currentCom = this.commands.get(id).get(i);
+        CommandType currentType = currentCom.getType();
+        AShape currentShape = currentCom.getTheShape();
+        double curStart = currentCom.getStart();
+        double curEnd = currentCom.getEnd();
+
+        if (comType == currentType) {
+          if (comShape.getName().equals(currentShape.getName())) {
+            if ((comStart >= curStart) && (comStart <= curEnd)) {
+              throw new IllegalArgumentException("Cannot not add move when overlapping time");
+            }
+          }
+        }
+      }
+
+      this.commands.get(id).add(com);
+    }
+
     /**
      * Move the specified shape to the given position during the given time
      * interval.
@@ -437,54 +463,74 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                              float moveToX, float moveToY,
                                                              int startTime, int endTime) {
       idCheck(name);
-
-
-      if (!this.commands.get(name).isEmpty()) {
-        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
-        if (com.getType() != CommandType.MOVE
-                && (startTime == com.getStart() && endTime == com.getEnd())) {
-          addMoveMethod(name,moveFromX, moveFromY, startTime, endTime,  moveToX, moveToY);
-        } else {
-          if (overlap(startTime, endTime, this.commands.get(name))) {
-            throw new IllegalArgumentException("Cannot add animation, " +
-                    "the animation time is overlap");
-          }
-          addMoveMethod(name,moveFromX, moveFromY, startTime, endTime, moveToX, moveToY);
-        }
-      } else {
-        if (overlap(startTime, endTime, this.commands.get(name))) {
-          throw new IllegalArgumentException("Cannot add animation, " +
-                  "the animation time is overlap");
-        }
-        addMoveMethod(name, moveFromX, moveFromY, startTime, endTime, moveToX, moveToY);
-      }
-      return this;
-    }
-
-    /**
-     * A method to add the command on to the list of command of the given specific shape.
-     *
-     * @param name      the string id of the shape
-     * @param startTime the start time of the animation
-     * @param endTime   the end time of the animation
-     * @param moveToX   the ending X position that the shape should be
-     * @param moveToY   the ending Y position that the shape should be
-     */
-    private void addMoveMethod(String name, float moveFromX, float moveFromY,  int startTime, int endTime,
-                               float moveToX, float moveToY) {
-      AShape shape = shapes.get(name);
-
       addEmptyCommands(name, startTime);
 
       ArgumentsCheck.lessThanZero(startTime, endTime);
-      double shapeStart = shape.getTime().getStartTime();
-      double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
+      if (endTime < startTime) {
+        throw new IllegalArgumentException("The time of the command is invalid");
+      }
 
-      ICommands command = new Move(shape, startTime, endTime, new Posn(moveFromX, moveFromY), new Posn(moveToX, moveToY));
+      Posn origin = new Posn(moveFromX, moveFromY);
+      Posn destination = new Posn(moveToX, moveToY);
+      AShape s = null;
 
-      this.commands.get(name).add(command);
+      if (this.shapes.get(name).getName().equals(name)) {
+        s = this.shapes.get(name).getTheShape();
+        s.setPosn(origin);
+      }
+
+      ICommands com = new Move(this.shapes.get(name), startTime, endTime, origin, destination);
+      this.addCommands(com, name);
+
+//      if (!this.commands.get(name).isEmpty()) {
+//        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
+//        if (com.getType() != CommandType.MOVE
+//                && (startTime == com.getStart() && endTime == com.getEnd())) {
+//          addMoveMethod(name,moveFromX, moveFromY, startTime, endTime,  moveToX, moveToY);
+//        } else {
+//          if (overlap(startTime, endTime, this.commands.get(name))) {
+//            throw new IllegalArgumentException("Cannot add animation, " +
+//                    "the animation time is overlap");
+//          }
+//          addMoveMethod(name, moveFromX, moveFromY, startTime, endTime, moveToX, moveToY);
+//        }
+//      } else {
+//        if (overlap(startTime, endTime, this.commands.get(name))) {
+//          throw new IllegalArgumentException("Cannot add animation, " +
+//                  "the animation time is overlap");
+//        }
+//        addMoveMethod(name, moveFromX, moveFromY, startTime, endTime, moveToX, moveToY);
+//      }
+
+
+      return this;
     }
+
+//    /**
+//     * A method to add the command on to the list of command of the given specific shape.
+//     *
+//     * @param name      the string id of the shape
+//     * @param startTime the start time of the animation
+//     * @param endTime   the end time of the animation
+//     * @param moveToX   the ending X position that the shape should be
+//     * @param moveToY   the ending Y position that the shape should be
+//     */
+//    private void addMoveMethod(String name, float moveFromX, float moveFromY,
+//                               int startTime, int endTime, float moveToX, float moveToY) {
+//      AShape shape = shapes.get(name);
+//
+//      addEmptyCommands(name, startTime);
+//
+//      ArgumentsCheck.lessThanZero(startTime, endTime);
+//      double shapeStart = shape.getTime().getStartTime();
+//      double shapeEnd = shape.getTime().getEndTime();
+//      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
+//
+//      ICommands command = new Move(shape, startTime, endTime, new Posn(moveFromX, moveFromY),
+//              new Posn(moveToX, moveToY));
+//
+//      this.commands.get(name).add(command);
+//    }
 
     /**
      * Change the color of the specified shape to the new specified color in the
@@ -507,64 +553,100 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                                     float newG, float newB,
                                                                     int startTime, int endTime) {
       idCheck(name);
-
-      if (!this.commands.get(name).isEmpty()) {
-        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
-        if (com.getType() != CommandType.CHANGE_COLOR
-                && (startTime == com.getStart() && endTime == com.getEnd())) {
-          addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
-        } else {
-          if (overlap(startTime, endTime, this.commands.get(name))) {
-            throw new IllegalArgumentException("Cannot add animation, "
-                    + "the animation time is overlap");
-          }
-          addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
-        }
-      } else {
-        if (overlap(startTime, endTime, this.commands.get(name))) {
-          throw new IllegalArgumentException("Cannot add animation, "
-                  + "the animation time is overlap");
-        }
-        addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
-      }
-      return this;
-    }
-
-    /**
-     * A method to add the command on to the list of command of the given specific shape.
-     *
-     * @param name      the string id of the shape
-     * @param newR      the new red color that the shape should be
-     * @param newG      the new green color that the shape should be
-     * @param newB      the new blue color that the shape should be
-     * @param startTime the start time of the animation
-     * @param endTime   the end time of the animation
-     */
-    private void addChangeColorMethod(String name, float oldR, float oldG, float oldB, float newR, float newG, float newB,
-                                      int startTime, int endTime) {
-      AShape shape = shapes.get(name);
       addEmptyCommands(name, startTime);
 
-      Color startColor = new Color((int) oldR, (int) oldG, (int) oldB);
+
+//      if (!this.commands.get(name).isEmpty()) {
+//        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
+//        if (com.getType() != CommandType.CHANGE_COLOR
+//                && (startTime == com.getStart() && endTime == com.getEnd())) {
+//          addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
+//        } else {
+//          if (overlap(startTime, endTime, this.commands.get(name))) {
+//            throw new IllegalArgumentException("Cannot add animation, "
+//                    + "the animation time is overlap");
+//          }
+//          addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
+//        }
+//      } else {
+//        if (overlap(startTime, endTime, this.commands.get(name))) {
+//          throw new IllegalArgumentException("Cannot add animation, "
+//                  + "the animation time is overlap");
+//        }
+//        addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
+//      }
+
+      ArgumentsCheck.lessThanZero(startTime, endTime);
+      ArgumentsCheck.colorRange((int) newR, (int) newG, (int) newB);
+      ArgumentsCheck.colorRange((int) oldR, (int) oldG, (int) oldB);
+      if (endTime < startTime) {
+        throw new IllegalArgumentException("The time of the command is invalid");
+      }
 
       if (newR < 1 || newG < 1 || newB < 1) {
         newR = newR * 255;
         newG = newG * 255;
         newB = newB * 255;
       }
-      ArgumentsCheck.colorRange((int) newR, (int) newG, (int) newB);
-      ArgumentsCheck.lessThanZero((int) newR, (int) newG, (int) newB,
-              startTime, endTime);
-      double shapeStart = shape.getTime().getStartTime();
-      double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
 
-      ICommands command = new ChangeColor(shape, startTime, endTime,
-              startColor, new Color((int) newR, (int) newG, (int) newB));
-      //One method for sorting the list based on the times of animations.
+      if (oldR < 1 || oldG < 1 || oldB < 1) {
+        oldR = oldR * 255;
+        oldG = oldG * 255;
+        oldB = oldB * 255;
+      }
 
-      this.commands.get(name).add(command);
+      AShape s = null;
+      Color newC = new Color((int) newR, (int) newG, (int) newB);
+      Color oldC = new Color((int) oldR, (int) oldG, (int) oldB);
+
+      if (this.shapes.get(name).getName().equals(name)) {
+        s = this.shapes.get(name).getTheShape();
+        s.setColor(oldC);
+      }
+
+      ICommands com = new ChangeColor(this.shapes.get(name), startTime, endTime, oldC, newC);
+      this.addCommands(com, name);
+
+
+      return this;
     }
+
+//    /**
+//     * A method to add the command on to the list of command of the given specific shape.
+//     *
+//     * @param name      the string id of the shape
+//     * @param newR      the new red color that the shape should be
+//     * @param newG      the new green color that the shape should be
+//     * @param newB      the new blue color that the shape should be
+//     * @param startTime the start time of the animation
+//     * @param endTime   the end time of the animation
+//     */
+//    private void addChangeColorMethod(String name, float oldR, float oldG, float oldB,
+//                                      float newR, float newG, float newB,
+//                                      int startTime, int endTime) {
+//      AShape shape = shapes.get(name);
+//      addEmptyCommands(name, startTime);
+//
+//      Color startColor = new Color((int) oldR, (int) oldG, (int) oldB);
+//
+//      if (newR < 1 || newG < 1 || newB < 1) {
+//        newR = newR * 255;
+//        newG = newG * 255;
+//        newB = newB * 255;
+//      }
+//      ArgumentsCheck.colorRange((int) newR, (int) newG, (int) newB);
+//      ArgumentsCheck.lessThanZero((int) newR, (int) newG, (int) newB,
+//              startTime, endTime);
+//      double shapeStart = shape.getTime().getStartTime();
+//      double shapeEnd = shape.getTime().getEndTime();
+//      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
+//
+//      ICommands command = new ChangeColor(shape, startTime, endTime,
+//              startColor, new Color((int) newR, (int) newG, (int) newB));
+//      //One method for sorting the list based on the times of animations.
+//
+//      this.commands.get(name).add(command);
+//    }
 
     /**
      * Change the x and y extents of this shape from the specified extents to the
@@ -585,53 +667,75 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
                                                                       float toSx, float toSy,
                                                                       int startTime, int endTime) {
       idCheck(name);
+      addEmptyCommands(name, startTime);
 
-      if (!this.commands.get(name).isEmpty()) {
-        int highestIndex = this.commands.get(name).size() - 1;
-        ICommands com = this.commands.get(name).get(highestIndex);
-        if (com.getType() != CommandType.CHANGE_DIMENSION
-                && (startTime == com.getStart() && endTime == com.getEnd())) {
-          addScaleToChangeMethod(name, fromSx,  fromSy , toSx, toSy, startTime, endTime);
-        } else {
-          if (overlap(startTime, endTime, this.commands.get(name))) {
-            throw new IllegalArgumentException("Cannot add animation, "
-                    + "since the animation is overlap");
-          }
-          addScaleToChangeMethod(name, fromSx,  fromSy , toSx, toSy, startTime, endTime);
-        }
-      } else {
-        if (overlap(startTime, endTime, this.commands.get(name))) {
-          throw new IllegalArgumentException("Cannot add animation, "
-                  + "since the animation is overlap");
-        }
-        addScaleToChangeMethod(name, fromSx,  fromSy , toSx, toSy, startTime, endTime);
+      ArgumentsCheck.lessThanZero(startTime, endTime, (int) toSx, (int) toSy,
+              (int) fromSx, (int) fromSy);
+      if (endTime < startTime) {
+        throw new IllegalArgumentException("The time of the command is invalid");
       }
+
+      AShape s = null;
+
+      if (this.shapes.get(name).getName().equals(name)) {
+        s = this.shapes.get(name).getTheShape();
+        s.setWidth(fromSx);
+        s.setHeight(fromSy);
+      }
+
+      ICommands com = new ChangeDimension(this.shapes.get(name), startTime, endTime, fromSx, fromSy,
+              toSx, toSy);
+      this.addCommands(com, name);
+
+//      if (!this.commands.get(name).isEmpty()) {
+//        int highestIndex = this.commands.get(name).size() - 1;
+//        ICommands com = this.commands.get(name).get(highestIndex);
+//        if (com.getType() != CommandType.CHANGE_DIMENSION
+//                && (startTime == com.getStart() && endTime == com.getEnd())) {
+//          addScaleToChangeMethod(name, fromSx, fromSy, toSx, toSy, startTime, endTime);
+//        } else {
+//          if (overlap(startTime, endTime, this.commands.get(name))) {
+//            throw new IllegalArgumentException("Cannot add animation, "
+//                    + "since the animation is overlap");
+//          }
+//          addScaleToChangeMethod(name, fromSx, fromSy, toSx, toSy, startTime, endTime);
+//        }
+//      } else {
+//        if (overlap(startTime, endTime, this.commands.get(name))) {
+//          throw new IllegalArgumentException("Cannot add animation, "
+//                  + "since the animation is overlap");
+//        }
+//        addScaleToChangeMethod(name, fromSx, fromSy, toSx, toSy, startTime, endTime);
+//      }
+
+
       return this;
     }
 
-    /**
-     * A method to add the command on to the list of command of the given specific shape.
-     *
-     * @param name      the string id of the shape
-     * @param toSx      the ending width that the shape should be
-     * @param toSy      the ending height that the shape should be
-     * @param startTime the start time of the animation
-     * @param endTime   the end time of the animation
-     */
-    private void addScaleToChangeMethod(String name, float fromSx, float fromSy, float toSx, float toSy,
-                                        int startTime, int endTime) {
-      addEmptyCommands(name, startTime);
-      AShape shape = shapes.get(name);
-
-      ArgumentsCheck.lessThanZero((int) toSx, (int) toSy, startTime, endTime);
-      double shapeStart = shape.getTime().getStartTime();
-      double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
-
-      ICommands command = new ChangeDimension(shape, startTime, endTime, fromSx, fromSy, (int) toSx, (int) toSy);
-
-      this.commands.get(name).add(command);
-    }
+//    /**
+//     * A method to add the command on to the list of command of the given specific shape.
+//     *
+//     * @param name      the string id of the shape
+//     * @param toSx      the ending width that the shape should be
+//     * @param toSy      the ending height that the shape should be
+//     * @param startTime the start time of the animation
+//     * @param endTime   the end time of the animation
+//     */
+//    private void addScaleToChangeMethod(String name, float fromSx, float fromSy,
+//                                        float toSx, float toSy, int startTime, int endTime) {
+//      addEmptyCommands(name, startTime);
+//      AShape shape = shapes.get(name);
+//
+//      ArgumentsCheck.lessThanZero((int) toSx, (int) toSy, startTime, endTime);
+//      double shapeStart = shape.getTime().getStartTime();
+//      double shapeEnd = shape.getTime().getEndTime();
+//      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
+//
+//      ICommands command = new ChangeDimension(shape, startTime, endTime, fromSx, fromSy,
+//              (int) toSx, (int) toSy);
+//
+//      this.commands.get(name).add(command);
+//    }
 
     /**
      * A method to start build the builder.

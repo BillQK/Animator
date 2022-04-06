@@ -57,6 +57,24 @@ public abstract class ACommand implements ICommands {
     this.shape = c.shape;
   }
 
+
+//  @Override
+//  public int compareTo(ICommands o) {
+//    if (startTime > o.getStart()) {
+//      return 1;
+//    } else if (startTime == o.getStart()) {
+//      if (endTime > o.getEnd()) {
+//        return 1;
+//      } else if (endTime == o.getEnd()) {
+//        return 0;
+//      } else {
+//        return -1;
+//      }
+//    } else {
+//      return -1;
+//    }
+//  }
+
   @Override
   public abstract void execute(double time);
 
@@ -64,7 +82,7 @@ public abstract class ACommand implements ICommands {
    * Get the begin state before the command.
    *
    * @return a String with the shape's start time + name + start position + start width +
-   *         start height + start color
+   * start height + start color
    */
   @Override
   public String getBeginsState() {
@@ -82,7 +100,7 @@ public abstract class ACommand implements ICommands {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   *         end height + end color
+   * end height + end color
    */
   @Override
   public abstract String getEndsState();

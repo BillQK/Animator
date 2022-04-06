@@ -7,10 +7,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-<<<<<<< HEAD
 
-=======
->>>>>>> b505ad57f97edd4b49cc6464484e0b6990bf1595
 import controller.IAnimatorController;
 import model.IAnimatorModelState;
 import model.shape.AShape;
@@ -21,10 +18,7 @@ import model.shape.AShape;
  */
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
   private final APanel panel;
-<<<<<<< HEAD
-=======
 
->>>>>>> b505ad57f97edd4b49cc6464484e0b6990bf1595
 
   /**
    * Constructor of the AnimatorVisualView. This is where we set up our JFrame and adding our

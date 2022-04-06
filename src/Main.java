@@ -96,26 +96,23 @@ public class Main {
       IAnimatorView finalView = view;
 
       view.makeVisible();
-      ActionListener timeListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-          List<AShape> losTempo = new ArrayList<>();
-          AShape shape;
-          for (AShape s : finalModel.getShapes()) {
+      ActionListener timeListener = ae -> {
+        List<AShape> losTempo = new ArrayList<>();
+//          AShape shape;
+        for (AShape s : finalModel.getShapes()) {
 //            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
-            for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
-              c.execute(t.getTempo());
-            }
-            losTempo.add(s);
+          for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
+            c.execute(t.getTempo());
           }
-          System.out.println(t.getTempo());
-          finalView.setShapes(losTempo);
-          finalView.refresh();
-          t.addTempo();
+          losTempo.add(s);
         }
+        System.out.println(t.getTempo());
+        finalView.setShapes(losTempo);
+        finalView.refresh();
+        t.addTempo();
       };
 
-      Timer timer = new Timer(10, timeListener);
+      Timer timer = new Timer(1000, timeListener);
       timer.start();
 
     }

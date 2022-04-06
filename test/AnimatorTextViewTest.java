@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,8 +12,15 @@ import java.nio.file.Path;
 import model.IAnimatorModel;
 import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
+import model.command.ChangeColor;
+import model.command.ICommands;
+import model.command.Move;
 import model.io.AnimationFileReader;
 import model.shape.AShape;
+import model.shape.Rectangle;
+import model.shape.Shape;
+import model.utils.Posn;
+import model.utils.Time;
 import view.AnimatorTextView;
 import view.IAnimatorView;
 
@@ -25,7 +33,9 @@ import static org.junit.Assert.fail;
  */
 public class AnimatorTextViewTest {
   IAnimatorModelState<AShape> model;
+  IAnimatorModelState<AShape> model1;
   IAnimatorView view;
+  IAnimatorView view1;
   IAnimatorModel inputFileToModel;
   IAnimatorView inputFileView;
 
@@ -51,7 +61,17 @@ public class AnimatorTextViewTest {
                     50, 50, 0, 10)
             .build();
 
+    model1 = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10,10,30,30, 250,250,250,
+                    0, 30)
+            .addMove("1", 2,2, 30,30, 0,10)
+            .addColorChange("1", 2,2,2, 100,100,100,5, 20)
+            .addScaleToChange("1", 4,4, 20,20,0,10)
+            .addMove("1", 2,2,13,13, 15, 30)
+            .build();
+
     view = new AnimatorTextView(model);
+    view1 = new AnimatorTextView(model1);
 
     try {
       inputFileToModel = new AnimationFileReader().readFile("resource/toh-3.txt",
@@ -232,6 +252,8 @@ public class AnimatorTextViewTest {
     }
     assertEquals(view.getDetails(), content);
   }
+
+
 
 
 }
