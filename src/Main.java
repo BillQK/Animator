@@ -15,6 +15,7 @@ import javax.swing.Timer;
 
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
+import model.command.ICommands;
 import model.io.AnimationFileReader;
 import model.shape.AShape;
 import view.AnimatorViewCreator;
@@ -101,9 +102,11 @@ public class Main {
           List<AShape> losTempo = new ArrayList<>();
           AShape shape;
           for (AShape s : finalModel.getShapes()) {
-            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
-
-            losTempo.add(shape);
+//            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
+            for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
+              c.execute(t.getTempo());
+            }
+            losTempo.add(s);
           }
           System.out.println(t.getTempo());
           finalView.setShapes(losTempo);
@@ -112,7 +115,7 @@ public class Main {
         }
       };
 
-      Timer timer = new Timer(sec, timeListener);
+      Timer timer = new Timer(10, timeListener);
       timer.start();
 
     }

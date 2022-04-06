@@ -4,7 +4,9 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import controller.IAnimatorController;
 import model.IAnimatorModelState;
@@ -16,7 +18,6 @@ import model.shape.AShape;
  */
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
   private final APanel panel;
-  private final IAnimatorModelState<AShape> model;
 
   /**
    * Constructor of the AnimatorVisualView. This is where we set up our JFrame and adding our
@@ -26,7 +27,6 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
    */
   public AnimatorVisualView(IAnimatorModelState<AShape> model) {
     super();
-    this.model = model;
     this.setTitle("Animation");
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

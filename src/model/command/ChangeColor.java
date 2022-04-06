@@ -34,7 +34,12 @@ public class ChangeColor extends ACommand {
    */
   @Override
   public void execute(double time) {
-    Color newColor = calculate(time);
+    Color newColor;
+    if (time > endTime) {
+      newColor = endColor;
+    } else {
+      newColor = calculate(time);
+    }
 
     shape.setColor(newColor);
   }

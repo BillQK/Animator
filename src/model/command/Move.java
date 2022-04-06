@@ -31,7 +31,12 @@ public class Move extends ACommand {
    */
   @Override
   public void execute(double time) {
-    Posn newPosn = calculate(time, this.shape);
+    Posn newPosn;
+    if (time > endTime) {
+      newPosn = destination;
+    } else {
+      newPosn = calculate(time, this.shape);
+    }
 
     this.shape.setPosn(newPosn);
   }
