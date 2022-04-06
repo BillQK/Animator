@@ -2,6 +2,7 @@ package view;
 
 import java.util.Objects;
 
+import model.IAnimatorModel;
 import model.IAnimatorModelState;
 import model.shape.AShape;
 
