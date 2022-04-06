@@ -101,11 +101,17 @@ public class Move extends ACommand {
     double destY = this.destination.getY();
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
+    
+    Posn newPosn; 
+    if (rateOfChange == 0) {
+      newPosn = destination; 
+      return newPosn;
+    }
 
     double changeInX = (destX - currentX) * rateOfChange;
     double changeInY = (destY - currentY) * rateOfChange;
 
-    Posn newPosn = new Posn(currentX + changeInX, currentY + changeInY);
+    newPosn = new Posn(currentX + changeInX, currentY + changeInY);
     return newPosn;
   }
 

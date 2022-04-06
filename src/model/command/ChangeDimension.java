@@ -102,9 +102,14 @@ public class ChangeDimension extends ACommand {
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
 
+    double newW;
+    if (rateOfChange == 0) {
+      newW = endW;
+      return newW;
+    }
     double changeInW = (endW - currentW) * rateOfChange;
 
-    double newW = currentW + changeInW;
+    newW = currentW + changeInW;
 
     return newW;
   }
@@ -122,10 +127,16 @@ public class ChangeDimension extends ACommand {
     double currentH = shape.getHeight();
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
+    double newH;
+
+    if (rateOfChange == 0) {
+      newH = endH;
+      return newH;
+    }
 
     double changeInH = (endH - currentH) * rateOfChange;
 
-    double newH = currentH + changeInH;
+     newH = currentH + changeInH;
 
     return newH;
   }

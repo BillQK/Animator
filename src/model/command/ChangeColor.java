@@ -105,6 +105,12 @@ public class ChangeColor extends ACommand {
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
 
+    Color newColor;
+    if (rateOfChange == 0) {
+      newColor = endColor;
+      return newColor;
+    }
+
     double changeInRed = (destR - currentR) * rateOfChange;
     double changeInGreen = (destG - currentG) * rateOfChange;
     double changeInBlue = (destB - currentB) * rateOfChange;
@@ -114,7 +120,7 @@ public class ChangeColor extends ACommand {
     int newB = (int) (currentB + changeInBlue);
 
     ArgumentsCheck.colorRange(newR, newG, newB);
-    Color newColor = new Color(newR, newG, newB);
+    newColor = new Color(newR, newG, newB);
     return newColor;
   }
 
