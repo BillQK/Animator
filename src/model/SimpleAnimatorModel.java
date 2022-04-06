@@ -73,19 +73,49 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    */
   @Override
   public void addCommands(ICommands c) {
-    if (!shapes.containsValue(c.getTheShape())) {
-      throw new IllegalArgumentException("Cannot add command.");
-    }
+//    if (!shapes.containsValue(c.getTheShape())) {
+//      throw new IllegalArgumentException("Cannot add command.");
+//    }
+//
+//    if (this.commands.get(c.getTheShape().getName()).size() != 0) {
+//      double value = biggestEndTime(this.commands.get(c.getTheShape().getName()));
+//      if (c.getStart() != value) {
+//        throw new IllegalArgumentException("Gap Error");
+//      }
+//    }
+//    this.commands.put(c.getTheShape().getName(), new ArrayList<>());
+//    this.commands.get(c.getTheShape().getName()).add(c);
 
-    if (this.commands.get(c.getTheShape().getName()).size() != 0) {
-      double value = biggestEndTime(this.commands.get(c.getTheShape().getName()));
-      if (c.getStart() != value) {
-        throw new IllegalArgumentException("Gap Error");
+    CommandType commandType = c.getType();
+    AShape addShape = c.getTheShape();
+    int size = commands.get(addShape.getName()).size();
+    double start = c.getStart();
+    double end = c.getEnd();
+
+    for (ICommands s : commands.get(addShape.getName())) {
+      CommandType currentType = s.getType();
+      AShape shape = s.getTheShape();
+      double cStart = s.getStart();
+      double cEnd = s.getEnd();
+
+      if (commandType == currentType) {
+        if (addShape.getName().equals(shape.getName())) {
+          ArgumentsCheck.overlappingTime(start, end, cStart, cEnd);
+        }
       }
     }
-    this.commands.put(c.getTheShape().getName(), new ArrayList<>());
-    this.commands.get(c.getTheShape().getName()).add(c);
-  }
+      List<ICommands> commandsList = this.commands.get(addShape.getName());
+      for (int i = 0; i < size; i++) {
+        ICommands current = commandsList.get(i);
+        double Start = current.getStart();
+
+        if (start < Start) {
+          commandsList.add(i, c);
+        }
+      }
+      commandsList.add(c);
+    }
+
 
   private double biggestEndTime(List<ICommands> commandsList) {
     List<Double> time = new ArrayList<>();
