@@ -15,7 +15,7 @@ public final class RateOfChange {
    * @return a double Rate
    */
   public static double findRate(double current, double start, double end) {
-    if (current < start) {
+    if (current <= start) {
       return 0;
     }
     return Math.abs((current - start) / (end - start));

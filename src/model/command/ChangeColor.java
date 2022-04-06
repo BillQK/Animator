@@ -19,11 +19,12 @@ public class ChangeColor extends ACommand {
    * @param shape      the given shape
    * @param startTime  the start time of command
    * @param endTime    the end time of command
-   * @param startColor
+   * @param startColor the start color
    * @param endColor   the destination color
    * @throws IllegalArgumentException if arguments outside of range
    */
-  public ChangeColor(AShape shape, double startTime, double endTime, Color startColor, Color endColor) {
+  public ChangeColor(AShape shape, double startTime, double endTime, Color startColor,
+                     Color endColor) {
     super(shape, CommandType.CHANGE_COLOR, startTime, endTime);
     this.startColor = startColor;
     ArgumentsCheck.colorRange(endColor.getRed(), endColor.getGreen(), endColor.getBlue());
@@ -98,9 +99,9 @@ public class ChangeColor extends ACommand {
     double start = super.getStart();
     double end = super.getEnd();
 
-    int currentR = this.shape.getColor().getRed();
-    int currentG = this.shape.getColor().getGreen();
-    int currentB = this.shape.getColor().getBlue();
+    int currentR = startColor.getRed();
+    int currentG = startColor.getGreen();
+    int currentB = startColor.getBlue();
 
     int destR = endColor.getRed();
     int destG = endColor.getGreen();
@@ -110,7 +111,7 @@ public class ChangeColor extends ACommand {
 
     Color newColor;
     if (rateOfChange == 0) {
-      newColor = endColor;
+      newColor = this.shape.getColor();
       return newColor;
     }
 

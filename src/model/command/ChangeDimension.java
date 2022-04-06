@@ -18,8 +18,8 @@ public class ChangeDimension extends ACommand {
    * @param shape     AShape - the shape to called the changeDimension command on
    * @param startTime the start time of the command
    * @param endTime   the end time of the command
-   * @param startW
-   * @param startH
+   * @param startW    the given start width of the shape
+   * @param startH    the given start height of the shape
    * @param endW      the given end width to change the shape's width to
    * @param endH      the given end height to change the shape's height to
    */
@@ -111,7 +111,7 @@ public class ChangeDimension extends ACommand {
 
     double newW;
     if (rateOfChange == 0) {
-      newW = endW;
+      newW = this.shape.getWidth();
       return newW;
     }
     double changeInW = (endW - currentW) * rateOfChange;
@@ -137,7 +137,7 @@ public class ChangeDimension extends ACommand {
     double newH;
 
     if (rateOfChange == 0) {
-      newH = endH;
+      newH = this.shape.getHeight();
       return newH;
     }
 

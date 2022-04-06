@@ -370,9 +370,12 @@ public class AnimatorModelTest {
             Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
             400, new Time(3, 99));
 
-    ICommands c = new Move(rec1, 4, 30, new Posn(-10, -20), new Posn(1, 4));
-    ICommands c2 = new Move(rec1, 31, 45, new Posn(1, 4), new Posn(5, 8));
-    ICommands c3 = new ChangeColor(rec1, 30, 46, new Color(30, 30, 30), new Color(100, 100, 100));
+    ICommands c = new Move(rec1, 4, 30, new Posn(-10, -20),
+            new Posn(1, 4));
+    ICommands c2 = new Move(rec1, 31, 45, new Posn(-11, 4),
+            new Posn(5, 8));
+    ICommands c3 = new ChangeColor(rec1, 30, 46, new Color(30, 30, 30),
+            new Color(100, 100, 100));
 
     s.addShape(rec1);
     s.addCommands(c);
@@ -529,7 +532,7 @@ public class AnimatorModelTest {
     assertEquals(s.getCommands("1").size(), 1);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testOverlappingTime() {
     s = new SimpleAnimatorModel.TweenBuilder()
             .addRectangle("1", 10, 15, 100, 200,
@@ -542,11 +545,13 @@ public class AnimatorModelTest {
                     1, 5)
             // overlapping
             .addColorChange("2", 10, 10, 10,
-                    100, 100, 100, 2, 10)
+                    100, 100, 100, 2, 8)
             .build();
+
+    assertEquals(s.getCommands("2").size(), 2);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testOverlappingTimeAnimationInSide() {
     s = new SimpleAnimatorModel.TweenBuilder()
             .addRectangle("1", 10, 15, 100, 200,
@@ -599,8 +604,44 @@ public class AnimatorModelTest {
                     100, 100, 100, 7, 10)
             .build();
 
-    s.deleteCommands("2", 3);
-    assertEquals(s.getCommands("2").get(2).getType(), CommandType.EMPTY);
+    s.deleteCommands("2", 1);
+    assertEquals(s.getCommands("2").get(0).getType(), CommandType.EMPTY);
+  }
+
+  @Test
+  public void testExtraForBuilder() {
+    s = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10,10,30,30, 250,250,250,
+                    0, 30)
+            .addMove("1", 2,2, 30,30, 0,10)
+            .addColorChange("1", 2,2,2, 100,100,100,5, 20)
+            .addScaleToChange("1", 4,4, 20,20,0,10)
+            .addMove("1", 2,2,13,13, 15, 30)
+            .build();
+
+    assertEquals(s.getCommands("1").get(0).getType(), CommandType.MOVE);
+    assertEquals(s.getCommands("1").get(1).getType(), CommandType.CHANGE_DIMENSION);
+    assertEquals(s.getCommands("1").get(2).getType(), CommandType.CHANGE_COLOR);
+    assertEquals(s.getCommands("1").get(3).getType(), CommandType.MOVE);
+  }
+
+  @Test
+  public void testExecute() {
+    s = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10,10,30,30, 250,250,250,
+                    0, 30)
+            .addMove("1", 10,10, 30,30, 0,10)
+            .addMove("1", 30,30,45,45, 10, 15)
+            .addMove("1", 45,45,60,60, 15, 30)
+            .build();
+
+
+    for (ICommands c : s.getExecutableCommand("1")) {
+      c.execute(7);
+
+    }
+
+    System.out.println(s.getShapes().get(0).getPosition().getX());
   }
 
 }

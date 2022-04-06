@@ -37,8 +37,8 @@ public class Main {
 
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
-    IAnimatorModelState<AShape> model = null;
-    int sec = 100;
+    IAnimatorModel<AShape> model = null;
+    int sec = 1000;
 
     for (int i = 0; i < args.length - 1; i++) {
       String key = args[i];
@@ -93,30 +93,27 @@ public class Main {
     if (Objects.equals(commandLine.get("-view"), "visual")) {
       Tempo t = new Tempo();
 
-      IAnimatorModelState<AShape> finalModel = model;
+      IAnimatorModel<AShape> finalModel = model;
       IAnimatorView finalView = view;
 
       view.makeVisible();
-      ActionListener timeListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-          List<AShape> losTempo = new ArrayList<>();
-          AShape shape;
-          for (AShape s : finalModel.getShapes()) {
+      ActionListener timeListener = ae -> {
+        List<AShape> losTempo = new ArrayList<>();
+//          AShape shape;
+        for (AShape s : finalModel.getShapes()) {
 //            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
-            for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
-              c.execute(t.getTempo());
-            }
-            losTempo.add(s);
+          for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
+            c.execute(t.getTempo());
           }
-          System.out.println(t.getTempo());
-          finalView.setShapes(losTempo);
-          finalView.refresh();
-          t.addTempo();
+          losTempo.add(s);
         }
+        System.out.println(t.getTempo());
+        finalView.setShapes(losTempo);
+        finalView.refresh();
+        t.addTempo();
       };
 
-      Timer timer = new Timer(10, timeListener);
+      Timer timer = new Timer(1000, timeListener);
       timer.start();
 
     }

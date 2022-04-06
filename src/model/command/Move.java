@@ -13,11 +13,11 @@ public class Move extends ACommand {
 
   /**
    * A constructor for Move.
-   *
-   * @param shape       AShape - the shape to called the move command on
+
+   * @param shape      AShape - the shape to called the move command on
    * @param startTime   the start time of the command
    * @param endTime     the end time of the command
-   * @param origin
+   * @param origin      the origin position of the shape
    * @param destination the destination position that the shape need to move to
    */
   public Move(AShape shape, double startTime, double endTime, Posn origin, Posn destination) {
@@ -33,7 +33,7 @@ public class Move extends ACommand {
    */
   @Override
   public void execute(double time) {
-    Posn newPosn = calculate(time, this.shape);
+    Posn newPosn = calculate(time);
 
     this.shape.setPosn(newPosn);
   }
@@ -89,15 +89,14 @@ public class Move extends ACommand {
    * A method to calculate the new shape's position at the given time on the given shape.
    *
    * @param time  the given time to know where the shape at
-   * @param shape the given shape to return a new position
    * @return a Posn - new position at the time
    */
-  private Posn calculate(double time, AShape shape) {
+  private Posn calculate(double time) {
     double start = super.getStart();
     double end = super.getEnd();
 
-    double currentX = shape.getPosition().getX();
-    double currentY = shape.getPosition().getY();
+    double currentX = this.origin.getX();
+    double currentY = this.origin.getY();
 
     double destX = this.destination.getX();
     double destY = this.destination.getY();
@@ -106,7 +105,7 @@ public class Move extends ACommand {
 
     Posn newPosn;
     if (rateOfChange == 0) {
-      newPosn = destination;
+      newPosn = this.shape.getPosition();
       return newPosn;
     }
 
@@ -147,7 +146,7 @@ public class Move extends ACommand {
   @Override
   public AShape getShapeAtTick(double time, AShape shape) {
 
-    shape.setPosn(calculate(time, shape));
+    shape.setPosn(calculate(time));
     return shape;
   }
 

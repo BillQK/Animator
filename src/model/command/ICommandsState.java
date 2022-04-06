@@ -12,6 +12,8 @@ import model.utils.Posn;
  */
 public interface ICommandsState {
 
+//  int compareTo(ICommands o);
+
   /**
    * Get the begin state before the command.
    *
