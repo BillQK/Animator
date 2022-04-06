@@ -631,7 +631,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       ICommands com = new ChangeColor(s, startTime, endTime, oldC, newC);
       this.addCommands(com);
 
-
       return this;
     }
 

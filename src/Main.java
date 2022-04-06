@@ -113,7 +113,7 @@ public class Main {
         t.addTempo();
       };
 
-      Timer timer = new Timer(1000, timeListener);
+      Timer timer = new Timer(100, timeListener);
       timer.start();
 
     }

@@ -108,6 +108,11 @@ public class Move extends ACommand {
       newPosn = this.shape.getPosition();
       return newPosn;
     }
+    if (rateOfChange == -1) {
+      newPosn = destination;
+      return newPosn;
+    }
+
 
     double changeInX = (destX - currentX) * rateOfChange;
     double changeInY = (destY - currentY) * rateOfChange;

@@ -114,6 +114,10 @@ public class ChangeColor extends ACommand {
       newColor = this.shape.getColor();
       return newColor;
     }
+    if (rateOfChange == -1) {
+      newColor = endColor;
+      return newColor;
+    }
 
     double changeInRed = (destR - currentR) * rateOfChange;
     double changeInGreen = (destG - currentG) * rateOfChange;

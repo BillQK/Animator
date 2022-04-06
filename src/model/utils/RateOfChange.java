@@ -18,6 +18,9 @@ public final class RateOfChange {
     if (current <= start) {
       return 0;
     }
+    if (current >= end) {
+      return -1;
+    }
     return Math.abs((current - start) / (end - start));
   }
 

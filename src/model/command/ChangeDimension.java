@@ -140,6 +140,10 @@ public class ChangeDimension extends ACommand {
       newH = this.shape.getHeight();
       return newH;
     }
+    if (rateOfChange == -1) {
+      newH = endH;
+      return newH;
+    }
 
     double changeInH = (endH - currentH) * rateOfChange;
 
