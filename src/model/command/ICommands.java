@@ -5,7 +5,7 @@ package model.command;
  * The interface include method to execute a specific command on a shape
  * with the given current time.
  */
-public interface ICommands extends ICommandsState {
+public interface ICommands extends ICommandsState, Comparable<ICommands> {
   /**
    * A method to execute the command on the shape to move/changeDimension/changeColor.
    *

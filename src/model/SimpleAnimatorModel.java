@@ -437,8 +437,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
           }
         }
       }
-
+//      Collections.sort(this.commands.get(id));
       this.commands.get(id).add(com);
+      Collections.sort(this.commands.get(id));
     }
 
     /**

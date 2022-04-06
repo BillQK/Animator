@@ -112,6 +112,8 @@ public class AnimatorTextViewTest {
                     "motion 2 0.0 10.0 10.0 10.0 50.0 10 10 10      " +
                     " 10.0 50.0 50.0  10.0 50.0 10 10 10\n" +
                     "\n");
+
+    assertEquals(view1.getDetails(), " ");
   }
 
   @Test

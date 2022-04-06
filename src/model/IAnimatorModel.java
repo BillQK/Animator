@@ -51,5 +51,5 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
    */
   void deleteCommands(String id, int orderOfCommands);
 
-  List<ICommands> getExecutableCommand(String id);
+//  List<ICommands> getExecutableCommand(String id);
 }

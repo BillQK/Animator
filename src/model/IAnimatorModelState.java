@@ -3,6 +3,7 @@ package model;
 
 import java.util.List;
 
+import model.command.ICommands;
 import model.command.ICommandsState;
 import model.shape.AShape;
 
@@ -31,6 +32,8 @@ public interface IAnimatorModelState<K> {
    * @Throws
    */
   List<ICommandsState> getCommands(String id);
+
+  List<ICommands> getExecutableCommand(String id);
 
   /**
    * Return a new state of the given shape at a specific tick of the specific shape.
