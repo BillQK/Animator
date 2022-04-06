@@ -4,8 +4,8 @@
 <animate attributeType="xml" begin="0.0ms" dur="250.0ms" attributeName="rgb" from="(10,10,10)" to="(15,15,15)" fill="freeze" /> 
 <animate attributeType="xml" begin="300.0ms" dur="50.0ms" attributeName="x" from="10.0" to="15.0" fill="freeze" /> 
 <animate attributeType="xml" begin="300.0ms" dur="50.0ms" attributeName="y" from="10.0" to="40.0" fill="freeze" />
-<animate attributeType="xml" begin="400.0ms" dur="350.0ms" attributeName="x" from="10.0" to="10.0" fill="freeze" /> 
-<animate attributeType="xml" begin="400.0ms" dur="350.0ms" attributeName="y" from="10.0" to="10.0" fill="freeze" />
+<animate attributeType="xml" begin="400.0ms" dur="350.0ms" attributeName="x" from="15.0" to="10.0" fill="freeze" /> 
+<animate attributeType="xml" begin="400.0ms" dur="350.0ms" attributeName="y" from="40.0" to="10.0" fill="freeze" />
 <animate attributeType="xml" begin="750.0ms" dur="750.0ms" attributeName="width" from="100.0" to="200.0" fill="freeze" /> 
 <animate attributeType="xml" begin="750.0ms" dur="750.0ms" attributeName="height" from="100.0" to="200.0" fill="freeze" />
 </rect>

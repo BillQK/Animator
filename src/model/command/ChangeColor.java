@@ -10,6 +10,7 @@ import model.utils.RateOfChange;
  * Represents the ChangeColor command class called on a shape.
  */
 public class ChangeColor extends ACommand {
+  private final Color startColor;
   private final Color endColor;
 
   /**
@@ -18,11 +19,13 @@ public class ChangeColor extends ACommand {
    * @param shape     the given shape
    * @param startTime the start time of command
    * @param endTime   the end time of command
+   * @param startColor
    * @param endColor  the destination color
    * @throws IllegalArgumentException if arguments outside of range
    */
-  public ChangeColor(AShape shape, double startTime, double endTime, Color endColor) {
+  public ChangeColor(AShape shape, double startTime, double endTime, Color startColor, Color endColor) {
     super(shape, CommandType.CHANGE_COLOR, startTime, endTime);
+    this.startColor = startColor;
     ArgumentsCheck.colorRange(endColor.getRed(), endColor.getGreen(), endColor.getBlue());
     this.endColor = endColor;
   }
@@ -131,7 +134,7 @@ public class ChangeColor extends ACommand {
    */
   @Override
   public Color getOldColor() {
-    return this.shape.getColor();
+    return startColor;
   }
 
   /**

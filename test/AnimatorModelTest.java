@@ -1,9 +1,10 @@
 import org.junit.Test;
 
-import java.awt.Color;
+import java.awt.*;
 
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
+import model.command.ChangeColor;
 import model.command.CommandType;
 import model.command.ICommands;
 import model.command.Move;
@@ -369,12 +370,16 @@ public class AnimatorModelTest {
             Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
             400, new Time(3, 99));
 
-    ICommands c = new Move(rec1, 4, 30, new Posn(1, 4));
+    ICommands c = new Move(rec1, 4, 30, new Posn(-10, -20), new Posn(1, 4));
+    ICommands c2 = new Move(rec1, 31, 45, new Posn(1, 4), new Posn(5, 8));
+    ICommands c3 = new ChangeColor(rec1, 30, 46, new Color(30, 30, 30), new Color(100, 100, 100));
 
     s.addShape(rec1);
     s.addCommands(c);
+    s.addCommands(c2);
+    s.addCommands(c3);
 
-    assertEquals(s.getCommands("C").size(), 1);
+    assertEquals(s.getCommands("C").size(), 3);
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -385,7 +390,7 @@ public class AnimatorModelTest {
             Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
             400, new Time(3, 99));
 
-    ICommands c = new Move(rec1, 4, 30, new Posn(1, 4));
+    ICommands c = new Move(rec1, 4, 30, new Posn(-10, -20), new Posn(1, 4));
 
     // Throw IllegalException
     s.addCommands(c);
@@ -399,7 +404,7 @@ public class AnimatorModelTest {
             Shape.RECTANGLE, new Color(30, 30, 30), -10, -20, 500,
             400, new Time(3, 99));
 
-    ICommands c = new Move(rec1, 4, 30, new Posn(1, 4));
+    ICommands c = new Move(rec1, 4, 30, new Posn(-10, -20), new Posn(1, 4));
 
     s.addShape(rec1);
     s.addCommands(c);
@@ -515,7 +520,7 @@ public class AnimatorModelTest {
     AShape ellip = new Ellipse("E", Shape.ELLIPSE, new Color(250, 30, 10),
             3, 4, 30, 30, new Time(0, 30));
 
-    ICommands c = new Move(ellip, 0, 15, new Posn(30, 20));
+    ICommands c = new Move(ellip, 0, 15, new Posn(3,4), new Posn(30, 20));
 
     s.addShape(ellip);
     s.addCommands(c);
