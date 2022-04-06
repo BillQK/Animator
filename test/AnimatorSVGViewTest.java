@@ -64,30 +64,18 @@ public class AnimatorSVGViewTest {
     assertEquals(view.getDetails(),
             "<svg width=\"700\" height=\"500\" version=\"1.1\"\n" +
                     "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
-                    "<rect id=\"1\" x=\"10.0\" y=\"10.0\" width=\"100.0\" " +
-                    "height=\"100.0\" fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
-                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"5000.0ms\" " +
-                    "attributeName=\"rgb\" from=\"(10,10,10)\" to=\"(15,15,15)\" fill=\"freeze\" " +
-                    "/> \n" +
-                    "<animate attributeType=\"xml\" begin=\"6000.0ms\" dur=\"1000.0ms\" " +
-                    "attributeName=\"x\" from=\"10.0\" to=\"15.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"6000.0ms\" dur=\"1000.0ms\" " +
-                    "attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n" +
-                    "<animate attributeType=\"xml\" begin=\"8000.0ms\" dur=\"7000.0ms\" " +
-                    "attributeName=\"x\" from=\"10.0\" to=\"10.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"8000.0ms\" dur=\"7000.0ms\" " +
-                    "attributeName=\"y\" from=\"10.0\" to=\"10.0\" fill=\"freeze\" />\n" +
-                    "<animate attributeType=\"xml\" begin=\"15000.0ms\" dur=\"15000.0ms\"" +
-                    " attributeName=\"width\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"15000.0ms\" dur=\"15000.0ms\"" +
-                    " attributeName=\"height\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" />\n" +
+                    "<rect id=\"1\" x=\"10.0\" y=\"10.0\" width=\"100.0\" height=\"100.0\" fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
+                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"5000.0ms\" attributeName=\"rgb\" from=\"(10,10,10)\" to=\"(15,15,15)\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"6000.0ms\" dur=\"1000.0ms\" attributeName=\"x\" from=\"10.0\" to=\"15.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"6000.0ms\" dur=\"1000.0ms\" attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n" +
+                    "<animate attributeType=\"xml\" begin=\"8000.0ms\" dur=\"7000.0ms\" attributeName=\"x\" from=\"15.0\" to=\"10.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"8000.0ms\" dur=\"7000.0ms\" attributeName=\"y\" from=\"40.0\" to=\"10.0\" fill=\"freeze\" />\n" +
+                    "<animate attributeType=\"xml\" begin=\"15000.0ms\" dur=\"15000.0ms\" attributeName=\"width\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"15000.0ms\" dur=\"15000.0ms\" attributeName=\"height\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" />\n" +
                     "</rect>\n" +
-                    "<ellipse id=\"2\" cx=\"10.0\" cy=\"10.0\" rx=\"10.0\" ry=\"50.0\"" +
-                    " fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
-                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"10000.0ms\"" +
-                    " attributeName=\"cx\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"10000.0ms\" " +
-                    "attributeName=\"cy\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n" +
+                    "<ellipse id=\"2\" cx=\"10.0\" cy=\"10.0\" rx=\"10.0\" ry=\"50.0\" fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
+                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"10000.0ms\" attributeName=\"cx\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"10000.0ms\" attributeName=\"cy\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n" +
                     "</ellipse>\n" +
                     "</svg>");
   }
@@ -131,29 +119,18 @@ public class AnimatorSVGViewTest {
     assertEquals(inputFileView.getDetails(),
             "<svg width=\"700\" height=\"500\" version=\"1.1\"\n" +
                     "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
-                    "<rect id=\"1\" x=\"10.0\" y=\"10.0\" width=\"100.0\" " +
-                    "height=\"100.0\" fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
-                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"250.0ms\"" +
-                    " attributeName=\"rgb\" from=\"(10,10,10)\" to=\"(15,15,15)\" fill=\"freeze\" "
-                    + "/> \n" + "<animate attributeType=\"xml\" begin=\"300.0ms\" dur=\"50.0ms\" "
-                    + "attributeName=\"x\" from=\"10.0\" to=\"15.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"300.0ms\" dur=\"50.0ms\" " +
-                    "attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n" +
-                    "<animate attributeType=\"xml\" begin=\"400.0ms\" dur=\"350.0ms\"" +
-                    " attributeName=\"x\" from=\"10.0\" to=\"10.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"400.0ms\" dur=\"350.0ms\"" +
-                    " attributeName=\"y\" from=\"10.0\" to=\"10.0\" fill=\"freeze\" />\n" +
-                    "<animate attributeType=\"xml\" begin=\"750.0ms\" dur=\"750.0ms\" " +
-                    "attributeName=\"width\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"750.0ms\" dur=\"750.0ms\" " +
-                    "attributeName=\"height\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" />\n" +
+                    "<rect id=\"1\" x=\"10.0\" y=\"10.0\" width=\"100.0\" height=\"100.0\" fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
+                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"250.0ms\" attributeName=\"rgb\" from=\"(10,10,10)\" to=\"(15,15,15)\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"300.0ms\" dur=\"50.0ms\" attributeName=\"x\" from=\"10.0\" to=\"15.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"300.0ms\" dur=\"50.0ms\" attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n" +
+                    "<animate attributeType=\"xml\" begin=\"400.0ms\" dur=\"350.0ms\" attributeName=\"x\" from=\"15.0\" to=\"10.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"400.0ms\" dur=\"350.0ms\" attributeName=\"y\" from=\"40.0\" to=\"10.0\" fill=\"freeze\" />\n" +
+                    "<animate attributeType=\"xml\" begin=\"750.0ms\" dur=\"750.0ms\" attributeName=\"width\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"750.0ms\" dur=\"750.0ms\" attributeName=\"height\" from=\"100.0\" to=\"200.0\" fill=\"freeze\" />\n" +
                     "</rect>\n" +
-                    "<ellipse id=\"2\" cx=\"10.0\" cy=\"10.0\" rx=\"10.0\" ry=\"50.0\"" +
-                    " fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
-                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"500.0ms\" " +
-                    "attributeName=\"cx\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n" +
-                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"500.0ms\" " +
-                    "attributeName=\"cy\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n" +
+                    "<ellipse id=\"2\" cx=\"10.0\" cy=\"10.0\" rx=\"10.0\" ry=\"50.0\" fill=\"rgb(10,10,10)\" visibility=\"visible\" >\n" +
+                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"500.0ms\" attributeName=\"cx\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n" +
+                    "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"500.0ms\" attributeName=\"cy\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n" +
                     "</ellipse>\n" +
                     "</svg>");
   }

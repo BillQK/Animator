@@ -8,19 +8,20 @@ import model.utils.RateOfChange;
  * Represents the Move command class called on a shape.
  */
 public class Move extends ACommand {
-
+  private final Posn origin;
   private final Posn destination;
 
   /**
    * A constructor for Move.
-   *
-   * @param shape       AShape - the shape to called the move command on
+   *  @param shape       AShape - the shape to called the move command on
    * @param startTime   the start time of the command
    * @param endTime     the end time of the command
+   * @param origin
    * @param destination the destination position that the shape need to move to
    */
-  public Move(AShape shape, double startTime, double endTime, Posn destination) {
+  public Move(AShape shape, double startTime, double endTime, Posn origin, Posn destination) {
     super(shape, CommandType.MOVE, startTime, endTime);
+    this.origin = origin;
     this.destination = destination;
   }
 
@@ -57,13 +58,13 @@ public class Move extends ACommand {
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGX() + "\" "
-            + "from=\"" + this.getOldPosn().getX()
+            + "from=\"" + this.origin.getX()
             + "\" to=\"" + this.destination.getX() + "\" fill=\"freeze\" /> \n";
 
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGY() + "\" "
-            + "from=\"" + this.getOldPosn().getY()
+            + "from=\"" + this.origin.getY()
             + "\" to=\"" + this.destination.getY() + "\" fill=\"freeze\" />\n";
 
     return details;
@@ -106,11 +107,17 @@ public class Move extends ACommand {
     double destY = this.destination.getY();
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
+    
+    Posn newPosn; 
+    if (rateOfChange == 0) {
+      newPosn = destination; 
+      return newPosn;
+    }
 
     double changeInX = (destX - currentX) * rateOfChange;
     double changeInY = (destY - currentY) * rateOfChange;
 
-    Posn newPosn = new Posn(currentX + changeInX, currentY + changeInY);
+    newPosn = new Posn(currentX + changeInX, currentY + changeInY);
     return newPosn;
   }
 
@@ -121,7 +128,7 @@ public class Move extends ACommand {
    */
   @Override
   public Posn getOldPosn() {
-    return this.shape.getPosition();
+    return origin;
   }
 
   /**

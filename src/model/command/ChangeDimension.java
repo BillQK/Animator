@@ -7,21 +7,26 @@ import model.utils.RateOfChange;
  * Represents the ChangeDimension command class called on a shape.
  */
 public class ChangeDimension extends ACommand {
+  private final double startW;
+  private final double startH;
   private final double endW;
   private final double endH;
 
   /**
    * A constructor for ChangeDimension.
-   *
-   * @param shape     AShape - the shape to called the changeDimension command on
+   *  @param shape     AShape - the shape to called the changeDimension command on
    * @param startTime the start time of the command
    * @param endTime   the end time of the command
+   * @param startW
+   * @param startH
    * @param endW      the given end width to change the shape's width to
    * @param endH      the given end height to change the shape's height to
    */
   public ChangeDimension(AShape shape, double startTime, double endTime,
-                         double endW, double endH) {
+                         double startW, double startH, double endW, double endH) {
     super(shape, CommandType.CHANGE_DIMENSION, startTime, endTime);
+    this.startW = startW;
+    this.startH = startH;
     this.endH = endH;
     this.endW = endW;
   }
@@ -83,13 +88,13 @@ public class ChangeDimension extends ACommand {
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGDstart() + "\" "
-            + "from=\"" + this.shape.getWidth()
+            + "from=\"" + this.startW
             + "\" to=\"" + this.endW + "\" fill=\"freeze\" /> \n";
 
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGDend() + "\" "
-            + "from=\"" + this.shape.getHeight()
+            + "from=\"" + this.startH
             + "\" to=\"" + this.endH + "\" fill=\"freeze\" />\n";
 
     return details;
@@ -109,9 +114,14 @@ public class ChangeDimension extends ACommand {
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
 
+    double newW;
+    if (rateOfChange == 0) {
+      newW = endW;
+      return newW;
+    }
     double changeInW = (endW - currentW) * rateOfChange;
 
-    double newW = currentW + changeInW;
+    newW = currentW + changeInW;
 
     return newW;
   }
@@ -129,10 +139,16 @@ public class ChangeDimension extends ACommand {
     double currentH = shape.getHeight();
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
+    double newH;
+
+    if (rateOfChange == 0) {
+      newH = endH;
+      return newH;
+    }
 
     double changeInH = (endH - currentH) * rateOfChange;
 
-    double newH = currentH + changeInH;
+     newH = currentH + changeInH;
 
     return newH;
   }
@@ -144,7 +160,7 @@ public class ChangeDimension extends ACommand {
    */
   @Override
   public double getOldWidth() {
-    return this.shape.getWidth();
+    return startW;
   }
 
   /**
@@ -164,7 +180,7 @@ public class ChangeDimension extends ACommand {
    */
   @Override
   public double getOldHeight() {
-    return this.shape.getHeight();
+    return startH;
   }
 
   /**

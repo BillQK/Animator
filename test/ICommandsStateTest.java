@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.Color;
+import java.awt.*;
 
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
@@ -29,9 +29,12 @@ public class ICommandsStateTest {
   public void setUp() {
     rec = new Rectangle("1", Shape.RECTANGLE, new Color(100, 100, 100), 10,
             10, 100, 100, new Time(0, 20));
-    changeColor = new ChangeColor(rec, 0, 10, new Color(120, 120, 120));
-    changeDimension = new ChangeDimension(rec, 10, 15, 150, 150);
-    changePosn = new Move(rec, 15, 20, new Posn(40, 40));
+    changeColor = new ChangeColor(rec, 0, 10, new Color(100, 100, 100),
+            new Color(120, 120, 120));
+    changeDimension = new ChangeDimension(rec, 10, 15, 100,
+            100, 150, 150);
+    changePosn = new Move(rec, 15, 20, new Posn(10,
+            10), new Posn(40, 40));
   }
 
   @Test
@@ -98,7 +101,7 @@ public class ICommandsStateTest {
 
   @Test
   public void getNewPosn() {
-    assertEquals(changePosn.getNewPosn(), new Posn(40,40));
+    assertEquals(changePosn.getNewPosn(), new Posn(40, 40));
     assertEquals(changeColor.getNewPosn(), null);
     assertEquals(changeDimension.getNewPosn(), null);
   }
@@ -112,7 +115,7 @@ public class ICommandsStateTest {
 
   @Test
   public void getNewWidth() {
-    assertEquals(changePosn.getNewWidth(),  -1, Integer.MIN_VALUE);
+    assertEquals(changePosn.getNewWidth(), -1, Integer.MIN_VALUE);
     assertEquals(changeColor.getNewWidth(), -1, Integer.MIN_VALUE);
     assertEquals(changeDimension.getNewWidth(), 150, Integer.MIN_VALUE);
   }
@@ -133,7 +136,7 @@ public class ICommandsStateTest {
 
   @Test
   public void getOldColor() {
-    assertEquals(changePosn.getNewWidth(), -1,Integer.MIN_VALUE);
+    assertEquals(changePosn.getNewWidth(), -1, Integer.MIN_VALUE);
     assertEquals(changeColor.getNewWidth(), -1, Integer.MIN_VALUE);
     assertEquals(changeDimension.getNewWidth(), 150, Integer.MIN_VALUE);
   }
@@ -147,13 +150,13 @@ public class ICommandsStateTest {
 
   @Test
   public void getShapeAtTick() {
-    assertEquals(changePosn.getShapeAtTick(20,rec).getPosition(), new Posn(40,40) );
-    assertEquals(changeColor.getShapeAtTick(10,rec).getColor(),
-            new Color(120,120,120));
-    assertEquals(changeDimension.getShapeAtTick(15,rec).getHeight(),
-            150, Integer.MIN_VALUE );
-    assertEquals(changeDimension.getShapeAtTick(15,rec).getWidth(),
-            150,Integer.MIN_VALUE);
+    assertEquals(changePosn.getShapeAtTick(20, rec).getPosition(), new Posn(40, 40));
+    assertEquals(changeColor.getShapeAtTick(10, rec).getColor(),
+            new Color(120, 120, 120));
+    assertEquals(changeDimension.getShapeAtTick(15, rec).getHeight(),
+            150, Integer.MIN_VALUE);
+    assertEquals(changeDimension.getShapeAtTick(15, rec).getWidth(),
+            150, Integer.MIN_VALUE);
   }
 
   @Test
@@ -161,7 +164,7 @@ public class ICommandsStateTest {
     assertEquals(changePosn.getSVG(10),
             "<animate attributeType=\"xml\" begin=\"1500.0ms\" dur=\"500.0ms\" "
                     + "attributeName=\"x\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" /> \n" +
-            "<animate attributeType=\"xml\" begin=\"1500.0ms\" dur=\"500.0ms\" "
+                    "<animate attributeType=\"xml\" begin=\"1500.0ms\" dur=\"500.0ms\" "
                     + "attributeName=\"y\" from=\"10.0\" to=\"40.0\" fill=\"freeze\" />\n");
     assertEquals(changeColor.getSVG(10),
             "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"1000.0ms\" "
