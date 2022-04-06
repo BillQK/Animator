@@ -195,6 +195,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     return new ArrayList<>(this.commands.get(id));
   }
 
+  public List<ICommands> getExecutableCommand(String id) {
+    return this.commands.get(id);
+  }
+
   /**
    * Return a new state of the given shape at a specific tick of the specific shape.
    *

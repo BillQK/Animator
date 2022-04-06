@@ -38,8 +38,15 @@ public class ChangeDimension extends ACommand {
    */
   @Override
   public void execute(double time) {
-    double newW = calculateW(time);
-    double newH = calculateH(time);
+    double newW = 0;
+    double newH = 0;
+    if (time > endTime) {
+      newW = endW;
+      newH = endH;
+    } else {
+      newW = calculateW(time);
+      newH = calculateH(time);
+    }
 
     this.shape.setWidth(newW);
     this.shape.setHeight(newH);

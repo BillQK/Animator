@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import model.command.ICommands;
 import model.shape.AShape;
 
@@ -48,4 +50,6 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
    * @throws IllegalArgumentException if the id and the orderOfCommands is not valid
    */
   void deleteCommands(String id, int orderOfCommands);
+
+  List<ICommands> getExecutableCommand(String id);
 }
