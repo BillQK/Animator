@@ -3,6 +3,7 @@ package model;
 
 import java.util.List;
 
+import model.command.ICommands;
 import model.command.ICommandsState;
 import model.shape.AShape;
 
@@ -55,4 +56,5 @@ public interface IAnimatorModelState<K> {
    */
   int getWidth();
 
+  List<ICommands> getExecutableCommand(String name);
 }

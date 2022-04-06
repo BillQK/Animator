@@ -1,6 +1,6 @@
 package model.command;
 
-import java.awt.Color;
+import java.awt.*;
 
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
@@ -16,11 +16,11 @@ public class ChangeColor extends ACommand {
   /**
    * A constructor for ChangeColor class.
    *
-   * @param shape     the given shape
-   * @param startTime the start time of command
-   * @param endTime   the end time of command
+   * @param shape      the given shape
+   * @param startTime  the start time of command
+   * @param endTime    the end time of command
    * @param startColor
-   * @param endColor  the destination color
+   * @param endColor   the destination color
    * @throws IllegalArgumentException if arguments outside of range
    */
   public ChangeColor(AShape shape, double startTime, double endTime, Color startColor, Color endColor) {
@@ -37,12 +37,7 @@ public class ChangeColor extends ACommand {
    */
   @Override
   public void execute(double time) {
-    Color newColor;
-    if (time > endTime) {
-      newColor = endColor;
-    } else {
-      newColor = calculate(time);
-    }
+    Color newColor = calculate(time);
 
     shape.setColor(newColor);
   }
@@ -51,7 +46,7 @@ public class ChangeColor extends ACommand {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   *         end height + end color
+   * end height + end color
    */
   @Override
   public String getEndsState() {

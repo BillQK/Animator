@@ -14,7 +14,8 @@ public class ChangeDimension extends ACommand {
 
   /**
    * A constructor for ChangeDimension.
-   *  @param shape     AShape - the shape to called the changeDimension command on
+   *
+   * @param shape     AShape - the shape to called the changeDimension command on
    * @param startTime the start time of the command
    * @param endTime   the end time of the command
    * @param startW
@@ -38,15 +39,9 @@ public class ChangeDimension extends ACommand {
    */
   @Override
   public void execute(double time) {
-    double newW = 0;
-    double newH = 0;
-    if (time > endTime) {
-      newW = endW;
-      newH = endH;
-    } else {
-      newW = calculateW(time);
-      newH = calculateH(time);
-    }
+    double newW = calculateW(time);
+    double newH = calculateH(time);
+
 
     this.shape.setWidth(newW);
     this.shape.setHeight(newH);
@@ -56,7 +51,7 @@ public class ChangeDimension extends ACommand {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   *         end height + end color
+   * end height + end color
    */
   @Override
   public String getEndsState() {
@@ -148,7 +143,7 @@ public class ChangeDimension extends ACommand {
 
     double changeInH = (endH - currentH) * rateOfChange;
 
-     newH = currentH + changeInH;
+    newH = currentH + changeInH;
 
     return newH;
   }

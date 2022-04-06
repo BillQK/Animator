@@ -13,7 +13,8 @@ public class Move extends ACommand {
 
   /**
    * A constructor for Move.
-   *  @param shape       AShape - the shape to called the move command on
+   *
+   * @param shape       AShape - the shape to called the move command on
    * @param startTime   the start time of the command
    * @param endTime     the end time of the command
    * @param origin
@@ -32,12 +33,7 @@ public class Move extends ACommand {
    */
   @Override
   public void execute(double time) {
-    Posn newPosn;
-    if (time > endTime) {
-      newPosn = destination;
-    } else {
-      newPosn = calculate(time, this.shape);
-    }
+    Posn newPosn = calculate(time, this.shape);
 
     this.shape.setPosn(newPosn);
   }
@@ -74,7 +70,7 @@ public class Move extends ACommand {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   *         end height + end color
+   * end height + end color
    */
   @Override
   public String getEndsState() {
@@ -107,10 +103,10 @@ public class Move extends ACommand {
     double destY = this.destination.getY();
 
     double rateOfChange = RateOfChange.findRate(time, start, end);
-    
-    Posn newPosn; 
+
+    Posn newPosn;
     if (rateOfChange == 0) {
-      newPosn = destination; 
+      newPosn = destination;
       return newPosn;
     }
 
