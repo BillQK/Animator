@@ -81,13 +81,13 @@ public class ChangeDimension extends ACommand {
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGDstart() + "\" "
-            + "from=\"" + this.shape.getWidth()
+            + "from=\"" + this.startW
             + "\" to=\"" + this.endW + "\" fill=\"freeze\" /> \n";
 
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGDend() + "\" "
-            + "from=\"" + this.shape.getHeight()
+            + "from=\"" + this.startH
             + "\" to=\"" + this.endH + "\" fill=\"freeze\" />\n";
 
     return details;

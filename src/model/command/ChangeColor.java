@@ -78,9 +78,9 @@ public class ChangeColor extends ACommand {
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + "rgb" + "\" "
-            + "from=\"(" + this.shape.getColor().getRed() + ","
-            + this.shape.getColor().getGreen() + ","
-            + this.shape.getColor().getBlue()
+            + "from=\"(" + this.startColor.getRed() + ","
+            + this.startColor.getGreen() + ","
+            + this.startColor.getBlue()
             + ")\" to=\"(" + endColor.getRed() + ","
             + endColor.getGreen() + ","
             + endColor.getBlue() + ")\" fill=\"freeze\" /> \n";

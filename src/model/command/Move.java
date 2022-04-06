@@ -53,13 +53,13 @@ public class Move extends ACommand {
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGX() + "\" "
-            + "from=\"" + this.getOldPosn().getX()
+            + "from=\"" + this.origin.getX()
             + "\" to=\"" + this.destination.getX() + "\" fill=\"freeze\" /> \n";
 
     details += "<animate attributeType=\"xml\" "
             + "begin=\"" + begin + "ms\" dur=\"" + dur + "ms\" attributeName=\""
             + this.shape.getSVGY() + "\" "
-            + "from=\"" + this.getOldPosn().getY()
+            + "from=\"" + this.origin.getY()
             + "\" to=\"" + this.destination.getY() + "\" fill=\"freeze\" />\n";
 
     return details;
