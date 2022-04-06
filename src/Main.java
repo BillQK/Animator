@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import model.IAnimatorModel;
+import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.command.ICommands;
 import model.io.AnimationFileReader;
@@ -36,8 +37,8 @@ public class Main {
 
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
-    IAnimatorModel<AShape> model = null;
-    int sec = 1000;
+    IAnimatorModelState<AShape> model = null;
+    int sec = 100;
 
     for (int i = 0; i < args.length - 1; i++) {
       String key = args[i];
@@ -66,7 +67,7 @@ public class Main {
     try {
       view = AnimatorViewCreator.create(commandLine.get("-view"), model, sec);
     } catch (IllegalArgumentException e) {
-      popUp.showMessageDialog(new Panel(), "Model can't be null",
+      popUp.showMessageDialog(new Panel(), "View can't be null",
               "Error", JOptionPane.ERROR_MESSAGE);
       System.exit(0);
     }
@@ -92,7 +93,7 @@ public class Main {
     if (Objects.equals(commandLine.get("-view"), "visual")) {
       Tempo t = new Tempo();
 
-      IAnimatorModel<AShape> finalModel = model;
+      IAnimatorModelState<AShape> finalModel = model;
       IAnimatorView finalView = view;
 
       view.makeVisible();
