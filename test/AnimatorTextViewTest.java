@@ -113,7 +113,15 @@ public class AnimatorTextViewTest {
                     " 10.0 50.0 50.0  10.0 50.0 10 10 10\n" +
                     "\n");
 
-    assertEquals(view1.getDetails(), " ");
+    assertEquals(view1.getDetails(),
+            "Shape: 1 Rectangle\n" +
+                    "         START                                  END \n" +
+                    "motion 1 Time X Y Width Height Red Green Blue   Time X Y Width Height Red Green Blue\n" +
+                    "motion 1 0.0 10.0 10.0 30.0 30.0 250 250 250       10.0 30.0 30.0  30.0 30.0 250 250 250\n" +
+                    "motion 1 0.0 30.0 30.0 30.0 30.0 250 250 250       10.0 30.0 30.0  20.0 20.0 250 250 250\n" +
+                    "motion 1 5.0 30.0 30.0 20.0 20.0 250 250 250       20.0 30.0 30.0  20.0 20.0 100 100 100\n" +
+                    "motion 1 15.0 30.0 30.0 20.0 20.0 100 100 100       30.0 13.0 13.0  20.0 20.0 100 100 100\n" +
+                    "\n");
   }
 
   @Test

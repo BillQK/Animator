@@ -114,6 +114,10 @@ public class ChangeDimension extends ACommand {
       newW = this.shape.getWidth();
       return newW;
     }
+    if (rateOfChange == -1) {
+      newW = endW;
+      return newW;
+    }
     double changeInW = (endW - currentW) * rateOfChange;
 
     newW = currentW + changeInW;

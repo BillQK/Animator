@@ -55,14 +55,14 @@ public class RateOfChangeTest {
   @Test
   public void testFindRate7() {
     assertEquals(RateOfChange.findRate(37, 19, 31),
-            1.5, Integer.MIN_VALUE);
+            -1, Integer.MIN_VALUE);
   }
 
   //Test to find the rate when (current - start) / (end - start)
   @Test
   public void testFindRate8() {
     assertEquals(RateOfChange.findRate(22, 5, 13),
-            2.125, Integer.MIN_VALUE);
+            -1, Integer.MIN_VALUE);
   }
 
   //Test to find the rate when (current - start) / (end - start)
