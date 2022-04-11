@@ -86,35 +86,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 //    this.commands.put(c.getTheShape().getName(), new ArrayList<>());
 //    this.commands.get(c.getTheShape().getName()).add(c);
 
-    CommandType commandType = c.getType();
-    AShape addShape = c.getTheShape();
-    int size = commands.get(addShape.getName()).size();
-    double start = c.getStart();
-    double end = c.getEnd();
-
-    for (ICommands s : commands.get(addShape.getName())) {
-      CommandType currentType = s.getType();
-      AShape shape = s.getTheShape();
-      double cStart = s.getStart();
-      double cEnd = s.getEnd();
-
-      if (commandType == currentType && addShape.getName().equals(shape.getName())) {
-        ArgumentsCheck.overlappingTime(start, end, cStart, cEnd);
-      }
-    }
-
-    List<ICommands> commandsList = this.commands.get(addShape.getName());
-    for (int i = 0; i < size; i++) {
-      ICommands current = commandsList.get(i);
-      double Start = current.getStart();
-
-      if (start < Start) {
-        commandsList.add(i, c);
-      }
-    }
-    if (size == commandsList.size()) {
-      commandsList.add(c);
-    }
+    TweenBuilder.addCommandsHelper(c, commands);
   }
 
 
@@ -440,6 +412,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 ////      Collections.sort(this.commands.get(id));
 //      this.commands.get(id).add(com);
 //      Collections.sort(this.commands.get(id));
+      addCommandsHelper(c, commands);
+    }
+
+    private static void addCommandsHelper(ICommands c, LinkedHashMap<String, List<ICommands>> commands) {
       CommandType commandType = c.getType();
       AShape addShape = c.getTheShape();
       int size = commands.get(addShape.getName()).size();
@@ -457,7 +433,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         }
       }
 
-      List<ICommands> commandsList = this.commands.get(addShape.getName());
+      List<ICommands> commandsList = commands.get(addShape.getName());
       for (int i = 0; i < size; i++) {
         ICommands current = commandsList.get(i);
         double Start = current.getStart();
