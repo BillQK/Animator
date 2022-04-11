@@ -1,6 +1,5 @@
 
 import java.awt.Panel;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import model.IAnimatorModel;
-import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.command.ICommands;
 import model.io.AnimationFileReader;
@@ -37,7 +35,7 @@ public class Main {
 
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
-    IAnimatorModel<AShape> model = null;
+    IAnimatorModel model = null;
     int sec = 1000;
 
     for (int i = 0; i < args.length - 1; i++) {
@@ -94,7 +92,7 @@ public class Main {
     if (Objects.equals(commandLine.get("-view"), "visual")) {
       Tempo t = new Tempo(sec);
 
-      IAnimatorModel<AShape> finalModel = model;
+      IAnimatorModel finalModel = model;
       IAnimatorView finalView = view;
 
       view.makeVisible();

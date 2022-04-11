@@ -53,10 +53,7 @@ public final class ArgumentsCheck {
    * @return a boolean
    */
   public static boolean lessThanOrEqualsToOne(float red, float green, float blue) {
-    if (red <= 1 || green <= 1 || blue <= 1) {
-      return true;
-    }
-    return false;
+    return red <= 1 || green <= 1 || blue <= 1;
   }
 
   /**

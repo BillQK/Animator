@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
@@ -29,7 +28,7 @@ import model.utils.Time;
  * help the model to get all the model's state and all the method on
  * IAnimationModel<AShape> </AShape> to add and delete the specific shape and animation.
  */
-public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
+public class SimpleAnimatorModel implements IAnimatorModel {
   private final LinkedHashMap<String, AShape> shapes;
   private final LinkedHashMap<String, List<ICommands>> commands;
   private final int width;
@@ -76,27 +75,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     if (!shapes.containsValue(c.getTheShape())) {
       throw new IllegalArgumentException("Cannot add command.");
     }
-//
-//    if (this.commands.get(c.getTheShape().getName()).size() != 0) {
-//      double value = biggestEndTime(this.commands.get(c.getTheShape().getName()));
-//      if (c.getStart() != value) {
-//        throw new IllegalArgumentException("Gap Error");
-//      }
-//    }
-//    this.commands.put(c.getTheShape().getName(), new ArrayList<>());
-//    this.commands.get(c.getTheShape().getName()).add(c);
 
     TweenBuilder.addCommandsHelper(c, commands);
   }
 
-
-  private double biggestEndTime(List<ICommands> commandsList) {
-    List<Double> time = new ArrayList<>();
-    for (ICommands c : commandsList) {
-      time.add(c.getEnd());
-    }
-    return Collections.max(time);
-  }
 
   /**
    * A method to delete a shape and its commands.
@@ -117,7 +99,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    * A method to delete a specific command of a shape.
    *
    * @param id              a String
-   * @param orderOfCommands the order of the commands need to be delete in the list of command of
+   * @param orderOfCommands the order of the commands need to be deleted in the list of command of
    *                        the shape (it is not an index, it is the order in the list starting
    *                        from 1)
    * @throws IllegalArgumentException if the id and the orderOfCommands is not valid
@@ -145,7 +127,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    */
   @Override
   public List<AShape> getShapes() {
-    List<String> myList = shapes.keySet().stream().collect(Collectors.toList());
+    List<String> myList = new ArrayList<>(shapes.keySet());
     List<AShape> l = new ArrayList<>();
     for (String s : myList) {
       AShape shape = shapes.get(s).getTheShape();
@@ -177,7 +159,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    *
    * @param time a double - represent the time
    * @param s    a String - represent the id of the shape
-   * @return a updated state copy of the Shape
+   * @return an updated state copy of the Shape
    */
   @Override
   public AShape getShapeAtTick(double time, String s) {
@@ -207,7 +189,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   /**
    * Represents a simple animation builder that will add shapes and animations to the model.
    */
-  public static class TweenBuilder implements TweenModelBuilder<IAnimatorModel<AShape>> {
+  public static class TweenBuilder implements TweenModelBuilder<IAnimatorModel> {
 
     private final LinkedHashMap<String, AShape> shapes;
     private final LinkedHashMap<String, List<ICommands>> commands;
@@ -262,26 +244,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return Collections.max(time);
     }
 
-    /**
-     * A method to check that the given end and start time of the new command doesn't overlap with
-     * any commands in the list of cammands of a specific shape.
-     *
-     * @param startTime the start time of the new command
-     * @param endTime   the end time of the new command
-     * @param iCommands the list of commands of the shape
-     * @return true if there is an overlap, false otherwise
-     */
-    private boolean overlap(double startTime, double endTime, List<ICommands> iCommands) {
-      for (ICommands c : iCommands) {
-        try {
-          ArgumentsCheck.overlappingTime(c.getStart(), c.getEnd(), startTime, endTime);
-        } catch (IllegalArgumentException e) {
-          return true;
-        }
-      }
-      return false;
-    }
-
 
     /**
      * Set the bounds of the canvas for the animation.
@@ -290,7 +252,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @param height the height in pixels of the canvas
      */
     @Override
-    public TweenModelBuilder<IAnimatorModel<AShape>> setBounds(int width, int height) {
+    public TweenModelBuilder<IAnimatorModel> setBounds(int width, int height) {
       ArgumentsCheck.lessThanZero(width, height);
       this.height = height;
       this.width = width;
@@ -313,10 +275,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @return the builder object
      */
     @Override
-    public TweenModelBuilder<IAnimatorModel<AShape>> addOval(String name, float cx, float cy,
-                                                             float xRadius, float yRadius,
-                                                             float red, float green, float blue,
-                                                             int startOfLife, int endOfLife) {
+    public TweenModelBuilder<IAnimatorModel> addOval(String name, float cx, float cy,
+                                                     float xRadius, float yRadius,
+                                                     float red, float green, float blue,
+                                                     int startOfLife, int endOfLife) {
       if (startOfLife > endOfLife) {
         throw new IllegalArgumentException("The start time cannot be bigger than end time");
       }
@@ -359,11 +321,11 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @return the builder object
      */
     @Override
-    public TweenModelBuilder<IAnimatorModel<AShape>> addRectangle(String name, float lx, float ly,
-                                                                  float width, float height,
-                                                                  float red, float green,
-                                                                  float blue,
-                                                                  int startOfLife, int endOfLife) {
+    public TweenModelBuilder<IAnimatorModel> addRectangle(String name, float lx, float ly,
+                                                          float width, float height,
+                                                          float red, float green,
+                                                          float blue,
+                                                          int startOfLife, int endOfLife) {
       if (startOfLife > endOfLife) {
         throw new IllegalArgumentException("The start time cannot be bigger than end time");
       }
@@ -390,28 +352,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
 
     private void addCommands(ICommands c) {
-//      CommandType comType = com.getType();
-//      AShape comShape = com.getTheShape();
-//      double comStart = com.getStart();
-//
-//      for (int i = 0; i < this.commands.get(id).size(); i++) {
-//        ICommands currentCom = this.commands.get(id).get(i);
-//        CommandType currentType = currentCom.getType();
-//        AShape currentShape = currentCom.getTheShape();
-//        double curStart = currentCom.getStart();
-//        double curEnd = currentCom.getEnd();
-//
-//        if (comType == currentType) {
-//          if (comShape.getName().equals(currentShape.getName())) {
-//            if ((comStart >= curStart) && (comStart <= curEnd)) {
-//              throw new IllegalArgumentException("Cannot not add move when overlapping time");
-//            }
-//          }
-//        }
-//      }
-////      Collections.sort(this.commands.get(id));
-//      this.commands.get(id).add(com);
-//      Collections.sort(this.commands.get(id));
       addCommandsHelper(c, commands);
     }
 
@@ -464,10 +404,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @param endTime   the time tick at which this movement should end
      */
     @Override
-    public TweenModelBuilder<IAnimatorModel<AShape>> addMove(String name,
-                                                             float moveFromX, float moveFromY,
-                                                             float moveToX, float moveToY,
-                                                             int startTime, int endTime) {
+    public TweenModelBuilder<IAnimatorModel> addMove(String name,
+                                                     float moveFromX, float moveFromY,
+                                                     float moveToX, float moveToY,
+                                                     int startTime, int endTime) {
       idCheck(name);
       addEmptyCommands(name, startTime);
 
@@ -478,62 +418,17 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
 
       Posn origin = new Posn(moveFromX, moveFromY);
       Posn destination = new Posn(moveToX, moveToY);
-      AShape s = null;
+      AShape s;
 
       s = this.shapes.get(name);
 
       ICommands com = new Move(s, startTime, endTime, origin, destination);
       this.addCommands(com);
 
-//      if (!this.commands.get(name).isEmpty()) {
-//        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
-//        if (com.getType() != CommandType.MOVE
-//                && (startTime == com.getStart() && endTime == com.getEnd())) {
-//          addMoveMethod(name,moveFromX, moveFromY, startTime, endTime,  moveToX, moveToY);
-//        } else {
-//          if (overlap(startTime, endTime, this.commands.get(name))) {
-//            throw new IllegalArgumentException("Cannot add animation, " +
-//                    "the animation time is overlap");
-//          }
-//          addMoveMethod(name, moveFromX, moveFromY, startTime, endTime, moveToX, moveToY);
-//        }
-//      } else {
-//        if (overlap(startTime, endTime, this.commands.get(name))) {
-//          throw new IllegalArgumentException("Cannot add animation, " +
-//                  "the animation time is overlap");
-//        }
-//        addMoveMethod(name, moveFromX, moveFromY, startTime, endTime, moveToX, moveToY);
-//      }
-
 
       return this;
     }
 
-//    /**
-//     * A method to add the command on to the list of command of the given specific shape.
-//     *
-//     * @param name      the string id of the shape
-//     * @param startTime the start time of the animation
-//     * @param endTime   the end time of the animation
-//     * @param moveToX   the ending X position that the shape should be
-//     * @param moveToY   the ending Y position that the shape should be
-//     */
-//    private void addMoveMethod(String name, float moveFromX, float moveFromY,
-//                               int startTime, int endTime, float moveToX, float moveToY) {
-//      AShape shape = shapes.get(name);
-//
-//      addEmptyCommands(name, startTime);
-//
-//      ArgumentsCheck.lessThanZero(startTime, endTime);
-//      double shapeStart = shape.getTime().getStartTime();
-//      double shapeEnd = shape.getTime().getEndTime();
-//      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
-//
-//      ICommands command = new Move(shape, startTime, endTime, new Posn(moveFromX, moveFromY),
-//              new Posn(moveToX, moveToY));
-//
-//      this.commands.get(name).add(command);
-//    }
 
     /**
      * Change the color of the specified shape to the new specified color in the
@@ -550,34 +445,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @param endTime   the time tick at which this color change should end
      */
     @Override
-    public TweenModelBuilder<IAnimatorModel<AShape>> addColorChange(String name,
-                                                                    float oldR, float oldG,
-                                                                    float oldB, float newR,
-                                                                    float newG, float newB,
-                                                                    int startTime, int endTime) {
+    public TweenModelBuilder<IAnimatorModel> addColorChange(String name,
+                                                            float oldR, float oldG,
+                                                            float oldB, float newR,
+                                                            float newG, float newB,
+                                                            int startTime, int endTime) {
       idCheck(name);
       addEmptyCommands(name, startTime);
-
-
-//      if (!this.commands.get(name).isEmpty()) {
-//        ICommands com = this.commands.get(name).get(this.commands.get(name).size() - 1);
-//        if (com.getType() != CommandType.CHANGE_COLOR
-//                && (startTime == com.getStart() && endTime == com.getEnd())) {
-//          addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
-//        } else {
-//          if (overlap(startTime, endTime, this.commands.get(name))) {
-//            throw new IllegalArgumentException("Cannot add animation, "
-//                    + "the animation time is overlap");
-//          }
-//          addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
-//        }
-//      } else {
-//        if (overlap(startTime, endTime, this.commands.get(name))) {
-//          throw new IllegalArgumentException("Cannot add animation, "
-//                  + "the animation time is overlap");
-//        }
-//        addChangeColorMethod(name, oldR, oldG, oldB, newR, newG, newB, startTime, endTime);
-//      }
 
       ArgumentsCheck.lessThanZero(startTime, endTime);
       ArgumentsCheck.colorRange((int) newR, (int) newG, (int) newB);
@@ -598,7 +472,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         oldB = oldB * 255;
       }
 
-      AShape s = null;
+      AShape s;
       Color newC = new Color((int) newR, (int) newG, (int) newB);
       Color oldC = new Color((int) oldR, (int) oldG, (int) oldB);
 
@@ -610,42 +484,6 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return this;
     }
 
-//    /**
-//     * A method to add the command on to the list of command of the given specific shape.
-//     *
-//     * @param name      the string id of the shape
-//     * @param newR      the new red color that the shape should be
-//     * @param newG      the new green color that the shape should be
-//     * @param newB      the new blue color that the shape should be
-//     * @param startTime the start time of the animation
-//     * @param endTime   the end time of the animation
-//     */
-//    private void addChangeColorMethod(String name, float oldR, float oldG, float oldB,
-//                                      float newR, float newG, float newB,
-//                                      int startTime, int endTime) {
-//      AShape shape = shapes.get(name);
-//      addEmptyCommands(name, startTime);
-//
-//      Color startColor = new Color((int) oldR, (int) oldG, (int) oldB);
-//
-//      if (newR < 1 || newG < 1 || newB < 1) {
-//        newR = newR * 255;
-//        newG = newG * 255;
-//        newB = newB * 255;
-//      }
-//      ArgumentsCheck.colorRange((int) newR, (int) newG, (int) newB);
-//      ArgumentsCheck.lessThanZero((int) newR, (int) newG, (int) newB,
-//              startTime, endTime);
-//      double shapeStart = shape.getTime().getStartTime();
-//      double shapeEnd = shape.getTime().getEndTime();
-//      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
-//
-//      ICommands command = new ChangeColor(shape, startTime, endTime,
-//              startColor, new Color((int) newR, (int) newG, (int) newB));
-//      //One method for sorting the list based on the times of animations.
-//
-//      this.commands.get(name).add(command);
-//    }
 
     /**
      * Change the x and y extents of this shape from the specified extents to the
@@ -661,10 +499,10 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
      * @param endTime   the time tick at which this width and height change should end
      */
     @Override
-    public TweenModelBuilder<IAnimatorModel<AShape>> addScaleToChange(String name,
-                                                                      float fromSx, float fromSy,
-                                                                      float toSx, float toSy,
-                                                                      int startTime, int endTime) {
+    public TweenModelBuilder<IAnimatorModel> addScaleToChange(String name,
+                                                              float fromSx, float fromSy,
+                                                              float toSx, float toSy,
+                                                              int startTime, int endTime) {
       idCheck(name);
       addEmptyCommands(name, startTime);
 
@@ -674,7 +512,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("The time of the command is invalid");
       }
 
-      AShape s = null;
+      AShape s;
 
       s = this.shapes.get(name);
 
@@ -683,62 +521,16 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
               toSx, toSy);
       this.addCommands(com);
 
-//      if (!this.commands.get(name).isEmpty()) {
-//        int highestIndex = this.commands.get(name).size() - 1;
-//        ICommands com = this.commands.get(name).get(highestIndex);
-//        if (com.getType() != CommandType.CHANGE_DIMENSION
-//                && (startTime == com.getStart() && endTime == com.getEnd())) {
-//          addScaleToChangeMethod(name, fromSx, fromSy, toSx, toSy, startTime, endTime);
-//        } else {
-//          if (overlap(startTime, endTime, this.commands.get(name))) {
-//            throw new IllegalArgumentException("Cannot add animation, "
-//                    + "since the animation is overlap");
-//          }
-//          addScaleToChangeMethod(name, fromSx, fromSy, toSx, toSy, startTime, endTime);
-//        }
-//      } else {
-//        if (overlap(startTime, endTime, this.commands.get(name))) {
-//          throw new IllegalArgumentException("Cannot add animation, "
-//                  + "since the animation is overlap");
-//        }
-//        addScaleToChangeMethod(name, fromSx, fromSy, toSx, toSy, startTime, endTime);
-//      }
-
 
       return this;
     }
-
-//    /**
-//     * A method to add the command on to the list of command of the given specific shape.
-//     *
-//     * @param name      the string id of the shape
-//     * @param toSx      the ending width that the shape should be
-//     * @param toSy      the ending height that the shape should be
-//     * @param startTime the start time of the animation
-//     * @param endTime   the end time of the animation
-//     */
-//    private void addScaleToChangeMethod(String name, float fromSx, float fromSy,
-//                                        float toSx, float toSy, int startTime, int endTime) {
-//      addEmptyCommands(name, startTime);
-//      AShape shape = shapes.get(name);
-//
-//      ArgumentsCheck.lessThanZero((int) toSx, (int) toSy, startTime, endTime);
-//      double shapeStart = shape.getTime().getStartTime();
-//      double shapeEnd = shape.getTime().getEndTime();
-//      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
-//
-//      ICommands command = new ChangeDimension(shape, startTime, endTime, fromSx, fromSy,
-//              (int) toSx, (int) toSy);
-//
-//      this.commands.get(name).add(command);
-//    }
 
     /**
      * A method to start build the builder.
      *
      * @return a SimpleAnimatorModel - the model
      */
-    public IAnimatorModel<AShape> build() {
+    public IAnimatorModel build() {
       return new SimpleAnimatorModel(this);
     }
   }

@@ -2,9 +2,7 @@ package view;
 
 import java.util.Objects;
 
-import model.IAnimatorModel;
 import model.IAnimatorModelState;
-import model.shape.AShape;
 
 /**
  * A factory representation of a AnimotorViewCreator,
@@ -18,7 +16,7 @@ public class AnimatorViewCreator {
    * @param model a IAnimatorModelState model
    * @return IAnimatorView
    */
-  public static IAnimatorView create(String view, IAnimatorModelState<AShape> model,
+  public static IAnimatorView create(String view, IAnimatorModelState model,
                                      double tempo) {
     if (Objects.equals(view, "")) {
       throw new IllegalArgumentException("Type of view cannot be empty");

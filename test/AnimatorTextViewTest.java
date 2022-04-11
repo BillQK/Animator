@@ -1,7 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,15 +11,7 @@ import java.nio.file.Path;
 import model.IAnimatorModel;
 import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
-import model.command.ChangeColor;
-import model.command.ICommands;
-import model.command.Move;
 import model.io.AnimationFileReader;
-import model.shape.AShape;
-import model.shape.Rectangle;
-import model.shape.Shape;
-import model.utils.Posn;
-import model.utils.Time;
 import view.AnimatorTextView;
 import view.IAnimatorView;
 
@@ -32,8 +23,8 @@ import static org.junit.Assert.fail;
  * This class test for IAnimatorView class.
  */
 public class AnimatorTextViewTest {
-  IAnimatorModelState<AShape> model;
-  IAnimatorModelState<AShape> model1;
+  IAnimatorModelState model;
+  IAnimatorModelState model1;
   IAnimatorView view;
   IAnimatorView view1;
   IAnimatorModel inputFileToModel;

@@ -3,7 +3,6 @@ import org.junit.Test;
 
 import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
-import model.shape.AShape;
 import view.AnimatorVisualView;
 import view.IAnimatorView;
 
@@ -11,7 +10,7 @@ import view.IAnimatorView;
  * Test class for AnimatorVisualView class.
  */
 public class AnimatorVisualViewTest {
-  IAnimatorModelState<AShape> model;
+  IAnimatorModelState model;
   IAnimatorView view;
 
   @Before

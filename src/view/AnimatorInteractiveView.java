@@ -20,7 +20,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private JButton speeddown;
   private JButton loop;
 
-  public AnimatorInteractiveView(IAnimatorModelState<AShape> model) {
+  public AnimatorInteractiveView(IAnimatorModelState model) {
     super();
     this.setTitle("Interactive");
     this.setSize(model.getWidth(), model.getHeight());

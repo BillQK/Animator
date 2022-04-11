@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
  * Test class for SimpleAnimatorModel class.
  */
 public class AnimatorModelTest {
-  IAnimatorModel<AShape> s;
+  IAnimatorModel s;
   double delta = Integer.MIN_VALUE;
 
   @Test

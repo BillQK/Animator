@@ -10,7 +10,7 @@ import view.IAnimatorView;
 import model.shape.AShape;
 
 public class AnimatorCtrl implements IAnimatorController {
-  private IAnimatorModelState<AShape> model;
+  private IAnimatorModelState model;
   private IAnimatorView view;
   private double tempo;
   private boolean isLoop;

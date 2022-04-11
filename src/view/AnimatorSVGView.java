@@ -20,7 +20,7 @@ public class AnimatorSVGView extends AnimatorTextView {
    *
    * @param model the given model state to operate the operations on
    */
-  public AnimatorSVGView(IAnimatorModelState<?> model, double tempo) {
+  public AnimatorSVGView(IAnimatorModelState model, double tempo) {
     super(model);
     this.tempo = tempo;
   }

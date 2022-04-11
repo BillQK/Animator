@@ -12,7 +12,6 @@ import model.IAnimatorModel;
 import model.IAnimatorModelState;
 import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
-import model.shape.AShape;
 import view.AnimatorSVGView;
 import view.IAnimatorView;
 
@@ -24,7 +23,7 @@ import static org.junit.Assert.fail;
  * Test class for AnimatorSVGView class.
  */
 public class AnimatorSVGViewTest {
-  IAnimatorModelState<AShape> model;
+  IAnimatorModelState model;
   IAnimatorView view;
   IAnimatorModel inputFileToModel;
   IAnimatorView inputFileView;

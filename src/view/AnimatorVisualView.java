@@ -27,7 +27,7 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
    *
    * @param model the given model
    */
-  public AnimatorVisualView(IAnimatorModelState<AShape> model) {
+  public AnimatorVisualView(IAnimatorModelState model) {
     super();
     this.setTitle("Animation");
     this.setSize(model.getWidth(), model.getHeight());

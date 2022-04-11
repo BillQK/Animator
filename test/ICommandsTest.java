@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class ICommandsTest {
 
-  IAnimatorModel<AShape> s = new SimpleAnimatorModel.TweenBuilder()
+  IAnimatorModel s = new SimpleAnimatorModel.TweenBuilder()
           .addRectangle("1", 10,10,30,30, 250,250,250,
                                 0, 30)
             .addMove("1", 2,2, 30,30, 0,10)
