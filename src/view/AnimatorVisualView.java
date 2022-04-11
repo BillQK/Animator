@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -102,6 +103,15 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
    */
   @Override
   public void addListener(IAnimatorController listener) {
+    throw new UnsupportedOperationException("View does not support this method");
+  }
+
+  /**
+   * Set up the button listener to handle the button click events in this view.
+   *
+   * @param listener the action listener
+   */
+  public void setListener(ActionListener listener) {
     throw new UnsupportedOperationException("View does not support this method");
   }
 

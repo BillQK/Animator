@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -126,6 +127,15 @@ public class AnimatorTextView implements IAnimatorView {
    */
   @Override
   public void addListener(IAnimatorController listener) {
+    throw new UnsupportedOperationException("View does not support this method");
+  }
+
+  /**
+   * Set up the button listener to handle the button click events in this view.
+   *
+   * @param listener the action listener
+   */
+  public void setListener(ActionListener listener) {
     throw new UnsupportedOperationException("View does not support this method");
   }
 

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import controller.IAnimatorController;
@@ -62,6 +63,13 @@ public interface IAnimatorView {
    * @param listener the controller
    */
   void addListener(IAnimatorController listener);
+
+  /**
+   * Set up the button listener to handle the button click events in this view.
+   *
+   * @param listener the action listener
+   */
+  void setListener(ActionListener listener);
 
   /**
    * Refresh the view to reflect any changes in the game state.

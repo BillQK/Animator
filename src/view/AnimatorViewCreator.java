@@ -28,6 +28,8 @@ public class AnimatorViewCreator {
       return new AnimatorTextView(model);
     } else if (Objects.equals(view, "visual")) {
       return new AnimatorVisualView(model);
+    } else if (Objects.equals(view, "interactive")) {
+      return new AnimatorInteractiveView(model);
     } else {
       throw new IllegalArgumentException("Invalid view type");
     }

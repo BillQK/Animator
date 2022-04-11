@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.*;
@@ -12,6 +13,12 @@ import model.shape.AShape;
 
 public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private final APanel panel;
+  private JToggleButton start;
+  private JToggleButton pause;
+  private JButton restart;
+  private JButton speedup;
+  private JButton speeddown;
+  private JButton loop;
 
   public AnimatorInteractiveView(IAnimatorModelState<AShape> model) {
     super();
@@ -33,7 +40,31 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     buttonPanel.setLayout(new FlowLayout());
     panel.add(buttonPanel, BorderLayout.SOUTH);
 
+    start = new JToggleButton("Start");
+    start.setActionCommand("Start Button");
+    buttonPanel.add(start);
 
+    pause = new JToggleButton("Pause");
+    pause.setActionCommand("Pause Button");
+    buttonPanel.add(pause);
+
+    restart = new JButton("Restart");
+    restart.setActionCommand("Restart Button");
+    buttonPanel.add(restart);
+
+    speedup = new JButton("Speed Up");
+    speedup.setActionCommand("SpeedUp Button");
+    buttonPanel.add(speedup);
+
+    speeddown = new JButton("Speed Down");
+    speeddown.setActionCommand("SpeedDown Button");
+    buttonPanel.add(speeddown);
+
+    loop = new JButton("Loop");
+    loop.setActionCommand("Loop Button");
+    buttonPanel.add(loop);
+
+    this.pack();
 
   }
 
@@ -99,11 +130,25 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   }
 
   /**
+   * Set up the button listener to handle the button click events in this view.
+   *
+   * @param listener the action listener
+   */
+  public void setListener(ActionListener listener) {
+    start.addActionListener(listener);
+    pause.addActionListener(listener);
+    restart.addActionListener(listener);
+    speedup.addActionListener(listener);
+    speeddown.addActionListener(listener);
+    loop.addActionListener(listener);
+  }
+
+  /**
    * Refresh the view to reflect any changes in the game state.
    */
   @Override
   public void refresh() {
-
+    this.repaint();
   }
 
   /**
@@ -111,7 +156,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
    */
   @Override
   public void makeVisible() {
-
+    this.setVisible(true);
   }
 
   /**
@@ -127,10 +172,14 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   /**
    * A method to set the list of shapes field to the given list of shape arguments.
    *
-   * @param losTempo the given list of Shapes
+   * @param s the given list of Shapes
    */
   @Override
-  public void setShapes(List<AShape> losTempo) {
-
+  public void setShapes(List<AShape> s) {
+    if (s == null) {
+      throw new IllegalArgumentException("The list of shapes cannot be null");
+    }
+    List<AShape> shapes = s;
+    this.panel.setShapes(shapes);
   }
 }
