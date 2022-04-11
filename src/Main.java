@@ -114,11 +114,8 @@ public class Main {
         t.addTempo();
       };
 
-<<<<<<< HEAD
+
       Timer timer = new Timer(1000/ sec, timeListener);
-=======
-      Timer timer = new Timer(1000 / sec, timeListener);
->>>>>>> 0bcb8650f667cea987d563784484ad5f78081219
       timer.start();
 
     }
