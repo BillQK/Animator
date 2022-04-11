@@ -1,7 +1,6 @@
 package model.command;
 
-import java.awt.Color;
-import java.util.Comparator;
+import java.awt.*;
 
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
@@ -64,13 +63,7 @@ public abstract class ACommand implements ICommands {
     if (startTime > o.getStart()) {
       return 1;
     } else if (startTime == o.getStart()) {
-      if (endTime > o.getEnd()) {
-        return 1;
-      } else if (endTime == o.getEnd()) {
-        return 0;
-      } else {
-        return -1;
-      }
+      return Double.compare(endTime, o.getEnd());
     } else {
       return -1;
     }

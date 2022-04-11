@@ -3,7 +3,6 @@ package model;
 
 import java.util.List;
 
-import model.command.ICommands;
 import model.command.ICommandsState;
 import model.shape.AShape;
 
@@ -12,10 +11,8 @@ import model.shape.AShape;
  * The interface include all the method to get the status of the model state from the
  * List of Shape to the List of Commands. In which K represents our Shape type, the shape
  * that we are going to animate.
- *
- * @param <K> The model type
  */
-public interface IAnimatorModelState<K> {
+public interface IAnimatorModelState {
 
   /**
    * A method to get the list of shape in the model.
@@ -28,8 +25,8 @@ public interface IAnimatorModelState<K> {
    * A method to get the list of commands in the model.
    *
    * @return a List - a list of command
-   * @Param id - String id of the shape
-   * @Throws
+   * @param id - String id of the shape
+   * @throws IllegalArgumentException If the id does not found
    */
   List<ICommandsState> getCommands(String id);
 

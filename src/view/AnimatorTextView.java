@@ -15,14 +15,14 @@ import model.shape.AShape;
  * Represents the Main textual view class which implemented the IAnimatorView.
  */
 public class AnimatorTextView implements IAnimatorView {
-  protected final IAnimatorModelState<?> model;
+  protected final IAnimatorModelState model;
 
   /**
    * A constructor for AnimatorTextView class.
    *
    * @param model the given model state to operate the operations on
    */
-  public AnimatorTextView(IAnimatorModelState<?> model) {
+  public AnimatorTextView(IAnimatorModelState model) {
     if (model == null) {
       throw new IllegalArgumentException("Model can't be null");
     }

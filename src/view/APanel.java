@@ -6,21 +6,21 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.swing.JPanel;
 import model.shape.AShape;
 import model.shape.Shape;
 
 /**
- * Represent the APanel class which extends JPanel, which is where we paint out visual view
+ * Represent the APanel class which extends APanel, which is where we paint out visual view
  * according to what we put in.
  */
-public class JPanel extends javax.swing.JPanel {
+public class APanel extends JPanel {
   private List<AShape> shapes;
 
   /**
    * Constructor for APanel class.
    */
-  public JPanel() {
+  public APanel() {
     super();
     shapes = new ArrayList<>();
     this.setBackground(Color.WHITE);

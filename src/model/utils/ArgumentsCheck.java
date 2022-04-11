@@ -46,6 +46,17 @@ public final class ArgumentsCheck {
   }
 
   /**
+   * Check if the input is equals to 1 or less than 1.
+   * @param red a float
+   * @param green a float
+   * @param blue a float
+   * @return a boolean
+   */
+  public static boolean lessThanOrEqualsToOne(float red, float green, float blue) {
+    return red <= 1 || green <= 1 || blue <= 1;
+  }
+
+  /**
    * Check if one given start and end time is within
    * the range of another given start and end time.
    *

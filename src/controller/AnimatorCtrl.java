@@ -6,12 +6,12 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import model.IAnimatorModelState;
+import model.IAnimatorModel;
 import view.IAnimatorView;
 import model.shape.AShape;
 
-public class AnimatorCtrl implements IAnimatorController, ActionListener {
-  private IAnimatorModelState<AShape> model;
+public class AnimatorCtrl implements IAnimatorController {
+  private IAnimatorModel model;
   private IAnimatorView view;
   private double tempo;
   private boolean isLoop;

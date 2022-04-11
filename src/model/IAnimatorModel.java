@@ -9,10 +9,8 @@ import model.shape.AShape;
  * This interface represents all the operations offered by the model.
  * The interface include all the method to add the specific given shape to add the specific given
  * command.
- *
- * @param <K> The model type
  */
-public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
+public interface IAnimatorModel extends IAnimatorModelState {
 
   /**
    * A method to add the specific shape to the model.

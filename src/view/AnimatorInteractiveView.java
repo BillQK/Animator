@@ -4,7 +4,12 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JToggleButton;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
 
 
 import controller.IAnimatorController;
@@ -12,7 +17,7 @@ import model.IAnimatorModelState;
 import model.shape.AShape;
 
 public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
-  private final JPanel panel;
+  private final APanel panel;
   private JToggleButton start;
   private JToggleButton pause;
   private JButton restart;
@@ -20,13 +25,13 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private JButton speeddown;
   private JButton loop;
 
-  public AnimatorInteractiveView(IAnimatorModelState<AShape> model) {
+  public AnimatorInteractiveView(IAnimatorModelState model) {
     super();
     this.setTitle("Interactive");
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    this.panel = new JPanel();
+    this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(700, 700));
     this.add(panel);
 
