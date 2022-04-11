@@ -113,7 +113,6 @@ public class Move extends ACommand {
       return newPosn;
     }
 
-
     double changeInX = (destX - currentX) * rateOfChange;
     double changeInY = (destY - currentY) * rateOfChange;
 

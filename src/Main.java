@@ -107,6 +107,7 @@ public class Main {
           }
           losTempo.add(s);
         }
+
         System.out.println(t.getTempo());
         finalView.setShapes(losTempo);
         finalView.refresh();
