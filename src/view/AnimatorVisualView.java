@@ -18,7 +18,7 @@ import model.shape.AShape;
  * represent us a visual running animation.
  */
 public class AnimatorVisualView extends JFrame implements IAnimatorView {
-  private final APanel panel;
+  private final JPanel panel;
 
 
   /**
@@ -33,7 +33,7 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    this.panel = new APanel();
+    this.panel = new JPanel();
     this.panel.setPreferredSize(new Dimension(700, 700));
     this.add(panel);
 

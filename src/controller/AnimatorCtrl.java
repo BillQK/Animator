@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.Timer;
@@ -9,18 +10,18 @@ import model.IAnimatorModelState;
 import view.IAnimatorView;
 import model.shape.AShape;
 
-public class AnimatorCtrl implements IAnimatorController {
+public class AnimatorCtrl implements IAnimatorController, ActionListener {
   private IAnimatorModelState<AShape> model;
   private IAnimatorView view;
   private double tempo;
   private boolean isLoop;
   private Timer timer;
-  private List<AShape> newListShapes;
+  private List<AShape> loShapes;
 
   public void actionPerformed(ActionEvent ae) {
     switch (ae.getActionCommand()) {
       case "Start Button":
-        //
+
         break;
       case "Pause Button":
         //
@@ -38,5 +39,10 @@ public class AnimatorCtrl implements IAnimatorController {
         //
         break;
     }
+  }
+
+  @Override
+  public void start() {
+
   }
 }

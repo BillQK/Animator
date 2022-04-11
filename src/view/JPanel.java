@@ -7,8 +7,6 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
-
 import model.shape.AShape;
 import model.shape.Shape;
 
@@ -16,13 +14,13 @@ import model.shape.Shape;
  * Represent the APanel class which extends JPanel, which is where we paint out visual view
  * according to what we put in.
  */
-public class APanel extends JPanel {
+public class JPanel extends javax.swing.JPanel {
   private List<AShape> shapes;
 
   /**
    * Constructor for APanel class.
    */
-  public APanel() {
+  public JPanel() {
     super();
     shapes = new ArrayList<>();
     this.setBackground(Color.WHITE);

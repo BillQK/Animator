@@ -98,6 +98,8 @@ public class Main {
       IAnimatorView finalView = view;
 
       view.makeVisible();
+
+
       ActionListener timeListener = ae -> {
         List<AShape> losTempo = new ArrayList<>();
 //          AShape shape;
@@ -119,7 +121,6 @@ public class Main {
       timer.start();
 
     }
-
   }
 
   /**

@@ -12,7 +12,7 @@ import model.IAnimatorModelState;
 import model.shape.AShape;
 
 public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
-  private final APanel panel;
+  private final JPanel panel;
   private JToggleButton start;
   private JToggleButton pause;
   private JButton restart;
@@ -26,7 +26,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    this.panel = new APanel();
+    this.panel = new JPanel();
     this.panel.setPreferredSize(new Dimension(700, 700));
     this.add(panel);
 
@@ -36,7 +36,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     scroll.setBounds(50, 30, 300, 50);
     this.add(scroll, BorderLayout.CENTER);
 
-    JPanel buttonPanel = new JPanel();
+    javax.swing.JPanel buttonPanel = new javax.swing.JPanel();
     buttonPanel.setLayout(new FlowLayout());
     panel.add(buttonPanel, BorderLayout.SOUTH);
 
