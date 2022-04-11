@@ -71,7 +71,6 @@ public class Main {
     }
     // case speed
     if (commandLine.containsKey("-speed")) {
-//      sec /= Integer.parseInt(commandLine.get("-speed"));
       sec = Integer.parseInt(commandLine.get("-speed"));
     }
 
@@ -96,6 +95,8 @@ public class Main {
       IAnimatorView finalView = view;
 
       view.makeVisible();
+
+
       ActionListener timeListener = ae -> {
         List<AShape> losTempo = new ArrayList<>();
 //          AShape shape;
@@ -113,11 +114,14 @@ public class Main {
         t.addTempo();
       };
 
+<<<<<<< HEAD
       Timer timer = new Timer(1000/ sec, timeListener);
+=======
+      Timer timer = new Timer(1000 / sec, timeListener);
+>>>>>>> 0bcb8650f667cea987d563784484ad5f78081219
       timer.start();
 
     }
-
   }
 
   /**

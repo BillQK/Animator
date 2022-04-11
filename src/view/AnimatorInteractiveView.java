@@ -4,7 +4,12 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JToggleButton;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
 
 
 import controller.IAnimatorController;
@@ -36,7 +41,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     scroll.setBounds(50, 30, 300, 50);
     this.add(scroll, BorderLayout.CENTER);
 
-    JPanel buttonPanel = new JPanel();
+    javax.swing.JPanel buttonPanel = new javax.swing.JPanel();
     buttonPanel.setLayout(new FlowLayout());
     panel.add(buttonPanel, BorderLayout.SOUTH);
 

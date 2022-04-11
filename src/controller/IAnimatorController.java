@@ -6,4 +6,6 @@ package controller;
  */
 public interface IAnimatorController {
 
+  void start();
+
 }
