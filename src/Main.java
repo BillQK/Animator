@@ -74,7 +74,7 @@ public class Main {
     // case speed
     if (commandLine.containsKey("-speed")) {
 //      sec /= Integer.parseInt(commandLine.get("-speed"));
-      sec =  Integer.parseInt(commandLine.get("-speed")) / 100000;
+      sec =  Integer.parseInt(commandLine.get("-speed")) / 1000;
     }
 
     // case out
