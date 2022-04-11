@@ -348,7 +348,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (startOfLife > endOfLife) {
         throw new IllegalArgumentException("The start time cannot be bigger than end time");
       }
-      if (red < 1 || green < 1 || blue < 1) {
+      if (ArgumentsCheck.lessThanOrEqualsToOne(red, green, blue)) {
         red = red * 255;
         green = green * 255;
         blue = blue * 255;
@@ -395,7 +395,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       if (startOfLife > endOfLife) {
         throw new IllegalArgumentException("The start time cannot be bigger than end time");
       }
-      if (red < 1 || green < 1 || blue < 1) {
+      if (ArgumentsCheck.lessThanOrEqualsToOne(red, green, blue)) {
         red = red * 255;
         green = green * 255;
         blue = blue * 255;
@@ -610,13 +610,13 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
         throw new IllegalArgumentException("The time of the command is invalid");
       }
 
-      if (newR < 1 || newG < 1 || newB < 1) {
+      if (ArgumentsCheck.lessThanOrEqualsToOne(newR, newG, newB)) {
         newR = newR * 255;
         newG = newG * 255;
         newB = newB * 255;
       }
 
-      if (oldR < 1 || oldG < 1 || oldB < 1) {
+      if (ArgumentsCheck.lessThanOrEqualsToOne(oldR, oldG, oldB)) {
         oldR = oldR * 255;
         oldG = oldG * 255;
         oldB = oldB * 255;
