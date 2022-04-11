@@ -20,13 +20,13 @@ public class AnimatorCtrl implements IAnimatorController {
   public void actionPerformed(ActionEvent ae) {
     switch (ae.getActionCommand()) {
       case "Start Button":
-        //
+        this.timer.start();
         break;
       case "Pause Button":
-        //
+        this.timer.stop();
         break;
       case "Restart Button":
-        //
+        this.timer.restart();
         break;
       case "SpeedUp Button":
         //

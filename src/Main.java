@@ -36,7 +36,7 @@ public class Main {
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
     IAnimatorModel model = null;
-    int sec = 1000;
+    int sec = 1;
 
     for (int i = 0; i < args.length - 1; i++) {
       String key = args[i];
@@ -72,7 +72,7 @@ public class Main {
     // case speed
     if (commandLine.containsKey("-speed")) {
 //      sec /= Integer.parseInt(commandLine.get("-speed"));
-      sec =  Integer.parseInt(commandLine.get("-speed")) / 1000;
+      sec = Integer.parseInt(commandLine.get("-speed"));
     }
 
     // case out
@@ -113,7 +113,7 @@ public class Main {
         t.addTempo();
       };
 
-      Timer timer = new Timer(10, timeListener);
+      Timer timer = new Timer(1000/ sec, timeListener);
       timer.start();
 
     }
