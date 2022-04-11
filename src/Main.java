@@ -73,7 +73,8 @@ public class Main {
     }
     // case speed
     if (commandLine.containsKey("-speed")) {
-      sec /= Integer.parseInt(commandLine.get("-speed"));
+//      sec /= Integer.parseInt(commandLine.get("-speed"));
+      sec =  Integer.parseInt(commandLine.get("-speed")) / 100000;
     }
 
     // case out
@@ -91,7 +92,7 @@ public class Main {
     }
 
     if (Objects.equals(commandLine.get("-view"), "visual")) {
-      Tempo t = new Tempo();
+      Tempo t = new Tempo(sec);
 
       IAnimatorModel<AShape> finalModel = model;
       IAnimatorView finalView = view;
@@ -126,6 +127,10 @@ public class Main {
    */
   public static class Tempo {
     double tempo = 0;
+
+    public Tempo(int num) {
+      this.tempo = num;
+    }
 
     /**
      * A method to get the current tempo.
