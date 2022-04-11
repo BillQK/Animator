@@ -3,9 +3,7 @@ package view;
 import java.awt.*;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
+import javax.swing.*;
 
 
 import controller.IAnimatorController;
@@ -30,6 +28,11 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     scroll.setBounds(50, 30, 300, 50);
     this.add(scroll, BorderLayout.CENTER);
+
+    JPanel buttonPanel = new JPanel();
+    buttonPanel.setLayout(new FlowLayout());
+    panel.add(buttonPanel, BorderLayout.SOUTH);
+
 
 
   }
