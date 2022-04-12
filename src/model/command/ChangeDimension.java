@@ -74,8 +74,8 @@ public class ChangeDimension extends ACommand {
    */
   @Override
   public String getSVG(double tempo) {
-    double begin = (this.getStart() * 1000 / tempo);
-    double end = (this.getEnd() * 1000 / tempo);
+    double begin = (this.getStart() * (1000 / tempo));
+    double end = (this.getEnd() * (1000 / tempo));
     double dur = end - begin;
 
     String details = "";

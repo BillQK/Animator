@@ -103,12 +103,13 @@ public class Main {
         for (AShape s : finalModel.getShapes()) {
 //            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
           for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
-            c.execute(t.getTempo());
+            if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
+              c.execute(t.getTempo());
+            }
           }
           losTempo.add(s);
         }
 
-        System.out.println(t.getTempo());
         finalView.setShapes(losTempo);
         finalView.refresh();
         t.addTempo();

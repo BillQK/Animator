@@ -32,7 +32,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     this.panel = new APanel();
-    this.panel.setPreferredSize(new Dimension(700, 700));
+    this.panel.setPreferredSize(new Dimension(model.getWidth(), model.getHeight()));
     this.add(panel);
 
     JScrollPane scroll = new JScrollPane(panel);
