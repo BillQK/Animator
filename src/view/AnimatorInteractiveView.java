@@ -2,6 +2,7 @@ package view;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -25,11 +26,14 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private JButton speeddown;
   private JButton loop;
 
+  private boolean checkloop;
+
   public AnimatorInteractiveView(IAnimatorModelState model) {
     super();
     this.setTitle("Interactive");
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.checkloop = false;
 
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(model.getWidth(), model.getHeight()));
