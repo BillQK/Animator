@@ -187,6 +187,29 @@ public class SimpleAnimatorModel implements IAnimatorModel {
   }
 
   /**
+   * A method to find the highest end time from the given list of commands.
+   *
+   * @param commandsList the given list of commands
+   * @return a double - the highest end time of a command
+   */
+  private double highestEndTime(List<ICommands> commandsList) {
+    List<Double> time = new ArrayList<>();
+    for (ICommands c : commandsList) {
+      time.add(c.getEnd());
+    }
+    return Collections.max(time);
+  }
+
+  @Override
+  public double getLastTimeCommands() {
+    List<Double> time = new ArrayList<>();
+    for (String s : shapes.keySet()) {
+      time.add(highestEndTime(commands.get(s)));
+    }
+    return Collections.max(time);
+  }
+
+  /**
    * Represents a simple animation builder that will add shapes and animations to the model.
    */
   public static class TweenBuilder implements TweenModelBuilder<IAnimatorModel> {
@@ -243,7 +266,6 @@ public class SimpleAnimatorModel implements IAnimatorModel {
       }
       return Collections.max(time);
     }
-
 
     /**
      * Set the bounds of the canvas for the animation.

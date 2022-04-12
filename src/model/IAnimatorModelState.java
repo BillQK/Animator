@@ -54,4 +54,11 @@ public interface IAnimatorModelState {
    */
   int getWidth();
 
+  /**
+   * A method to get the last end time of the whole animations.
+   *
+   * @return double - the last end time of the animation
+   */
+  double getLastTimeCommands();
+
 }
