@@ -26,6 +26,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private JButton speeddown;
   private JButton loop;
 
+  //false means the loop button is not pressed, true otherwise
   private boolean checkloop;
 
   public AnimatorInteractiveView(IAnimatorModelState model) {
