@@ -88,20 +88,25 @@ public class Main {
     switch (commandLine.get("-view")) {
       case "text":
         ctrl = new TextCtrl(view, commandLine.get("-in"));
+        ctrl.start();
         break;
       case "svg":
         if (!commandLine.containsKey("-out")) {
           System.out.println(view.getDetails());
         } else {
 //          view.writeFile(commandLine.get("-out"));
-          ctrl = new SVGCtrl(view, commandLine.get("-out"));
+          ctrl = new SVGCtrl(view, commandLine.get("-in"));
+          ctrl.start();
+          break;
         }
         break;
       case "visual":
         ctrl = new VisualCtrl(model, view, sec);
+        ctrl.start();
         break;
       case "interactive":
         ctrl = new InteractiveCtrl(model, view, sec);
+        ctrl.start();
         break;
       default:
 //        view.makeVisible();
@@ -109,7 +114,6 @@ public class Main {
 
 //         ctrl = new VisualCtrl(model, view, sec);
     }
-    ctrl.start();
 
 //    if (Objects.equals(commandLine.get("-view"), "visual")) {
 //      Tempo t = new Tempo(sec);
