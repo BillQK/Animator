@@ -12,4 +12,7 @@ public interface ICommands extends ICommandsState, Comparable<ICommands> {
    * @param time the current time of the animation
    */
   void execute(double time);
+
+  String getCommandString();
+
 }

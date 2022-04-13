@@ -47,6 +47,14 @@ public class ChangeDimension extends ACommand {
     this.shape.setHeight(newH);
   }
 
+  @Override
+  public String getCommandString() {
+    // scale name R scaleto 50 100 25 100 from 51 to 70
+    return "scale name " + this.shape.getName() + " moveto " + this.startW + " " + this.startH + " "
+            + this.endW + " " + this.endH + " from " + (int) this.getStart() + " " + (int) this.getEnd();
+
+  }
+
   /**
    * Get the state of the shape after the command.
    *
