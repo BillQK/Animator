@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import model.command.ICommands;
 import model.shape.AShape;
 
@@ -7,10 +9,8 @@ import model.shape.AShape;
  * This interface represents all the operations offered by the model.
  * The interface include all the method to add the specific given shape to add the specific given
  * command.
- *
- * @param <K> The model type
  */
-public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
+public interface IAnimatorModel extends IAnimatorModelState {
 
   /**
    * A method to add the specific shape to the model.
@@ -36,5 +36,18 @@ public interface IAnimatorModel<K> extends IAnimatorModelState<K> {
    * @throws IllegalArgumentException if the id is not valid
    */
   void deleteShape(String id);
-//delete command for shape
+
+
+  /**
+   * A method to delete a specific command of a shape.
+   *
+   * @param id a String
+   * @param orderOfCommands the order of the commands need to be delete in the list of command of
+   *                        the shape (it is not an index, it is the order in the list starting
+   *                        from 1)
+   * @throws IllegalArgumentException if the id and the orderOfCommands is not valid
+   */
+  void deleteCommands(String id, int orderOfCommands);
+
+  List<ICommands> getExecutableCommand(String id);
 }

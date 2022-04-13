@@ -3,25 +3,16 @@ package model;
 
 import java.util.List;
 
-import model.command.ICommands;
+import model.command.ICommandsState;
 import model.shape.AShape;
-import model.utils.Time;
 
 /**
  * This interface represents all the state of the model.
  * The interface include all the method to get the status of the model state from the
- * List of Shape to the List of Commands.
- *
- * @param <K> The model type
+ * List of Shape to the List of Commands. In which K represents our Shape type, the shape
+ * that we are going to animate.
  */
-public interface IAnimatorModelState<K> {
-
-  /**
-   * A method to get the whole state of the model.
-   *
-   * @return a String - the model's current state
-   */
-  String getState();
+public interface IAnimatorModelState {
 
   /**
    * A method to get the list of shape in the model.
@@ -31,16 +22,43 @@ public interface IAnimatorModelState<K> {
   List<AShape> getShapes();
 
   /**
-   * A method to get the list of list of commands in the model.
+   * A method to get the list of commands in the model.
    *
-   * @return a List of List - a list of list of command
+   * @return a List - a list of command
+   * @param id - String id of the shape
+   * @throws IllegalArgumentException If the id does not found
    */
-  List<List<ICommands>> getCommands();
+  List<ICommandsState> getCommands(String id);
+
 
   /**
-   * A method to get the time of the model.
+   * Return a new state of the given shape at a specific tick of the specific shape.
    *
-   * @return A time - the model's time
+   * @param time a double - represent the time
+   * @param id   a String - represent the id of the shape
+   * @return a updated state copy of the Shape
    */
-  Time getTime();
+  AShape getShapeAtTick(double time, String id);
+
+  /**
+   * A method to get the height of the canvas.
+   *
+   * @return int - the height of the canvas
+   */
+  int getHeight();
+
+  /**
+   * A method to get the width of the canvas.
+   *
+   * @return int - the width of the canvas
+   */
+  int getWidth();
+
+  /**
+   * A method to get the last end time of the whole animations.
+   *
+   * @return double - the last end time of the animation
+   */
+  double getLastTimeCommands();
+
 }

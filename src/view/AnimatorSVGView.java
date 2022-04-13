@@ -1,16 +1,29 @@
 package view;
 
-import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
-import controller.IAnimatorController;
+import model.IAnimatorModelState;
+import model.command.ICommandsState;
 import model.shape.AShape;
 
 /**
- * Represents a way of presenting the animation in a form useful to end users, i.e.,
- * a human-readable form.
+ * The AnimatorSVGView class which extends AnimatorTextView which will run on some operations
+ * to present the view in svg way.
  */
-public interface IAnimatorView {
+public class AnimatorSVGView extends AnimatorTextView {
+  private final double tempo;
+
+  /**
+   * A constructor for AnimatorTextView class.
+   *
+   * @param model the given model state to operate the operations on
+   */
+  public AnimatorSVGView(IAnimatorModelState model, double tempo) {
+    super(model);
+    this.tempo = tempo;
+  }
 
   /**
    * Return the present state of the game as a string. The string is formatted
@@ -47,51 +60,43 @@ public interface IAnimatorView {
    *
    * @return the formatted string as above
    */
-  String getDetails();
+  @Override
+  public String getDetails() {
+
+    String details = "<svg width=\"700\" height=\"500\" version=\"1.1\"\n" +
+            "     xmlns=\"http://www.w3.org/2000/svg\">\n";
+
+    List<AShape> los = model.getShapes();
+
+    for (AShape s : los) {
+      details += s.getSVG();
+      List<ICommandsState> loc = model.getCommands(s.getName());
+      for (ICommandsState c : loc) {
+        details += c.getSVG(tempo);
+      }
+      details += s.getSVGEndShape() + "\n";
+    }
+    details += "</svg>";
+
+    return details;
+  }
 
   /**
    * A method to based on the given fileName to print out the according view.
    *
    * @param fileName String - a given fileName
    */
-  void writeFile(String fileName);
+  @Override
+  public void writeFile(String fileName) {
+    try {
+      FileWriter output = new FileWriter(fileName + ".svg");
+      output.write(this.getDetails());
+      output.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
 
-  /**
-   * Set up the controller to handle click events in this view.
-   *
-   * @param listener the controller
-   */
-  void addListener(IAnimatorController listener);
 
-  /**
-   * Set up the button listener to handle the button click events in this view.
-   *
-   * @param listener the action listener
-   */
-  void setListener(ActionListener listener);
-
-  /**
-   * Refresh the view to reflect any changes in the game state.
-   */
-  void refresh();
-
-  /**
-   * Make the view visible to start the game session.
-   */
-  void makeVisible();
-
-  /**
-   * A method to show an error message.
-   *
-   * @param error String - the error message
-   */
-  void showErrorMessage(String error);
-
-  /**
-   * A method to set the list of shapes field to the given list of shape arguments.
-   *
-   * @param losTempo the given list of Shapes
-   */
-  void setShapes(List<AShape> losTempo);
 }

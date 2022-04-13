@@ -101,7 +101,7 @@ public class AnimationFileReader {
     }
     return builder.build();
   }
-  
+
   private CanvasInfo readCanvasInfo(Scanner sc) {
     CanvasInfo info = new CanvasInfo();
     info.setWidth(sc.nextInt());
@@ -291,19 +291,19 @@ public class AnimationFileReader {
   class CanvasInfo {
     private int width = 800;
     private int height = 600;
-    
+
     void setWidth(int w) {
       width = w;
     }
-    
+
     void setHeight(int h) {
       height = h;
     }
-    
+
     int getWidth() {
       return width;
     }
-    
+
     int getHeight() {
       return height;
     }

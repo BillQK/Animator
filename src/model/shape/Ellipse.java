@@ -27,16 +27,91 @@ public class Ellipse extends AShape {
     super(name, type, col, posX, posY, width, height, time);
   }
 
-  @Override
+  /**
+   * A method to get the specific new shape.
+   *
+   * @return the specific shape
+   */
   public Ellipse getTheShape() {
     return new Ellipse(this.getName(), this.getType(), this.getColor(),
             this.getPosition().getX(), this.getPosition().getY(),
             this.getWidth(), this.getHeight(), this.getTime());
   }
 
-  @Override
+  /**
+   * A method to get the shape type (Rectangle or Ellipse).
+   *
+   * @return an Enum - the shape's type
+   */
   public model.shape.Shape getType() {
     return Shape.ELLIPSE;
+  }
+
+  /**
+   * Get a textual description of the shape images.
+   *
+   * @return a String - SVG shape description
+   */
+  public String getSVG() {
+    return "<ellipse id=\"" + this.getName() + "\" cx=\"" + this.getPosition().getX() + "\" cy=\""
+            + this.getPosition().getY() + "\" rx=\"" + this.getWidth() + "\" ry=\""
+            + this.getHeight() + "\" fill=\"rgb(" + this.getColor().getRed() + ","
+            + this.getColor().getGreen() + "," + this.getColor().getBlue()
+            + ")\" visibility=\"visible\" >\n";
+  }
+
+  /**
+   * Get a textual description of the shape's width/xRadius dimension.
+   *
+   * @return A String - SVG shape width/xRadius
+   */
+  public String getSVGDstart() {
+    return "xR";
+  }
+
+  /**
+   * Get a textual description of the shape's height/yRadius dimension.
+   *
+   * @return A String - SVG shape height/yRadius
+   */
+  public String getSVGDend() {
+    return "yR";
+  }
+
+  /**
+   * Get a textual description of the shape's x/cx position.
+   *
+   * @return A String - SVG shape x/cx position
+   */
+  public String getSVGX() {
+    return "cx";
+  }
+
+  /**
+   * Get a textual description of the shape's y/cy position.
+   *
+   * @return A String - SVG shape y/cy position
+   */
+  public String getSVGY() {
+    return "cy";
+  }
+
+  /**
+   * Get a textual description of the shape's type.
+   *
+   * @return A String - SVG shape type
+   */
+  public String getSVGEndShape() {
+    return "</ellipse>";
+  }
+
+  @Override
+  public String getCommand() {
+    return "oval name " + this.getName() + " center-x " + this.getPosition().getX()
+            + " center-y " + this.getPosition().getY() + " x-radius " + this.getWidth() + " y-radius "
+            + this.getHeight() + " color " + this.getColor().getRed() + " "
+            + this.getColor().getGreen() + " " + this.getColor().getBlue() + " from "
+            + this.getTime().getStartTime() + " to " + this.getTime().getEndTime();
   }
 
 }

@@ -10,7 +10,8 @@ public interface TweenModelBuilder<T> {
 
   /**
    * Set the bounds of the canvas for the animation.
-   * @param width the width in pixels of the canvas
+   *
+   * @param width  the width in pixels of the canvas
    * @param height the height in pixels of the canvas
    */
   TweenModelBuilder<T> setBounds(int width, int height);

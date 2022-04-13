@@ -1,18 +1,19 @@
 package model;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
 import model.command.CommandType;
 import model.command.EmptyCommand;
 import model.command.ICommands;
+import model.command.ICommandsState;
 import model.command.Move;
+import model.io.TweenModelBuilder;
 import model.shape.AShape;
 import model.shape.Ellipse;
 import model.shape.Rectangle;
@@ -22,22 +23,27 @@ import model.utils.Posn;
 import model.utils.Time;
 
 /**
- * Represents the main model class which implemented the IAnimationModel<AShape> </AShape>.
+ * Represents the Main model class which implemented the IAnimationModel<AShape> </AShape>.
+ * This class will implement all method in IAnimationModelState<AShape> </AShape> which
+ * help the model to get all the model's state and all the method on
+ * IAnimationModel<AShape> </AShape> to add and delete the specific shape and animation.
  */
-public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
-  private final HashMap<String, AShape> shapes;
-  private final HashMap<String, List<ICommands>> commands;
-  private final Time time;
+public class SimpleAnimatorModel implements IAnimatorModel {
+  private final LinkedHashMap<String, AShape> shapes;
+  private final LinkedHashMap<String, List<ICommands>> commands;
+  private final int width;
+  private final int height;
 
   /**
-   * A constructor for SimpleAnimationModel class with the given builder.
+   * A constructor for SimpleAnimationModel class with the SimpleAnimator ModelBuilder builder.
    *
-   * @param amBuilder the builder pattern builder
+   * @param tweenBuilder the builder pattern builder
    */
-  private SimpleAnimatorModel(AMBuilder amBuilder) {
-    this.shapes = amBuilder.shapes;
-    this.commands = amBuilder.commands;
-    this.time = amBuilder.time;
+  private SimpleAnimatorModel(TweenBuilder tweenBuilder) {
+    this.shapes = tweenBuilder.shapes;
+    this.commands = tweenBuilder.commands;
+    this.width = tweenBuilder.width;
+    this.height = tweenBuilder.height;
   }
 
   /**
@@ -52,10 +58,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
     if (shapes.containsKey(id)) {
       throw new IllegalArgumentException("Shape has already been set");
     }
-    ArgumentsCheck.withinIntervalTime(time.getStartTime(), time.getEndTime(),
-            s.getTime().getStartTime(), s.getTime().getEndTime());
     this.shapes.put(id, s);
     this.commands.put(id, new ArrayList<>());
+
   }
 
   /**
@@ -71,23 +76,9 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       throw new IllegalArgumentException("Cannot add command.");
     }
 
-    if (this.commands.get(c.getTheShape().getName()).size() != 0) {
-      double value = biggestEndTime(this.commands.get(c.getTheShape().getName()));
-      if (c.getStart() != value) {
-        throw new IllegalArgumentException("Gap Error");
-      }
-    }
-    this.commands.put(c.getTheShape().getName(), new ArrayList<>());
-    this.commands.get(c.getTheShape().getName()).add(c);
+    TweenBuilder.addCommandsHelper(c, commands);
   }
 
-  private double biggestEndTime(List<ICommands> commandsList) {
-    List<Double> time = new ArrayList<>();
-    for (ICommands c : commandsList) {
-      time.add(c.getEnd());
-    }
-    return Collections.max(time);
-  }
 
   /**
    * A method to delete a shape and its commands.
@@ -105,45 +96,29 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   /**
-   * A method to get the whole state of the model.
+   * A method to delete a specific command of a shape.
    *
-   * @return a String - the model's current state
+   * @param id              a String
+   * @param orderOfCommands the order of the commands need to be deleted in the list of command of
+   *                        the shape (it is not an index, it is the order in the list starting
+   *                        from 1)
+   * @throws IllegalArgumentException if the id and the orderOfCommands is not valid
    */
   @Override
-  public String getState() {
-    StringBuilder finalString = new StringBuilder();
-    for (String s : this.shapes.keySet()) {
-      finalString.append("Shape: ").append(s).append(" ")
-              .append(this.shapes.get(s).getType().getShapeType()).append("\n");
-
-      finalString.append("         START                                  END \n");
-      //The order of what we print in one motion
-      finalString.append("motion ").append(s).append(" Time ")
-              .append("X ").append("Y ").append("Width ")
-              .append("Height ").append("Red ")
-              .append("Green ").append("Blue ")
-              .append("  ").append("Time ")
-              .append("X ").append("Y ")
-              .append("Width ")
-              .append("Height ")
-              .append("Red ").append("Green ").append("Blue\n");
-
-      Collections.sort(this.commands.get(s));
-      for (int i = 0; i < this.commands.get(s).size(); i++) {
-        ICommands com = this.commands.get(s).get(i);
-        if (i != (this.commands.get(s).size() - 1)) {
-          finalString.append("motion ").append(com.getBeginsState())
-                  .append("    ").append(com.getEndsState()).append("\n");
-          this.commands.get(s).get(i).execute(this.commands.get(s).get(i + 1).getStart());
-        } else {
-          finalString.append("motion ").append(com.getBeginsState())
-                  .append("    ").append(com.getEndsState()).append("\n\n");
-        }
-      }
-
+  public void deleteCommands(String id, int orderOfCommands) {
+    if (this.commands.get(id) == null) {
+      throw new IllegalArgumentException("Invalid id");
     }
-    return finalString.toString();
+    if (orderOfCommands > this.commands.get(id).size()) {
+      throw new IllegalArgumentException("Invalid orderOfCommands");
+    }
+    List<ICommands> s = this.commands.get(id);
+    AShape shape = this.shapes.get(id);
+    ICommands c = s.get(orderOfCommands - 1);
+    s.set(orderOfCommands - 1, new EmptyCommand(shape, CommandType.EMPTY,
+            c.getStart(), c.getEnd()));
   }
+
 
   /**
    * A method to get the list of shape in the model.
@@ -152,7 +127,7 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
    */
   @Override
   public List<AShape> getShapes() {
-    List<String> myList = shapes.keySet().stream().collect(Collectors.toList());
+    List<String> myList = new ArrayList<>(shapes.keySet());
     List<AShape> l = new ArrayList<>();
     for (String s : myList) {
       AShape shape = shapes.get(s).getTheShape();
@@ -162,236 +137,99 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
   }
 
   /**
-   * A method to get the double list of commands in the model.
+   * A method to get the list of commands of a specific shape.
    *
-   * @return a List of List - a double list of command
+   * @param id - String id of the shape
+   * @return a List - a list of command
    */
   @Override
-  public List<List<ICommands>> getCommands() {
-    // Bug Mutating Error
-    List<List<ICommands>> answer = new ArrayList<>();
-    for (String c : this.commands.keySet()) {
-      Collections.sort(this.commands.get(c));
-      answer.add(this.commands.get(c));
+  public List<ICommandsState> getCommands(String id) {
+    if (this.commands.get(id) == null) {
+      throw new IllegalArgumentException("Illegal Shape");
     }
-    return answer;
+    return new ArrayList<>(this.commands.get(id));
+  }
+
+  public List<ICommands> getExecutableCommand(String id) {
+    return this.commands.get(id);
   }
 
   /**
-   * A method to get the time of the model.
+   * Return a new state of the given shape at a specific tick of the specific shape.
    *
-   * @return A time - the model's time
+   * @param time a double - represent the time
+   * @param s    a String - represent the id of the shape
+   * @return an updated state copy of the Shape
    */
   @Override
-  public Time getTime() {
-    return new Time(this.time);
+  public AShape getShapeAtTick(double time, String s) {
+    List<ICommands> commandsList = this.commands.get(s);
+    AShape shape = this.shapes.get(s).getTheShape();
+    for (ICommands iCommands : commandsList) {
+      if (time >= iCommands.getStart() && time <= iCommands.getEnd()) {
+        shape = iCommands.getShapeAtTick(time, shape);
+        return shape;
+      } else {
+        shape = shape.updateShape(iCommands);
+      }
+    }
+    return shape;
+  }
+
+  @Override
+  public int getHeight() {
+    return height;
+  }
+
+  @Override
+  public int getWidth() {
+    return width;
   }
 
   /**
-   * Represents the SimpleAnimationModel builder class.
+   * A method to find the highest end time from the given list of commands.
+   *
+   * @param commandsList the given list of commands
+   * @return a double - the highest end time of a command
    */
-  public static class AMBuilder {
-    private final HashMap<String, AShape> shapes;
-    private final HashMap<String, List<ICommands>> commands;
-    private Time time;
+  private double highestEndTime(List<ICommands> commandsList) {
+    List<Double> time = new ArrayList<>();
+    for (ICommands c : commandsList) {
+      time.add(c.getEnd());
+    }
+    return Collections.max(time);
+  }
 
-    /**
-     * A constructor for SimpleAnimationModel builder class.
-     */
-    public AMBuilder() {
-      this.shapes = new HashMap<>();
-      this.commands = new HashMap<>();
+  @Override
+  public double getLastTimeCommands() {
+    List<Double> time = new ArrayList<>();
+    for (String s : shapes.keySet()) {
+      time.add(highestEndTime(commands.get(s)));
+    }
+    return Collections.max(time);
+  }
+
+  /**
+   * Represents a simple animation builder that will add shapes and animations to the model.
+   */
+  public static class TweenBuilder implements TweenModelBuilder<IAnimatorModel> {
+
+    private final LinkedHashMap<String, AShape> shapes;
+    private final LinkedHashMap<String, List<ICommands>> commands;
+    private int width;
+    private int height;
+
+    public TweenBuilder() {
+      this.shapes = new LinkedHashMap<>();
+      this.commands = new LinkedHashMap<>();
     }
 
     /**
-     * A method to set the end time of the model to the given end time.
+     * A method to add an empty command which does nothing.
      *
-     * @param end the given end time
-     * @return the builder with a new Time with the set new given end time
+     * @param idShape   String - id of the shape to add the empty commands
+     * @param startTime the start time to know where to add the command
      */
-    public AMBuilder setTime(int end) {
-      // Arguments check
-      ArgumentsCheck.lessThanZero(end);
-      this.time = new Time(0, end);
-      return this;
-    }
-
-    /**
-     * A method to add a Rectangle shape to the model.
-     *
-     * @param id    the id to map it with this new shape
-     * @param x     the shape start X position
-     * @param y     the shape start Y position
-     * @param w     the shape start width
-     * @param h     the shape start height
-     * @param red   the shape start red color
-     * @param green the shape start green color
-     * @param blue  the shape start blue color
-     * @param time  the shape start time
-     * @return the builder with an addRectangle shape
-     */
-    public AMBuilder addRectangle(String id, double x, double y, double w, double h,
-                                  int red, int green, int blue, Time time) {
-      // Argument and Object check
-      if (this.time == null) {
-        throw new IllegalArgumentException("Need to set time");
-      }
-      ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
-              time.getStartTime(), time.getEndTime());
-      ArgumentsCheck.colorRange(red, green, blue);
-      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
-
-      // Assign Variable
-      Color c = new Color(red, green, blue);
-      AShape shape = new Rectangle(id, Shape.RECTANGLE, c, x, y, w, h, time);
-
-      // Add Variable into data structure
-      List<ICommands> mtRL = new ArrayList<>();
-      this.shapes.put(id, shape);
-      this.commands.put(id, mtRL);
-
-      return this;
-    }
-
-    /**
-     * A method to add an Ellipse shape to the model.
-     *
-     * @param id    the id to map it with this new shape
-     * @param x     the shape start X position
-     * @param y     the shape start Y position
-     * @param w     the shape start width
-     * @param h     the shape start height
-     * @param red   the shape start red color
-     * @param green the shape start green color
-     * @param blue  the shape start blue color
-     * @param time  the shape start time
-     * @return the builder with an addEllipse shape
-     */
-    public AMBuilder addEllipse(String id, double x, double y, double w, double h,
-                                int red, int green, int blue, Time time) {
-      // Argument and Object check
-      if (this.time == null) {
-        throw new IllegalArgumentException("Need to set time");
-      }
-      ArgumentsCheck.withinIntervalTime(this.time.getStartTime(), this.time.getEndTime(),
-              time.getStartTime(), time.getEndTime());
-      ArgumentsCheck.colorRange(red, green, blue);
-      ArgumentsCheck.lessThanZero(x, y, w, h, red, green, blue);
-
-      // Assign Variable
-      Color c = new Color(red, green, blue);
-      AShape shape = new Ellipse(id, Shape.ELLIPSE, c, x, y, w, h, time);
-
-      // Add Variable into data structure
-      List<ICommands> mtRL = new ArrayList<>();
-      this.shapes.put(id, shape);
-      this.commands.put(id, mtRL);
-      return this;
-    }
-
-
-    /**
-     * A method to add the Move command to the model.
-     *
-     * @param idShape   the shape to add the move method on
-     * @param destX     the destination X position for the shape
-     * @param destY     the destination Y position for the shape
-     * @param startTime the start time of the command
-     * @param endTime   the end time of the command
-     * @return the builder with an addMove command
-     */
-    public AMBuilder addMove(String idShape,
-                             double destX, double destY,
-                             double startTime, double endTime) {
-      IdCheck(idShape);
-
-      if (overlap(startTime, endTime, this.commands.get(idShape))) {
-        throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
-      }
-      AShape shape = shapes.get(idShape);
-
-      addEmptyCommands(idShape, startTime);
-
-      ArgumentsCheck.lessThanZero(destX, destY, startTime, endTime);
-      double shapeStart = shape.getTime().getStartTime();
-      double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
-
-      ICommands command = new Move(shape, startTime, endTime, new Posn(destX, destY));
-
-      this.commands.get(idShape).add(command);
-      return this;
-    }
-
-    /**
-     * A method to add the ChangeColor command to the model.
-     *
-     * @param idShape   the shape to add the ChangeColor method on
-     * @param color     the new given color to set the shape to
-     * @param startTime the start time of the command
-     * @param endTime   the end time of the command
-     * @return the builder with an addChangeColor command
-     */
-    public AMBuilder addChangeColor(String idShape,
-                                    Color color, double startTime, double endTime) {
-
-      IdCheck(idShape);
-
-      if (overlap(startTime, endTime, this.commands.get(idShape))) {
-        throw new IllegalArgumentException("Cannot add animation, the animation time is overlap");
-      }
-      AShape shape = shapes.get(idShape);
-      addEmptyCommands(idShape, startTime);
-      if (color == null) {
-        throw new IllegalArgumentException("The given ending color cannot be null");
-      }
-      ArgumentsCheck.colorRange(color.getRed(), color.getGreen(), color.getBlue());
-      ArgumentsCheck.lessThanZero(color.getRed(), color.getGreen(), color.getBlue(),
-              startTime, endTime);
-      double shapeStart = shape.getTime().getStartTime();
-      double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
-
-      ICommands command = new ChangeColor(shape, startTime, endTime, color);
-      //One method for sorting the list based on the times of animations.
-
-      this.commands.get(idShape).add(command);
-      return this;
-    }
-
-    /**
-     * A method to add the ChangeDimension command to the model.
-     *
-     * @param idShape   the shape to add the ChangeDimension method on
-     * @param endW      the given end width to set the shape width to
-     * @param endH      the given end height to set the shape height to
-     * @param startTime the start time of the command
-     * @param endTime   the end time of the command
-     * @return the builder with an addChangeDimension command
-     */
-    public AMBuilder addChangeDimension(String idShape,
-                                        double endW, double endH,
-                                        double startTime, double endTime) {
-      IdCheck(idShape);
-
-      if (overlap(startTime, endTime, this.commands.get(idShape))) {
-        throw new IllegalArgumentException("Cannot add animation, since the animation is overlap");
-      }
-      addEmptyCommands(idShape, startTime);
-      AShape shape = shapes.get(idShape);
-
-      ArgumentsCheck.lessThanZero(endW, endH, startTime, endTime);
-      double shapeStart = shape.getTime().getStartTime();
-      double shapeEnd = shape.getTime().getEndTime();
-      ArgumentsCheck.withinIntervalTime(shapeStart, shapeEnd, startTime, endTime);
-
-      ICommands command = new ChangeDimension(shape, startTime, endTime, endW, endH);
-
-
-      this.commands.get(idShape).add(command);
-      return this;
-    }
-
     private void addEmptyCommands(String idShape, double startTime) {
       if (this.commands.get(idShape).size() != 0) {
         double value = highestEndTime(this.commands.get(idShape));
@@ -404,24 +242,23 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       }
     }
 
-    private void IdCheck(String idShape) {
+    /**
+     * A method to check if there exist a shape based on the given key - id of the shape.
+     *
+     * @param idShape String - id of the shape
+     */
+    private void idCheck(String idShape) {
       if (!shapes.containsKey(idShape)) {
         throw new IllegalArgumentException("Invalid Shape");
       }
     }
 
     /**
-     * A method to start build the builder.
+     * A method to find the highest end time from the given list of commands.
      *
-     * @return a SimpleAnimatorModel - the model
+     * @param commandsList the given list of commands
+     * @return a double - the highest end time of a command
      */
-    public SimpleAnimatorModel build() {
-      if (this.time == null) {
-        throw new IllegalArgumentException("Need to set time");
-      }
-      return new SimpleAnimatorModel(this);
-    }
-
     private double highestEndTime(List<ICommands> commandsList) {
       List<Double> time = new ArrayList<>();
       for (ICommands c : commandsList) {
@@ -430,17 +267,293 @@ public class SimpleAnimatorModel implements IAnimatorModel<AShape> {
       return Collections.max(time);
     }
 
-
-    private boolean overlap(double startTime, double endTime, List<ICommands> iCommands) {
-      for (ICommands c : iCommands) {
-        try {
-          ArgumentsCheck.overlappingTime(c.getStart(), c.getEnd(), startTime, endTime);
-        } catch (IllegalArgumentException e) {
-          return true;
-        }
-      }
-      return false;
+    /**
+     * Set the bounds of the canvas for the animation.
+     *
+     * @param width  the width in pixels of the canvas
+     * @param height the height in pixels of the canvas
+     */
+    @Override
+    public TweenModelBuilder<IAnimatorModel> setBounds(int width, int height) {
+      ArgumentsCheck.lessThanZero(width, height);
+      this.height = height;
+      this.width = width;
+      return this;
     }
 
+    /**
+     * Add a new oval to the model with the given specifications.
+     *
+     * @param name        the unique name given to this shape
+     * @param cx          the x-coordinate of the center of the oval
+     * @param cy          the y-coordinate of the center of the oval
+     * @param xRadius     the x-radius of the oval
+     * @param yRadius     the y-radius of the oval
+     * @param red         the red component of the color of the oval
+     * @param green       the green component of the color of the oval
+     * @param blue        the blue component of the color of the oval
+     * @param startOfLife the time tick at which this oval appears
+     * @param endOfLife   the time tick at which this oval disappears
+     * @return the builder object
+     */
+    @Override
+    public TweenModelBuilder<IAnimatorModel> addOval(String name, float cx, float cy,
+                                                     float xRadius, float yRadius,
+                                                     float red, float green, float blue,
+                                                     int startOfLife, int endOfLife) {
+      if (startOfLife > endOfLife) {
+        throw new IllegalArgumentException("The start time cannot be bigger than end time");
+      }
+      if (ArgumentsCheck.lessThanOrEqualsToOne(red, green, blue)) {
+        red = red * 255;
+        green = green * 255;
+        blue = blue * 255;
+      }
+      ArgumentsCheck.colorRange((int) red, (int) green, (int) blue);
+      ArgumentsCheck.lessThanZero(xRadius, yRadius, red, green, blue,
+              startOfLife, endOfLife);
+
+      // Assign Variable
+      Color c = new Color((int) red, (int) green, (int) blue);
+      AShape shape = new Ellipse(name, Shape.ELLIPSE, c, cx, cy, xRadius, yRadius,
+              new Time(startOfLife, endOfLife));
+
+      // Add Variable into data structure
+      List<ICommands> mtRL = new ArrayList<>();
+      this.shapes.put(name, shape);
+      this.commands.put(name, mtRL);
+      return this;
+    }
+
+    /**
+     * Add a new rectangle to the model with the given specifications.
+     *
+     * @param name        the unique name given to this shape
+     * @param lx          the minimum x-coordinate of a corner of the
+     *                    rectangle
+     * @param ly          the minimum y-coordinate of a corner of the
+     *                    rectangle
+     * @param width       the width of the rectangle
+     * @param height      the height of the rectangle
+     * @param red         the red component of the color of the rectangle
+     * @param green       the green component of the color of the rectangle
+     * @param blue        the blue component of the color of the rectangle
+     * @param startOfLife the time tick at which this rectangle appears
+     * @param endOfLife   the time tick at which this rectangle disappears
+     * @return the builder object
+     */
+    @Override
+    public TweenModelBuilder<IAnimatorModel> addRectangle(String name, float lx, float ly,
+                                                          float width, float height,
+                                                          float red, float green,
+                                                          float blue,
+                                                          int startOfLife, int endOfLife) {
+      if (startOfLife > endOfLife) {
+        throw new IllegalArgumentException("The start time cannot be bigger than end time");
+      }
+      if (ArgumentsCheck.lessThanOrEqualsToOne(red, green, blue)) {
+        red = red * 255;
+        green = green * 255;
+        blue = blue * 255;
+      }
+      ArgumentsCheck.colorRange((int) red, (int) green, (int) blue);
+      ArgumentsCheck.lessThanZero(width, height, red, green, blue);
+
+      // Assign Variable
+      Color c = new Color((int) red, (int) green, (int) blue);
+      AShape shape = new Rectangle(name, Shape.RECTANGLE, c, lx, ly, width, height,
+              new Time(startOfLife, endOfLife));
+
+      // Add Variable into data structure
+      List<ICommands> mtRL = new ArrayList<>();
+      this.shapes.put(name, shape);
+      this.commands.put(name, mtRL);
+
+      return this;
+    }
+
+
+    private void addCommands(ICommands c) {
+      addCommandsHelper(c, commands);
+    }
+
+    private static void addCommandsHelper(ICommands c, LinkedHashMap<String, List<ICommands>> commands) {
+      CommandType commandType = c.getType();
+      AShape addShape = c.getTheShape();
+      int size = commands.get(addShape.getName()).size();
+      double start = c.getStart();
+      double end = c.getEnd();
+
+      for (ICommands s : commands.get(addShape.getName())) {
+        CommandType currentType = s.getType();
+        AShape shape = s.getTheShape();
+        double cStart = s.getStart();
+        double cEnd = s.getEnd();
+
+        if (commandType == currentType && addShape.getName().equals(shape.getName())) {
+          ArgumentsCheck.overlappingTime(start, end, cStart, cEnd);
+        }
+      }
+
+      List<ICommands> commandsList = commands.get(addShape.getName());
+      for (int i = 0; i < size; i++) {
+        ICommands current = commandsList.get(i);
+        double Start = current.getStart();
+
+        if (start < Start) {
+          commandsList.add(i, c);
+        }
+      }
+      if (size == commandsList.size()) {
+        commandsList.add(c);
+      }
+    }
+
+    /**
+     * Move the specified shape to the given position during the given time
+     * interval.
+     *
+     * @param name      the unique name of the shape to be moved
+     * @param moveFromX the x-coordinate of the initial position of this shape.
+     *                  What this x-coordinate represents depends on the shape.
+     * @param moveFromY the y-coordinate of the initial position of this shape.
+     *                  what this y-coordinate represents depends on the shape.
+     * @param moveToX   the x-coordinate of the final position of this shape. What
+     *                  this x-coordinate represents depends on the shape.
+     * @param moveToY   the y-coordinate of the final position of this shape. what
+     *                  this y-coordinate represents depends on the shape.
+     * @param startTime the time tick at which this movement should start
+     * @param endTime   the time tick at which this movement should end
+     */
+    @Override
+    public TweenModelBuilder<IAnimatorModel> addMove(String name,
+                                                     float moveFromX, float moveFromY,
+                                                     float moveToX, float moveToY,
+                                                     int startTime, int endTime) {
+      idCheck(name);
+      addEmptyCommands(name, startTime);
+
+      ArgumentsCheck.lessThanZero(startTime, endTime);
+      if (endTime < startTime) {
+        throw new IllegalArgumentException("The time of the command is invalid");
+      }
+
+      Posn origin = new Posn(moveFromX, moveFromY);
+      Posn destination = new Posn(moveToX, moveToY);
+      AShape s;
+
+      s = this.shapes.get(name);
+
+      ICommands com = new Move(s, startTime, endTime, origin, destination);
+      this.addCommands(com);
+
+
+      return this;
+    }
+
+
+    /**
+     * Change the color of the specified shape to the new specified color in the
+     * specified time interval.
+     *
+     * @param name      the unique name of the shape whose color is to be changed
+     * @param oldR      the r-component of the old color
+     * @param oldG      the g-component of the old color
+     * @param oldB      the b-component of the old color
+     * @param newR      the r-component of the new color
+     * @param newG      the g-component of the new color
+     * @param newB      the b-component of the new color
+     * @param startTime the time tick at which this color change should start
+     * @param endTime   the time tick at which this color change should end
+     */
+    @Override
+    public TweenModelBuilder<IAnimatorModel> addColorChange(String name,
+                                                            float oldR, float oldG,
+                                                            float oldB, float newR,
+                                                            float newG, float newB,
+                                                            int startTime, int endTime) {
+      idCheck(name);
+      addEmptyCommands(name, startTime);
+
+      ArgumentsCheck.lessThanZero(startTime, endTime);
+      ArgumentsCheck.colorRange((int) newR, (int) newG, (int) newB);
+      ArgumentsCheck.colorRange((int) oldR, (int) oldG, (int) oldB);
+      if (endTime < startTime) {
+        throw new IllegalArgumentException("The time of the command is invalid");
+      }
+
+      if (ArgumentsCheck.lessThanOrEqualsToOne(newR, newG, newB)) {
+        newR = newR * 255;
+        newG = newG * 255;
+        newB = newB * 255;
+      }
+
+      if (ArgumentsCheck.lessThanOrEqualsToOne(oldR, oldG, oldB)) {
+        oldR = oldR * 255;
+        oldG = oldG * 255;
+        oldB = oldB * 255;
+      }
+
+      AShape s;
+      Color newC = new Color((int) newR, (int) newG, (int) newB);
+      Color oldC = new Color((int) oldR, (int) oldG, (int) oldB);
+
+      s = this.shapes.get(name);
+
+      ICommands com = new ChangeColor(s, startTime, endTime, oldC, newC);
+      this.addCommands(com);
+
+      return this;
+    }
+
+
+    /**
+     * Change the x and y extents of this shape from the specified extents to the
+     * specified target extents. What these extents actually mean depends on the
+     * shape, but these are roughly the extents of the box enclosing the shape
+     *
+     * @param name      the unique name of the shape whose color is to be changed
+     * @param fromSx    the old x-position
+     * @param fromSy    the old y-position
+     * @param toSx      the new x-position
+     * @param toSy      the new y-position
+     * @param startTime the time tick at which this width and height change should start
+     * @param endTime   the time tick at which this width and height change should end
+     */
+    @Override
+    public TweenModelBuilder<IAnimatorModel> addScaleToChange(String name,
+                                                              float fromSx, float fromSy,
+                                                              float toSx, float toSy,
+                                                              int startTime, int endTime) {
+      idCheck(name);
+      addEmptyCommands(name, startTime);
+
+      ArgumentsCheck.lessThanZero(startTime, endTime, (int) toSx, (int) toSy,
+              (int) fromSx, (int) fromSy);
+      if (endTime < startTime) {
+        throw new IllegalArgumentException("The time of the command is invalid");
+      }
+
+      AShape s;
+
+      s = this.shapes.get(name);
+
+
+      ICommands com = new ChangeDimension(s, startTime, endTime, fromSx, fromSy,
+              toSx, toSy);
+      this.addCommands(com);
+
+
+      return this;
+    }
+
+    /**
+     * A method to start build the builder.
+     *
+     * @return a SimpleAnimatorModel - the model
+     */
+    public IAnimatorModel build() {
+      return new SimpleAnimatorModel(this);
+    }
   }
 }

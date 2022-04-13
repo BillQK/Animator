@@ -3,6 +3,7 @@ package model.shape;
 import java.awt.Color;
 import java.util.Objects;
 
+import model.command.ICommandsState;
 import model.utils.ArgumentsCheck;
 import model.utils.Posn;
 import model.utils.Time;
@@ -50,7 +51,7 @@ public abstract class AShape {
   }
 
   /**
-   * A method to get the specific whole shape.
+   * A method to get the specific new shape.
    *
    * @return the specific shape
    */
@@ -87,7 +88,8 @@ public abstract class AShape {
    * @return a Color - the shape's color
    */
   public Color getColor() {
-    return new Color(this.col.getRGB());
+    return new Color(this.col.getRed(),
+            this.col.getGreen(), this.col.getBlue());
   }
 
   /**
@@ -159,9 +161,8 @@ public abstract class AShape {
    * @param pos a Posn - the new given Posn
    */
   public void setPosn(Posn pos) {
-    if (pos == null || pos.getY() < 0 || pos.getX() < 0) {
-      throw new IllegalArgumentException("The Posn of the shape cannot be null or the X and Y " +
-              "cannot be negative.");
+    if (pos == null) {
+      throw new IllegalArgumentException("Position cannot be null");
     }
     this.pos = pos;
   }
@@ -186,4 +187,71 @@ public abstract class AShape {
             this.w, this.h, this.time, this.pos);
   }
 
+  /**
+   * Get a textual description of the shape images.
+   *
+   * @return a String - SVG shape description
+   */
+  public abstract String getSVG();
+
+  /**
+   * Get a textual description of the shape's width/xRadius dimension.
+   *
+   * @return A String - SVG shape width/xRadius
+   */
+  public abstract String getSVGDstart();
+
+  /**
+   * Get a textual description of the shape's height/yRadius dimension.
+   *
+   * @return A String - SVG shape height/yRadius
+   */
+  public abstract String getSVGDend();
+
+  /**
+   * Get a textual description of the shape's x/cx position.
+   *
+   * @return A String - SVG shape x/cx position
+   */
+  public abstract String getSVGX();
+
+  /**
+   * Get a textual description of the shape's y/cy position.
+   *
+   * @return A String - SVG shape y/cy position
+   */
+  public abstract String getSVGY();
+
+  /**
+   * Get a textual description of the shape's type.
+   *
+   * @return A String - SVG shape type
+   */
+  public abstract String getSVGEndShape();
+
+  /**
+   * Update the copy shape based on the given command.
+   *
+   * @param com the given command
+   * @return the updated copy shape based on the command
+   */
+  public AShape updateShape(ICommandsState com) {
+    AShape shape = this.getTheShape();
+    switch (com.getType()) {
+      case MOVE:
+        shape.setPosn(com.getNewPosn());
+        return shape;
+      case CHANGE_DIMENSION:
+        shape.setHeight(com.getNewHeight());
+        shape.setWidth(com.getNewWidth());
+        return shape;
+      case CHANGE_COLOR:
+        shape.setColor(com.getNewColor());
+        return shape;
+      default:
+        return shape;
+    }
+  }
+
+  public abstract String getCommand();
 }
