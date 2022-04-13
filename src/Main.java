@@ -34,9 +34,7 @@ public class Main {
    * @param args the given array of arguments to run the main method through
    */
   public static void main(String[] args) {
-    new QuickSortFile(20).createFile("hi");
     Map<String, String> commandLine = new HashMap<>();
-
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
     IAnimatorModel model = null;

@@ -4,12 +4,11 @@ import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.command.EmptyCommand;
+import model.command.ChangeColor;
 import model.command.ICommands;
 import model.command.Move;
 import model.shape.AShape;
@@ -25,7 +24,7 @@ public class QuickSortFile implements ICreateMotionFIle {
   private final List<ICommands> animationList;
   private static final int xPosition = 100;
   private static final int yPosition = 150;
-  private static final double WIDTH = 30;
+  private static final double WIDTH = 10;
   private static final int end = 500;
   private Random random;
   private static int startTime = 0;
@@ -51,14 +50,24 @@ public class QuickSortFile implements ICreateMotionFIle {
     }
   }
 
+  private void createChangeColor() {
+    for (AShape a : shapeList) {
+      ICommands changeColor = new ChangeColor(a, startTime, endTime,
+              a.getColor(), new Color(2, 255, 2));
+      startTime++;
+      endTime++;
+      animationList.add(changeColor);
+    }
+  }
+
   private String createRandomObject(int numShape) {
     for (int i = 0; i < numShape; i++) {
-      int rand1 = random.nextInt(10) + 1;
+      int rand = random.nextInt(10) + 1;
 
       AShape current = new Rectangle(String.valueOf(i), Shape.RECTANGLE,
-              new Color(rand1, 0, 0),
+              new Color(rand, 0, 0),
               xPosition + i * WIDTH, yPosition,
-              WIDTH, rand1 * 50, new Time(0, end));
+              WIDTH, rand * 50 , new Time(0, end));
       shapeList[i] = current;
     }
     StringBuilder shapeCommand = new StringBuilder();
@@ -73,19 +82,16 @@ public class QuickSortFile implements ICreateMotionFIle {
       areaList[i] = shapeList[i].getHeight() * shapeList[i].getWidth();
     }
     quickSort(areaList, 0, numShape - 1);
+    createChangeColor();
     StringBuilder animationCommand = new StringBuilder();
     for (ICommands c : this.animationList) {
-      if (c != null) {
-            animationCommand.append(c.getCommandString()).append("\n");
-      }
-
+        animationCommand.append(c.getCommandString()).append("\n");
     }
     return animationCommand.toString();
   }
 
   // A utility function to swap two elements
-  private void swap(double[] arr, int i, int j)
-  {
+  private void swap(double[] arr, int i, int j) {
 
     ICommands c1;
     ICommands c2;
@@ -115,7 +121,6 @@ public class QuickSortFile implements ICreateMotionFIle {
     shapeList[j] = temp1;
 
 
-
   }
 
   /* This function takes last element as pivot, places
@@ -123,8 +128,7 @@ public class QuickSortFile implements ICreateMotionFIle {
      array, and places all smaller (smaller than pivot)
      to left of pivot and all greater elements to right
      of pivot */
-  private int partition(double[] arr, int low, int high)
-  {
+  private int partition(double[] arr, int low, int high) {
 
     // pivot
     double pivot = arr[high];
@@ -134,13 +138,11 @@ public class QuickSortFile implements ICreateMotionFIle {
     // of pivot found so far
     int i = (low - 1);
 
-    for(int j = low; j <= high - 1; j++)
-    {
+    for (int j = low; j <= high - 1; j++) {
 
       // If current element is smaller
       // than the pivot
-      if (arr[j] < pivot)
-      {
+      if (arr[j] < pivot) {
 
         // Increment index of
         // smaller element
@@ -157,10 +159,8 @@ public class QuickSortFile implements ICreateMotionFIle {
             low --> Starting index,
             high --> Ending index
    */
-  private void quickSort(double[] arr, int low, int high)
-  {
-    if (low < high)
-    {
+  private void quickSort(double[] arr, int low, int high) {
+    if (low < high) {
 
       // pi is partitioning index, arr[p]
       // is now at right place

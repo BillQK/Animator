@@ -46,8 +46,8 @@ public class ChangeColor extends ACommand {
   @Override
   public String getCommandString() {
     // change-color name disk5 colorto 0.2233703 0.84182423 0.7612209 0 1 0  from 537 to 545
-    return "change-color name " + this.shape.getName() + " colorto " + this.startColor.getRed() + " " + this.startColor.getGreen() + " " + this.startColor.getBlue() + " "
-            + this.endColor.getRed() + " " + this.endColor.getGreen() + " " + this.endColor.getBlue() + " from " + (int) this.getStart() + " " + (int) this.getEnd();
+    return "change-color name " + this.shape.getName() + " colorto " + this.startColor.getRed() /10 + " " + this.startColor.getGreen() / 10 + " " + this.startColor.getBlue() /10 + " "
+            + this.endColor.getRed() /255 + " " + this.endColor.getGreen() /255 + " " + this.endColor.getBlue() /255 + " from " + (int) this.getStart()  + " to " + (int) this.getEnd();
   }
 
   /**
