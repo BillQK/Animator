@@ -94,7 +94,7 @@ public class Main {
           System.out.println(view.getDetails());
         } else {
 //          view.writeFile(commandLine.get("-out"));
-          ctrl = new SVGCtrl(view, commandLine.get("-in"));
+          ctrl = new SVGCtrl(view, commandLine.get("-out"));
         }
         break;
       case "visual":

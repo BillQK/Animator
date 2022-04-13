@@ -46,6 +46,7 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     this.height = tweenBuilder.height;
   }
 
+
   /**
    * A method to add the specific shape to the model.
    *

@@ -11,6 +11,7 @@ import javax.swing.*;
 
 import model.IAnimatorModel;
 import model.command.ICommands;
+import model.io.AnimationFileReader;
 import model.utils.Tempo;
 import view.IAnimatorView;
 import model.shape.AShape;
