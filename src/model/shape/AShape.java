@@ -252,4 +252,6 @@ public abstract class AShape {
         return shape;
     }
   }
+
+  public abstract String getCommand();
 }
