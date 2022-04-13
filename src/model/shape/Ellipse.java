@@ -105,4 +105,13 @@ public class Ellipse extends AShape {
     return "</ellipse>";
   }
 
+  @Override
+  public String getCommand() {
+    return "oval name " + this.getName() + " center-x " + this.getPosition().getX()
+            + " center-y " + this.getPosition().getY() + " x-radius " + this.getWidth() + " y-radius "
+            + this.getHeight() + " color " + this.getColor().getRed() + " "
+            + this.getColor().getGreen() + " " + this.getColor().getBlue() + " from "
+            + this.getTime().getStartTime() + " to " + this.getTime().getEndTime();
+  }
+
 }

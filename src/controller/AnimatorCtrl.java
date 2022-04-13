@@ -25,7 +25,7 @@ public class AnimatorCtrl implements IAnimatorController, ActionListener {
   private int sec;
   private Scanner s;
 
-  public AnimatorCtrl(IAnimatorModel model, IAnimatorView view, double tempo) {
+  public AnimatorCtrl(IAnimatorModel model, IAnimatorView view, double tempo, String... args) {
     this.model = model;
     this.view = view;
     this.popUp = new JOptionPane();

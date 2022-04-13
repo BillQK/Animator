@@ -105,4 +105,14 @@ public class Rectangle extends AShape {
     return "</rect>";
   }
 
+  // rectangle name R min-x 200 min-y 200 width 50 height 100 color 1
+  @Override
+  public String getCommand() {
+    return "rectangle name " + this.getName() + " min-x " + this.getPosition().getX()
+            + " min-y " + this.getPosition().getY() + " width " + this.getWidth() + " height "
+            + this.getHeight() + " color " + this.getColor().getRed() + " "
+            + this.getColor().getGreen() + " " + this.getColor().getBlue() + " from "
+            + this.getTime().getStartTime() + " to " + this.getTime().getEndTime();
+  }
+
 }
