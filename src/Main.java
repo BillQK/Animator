@@ -17,6 +17,7 @@ import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.command.ICommands;
 import model.io.AnimationFileReader;
+import model.io.QuickSortFile;
 import model.shape.AShape;
 import model.utils.Tempo;
 import view.AnimatorViewCreator;
@@ -33,6 +34,7 @@ public class Main {
    * @param args the given array of arguments to run the main method through
    */
   public static void main(String[] args) {
+    new QuickSortFile(20).createFile("hi");
     Map<String, String> commandLine = new HashMap<>();
 
     IAnimatorView view = null;
@@ -125,6 +127,8 @@ public class Main {
 
 
     }
+
+
   }
 
 //  /**

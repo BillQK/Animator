@@ -43,6 +43,13 @@ public class ChangeColor extends ACommand {
     shape.setColor(newColor);
   }
 
+  @Override
+  public String getCommandString() {
+    // change-color name disk5 colorto 0.2233703 0.84182423 0.7612209 0 1 0  from 537 to 545
+    return "change-color name " + this.shape.getName() + " colorto " + this.startColor.getRed() + " " + this.startColor.getGreen() + " " + this.startColor.getBlue() + " "
+            + this.endColor.getRed() + " " + this.endColor.getGreen() + " " + this.endColor.getBlue() + " from " + (int) this.getStart() + " " + (int) this.getEnd();
+  }
+
   /**
    * Get the state of the shape after the command.
    *

@@ -39,6 +39,11 @@ public class EmptyCommand extends ACommand {
     // nothing
   }
 
+  @Override
+  public String getCommandString() {
+    return "";
+  }
+
   /**
    * Get the state of the shape after the command.
    *
