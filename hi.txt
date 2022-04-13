@@ -1,116 +1,104 @@
-rectangle name 0 min-x 100.0 min-y 150.0 width 30.0 height 250.0 color 0.5 0.0 0.0 from 0 to 500
-rectangle name 1 min-x 130.0 min-y 150.0 width 30.0 height 500.0 color 1.0 0.0 0.0 from 0 to 500
-rectangle name 2 min-x 160.0 min-y 150.0 width 30.0 height 200.0 color 0.4 0.0 0.0 from 0 to 500
-rectangle name 3 min-x 190.0 min-y 150.0 width 30.0 height 200.0 color 0.4 0.0 0.0 from 0 to 500
-rectangle name 4 min-x 220.0 min-y 150.0 width 30.0 height 450.0 color 0.9 0.0 0.0 from 0 to 500
-rectangle name 5 min-x 250.0 min-y 150.0 width 30.0 height 150.0 color 0.3 0.0 0.0 from 0 to 500
-rectangle name 6 min-x 280.0 min-y 150.0 width 30.0 height 250.0 color 0.5 0.0 0.0 from 0 to 500
-rectangle name 7 min-x 310.0 min-y 150.0 width 30.0 height 250.0 color 0.5 0.0 0.0 from 0 to 500
+rectangle name 0 min-x 100.0 min-y 150.0 width 30.0 height 100.0 color 0.2 0.0 0.0 from 0 to 500
+rectangle name 1 min-x 130.0 min-y 150.0 width 30.0 height 200.0 color 0.4 0.0 0.0 from 0 to 500
+rectangle name 2 min-x 160.0 min-y 150.0 width 30.0 height 400.0 color 0.8 0.0 0.0 from 0 to 500
+rectangle name 3 min-x 190.0 min-y 150.0 width 30.0 height 300.0 color 0.6 0.0 0.0 from 0 to 500
+rectangle name 4 min-x 220.0 min-y 150.0 width 30.0 height 50.0 color 0.1 0.0 0.0 from 0 to 500
+rectangle name 5 min-x 250.0 min-y 150.0 width 30.0 height 350.0 color 0.7 0.0 0.0 from 0 to 500
+rectangle name 6 min-x 280.0 min-y 150.0 width 30.0 height 150.0 color 0.3 0.0 0.0 from 0 to 500
+rectangle name 7 min-x 310.0 min-y 150.0 width 30.0 height 200.0 color 0.4 0.0 0.0 from 0 to 500
 rectangle name 8 min-x 340.0 min-y 150.0 width 30.0 height 50.0 color 0.1 0.0 0.0 from 0 to 500
-rectangle name 9 min-x 370.0 min-y 150.0 width 30.0 height 150.0 color 0.3 0.0 0.0 from 0 to 500
-rectangle name 10 min-x 400.0 min-y 150.0 width 30.0 height 100.0 color 0.2 0.0 0.0 from 0 to 500
-rectangle name 11 min-x 430.0 min-y 150.0 width 30.0 height 250.0 color 0.5 0.0 0.0 from 0 to 500
-rectangle name 12 min-x 460.0 min-y 150.0 width 30.0 height 400.0 color 0.8 0.0 0.0 from 0 to 500
-rectangle name 13 min-x 490.0 min-y 150.0 width 30.0 height 50.0 color 0.1 0.0 0.0 from 0 to 500
-rectangle name 14 min-x 520.0 min-y 150.0 width 30.0 height 200.0 color 0.4 0.0 0.0 from 0 to 500
-rectangle name 15 min-x 550.0 min-y 150.0 width 30.0 height 400.0 color 0.8 0.0 0.0 from 0 to 500
-rectangle name 16 min-x 580.0 min-y 150.0 width 30.0 height 150.0 color 0.3 0.0 0.0 from 0 to 500
-rectangle name 17 min-x 610.0 min-y 150.0 width 30.0 height 50.0 color 0.1 0.0 0.0 from 0 to 500
-rectangle name 18 min-x 640.0 min-y 150.0 width 30.0 height 450.0 color 0.9 0.0 0.0 from 0 to 500
-rectangle name 19 min-x 670.0 min-y 150.0 width 30.0 height 300.0 color 0.6 0.0 0.0 from 0 to 500
-move name 0 moveto 100.0 150.0 100.0 150.0 from 0 to 1
-move name 0 moveto 100.0 150.0 100.0 150.0 from 1 to 2
-move name 1 moveto 130.0 150.0 160.0 150.0 from 2 to 3
-move name 2 moveto 160.0 150.0 130.0 150.0 from 3 to 4
-move name 1 moveto 130.0 150.0 190.0 150.0 from 4 to 5
-move name 3 moveto 190.0 150.0 130.0 150.0 from 5 to 6
-move name 1 moveto 130.0 150.0 250.0 150.0 from 6 to 7
-move name 5 moveto 250.0 150.0 130.0 150.0 from 7 to 8
-move name 4 moveto 220.0 150.0 280.0 150.0 from 8 to 9
-move name 6 moveto 280.0 150.0 220.0 150.0 from 9 to 10
-move name 1 moveto 130.0 150.0 310.0 150.0 from 10 to 11
-move name 7 moveto 310.0 150.0 130.0 150.0 from 11 to 12
-move name 4 moveto 220.0 150.0 340.0 150.0 from 12 to 13
-move name 8 moveto 340.0 150.0 220.0 150.0 from 13 to 14
-move name 1 moveto 130.0 150.0 370.0 150.0 from 14 to 15
-move name 9 moveto 370.0 150.0 130.0 150.0 from 15 to 16
-move name 4 moveto 220.0 150.0 400.0 150.0 from 16 to 17
-move name 10 moveto 400.0 150.0 220.0 150.0 from 17 to 18
-move name 1 moveto 130.0 150.0 430.0 150.0 from 18 to 19
-move name 11 moveto 430.0 150.0 130.0 150.0 from 19 to 20
-move name 4 moveto 220.0 150.0 490.0 150.0 from 20 to 21
-move name 13 moveto 490.0 150.0 220.0 150.0 from 21 to 22
-move name 1 moveto 130.0 150.0 520.0 150.0 from 22 to 23
-move name 14 moveto 520.0 150.0 130.0 150.0 from 23 to 24
-move name 12 moveto 460.0 150.0 580.0 150.0 from 24 to 25
-move name 16 moveto 580.0 150.0 460.0 150.0 from 25 to 26
-move name 4 moveto 220.0 150.0 610.0 150.0 from 26 to 27
-move name 17 moveto 610.0 150.0 220.0 150.0 from 27 to 28
-move name 1 moveto 130.0 150.0 670.0 150.0 from 28 to 29
-move name 19 moveto 670.0 150.0 130.0 150.0 from 29 to 30
-move name 0 moveto 100.0 150.0 610.0 150.0 from 30 to 31
-move name 17 moveto 610.0 150.0 100.0 150.0 from 31 to 32
-move name 2 moveto 160.0 150.0 160.0 150.0 from 32 to 33
-move name 2 moveto 160.0 150.0 160.0 150.0 from 33 to 34
-move name 3 moveto 190.0 150.0 190.0 150.0 from 34 to 35
-move name 3 moveto 190.0 150.0 190.0 150.0 from 35 to 36
-move name 5 moveto 250.0 150.0 250.0 150.0 from 36 to 37
-move name 5 moveto 250.0 150.0 250.0 150.0 from 37 to 38
-move name 6 moveto 280.0 150.0 340.0 150.0 from 38 to 39
-move name 8 moveto 340.0 150.0 280.0 150.0 from 39 to 40
-move name 7 moveto 310.0 150.0 370.0 150.0 from 40 to 41
-move name 9 moveto 370.0 150.0 310.0 150.0 from 41 to 42
-move name 6 moveto 280.0 150.0 400.0 150.0 from 42 to 43
-move name 10 moveto 400.0 150.0 280.0 150.0 from 43 to 44
-move name 7 moveto 310.0 150.0 490.0 150.0 from 44 to 45
-move name 13 moveto 490.0 150.0 310.0 150.0 from 45 to 46
-move name 6 moveto 280.0 150.0 520.0 150.0 from 46 to 47
-move name 14 moveto 520.0 150.0 280.0 150.0 from 47 to 48
-move name 11 moveto 430.0 150.0 580.0 150.0 from 48 to 49
-move name 16 moveto 580.0 150.0 430.0 150.0 from 49 to 50
-move name 7 moveto 310.0 150.0 100.0 150.0 from 50 to 51
-move name 0 moveto 100.0 150.0 310.0 150.0 from 51 to 52
-move name 2 moveto 160.0 150.0 340.0 150.0 from 52 to 53
-move name 8 moveto 340.0 150.0 160.0 150.0 from 53 to 54
-move name 3 moveto 190.0 150.0 400.0 150.0 from 54 to 55
-move name 10 moveto 400.0 150.0 190.0 150.0 from 55 to 56
-move name 5 moveto 250.0 150.0 490.0 150.0 from 56 to 57
-move name 13 moveto 490.0 150.0 250.0 150.0 from 57 to 58
-move name 2 moveto 160.0 150.0 580.0 150.0 from 58 to 59
-move name 16 moveto 580.0 150.0 160.0 150.0 from 59 to 60
-move name 8 moveto 340.0 150.0 490.0 150.0 from 60 to 61
-move name 13 moveto 490.0 150.0 340.0 150.0 from 61 to 62
-move name 10 moveto 400.0 150.0 340.0 150.0 from 62 to 63
-move name 8 moveto 340.0 150.0 400.0 150.0 from 63 to 64
-move name 9 moveto 370.0 150.0 370.0 150.0 from 64 to 65
-move name 9 moveto 370.0 150.0 370.0 150.0 from 65 to 66
-move name 3 moveto 190.0 150.0 250.0 150.0 from 66 to 67
-move name 5 moveto 250.0 150.0 190.0 150.0 from 67 to 68
-move name 3 moveto 190.0 150.0 160.0 150.0 from 68 to 69
-move name 2 moveto 160.0 150.0 190.0 150.0 from 69 to 70
-move name 9 moveto 370.0 150.0 250.0 150.0 from 70 to 71
-move name 5 moveto 250.0 150.0 370.0 150.0 from 71 to 72
-move name 14 moveto 520.0 150.0 190.0 150.0 from 72 to 73
-move name 3 moveto 190.0 150.0 520.0 150.0 from 73 to 74
-move name 6 moveto 280.0 150.0 310.0 150.0 from 74 to 75
-move name 7 moveto 310.0 150.0 280.0 150.0 from 75 to 76
-move name 11 moveto 430.0 150.0 280.0 150.0 from 76 to 77
-move name 6 moveto 280.0 150.0 430.0 150.0 from 77 to 78
-move name 15 moveto 550.0 150.0 550.0 150.0 from 78 to 79
-move name 15 moveto 550.0 150.0 550.0 150.0 from 79 to 80
-move name 12 moveto 460.0 150.0 460.0 150.0 from 80 to 81
-move name 12 moveto 460.0 150.0 460.0 150.0 from 81 to 82
-move name 4 moveto 220.0 150.0 220.0 150.0 from 82 to 83
-move name 4 moveto 220.0 150.0 220.0 150.0 from 83 to 84
-move name 18 moveto 640.0 150.0 640.0 150.0 from 84 to 85
-move name 18 moveto 640.0 150.0 640.0 150.0 from 85 to 86
-move name 1 moveto 130.0 150.0 130.0 150.0 from 86 to 87
-move name 1 moveto 130.0 150.0 130.0 150.0 from 87 to 88
-move name 15 moveto 550.0 150.0 550.0 150.0 from 88 to 89
-move name 15 moveto 550.0 150.0 550.0 150.0 from 89 to 90
-move name 12 moveto 460.0 150.0 460.0 150.0 from 90 to 91
-move name 12 moveto 460.0 150.0 460.0 150.0 from 91 to 92
-move name 4 moveto 220.0 150.0 640.0 150.0 from 92 to 93
-move name 18 moveto 640.0 150.0 220.0 150.0 from 93 to 94
-move name 15 moveto 550.0 150.0 460.0 150.0 from 94 to 95
-move name 12 moveto 460.0 150.0 550.0 150.0 from 95 to 96
+rectangle name 9 min-x 370.0 min-y 150.0 width 30.0 height 50.0 color 0.1 0.0 0.0 from 0 to 500
+rectangle name 10 min-x 400.0 min-y 150.0 width 30.0 height 350.0 color 0.7 0.0 0.0 from 0 to 500
+rectangle name 11 min-x 430.0 min-y 150.0 width 30.0 height 400.0 color 0.8 0.0 0.0 from 0 to 500
+rectangle name 12 min-x 460.0 min-y 150.0 width 30.0 height 250.0 color 0.5 0.0 0.0 from 0 to 500
+rectangle name 13 min-x 490.0 min-y 150.0 width 30.0 height 200.0 color 0.4 0.0 0.0 from 0 to 500
+rectangle name 14 min-x 520.0 min-y 150.0 width 30.0 height 100.0 color 0.2 0.0 0.0 from 0 to 500
+rectangle name 15 min-x 550.0 min-y 150.0 width 30.0 height 350.0 color 0.7 0.0 0.0 from 0 to 500
+rectangle name 16 min-x 580.0 min-y 150.0 width 30.0 height 50.0 color 0.1 0.0 0.0 from 0 to 500
+rectangle name 17 min-x 610.0 min-y 150.0 width 30.0 height 400.0 color 0.8 0.0 0.0 from 0 to 500
+rectangle name 18 min-x 640.0 min-y 150.0 width 30.0 height 300.0 color 0.6 0.0 0.0 from 0 to 500
+rectangle name 19 min-x 670.0 min-y 150.0 width 30.0 height 400.0 color 0.8 0.0 0.0 from 0 to 500
+move name 2 moveto 160.0 150.0 190.0 150.0 from 0 to 1
+move name 3 moveto 190.0 150.0 160.0 150.0 from 1 to 2
+move name 2 moveto 190.0 150.0 220.0 150.0 from 2 to 3
+move name 4 moveto 220.0 150.0 190.0 150.0 from 3 to 4
+move name 2 moveto 220.0 150.0 250.0 150.0 from 4 to 5
+move name 5 moveto 250.0 150.0 220.0 150.0 from 5 to 6
+move name 2 moveto 250.0 150.0 280.0 150.0 from 6 to 7
+move name 6 moveto 280.0 150.0 250.0 150.0 from 7 to 8
+move name 2 moveto 280.0 150.0 310.0 150.0 from 8 to 9
+move name 7 moveto 310.0 150.0 280.0 150.0 from 9 to 10
+move name 2 moveto 310.0 150.0 340.0 150.0 from 10 to 11
+move name 8 moveto 340.0 150.0 310.0 150.0 from 11 to 12
+move name 2 moveto 340.0 150.0 370.0 150.0 from 12 to 13
+move name 9 moveto 370.0 150.0 340.0 150.0 from 13 to 14
+move name 2 moveto 370.0 150.0 400.0 150.0 from 14 to 15
+move name 10 moveto 400.0 150.0 370.0 150.0 from 15 to 16
+move name 2 moveto 400.0 150.0 460.0 150.0 from 16 to 17
+move name 12 moveto 460.0 150.0 400.0 150.0 from 17 to 18
+move name 11 moveto 430.0 150.0 490.0 150.0 from 18 to 19
+move name 13 moveto 490.0 150.0 430.0 150.0 from 19 to 20
+move name 2 moveto 460.0 150.0 520.0 150.0 from 20 to 21
+move name 14 moveto 520.0 150.0 460.0 150.0 from 21 to 22
+move name 11 moveto 490.0 150.0 550.0 150.0 from 22 to 23
+move name 15 moveto 550.0 150.0 490.0 150.0 from 23 to 24
+move name 2 moveto 520.0 150.0 580.0 150.0 from 24 to 25
+move name 16 moveto 580.0 150.0 520.0 150.0 from 25 to 26
+move name 11 moveto 550.0 150.0 640.0 150.0 from 26 to 27
+move name 18 moveto 640.0 150.0 550.0 150.0 from 27 to 28
+move name 2 moveto 580.0 150.0 670.0 150.0 from 28 to 29
+move name 19 moveto 670.0 150.0 580.0 150.0 from 29 to 30
+move name 3 moveto 160.0 150.0 190.0 150.0 from 30 to 31
+move name 4 moveto 190.0 150.0 160.0 150.0 from 31 to 32
+move name 3 moveto 190.0 150.0 250.0 150.0 from 32 to 33
+move name 6 moveto 250.0 150.0 190.0 150.0 from 33 to 34
+move name 5 moveto 220.0 150.0 280.0 150.0 from 34 to 35
+move name 7 moveto 280.0 150.0 220.0 150.0 from 35 to 36
+move name 3 moveto 250.0 150.0 310.0 150.0 from 36 to 37
+move name 8 moveto 310.0 150.0 250.0 150.0 from 37 to 38
+move name 5 moveto 280.0 150.0 340.0 150.0 from 38 to 39
+move name 9 moveto 340.0 150.0 280.0 150.0 from 39 to 40
+move name 3 moveto 310.0 150.0 400.0 150.0 from 40 to 41
+move name 12 moveto 400.0 150.0 310.0 150.0 from 41 to 42
+move name 5 moveto 340.0 150.0 430.0 150.0 from 42 to 43
+move name 13 moveto 430.0 150.0 340.0 150.0 from 43 to 44
+move name 10 moveto 370.0 150.0 460.0 150.0 from 44 to 45
+move name 14 moveto 460.0 150.0 370.0 150.0 from 45 to 46
+move name 3 moveto 400.0 150.0 520.0 150.0 from 46 to 47
+move name 16 moveto 520.0 150.0 400.0 150.0 from 47 to 48
+move name 5 moveto 430.0 150.0 550.0 150.0 from 48 to 49
+move name 18 moveto 550.0 150.0 430.0 150.0 from 49 to 50
+move name 0 moveto 100.0 150.0 400.0 150.0 from 50 to 51
+move name 16 moveto 400.0 150.0 100.0 150.0 from 51 to 52
+move name 1 moveto 130.0 150.0 160.0 150.0 from 52 to 53
+move name 4 moveto 160.0 150.0 130.0 150.0 from 53 to 54
+move name 1 moveto 160.0 150.0 250.0 150.0 from 54 to 55
+move name 8 moveto 250.0 150.0 160.0 150.0 from 55 to 56
+move name 6 moveto 190.0 150.0 280.0 150.0 from 56 to 57
+move name 9 moveto 280.0 150.0 190.0 150.0 from 57 to 58
+move name 7 moveto 220.0 150.0 400.0 150.0 from 58 to 59
+move name 0 moveto 400.0 150.0 220.0 150.0 from 59 to 60
+move name 4 moveto 130.0 150.0 190.0 150.0 from 60 to 61
+move name 9 moveto 190.0 150.0 130.0 150.0 from 61 to 62
+move name 8 moveto 160.0 150.0 190.0 150.0 from 62 to 63
+move name 4 moveto 190.0 150.0 160.0 150.0 from 63 to 64
+move name 1 moveto 250.0 150.0 280.0 150.0 from 64 to 65
+move name 6 moveto 280.0 150.0 250.0 150.0 from 65 to 66
+move name 1 moveto 280.0 150.0 370.0 150.0 from 66 to 67
+move name 14 moveto 370.0 150.0 280.0 150.0 from 67 to 68
+move name 12 moveto 310.0 150.0 400.0 150.0 from 68 to 69
+move name 7 moveto 400.0 150.0 310.0 150.0 from 69 to 70
+move name 6 moveto 250.0 150.0 280.0 150.0 from 70 to 71
+move name 14 moveto 280.0 150.0 250.0 150.0 from 71 to 72
+move name 13 moveto 340.0 150.0 370.0 150.0 from 72 to 73
+move name 1 moveto 370.0 150.0 340.0 150.0 from 73 to 74
+move name 10 moveto 460.0 150.0 520.0 150.0 from 74 to 75
+move name 3 moveto 520.0 150.0 460.0 150.0 from 75 to 76
+move name 15 moveto 490.0 150.0 550.0 150.0 from 76 to 77
+move name 5 moveto 550.0 150.0 490.0 150.0 from 77 to 78
+move name 10 moveto 520.0 150.0 550.0 150.0 from 78 to 79
+move name 15 moveto 550.0 150.0 520.0 150.0 from 79 to 80
+move name 17 moveto 610.0 150.0 670.0 150.0 from 80 to 81
+move name 2 moveto 670.0 150.0 610.0 150.0 from 81 to 82
+move name 11 moveto 640.0 150.0 670.0 150.0 from 82 to 83
+move name 17 moveto 670.0 150.0 640.0 150.0 from 83 to 84

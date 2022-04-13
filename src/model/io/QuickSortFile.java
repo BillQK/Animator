@@ -4,15 +4,18 @@ import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import model.command.EmptyCommand;
 import model.command.ICommands;
 import model.command.Move;
 import model.shape.AShape;
 import model.shape.Rectangle;
 import model.shape.Shape;
+import model.utils.Posn;
 import model.utils.Time;
 
 public class QuickSortFile implements ICreateMotionFIle {
@@ -72,7 +75,10 @@ public class QuickSortFile implements ICreateMotionFIle {
     quickSort(areaList, 0, numShape - 1);
     StringBuilder animationCommand = new StringBuilder();
     for (ICommands c : this.animationList) {
-      animationCommand.append(c.getCommandString()).append("\n");
+      if (c != null) {
+            animationCommand.append(c.getCommandString()).append("\n");
+      }
+
     }
     return animationCommand.toString();
   }
@@ -80,21 +86,33 @@ public class QuickSortFile implements ICreateMotionFIle {
   // A utility function to swap two elements
   private void swap(double[] arr, int i, int j)
   {
-    AShape s1 = shapeList[i];
-    AShape s2 = shapeList[j];
+
+    ICommands c1;
+    ICommands c2;
+    if (i != j) {
+      AShape s1 = shapeList[i];
+      AShape s2 = shapeList[j];
+      Posn p1 = new Posn(s1.getPosition());
+      Posn p2 = new Posn(s2.getPosition());
+
+      c1 = new Move(s1, startTime, endTime, p1, p2);
+      s1.setPosn(p2);
+      startTime++;
+      endTime++;
+      c2 = new Move(s2, startTime, endTime, p2, p1);
+      s2.setPosn(p1);
+      startTime++;
+      endTime++;
+      this.animationList.add(c1);
+      this.animationList.add(c2);
+    }
+
     double temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
     AShape temp1 = this.shapeList[i];
     shapeList[i] = shapeList[j];
     shapeList[j] = temp1;
-    arr[i] = arr[j];
-    ICommands c1 = new Move(s1, startTime, endTime, s1.getPosition(), s2.getPosition());
-    startTime++;
-    endTime++; ICommands c2 = new Move(s2, startTime, endTime, s2.getPosition(), s1.getPosition());
-    startTime++;
-    endTime++;
-    arr[j] = temp;
-    this.animationList.add(c1);
-    this.animationList.add(c2);
 
 
 
