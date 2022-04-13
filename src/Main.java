@@ -13,6 +13,11 @@ import java.util.Objects;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
+import controller.IAnimatorController;
+import controller.InteractiveCtrl;
+import controller.SVGCtrl;
+import controller.TextCtrl;
+import controller.VisualCtrl;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.command.ICommands;
@@ -39,6 +44,7 @@ public class Main {
     JOptionPane popUp = new JOptionPane();
     IAnimatorModel model = null;
     int sec = 1;
+    IAnimatorController ctrl = null;
 
     for (int i = 0; i < args.length - 1; i++) {
       String key = args[i];
@@ -81,52 +87,58 @@ public class Main {
     // case out
     switch (commandLine.get("-view")) {
       case "text":
+        ctrl = new TextCtrl(view, commandLine.get("-in"));
+        break;
       case "svg":
         if (!commandLine.containsKey("-out")) {
           System.out.println(view.getDetails());
         } else {
-          view.writeFile(commandLine.get("-out"));
+//          view.writeFile(commandLine.get("-out"));
+          ctrl = new SVGCtrl(view, commandLine.get("-in"));
         }
         break;
+      case "visual":
+        ctrl = new VisualCtrl(model, view, sec);
+      case "interactive":
+        ctrl = new InteractiveCtrl(model, view, sec);
       default:
-        view.makeVisible();
+//        view.makeVisible();
+        throw new IllegalArgumentException("Controller cannot be null");
+//         ctrl = new VisualCtrl(model, view, sec);
     }
+    ctrl.start();
 
-    if (Objects.equals(commandLine.get("-view"), "visual")) {
-      Tempo t = new Tempo(sec);
-
-      IAnimatorModel finalModel = model;
-      IAnimatorView finalView = view;
-
-      view.makeVisible();
-
-
-      ActionListener timeListener = ae -> {
-        List<AShape> losTempo = new ArrayList<>();
-//          AShape shape;
-        for (AShape s : finalModel.getShapes()) {
-//            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
-          for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
-            if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
-              c.execute(t.getTempo());
-            }
-          }
-          losTempo.add(s);
-        }
-
-        finalView.setShapes(losTempo);
-        finalView.refresh();
-        t.addTempo();
-      };
-
-
-      Timer timer = new Timer(1000 / sec, timeListener);
-      timer.start();
-
-
-    }
-
-
+//    if (Objects.equals(commandLine.get("-view"), "visual")) {
+//      Tempo t = new Tempo(sec);
+//
+//      IAnimatorModel finalModel = model;
+//      IAnimatorView finalView = view;
+//
+//      view.makeVisible();
+//
+//
+//      ActionListener timeListener = ae -> {
+//        List<AShape> losTempo = new ArrayList<>();
+////          AShape shape;
+//        for (AShape s : finalModel.getShapes()) {
+////            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
+//          for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
+//            if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
+//              c.execute(t.getTempo());
+//            }
+//          }
+//          losTempo.add(s);
+//        }
+//
+//        finalView.setShapes(losTempo);
+//        finalView.refresh();
+//        t.addTempo();
+//      };
+//
+//
+//      Timer timer = new Timer(1000 / sec, timeListener);
+//      timer.start();
+//    }
   }
 
 //  /**
@@ -155,4 +167,5 @@ public class Main {
 //      tempo++;
 //    }
 //  }
+
 }

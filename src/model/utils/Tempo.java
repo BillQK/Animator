@@ -6,7 +6,7 @@ package model.utils;
 public class Tempo {
   double tempo = 0;
 
-  public Tempo(int num) {
+  public Tempo(double num) {
     this.tempo = num;
   }
 
