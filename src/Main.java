@@ -99,11 +99,14 @@ public class Main {
         break;
       case "visual":
         ctrl = new VisualCtrl(model, view, sec);
+        break;
       case "interactive":
         ctrl = new InteractiveCtrl(model, view, sec);
+        break;
       default:
 //        view.makeVisible();
         throw new IllegalArgumentException("Controller cannot be null");
+
 //         ctrl = new VisualCtrl(model, view, sec);
     }
     ctrl.start();
