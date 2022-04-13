@@ -13,8 +13,8 @@ public class Move extends ACommand {
 
   /**
    * A constructor for Move.
-
-   * @param shape      AShape - the shape to called the move command on
+   *
+   * @param shape       AShape - the shape to called the move command on
    * @param startTime   the start time of the command
    * @param endTime     the end time of the command
    * @param origin      the origin position of the shape
@@ -36,6 +36,12 @@ public class Move extends ACommand {
     Posn newPosn = calculate(time);
 
     this.shape.setPosn(newPosn);
+  }
+
+  @Override
+  public String getCommandString() {
+    return "move name " + this.shape.getName() + " moveto " + this.origin.getX() + " " + this.origin.getY() + " "
+            + this.destination.getX() + " " + this.destination.getY() + " from " + (int) this.getStart() + " to " + (int) this.getEnd();
   }
 
   /**
@@ -88,7 +94,7 @@ public class Move extends ACommand {
   /**
    * A method to calculate the new shape's position at the given time on the given shape.
    *
-   * @param time  the given time to know where the shape at
+   * @param time the given time to know where the shape at
    * @return a Posn - new position at the time
    */
   private Posn calculate(double time) {

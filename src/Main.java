@@ -22,6 +22,7 @@ import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.command.ICommands;
 import model.io.AnimationFileReader;
+import model.io.QuickSortFile;
 import model.shape.AShape;
 import model.utils.Tempo;
 import view.AnimatorViewCreator;
@@ -39,7 +40,6 @@ public class Main {
    */
   public static void main(String[] args) {
     Map<String, String> commandLine = new HashMap<>();
-
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
     IAnimatorModel model = null;
@@ -102,12 +102,15 @@ public class Main {
       case "visual":
         ctrl = new VisualCtrl(model, view, sec);
         ctrl.start();
+        break;
       case "interactive":
         ctrl = new InteractiveCtrl(model, view, sec);
         ctrl.start();
+        break;
       default:
 //        view.makeVisible();
         throw new IllegalArgumentException("Controller cannot be null");
+
 //         ctrl = new VisualCtrl(model, view, sec);
     }
 
@@ -142,8 +145,6 @@ public class Main {
 //      Timer timer = new Timer(1000 / sec, timeListener);
 //      timer.start();
 //    }
-
-
   }
 
 //  /**

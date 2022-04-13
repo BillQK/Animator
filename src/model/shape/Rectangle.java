@@ -110,9 +110,9 @@ public class Rectangle extends AShape {
   public String getCommand() {
     return "rectangle name " + this.getName() + " min-x " + this.getPosition().getX()
             + " min-y " + this.getPosition().getY() + " width " + this.getWidth() + " height "
-            + this.getHeight() + " color " + this.getColor().getRed() + " "
-            + this.getColor().getGreen() + " " + this.getColor().getBlue() + " from "
-            + this.getTime().getStartTime() + " to " + this.getTime().getEndTime();
+            + this.getHeight() + " color " + (double) this.getColor().getRed() /10 + " "
+            + (double) this.getColor().getGreen() / 10 + " " + (double) this.getColor().getBlue() / 10 + " from "
+            + (int) this.getTime().getStartTime() + " to " + (int) this.getTime().getEndTime();
   }
 
 }
