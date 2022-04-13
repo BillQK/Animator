@@ -88,6 +88,7 @@ public class Main {
     switch (commandLine.get("-view")) {
       case "text":
         ctrl = new TextCtrl(view, commandLine.get("-in"));
+        ctrl.start();
         break;
       case "svg":
         if (!commandLine.containsKey("-out")) {
@@ -95,18 +96,20 @@ public class Main {
         } else {
 //          view.writeFile(commandLine.get("-out"));
           ctrl = new SVGCtrl(view, commandLine.get("-in"));
+          ctrl.start();
         }
         break;
       case "visual":
         ctrl = new VisualCtrl(model, view, sec);
+        ctrl.start();
       case "interactive":
         ctrl = new InteractiveCtrl(model, view, sec);
+        ctrl.start();
       default:
 //        view.makeVisible();
         throw new IllegalArgumentException("Controller cannot be null");
 //         ctrl = new VisualCtrl(model, view, sec);
     }
-    ctrl.start();
 
 //    if (Objects.equals(commandLine.get("-view"), "visual")) {
 //      Tempo t = new Tempo(sec);

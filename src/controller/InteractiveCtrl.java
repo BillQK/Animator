@@ -65,12 +65,14 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
       }
 
       finalview.setShapes(losTempo);
+      System.out.println(t.getTempo());
       finalview.refresh();
       t.addTempo();
     };
 
     this.timer = new Timer(1000 / (int) this.tempo, timeListner);
     timer.start();
+
 
   }
 
@@ -84,6 +86,38 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
     return this.tempo;
   }
 
+  private void createModelOrigin() {
+    this.view.setListener(this);
+
+    this.t = new Tempo(this.tempo);
+
+    IAnimatorModel finalmodel = model;
+    IAnimatorView finalview = view;
+
+    view.makeVisible();
+
+    ActionListener timeListner = ae -> {
+      List<AShape> losTempo = new ArrayList<>();
+      for (AShape s : finalmodel.getShapes()) {
+        for (ICommands c : finalmodel.getExecutableCommand(s.getName())) {
+          if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
+            c.execute(t.getTempo());
+          }
+        }
+        losTempo.add(s);
+      }
+
+      finalview.setShapes(losTempo);
+      System.out.println(t.getTempo());
+      finalview.refresh();
+      t.addTempo();
+    };
+
+    this.timer = new Timer(1000 / (int) this.tempo, timeListner);
+    timer.start();
+
+  }
+
   public void actionPerformed(ActionEvent ae) {
     switch (ae.getActionCommand()) {
       case "Start Button":
@@ -94,20 +128,29 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
         break;
       case "Restart Button":
         //model reset
-        this.timer.restart();
+        this.t = new Tempo(this.tempo);
+//        this.timer.restart();
+        this.createModelOrigin();
         break;
       case "SpeedUp Button":
         this.tempo += 10;
+        this.timer.setDelay( 1000 / (int) this.tempo);
         break;
       case "SpeedDown Button":
         if (this.tempo <= 0) {
-          this.tempo = 1;
+          this.timer.setDelay(this.timer.getDelay());
         } else {
-          this.tempo -= 10;
+          if (this.tempo - 10 <= 0) {
+            this.timer.setDelay(this.timer.getDelay());
+          } else {
+            this.tempo -= 10;
+            this.timer.setDelay(1000 / (int) this.tempo);
+          }
         }
         break;
       case "Loop Button":
         //model finished -> model reset
+        this.timer.start();
         break;
       default:
         throw new IllegalArgumentException("Button cannot applied");

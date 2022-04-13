@@ -48,9 +48,11 @@ public class VisualCtrl implements IAnimatorController {
       }
 
       finalview.setShapes(losTempo);
+      System.out.println(t.getTempo());
       finalview.refresh();
       t.addTempo();
     };
+
 
     this.timer = new Timer(1000 / (int) this.tempo, timeListner);
     timer.start();
