@@ -1,5 +1,6 @@
 
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import model.SimpleAnimatorModel;
 import model.command.ICommands;
 import model.io.AnimationFileReader;
 import model.shape.AShape;
+import model.utils.Tempo;
 import view.AnimatorViewCreator;
 import view.IAnimatorView;
 
@@ -44,6 +46,7 @@ public class Main {
       commandLine.put(key, value);
     }
 
+    //check if exist in, out, and view
     if (!commandLine.containsKey("-in") && !commandLine.containsKey("-out")
             && !commandLine.containsKey("-view")) {
       popUp.showMessageDialog(new Panel(), "Invalid Command",
@@ -69,6 +72,7 @@ public class Main {
               "Error", JOptionPane.ERROR_MESSAGE);
       System.exit(0);
     }
+
     // case speed
     if (commandLine.containsKey("-speed")) {
       sec = Integer.parseInt(commandLine.get("-speed"));
@@ -119,33 +123,34 @@ public class Main {
       Timer timer = new Timer(1000 / sec, timeListener);
       timer.start();
 
+
     }
   }
 
-  /**
-   * Represent the time class of the model state.
-   */
-  public static class Tempo {
-    double tempo = 0;
-
-    public Tempo(int num) {
-      this.tempo = num;
-    }
-
-    /**
-     * A method to get the current tempo.
-     *
-     * @return double - the current method
-     */
-    public double getTempo() {
-      return this.tempo;
-    }
-
-    /**
-     * A method to add one on the tempo everytime it is called.
-     */
-    public void addTempo() {
-      tempo++;
-    }
-  }
+//  /**
+//   * Represent the time class of the model state.
+//   */
+//  public static class Tempo {
+//    double tempo = 0;
+//
+//    public Tempo(int num) {
+//      this.tempo = num;
+//    }
+//
+//    /**
+//     * A method to get the current tempo.
+//     *
+//     * @return double - the current method
+//     */
+//    public double getTempo() {
+//      return this.tempo;
+//    }
+//
+//    /**
+//     * A method to add one on the tempo everytime it is called.
+//     */
+//    public void addTempo() {
+//      tempo++;
+//    }
+//  }
 }

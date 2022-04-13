@@ -2,11 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import javax.swing.*;
 
@@ -14,31 +12,25 @@ import model.IAnimatorModel;
 import view.IAnimatorView;
 import model.shape.AShape;
 
-public class AnimatorCtrl implements IAnimatorController, ActionListener {
+public class InteractiveCtrl implements IAnimatorController, ActionListener {
   private IAnimatorModel model;
   private IAnimatorView view;
   private final JOptionPane popUp;
   private double tempo;
   private boolean isLoop;
   private Timer timer;
-  private List<AShape> loShapes;
   private double lastCmdTime;
-  private int sec;
-  private Scanner s;
 
-  public AnimatorCtrl(IAnimatorModel model, IAnimatorView view, double tempo) {
+  public InteractiveCtrl(IAnimatorModel model, IAnimatorView view, double tempo, String... args) {
     this.model = model;
     this.view = view;
     this.popUp = new JOptionPane();
     this.tempo = tempo;
     this.isLoop = false;
     this.timer = null;
-    this.loShapes = null;
     this.lastCmdTime = 0;
-    //Also the second and tempo, are they the same field or not?
-    this.sec = 1;
     //Not sure about the scanner
-    this.s = new Scanner(System.in);
+
   }
 
   @Override
@@ -46,6 +38,16 @@ public class AnimatorCtrl implements IAnimatorController, ActionListener {
 
     this.view.setListener(this);
 
+  }
+
+  @Override
+  public Timer getTimer() {
+    return null;
+  }
+
+  @Override
+  public double getTempo() {
+    return 0;
   }
 
   public void actionPerformed(ActionEvent ae) {
@@ -58,6 +60,7 @@ public class AnimatorCtrl implements IAnimatorController, ActionListener {
         this.timer.stop();
         break;
       case "Restart Button":
+        //model reset
         this.timer.restart();
         break;
       case "SpeedUp Button":
@@ -71,7 +74,7 @@ public class AnimatorCtrl implements IAnimatorController, ActionListener {
         }
         break;
       case "Loop Button":
-        //
+        //model finished -> model reset
         break;
     }
   }
