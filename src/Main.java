@@ -15,10 +15,6 @@ import controller.VisualCtrl;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
-<<<<<<< HEAD
-=======
-import model.io.ICreateMotionFIle;
->>>>>>> 0b320d67a03c9c8d72850fee4e0c239d21c1bcc4
 import model.io.QuickSortFile;
 import view.AnimatorViewCreator;
 import view.IAnimatorView;
