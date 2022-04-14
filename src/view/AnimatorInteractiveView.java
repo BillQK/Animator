@@ -19,22 +19,20 @@ import model.shape.AShape;
 
 public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private final APanel panel;
-  private JToggleButton start;
-  private JToggleButton pause;
+  private JButton start;
+  private JButton pause;
   private JButton restart;
   private JButton speedup;
   private JButton speeddown;
-  private JButton loop;
-
-  //false means the loop button is not pressed, true otherwise
-  private boolean checkloop;
+  private JToggleButton loop;
+  private boolean isLoop;
 
   public AnimatorInteractiveView(IAnimatorModelState model) {
     super();
     this.setTitle("Interactive");
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.checkloop = false;
+    this.isLoop = false;
 
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(model.getWidth(), model.getHeight()));
@@ -50,11 +48,11 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     buttonPanel.setLayout(new FlowLayout());
     panel.add(buttonPanel, BorderLayout.SOUTH);
 
-    start = new JToggleButton("Start");
+    start = new JButton("Start");
     start.setActionCommand("Start Button");
     buttonPanel.add(start);
 
-    pause = new JToggleButton("Pause");
+    pause = new JButton("Pause");
     pause.setActionCommand("Pause Button");
     buttonPanel.add(pause);
 
@@ -70,7 +68,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     speeddown.setActionCommand("SpeedDown Button");
     buttonPanel.add(speeddown);
 
-    loop = new JButton("Loop");
+    loop = new JToggleButton("Loop");
     loop.setActionCommand("Loop Button");
     buttonPanel.add(loop);
 
@@ -193,4 +191,15 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     List<AShape> shapes = s;
     this.panel.setShapes(shapes);
   }
+
+  @Override
+  public void setIsLoop(boolean loop) {
+    this.isLoop = loop;
+  }
+
+  @Override
+  public boolean getIsLoop() {
+    return this.isLoop;
+  }
+
 }

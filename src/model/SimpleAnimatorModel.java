@@ -29,10 +29,11 @@ import model.utils.Time;
  * IAnimationModel<AShape> </AShape> to add and delete the specific shape and animation.
  */
 public class SimpleAnimatorModel implements IAnimatorModel {
-  private final LinkedHashMap<String, AShape> shapes;
-  private final LinkedHashMap<String, List<ICommands>> commands;
+  private LinkedHashMap<String, AShape> shapes;
+  private LinkedHashMap<String, List<ICommands>> commands;
   private final int width;
   private final int height;
+//  private final TweenBuilder Original;
 
   /**
    * A constructor for SimpleAnimationModel class with the SimpleAnimator ModelBuilder builder.
@@ -40,11 +41,31 @@ public class SimpleAnimatorModel implements IAnimatorModel {
    * @param tweenBuilder the builder pattern builder
    */
   private SimpleAnimatorModel(TweenBuilder tweenBuilder) {
+//    LinkedHashMap<String, AShape> newMap = new LinkedHashMap<>();
+//    for (AShape s : tweenBuilder.shapes.values()) {
+//      newMap.put(s.getName(), s.getTheShape());
+//    }
     this.shapes = tweenBuilder.shapes;
     this.commands = tweenBuilder.commands;
     this.width = tweenBuilder.width;
     this.height = tweenBuilder.height;
+//    this.Original = tweenBuilder;
   }
+
+
+//  public void restart() {
+//    LinkedHashMap<String, AShape> newMap = new LinkedHashMap<>();
+//    LinkedHashMap<String, ICommands> newComMap = new LinkedHashMap<>();
+//    for (AShape s : Original.shapes.values()) {
+//      newMap.put(s.getName(), s.getTheShape());
+////      for (ICommands c : Original.commands.get(s.getName())) {
+////        newComMap.put(s.getName(), )
+////      }
+//    }
+//
+//    this.shapes = Original.shapes;
+//    this.commands = Original.commands;
+//  }
 
 
   /**

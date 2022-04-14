@@ -94,4 +94,9 @@ public interface IAnimatorView {
    * @param losTempo the given list of Shapes
    */
   void setShapes(List<AShape> losTempo);
+
+  void setIsLoop(boolean loop);
+
+  boolean getIsLoop();
+
 }

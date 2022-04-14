@@ -14,7 +14,7 @@ public abstract class ACommand implements ICommands {
   private final CommandType type;
   private final double startTime;
   protected final double endTime;
-  protected final AShape shape;
+  protected AShape shape;
 
   /**
    * A constructor for ACommand class.
@@ -71,6 +71,15 @@ public abstract class ACommand implements ICommands {
 
   @Override
   public abstract void execute(double time);
+
+  @Override
+  public void setShape(AShape s) {
+    this.shape = s;
+  }
+
+  public AShape getShape() {
+    return this.shape;
+  }
 
   /**
    * Get the begin state before the command.

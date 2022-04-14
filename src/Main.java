@@ -1,17 +1,11 @@
 
 import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 
 import controller.IAnimatorController;
 import controller.InteractiveCtrl;
@@ -20,11 +14,7 @@ import controller.TextCtrl;
 import controller.VisualCtrl;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
-import model.command.ICommands;
 import model.io.AnimationFileReader;
-import model.io.QuickSortFile;
-import model.shape.AShape;
-import model.utils.Tempo;
 import view.AnimatorViewCreator;
 import view.IAnimatorView;
 

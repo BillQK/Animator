@@ -12,6 +12,8 @@ import model.shape.AShape;
  */
 public interface IAnimatorModel extends IAnimatorModelState {
 
+//  void restart();
+
   /**
    * A method to add the specific shape to the model.
    *
@@ -50,4 +52,5 @@ public interface IAnimatorModel extends IAnimatorModelState {
   void deleteCommands(String id, int orderOfCommands);
 
   List<ICommands> getExecutableCommand(String id);
+
 }

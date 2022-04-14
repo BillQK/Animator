@@ -174,4 +174,14 @@ public class AnimatorTextView implements IAnimatorView {
   public void setShapes(List<AShape> losTempo) {
     throw new UnsupportedOperationException("View does not support this method");
   }
+
+  @Override
+  public void setIsLoop(boolean loop) {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  @Override
+  public boolean getIsLoop() {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
 }

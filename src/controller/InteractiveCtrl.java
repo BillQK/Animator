@@ -1,7 +1,9 @@
 package controller;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,17 +12,19 @@ import java.util.Map;
 import javax.swing.*;
 
 import model.IAnimatorModel;
+import model.SimpleAnimatorModel;
 import model.command.ICommands;
 import model.io.AnimationFileReader;
 import model.utils.Tempo;
+import view.AnimatorViewCreator;
 import view.IAnimatorView;
 import model.shape.AShape;
 
 public class InteractiveCtrl implements IAnimatorController, ActionListener {
   private IAnimatorModel model;
   private IAnimatorView view;
-
   private final JOptionPane popUp;
+  List<AShape> ms;
 
   private double tempo;
   private Timer timer;
@@ -49,33 +53,71 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
 
     this.t = new Tempo(this.tempo);
 
-    IAnimatorModel finalmodel = model;
-    IAnimatorView finalview = view;
+    this.createNewModel();
 
-    view.makeVisible();
+    this.timer = new Timer(1000 / (int) this.tempo, ac);
+    timer.start();
+  }
 
-    ActionListener timeListner = ae -> {
+  private void createNewModel() {
+
+    ms = new ArrayList<>();
+    for (AShape sh : model.getShapes()) {
+      ms.add(sh);
+    }
+  }
+
+  ActionListener ac = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+//
+//      List<AShape> s = new ArrayList<>();
+//
+//      for (AShape sh : model.getShapes()) {
+//        s.add(sh);
+//      }
+
+      if (isLoop && (lastCmdTime - t.getTempo() < 0.000001)) {
+        timer.restart();
+        createNewModel();
+        t = new Tempo(0);
+      } else if (lastCmdTime - t.getTempo() < 0.000001) {
+        timer.stop();
+      }
+
+      List<ICommands> com = null;
+      for (AShape modelS : ms) {
+        com = model.getExecutableCommand(modelS.getName());
+        for (int j = 0; j < com.size(); j++) {
+          ICommands c = com.get(j);
+          AShape modelShape = c.getShape();
+          for (int i = 0; i < ms.size(); i++) {
+            if (modelShape.getName().equals(ms.get(i).getName())) {
+              c.setShape(ms.get(i));
+            }
+          }
+        }
+      }
+
       List<AShape> losTempo = new ArrayList<>();
-      for (AShape s : finalmodel.getShapes()) {
-        for (ICommands c : finalmodel.getExecutableCommand(s.getName())) {
+      for (AShape mShape : ms) {
+        for (ICommands c : model.getExecutableCommand(mShape.getName())) {
           if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
             c.execute(t.getTempo());
           }
         }
-        losTempo.add(s);
+        losTempo.add(mShape);
       }
 
-      finalview.setShapes(losTempo);
-      System.out.println(t.getTempo());
-      finalview.refresh();
+      view.setShapes(losTempo);
+      view.refresh();
       t.addTempo();
-    };
+      System.out.println(t.getTempo());
 
-    this.timer = new Timer(1000 / (int) this.tempo, timeListner);
-    timer.start();
+      view.makeVisible();
+    }
+  };
 
-
-  }
 
   @Override
   public Timer getTimer() {
@@ -87,37 +129,6 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
     return this.tempo;
   }
 
-  private void createModelOrigin() {
-    this.view.setListener(this);
-
-    this.t = new Tempo(this.tempo);
-
-    IAnimatorModel finalmodel = model;
-    IAnimatorView finalview = view;
-
-    view.makeVisible();
-
-    ActionListener timeListner = ae -> {
-      List<AShape> losTempo = new ArrayList<>();
-      for (AShape s : finalmodel.getShapes()) {
-        for (ICommands c : finalmodel.getExecutableCommand(s.getName())) {
-          if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
-            c.execute(t.getTempo());
-          }
-        }
-        losTempo.add(s);
-      }
-
-      finalview.setShapes(losTempo);
-      System.out.println(t.getTempo());
-      finalview.refresh();
-      t.addTempo();
-    };
-
-    this.timer = new Timer(1000 / (int) this.tempo, timeListner);
-    timer.start();
-
-  }
 
   public void actionPerformed(ActionEvent ae) {
     switch (ae.getActionCommand()) {
@@ -128,14 +139,13 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
         this.timer.stop();
         break;
       case "Restart Button":
-        //model reset
-        this.t = new Tempo(this.tempo);
-//        this.timer.restart();
-        this.createModelOrigin();
+        this.timer.restart();
+        this.createNewModel();
+        this.t = new Tempo(0);
         break;
       case "SpeedUp Button":
         this.tempo += 10;
-        this.timer.setDelay( 1000 / (int) this.tempo);
+        this.timer.setDelay(1000 / (int) this.tempo);
         break;
       case "SpeedDown Button":
         if (this.tempo <= 0) {
@@ -150,8 +160,8 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
         }
         break;
       case "Loop Button":
-        //model finished -> model reset
-        this.timer.start();
+        this.isLoop = !isLoop;
+        view.setIsLoop(isLoop);
         break;
       default:
         throw new IllegalArgumentException("Button cannot applied");

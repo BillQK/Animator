@@ -1,5 +1,7 @@
 package model.command;
 
+import model.shape.AShape;
+
 /**
  * This interface represents all the operations offered by the command.
  * The interface include method to execute a specific command on a shape
@@ -14,5 +16,9 @@ public interface ICommands extends ICommandsState, Comparable<ICommands> {
   void execute(double time);
 
   String getCommandString();
+
+  void setShape(AShape s);
+
+  AShape getShape();
 
 }

@@ -42,9 +42,11 @@ public class ChangeDimension extends ACommand {
     double newW = calculateW(time);
     double newH = calculateH(time);
 
-
+//    AShape s = this.shape.getTheShape();
     this.shape.setWidth(newW);
     this.shape.setHeight(newH);
+//    s.setWidth(newW);
+//    s.setHeight(newH);
   }
 
   @Override

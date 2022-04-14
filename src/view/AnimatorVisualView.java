@@ -156,4 +156,15 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     this.panel.setShapes(shapes);
   }
 
+  @Override
+  public void setIsLoop(boolean loop) {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  @Override
+  public boolean getIsLoop() {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+
 }
