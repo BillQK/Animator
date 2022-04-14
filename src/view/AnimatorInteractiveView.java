@@ -1,6 +1,8 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -17,6 +19,11 @@ import controller.IAnimatorController;
 import model.IAnimatorModelState;
 import model.shape.AShape;
 
+/**
+ * Represents an interactive view class which extends JFrame and implements IAnimatorView,
+ * which represent us a visual interactive running animation which allow us to start, pause,
+ * resume, restart, looping, increase and decrease the speed of running the animation.
+ */
 public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private final APanel panel;
   private JButton start;
@@ -27,6 +34,12 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private JToggleButton loop;
   private boolean isLoop;
 
+  /**
+   * Constructor of the AnimatorInteractiveView. This is where we set up our JFrame and adding our
+   * panel to paint the view.
+   *
+   * @param model the given model
+   */
   public AnimatorInteractiveView(IAnimatorModelState model) {
     super();
     this.setTitle("Interactive");
@@ -192,11 +205,21 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.panel.setShapes(shapes);
   }
 
+  /**
+   * Method to set the boolean IsLoop into the given boolean.
+   *
+   * @param loop boolean - the given boolean to set the IsLoop as
+   */
   @Override
   public void setIsLoop(boolean loop) {
     this.isLoop = loop;
   }
 
+  /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
   @Override
   public boolean getIsLoop() {
     return this.isLoop;

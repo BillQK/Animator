@@ -95,8 +95,18 @@ public interface IAnimatorView {
    */
   void setShapes(List<AShape> losTempo);
 
+  /**
+   * Method to set the boolean IsLoop into the given boolean.
+   *
+   * @param loop boolean - the given boolean to set the IsLoop as
+   */
   void setIsLoop(boolean loop);
 
+  /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
   boolean getIsLoop();
 
 }

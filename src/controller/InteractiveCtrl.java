@@ -1,44 +1,50 @@
 package controller;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import model.IAnimatorModel;
-import model.SimpleAnimatorModel;
 import model.command.ICommands;
-import model.io.AnimationFileReader;
 import model.utils.Tempo;
-import view.AnimatorViewCreator;
 import view.IAnimatorView;
 import model.shape.AShape;
 
+/**
+ * An Interactive Visual View Controller class. This controller offers a visual view class
+ * with button click which user can press the button to manipulate the view to start, pause,
+ * resume, restart, looping, increase and decrease the speed.
+ */
 public class InteractiveCtrl implements IAnimatorController, ActionListener {
   private IAnimatorModel model;
   private IAnimatorView view;
   private final JOptionPane popUp;
-  List<AShape> ms;
+  private List<AShape> ms;
 
-  private double tempo;
+  private double speed;
   private Timer timer;
   private Tempo t;
 
   private boolean isLoop;
   private double lastCmdTime;
 
-  public InteractiveCtrl(IAnimatorModel model, IAnimatorView view, double tempo) {
+  /**
+   * Constructor for InteractiveCtrl with the given model, view and speed.
+   *
+   * @param model IAnimatorModel - the given model
+   * @param view IAnimatorView - the given view
+   * @param speed double - the view given speed
+   */
+  public InteractiveCtrl(IAnimatorModel model, IAnimatorView view, double speed) {
     this.model = model;
     this.view = view;
     this.popUp = new JOptionPane();
 
-    this.tempo = tempo;
+    this.speed = speed;
     this.timer = null;
     this.t = null;
 
@@ -46,19 +52,25 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
     this.lastCmdTime = model.getLastTimeCommands();
   }
 
+  /**
+   * Method to start the controller and send the information to view to know what to show.
+   */
   @Override
   public void start() {
 
     this.view.setListener(this);
 
-    this.t = new Tempo(this.tempo);
+    this.t = new Tempo(this.speed);
 
     this.createNewModel();
 
-    this.timer = new Timer(1000 / (int) this.tempo, ac);
+    this.timer = new Timer(1000 / (int) this.speed, ac);
     timer.start();
   }
 
+  /**
+   * A method to create a deep copy of the list of all the Shape from the model.
+   */
   private void createNewModel() {
 
     ms = new ArrayList<>();
@@ -118,15 +130,24 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
     }
   };
 
-
+  /**
+   * Method to get the build-in timer for the controller/view.
+   *
+   * @return Timer - the system time
+   */
   @Override
   public Timer getTimer() {
     return this.timer;
   }
 
+  /**
+   * Method to get the speed that the user put in.
+   *
+   * @return double - the tempo speed
+   */
   @Override
-  public double getTempo() {
-    return this.tempo;
+  public double getSpeed() {
+    return this.speed;
   }
 
 
@@ -144,18 +165,18 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
         this.t = new Tempo(0);
         break;
       case "SpeedUp Button":
-        this.tempo += 10;
-        this.timer.setDelay(1000 / (int) this.tempo);
+        this.speed += 10;
+        this.timer.setDelay(1000 / (int) this.speed);
         break;
       case "SpeedDown Button":
-        if (this.tempo <= 0) {
+        if (this.speed <= 0) {
           this.timer.setDelay(this.timer.getDelay());
         } else {
-          if (this.tempo - 10 <= 0) {
+          if (this.speed - 10 <= 0) {
             this.timer.setDelay(this.timer.getDelay());
           } else {
-            this.tempo -= 10;
-            this.timer.setDelay(1000 / (int) this.tempo);
+            this.speed -= 10;
+            this.timer.setDelay(1000 / (int) this.speed);
           }
         }
         break;
