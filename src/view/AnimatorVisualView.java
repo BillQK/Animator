@@ -3,6 +3,7 @@ package view;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -99,21 +100,20 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   }
 
   /**
-   * Set up the controller to handle click events in this view.
-   *
-   * @param listener the controller
-   */
-  @Override
-  public void addListener(IAnimatorController listener) {
-    throw new UnsupportedOperationException("View does not support this method");
-  }
-
-  /**
    * Set up the button listener to handle the button click events in this view.
    *
    * @param listener the action listener
    */
-  public void setListener(ActionListener listener) {
+  public void addListener(ActionListener listener) {
+    throw new UnsupportedOperationException("View does not support this method");
+  }
+
+  /**
+   * Set up the key listener to handle the key pressed in this view.
+   *
+   * @param klistener the action listener
+   */
+  public void addKeyListener(KeyListener klistener) {
     throw new UnsupportedOperationException("View does not support this method");
   }
 

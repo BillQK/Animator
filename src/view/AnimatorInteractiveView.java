@@ -7,15 +7,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.List;
 
-import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 
-
-import controller.IAnimatorController;
 import model.IAnimatorModelState;
 import model.shape.AShape;
 
@@ -141,27 +138,31 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   }
 
   /**
-   * Set up the controller to handle click events in this view.
-   *
-   * @param listener the controller
-   */
-  @Override
-  public void addListener(IAnimatorController listener) {
-
-  }
-
-  /**
    * Set up the button listener to handle the button click events in this view.
    *
    * @param listener the action listener
    */
-  public void setListener(ActionListener listener) {
+  public void addListener(ActionListener listener) {
     start.addActionListener(listener);
     pause.addActionListener(listener);
     restart.addActionListener(listener);
     speedup.addActionListener(listener);
     speeddown.addActionListener(listener);
     loop.addActionListener(listener);
+  }
+
+  /**
+   * Set up the key listener to handle the key pressed in this view.
+   *
+   * @param klistener the action listener
+   */
+  public void addKeyListener(KeyListener klistener) {
+    start.addKeyListener(klistener);
+    pause.addKeyListener(klistener);
+    restart.addKeyListener(klistener);
+    speedup.addKeyListener(klistener);
+    speeddown.addKeyListener(klistener);
+    loop.addKeyListener(klistener);
   }
 
   /**

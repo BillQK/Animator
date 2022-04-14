@@ -1,9 +1,9 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.List;
 
-import controller.IAnimatorController;
 import model.shape.AShape;
 
 /**
@@ -56,20 +56,19 @@ public interface IAnimatorView {
    */
   void writeFile(String fileName);
 
-
-  /**
-   * Set up the controller to handle click events in this view.
-   *
-   * @param listener the controller
-   */
-  void addListener(IAnimatorController listener);
-
   /**
    * Set up the button listener to handle the button click events in this view.
    *
    * @param listener the action listener
    */
-  void setListener(ActionListener listener);
+  void addListener(ActionListener listener);
+
+  /**
+   * Set up the key listener to handle the key pressed in this view.
+   *
+   * @param klistener the action listener
+   */
+  void addKeyListener(KeyListener klistener);
 
   /**
    * Refresh the view to reflect any changes in the game state.
