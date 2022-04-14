@@ -175,11 +175,21 @@ public class AnimatorTextView implements IAnimatorView {
     throw new UnsupportedOperationException("View does not support this method");
   }
 
+  /**
+   * Method to set the boolean IsLoop into the given boolean.
+   *
+   * @param loop boolean - the given boolean to set the IsLoop as
+   */
   @Override
   public void setIsLoop(boolean loop) {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
+  /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
   @Override
   public boolean getIsLoop() {
     throw new UnsupportedOperationException("View doesn't support this method");

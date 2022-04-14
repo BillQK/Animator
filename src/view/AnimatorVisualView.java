@@ -40,7 +40,9 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     JScrollPane scroll = new JScrollPane(panel);
     scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-    scroll.setBounds(50, 30, 300, 50);
+    //set the bound problems
+    scroll.setBounds(100, 100, 300, 500);
+    scroll.setPreferredSize(new Dimension(800,800));
 
     this.add(scroll, BorderLayout.CENTER);
     this.pack();
@@ -156,11 +158,21 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     this.panel.setShapes(shapes);
   }
 
+  /**
+   * Method to set the boolean IsLoop into the given boolean.
+   *
+   * @param loop boolean - the given boolean to set the IsLoop as
+   */
   @Override
   public void setIsLoop(boolean loop) {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
+  /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
   @Override
   public boolean getIsLoop() {
     throw new UnsupportedOperationException("View doesn't support this method");
