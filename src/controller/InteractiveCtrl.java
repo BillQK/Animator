@@ -62,11 +62,9 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
 
     this.t = new Tempo(0);
 
-
     this.createNewModel();
 
     this.timer = new Timer(1000 / (int) this.speed, ac);
-    timer.start();
   }
 
   /**
