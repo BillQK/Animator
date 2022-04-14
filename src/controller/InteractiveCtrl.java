@@ -60,11 +60,8 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
   }
 
   private void createNewModel() {
-
     ms = new ArrayList<>();
-    for (AShape sh : model.getShapes()) {
-      ms.add(sh);
-    }
+    ms.addAll(model.getShapes());
   }
 
   ActionListener ac = new ActionListener() {
