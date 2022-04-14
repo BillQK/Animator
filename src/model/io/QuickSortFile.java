@@ -42,7 +42,7 @@ public class QuickSortFile implements ICreateMotionFIle {
   public void createFile(String name) {
     try {
       BufferedWriter output = new BufferedWriter(new FileWriter(name + ".txt"));
-      output.write("canvas " + 400 +" " + 500);
+      output.write("canvas " + (int) WIDTH * numShape + " " + 500 + "\n");
       output.write(createRandomObject(numShape));
       output.write(createCommandObject());
       output.close();
