@@ -42,6 +42,7 @@ public class QuickSortFile implements ICreateMotionFIle {
   public void createFile(String name) {
     try {
       BufferedWriter output = new BufferedWriter(new FileWriter(name + ".txt"));
+      output.write("canvas " + 400 +" " + 500);
       output.write(createRandomObject(numShape));
       output.write(createCommandObject());
       output.close();
@@ -67,7 +68,7 @@ public class QuickSortFile implements ICreateMotionFIle {
       AShape current = new Rectangle(String.valueOf(i), Shape.RECTANGLE,
               new Color(rand, 0, 0),
               xPosition + i * WIDTH, yPosition,
-              WIDTH, rand * 50 , new Time(0, end));
+              WIDTH, rand * 50, new Time(0, end));
       shapeList[i] = current;
     }
     StringBuilder shapeCommand = new StringBuilder();
@@ -85,7 +86,7 @@ public class QuickSortFile implements ICreateMotionFIle {
     createChangeColor();
     StringBuilder animationCommand = new StringBuilder();
     for (ICommands c : this.animationList) {
-        animationCommand.append(c.getCommandString()).append("\n");
+      animationCommand.append(c.getCommandString()).append("\n");
     }
     return animationCommand.toString();
   }
@@ -123,19 +124,10 @@ public class QuickSortFile implements ICreateMotionFIle {
 
   }
 
-  /* This function takes last element as pivot, places
-     the pivot element at its correct position in sorted
-     array, and places all smaller (smaller than pivot)
-     to left of pivot and all greater elements to right
-     of pivot */
   private int partition(double[] arr, int low, int high) {
-
     // pivot
     double pivot = arr[high];
 
-    // Index of smaller element and
-    // indicates the right position
-    // of pivot found so far
     int i = (low - 1);
 
     for (int j = low; j <= high - 1; j++) {
