@@ -72,22 +72,13 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
    * A method to create a deep copy of the list of all the Shape from the model.
    */
   private void createNewModel() {
-
     ms = new ArrayList<>();
-    for (AShape sh : model.getShapes()) {
-      ms.add(sh);
-    }
+    ms.addAll(model.getShapes());
   }
 
   ActionListener ac = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-//
-//      List<AShape> s = new ArrayList<>();
-//
-//      for (AShape sh : model.getShapes()) {
-//        s.add(sh);
-//      }
 
       if (isLoop && (lastCmdTime - t.getTempo() < 0.000001)) {
         timer.restart();

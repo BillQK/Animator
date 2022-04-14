@@ -219,6 +219,9 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     for (ICommands c : commandsList) {
       time.add(c.getEnd());
     }
+    if (time.size() == 0) {
+      return 0;
+    }
     return Collections.max(time);
   }
 
