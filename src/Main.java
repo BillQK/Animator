@@ -15,6 +15,7 @@ import controller.VisualCtrl;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
+import model.io.QuickSortFile;
 import view.AnimatorViewCreator;
 import view.IAnimatorView;
 
@@ -29,6 +30,7 @@ public class Main {
    * @param args the given array of arguments to run the main method through
    */
   public static void main(String[] args) {
+//    new QuickSortFile(100).createFile("ditmemay");
     Map<String, String> commandLine = new HashMap<>();
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
