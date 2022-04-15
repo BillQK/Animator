@@ -24,7 +24,7 @@ public final class AnimationStart {
       }
     }
 
-    AnimationStart.run(ms, model, t, view);
+    run(ms, model, t, view);
   }
 
   private static void run(List<AShape> ms, IAnimatorModel model, Tempo t, IAnimatorView view) {

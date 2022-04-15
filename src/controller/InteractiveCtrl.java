@@ -93,9 +93,6 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
     }
   };
 
-
-
-
   /**
    * Method to get the build-in timer for the controller/view.
    *
