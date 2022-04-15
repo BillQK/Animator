@@ -162,7 +162,8 @@ implement the restart and loop since our model has been mutated with the animati
 
 Then when we create our two animations class, we have another method in ICommand which will print
 out the command in String formate which let us know what it did. For example, "canvas 300 300",
-"retangle name rec1 min-x ....". Furthermore, for the 2 animations, we create a CustomMotionFile,
+"rectangle name background min-x 0 min-y 0 width 800 height 800 color 1 1 0.9 from 1 to 200 \n".
+Furthermore, for the 2 animations, we create a CustomMotionFile,
 QuickSortFile and ICreationMotionFile, which is our new interface for readfile part.
 
 We also create an AnimationStart class which we pull out duplicate code in both our visual and
