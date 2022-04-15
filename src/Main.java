@@ -15,7 +15,6 @@ import controller.VisualCtrl;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
-import model.io.QuickSortFile;
 import view.AnimatorViewCreator;
 import view.IAnimatorView;
 
@@ -86,7 +85,6 @@ public class Main {
         if (!commandLine.containsKey("-out")) {
           System.out.println(view.getDetails());
         } else {
-//          view.writeFile(commandLine.get("-out"));
           ctrl = new SVGCtrl(view, commandLine.get("-in"));
           ctrl.start();
           break;

@@ -53,7 +53,7 @@ public interface IAnimatorModel extends IAnimatorModelState {
    * A Method to get the List of ICommands of the specific shape's id.
    *
    * @param id the given string to get the list of command for the specific shape.
-   * @return List<ICommands> - the list of commands
+   * @return List of Commands - the list of commands
    */
   List<ICommands> getExecutableCommand(String id);
 

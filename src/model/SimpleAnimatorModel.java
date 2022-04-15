@@ -154,7 +154,7 @@ public class SimpleAnimatorModel implements IAnimatorModel {
    * A Method to get the List of ICommands of the specific shape's id.
    *
    * @param id the given string to get the list of command for the specific shape.
-   * @return List<ICommands> - the list of commands
+   * @return List of ICommand - the list of commands
    */
   public List<ICommands> getExecutableCommand(String id) {
     return this.commands.get(id);
