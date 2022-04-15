@@ -7,11 +7,10 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import model.IAnimatorModel;
-import model.command.ICommands;
+import model.utils.AnimationStart;
 import model.utils.Tempo;
 import view.IAnimatorView;
 import model.shape.AShape;
@@ -22,9 +21,8 @@ import model.shape.AShape;
  * resume, restart, looping, increase and decrease the speed.
  */
 public class InteractiveCtrl implements IAnimatorController, ActionListener, KeyListener {
-  private IAnimatorModel model;
-  private IAnimatorView view;
-  private final JOptionPane popUp;
+  private final IAnimatorModel model;
+  private final IAnimatorView view;
   private List<AShape> ms;
 
   private double speed;
@@ -44,7 +42,6 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
   public InteractiveCtrl(IAnimatorModel model, IAnimatorView view, double speed) {
     this.model = model;
     this.view = view;
-    this.popUp = new JOptionPane();
 
     this.speed = speed;
     this.timer = null;
@@ -92,38 +89,12 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
         timer.stop();
       }
 
-      List<ICommands> com = null;
-      for (AShape modelS : ms) {
-        com = model.getExecutableCommand(modelS.getName());
-        for (int j = 0; j < com.size(); j++) {
-          ICommands c = com.get(j);
-          AShape modelShape = c.getShape();
-          for (int i = 0; i < ms.size(); i++) {
-            if (modelShape.getName().equals(ms.get(i).getName())) {
-              c.setShape(ms.get(i));
-            }
-          }
-        }
-      }
-
-      List<AShape> losTempo = new ArrayList<>();
-      for (AShape mShape : ms) {
-        for (ICommands c : model.getExecutableCommand(mShape.getName())) {
-          if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
-            c.execute(t.getTempo());
-          }
-        }
-        losTempo.add(mShape);
-      }
-
-      view.setShapes(losTempo);
-      view.refresh();
-      t.addTempo();
-      System.out.println(t.getTempo());
-
-      view.makeVisible();
+      AnimationStart.execute(ms, model, t, view);
     }
   };
+
+
+
 
   /**
    * Method to get the build-in timer for the controller/view.

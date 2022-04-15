@@ -7,8 +7,8 @@ import java.util.List;
 import javax.swing.Timer;
 
 import model.IAnimatorModel;
-import model.command.ICommands;
 import model.shape.AShape;
+import model.utils.AnimationStart;
 import model.utils.Tempo;
 import view.IAnimatorView;
 
@@ -18,9 +18,9 @@ import view.IAnimatorView;
  * visual with no control or manipulate on the view.
  */
 public class VisualCtrl implements IAnimatorController {
-  private IAnimatorModel model;
-  private IAnimatorView view;
-  private double speed;
+  private final IAnimatorModel model;
+  private final IAnimatorView view;
+  private final double speed;
   private Tempo t;
   private Timer timer;
   private List<AShape> ms;
@@ -49,41 +49,10 @@ public class VisualCtrl implements IAnimatorController {
 
 
     ms = new ArrayList<>();
-    for (AShape sh : model.getShapes()) {
-      ms.add(sh);
-    }
+    ms.addAll(model.getShapes());
 
     ActionListener timeListner = ae -> {
-      List<ICommands> com = null;
-      for (AShape modelS : ms) {
-        com = model.getExecutableCommand(modelS.getName());
-        for (int j = 0; j < com.size(); j++) {
-          ICommands c = com.get(j);
-          AShape modelShape = c.getShape();
-          for (int i = 0; i < ms.size(); i++) {
-            if (modelShape.getName().equals(ms.get(i).getName())) {
-              c.setShape(ms.get(i));
-            }
-          }
-        }
-      }
-
-      List<AShape> losTempo = new ArrayList<>();
-      for (AShape mShape : ms) {
-        for (ICommands c : model.getExecutableCommand(mShape.getName())) {
-          if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
-            c.execute(t.getTempo());
-          }
-        }
-        losTempo.add(mShape);
-      }
-
-      view.setShapes(losTempo);
-      view.refresh();
-      t.addTempo();
-      System.out.println(t.getTempo());
-
-      view.makeVisible();
+      AnimationStart.execute(ms, model, t, view);
     };
 
     this.timer = new Timer(1000 / (int) this.speed, timeListner);
