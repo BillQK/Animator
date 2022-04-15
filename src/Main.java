@@ -37,6 +37,7 @@ public class Main {
     JOptionPane popUp = new JOptionPane();
     IAnimatorModel model = null;
     int sec = 1;
+
     IAnimatorController ctrl = null;
 
     for (int i = 0; i < args.length - 1; i++) {
