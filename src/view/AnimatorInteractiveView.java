@@ -23,12 +23,12 @@ import model.shape.AShape;
  */
 public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private final APanel panel;
-  private JButton start;
-  private JButton pause;
-  private JButton restart;
-  private JButton speedup;
-  private JButton speeddown;
-  private JToggleButton loop;
+  private final JButton start;
+  private final JButton pause;
+  private final JButton restart;
+  private final JButton speedup;
+  private final JButton speeddown;
+  private final JToggleButton loop;
   private boolean isLoop;
 
   /**

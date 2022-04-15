@@ -29,8 +29,8 @@ import model.utils.Time;
  * IAnimationModel<AShape> </AShape> to add and delete the specific shape and animation.
  */
 public class SimpleAnimatorModel implements IAnimatorModel {
-  private LinkedHashMap<String, AShape> shapes;
-  private LinkedHashMap<String, List<ICommands>> commands;
+  private final LinkedHashMap<String, AShape> shapes;
+  private final LinkedHashMap<String, List<ICommands>> commands;
   private final int width;
   private final int height;
 //  private final TweenBuilder Original;

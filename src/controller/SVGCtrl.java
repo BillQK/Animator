@@ -8,7 +8,7 @@ import view.IAnimatorView;
  * in an SVG style which will show the duration, time, speed, and what field of the shape changed.
  */
 public class SVGCtrl implements IAnimatorController {
-  private IAnimatorView view;
+  private final IAnimatorView view;
   private final String filename;
 
   /**

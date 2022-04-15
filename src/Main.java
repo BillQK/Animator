@@ -15,6 +15,7 @@ import controller.VisualCtrl;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.io.AnimationFileReader;
+import model.io.CustomMotionFile;
 import model.io.QuickSortFile;
 import view.AnimatorViewCreator;
 import view.IAnimatorView;
@@ -30,7 +31,7 @@ public class Main {
    * @param args the given array of arguments to run the main method through
    */
   public static void main(String[] args) {
-    new QuickSortFile( 200).createFile("svf");
+    new CustomMotionFile().createFile("pyramid");
     Map<String, String> commandLine = new HashMap<>();
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
@@ -48,7 +49,7 @@ public class Main {
     //check if exist in, out, and view
     if (!commandLine.containsKey("-in") && !commandLine.containsKey("-out")
             && !commandLine.containsKey("-view")) {
-      popUp.showMessageDialog(new Panel(), "Invalid Command",
+      JOptionPane.showMessageDialog(new Panel(), "Invalid Command",
               "Error", JOptionPane.ERROR_MESSAGE);
     }
 
@@ -58,7 +59,7 @@ public class Main {
       model = fr.readFile(commandLine.get("-in"), new SimpleAnimatorModel.TweenBuilder());
 
     } catch (IOException e) {
-      popUp.showMessageDialog(new Panel(), "File Not Found",
+      JOptionPane.showMessageDialog(new Panel(), "File Not Found",
               "Error", JOptionPane.ERROR_MESSAGE);
       System.exit(0);
     }
@@ -67,7 +68,7 @@ public class Main {
     try {
       view = AnimatorViewCreator.create(commandLine.get("-view"), model, sec);
     } catch (IllegalArgumentException e) {
-      popUp.showMessageDialog(new Panel(), "View can't be null",
+      JOptionPane.showMessageDialog(new Panel(), "View can't be null",
               "Error", JOptionPane.ERROR_MESSAGE);
       System.exit(0);
     }
@@ -108,64 +109,6 @@ public class Main {
 //         ctrl = new VisualCtrl(model, view, sec);
     }
 
-//    if (Objects.equals(commandLine.get("-view"), "visual")) {
-//      Tempo t = new Tempo(sec);
-//
-//      IAnimatorModel finalModel = model;
-//      IAnimatorView finalView = view;
-//
-//      view.makeVisible();
-//
-//
-//      ActionListener timeListener = ae -> {
-//        List<AShape> losTempo = new ArrayList<>();
-////          AShape shape;
-//        for (AShape s : finalModel.getShapes()) {
-////            shape = finalModel.getShapeAtTick(t.getTempo(), s.getName());
-//          for (ICommands c : finalModel.getExecutableCommand(s.getName())) {
-//            if (t.getTempo() >= c.getStart() && t.getTempo() <= c.getEnd()) {
-//              c.execute(t.getTempo());
-//            }
-//          }
-//          losTempo.add(s);
-//        }
-//
-//        finalView.setShapes(losTempo);
-//        finalView.refresh();
-//        t.addTempo();
-//      };
-//
-//
-//      Timer timer = new Timer(1000 / sec, timeListener);
-//      timer.start();
-//    }
+
   }
-
-//  /**
-//   * Represent the time class of the model state.
-//   */
-//  public static class Tempo {
-//    double tempo = 0;
-//
-//    public Tempo(int num) {
-//      this.tempo = num;
-//    }
-//
-//    /**
-//     * A method to get the current tempo.
-//     *
-//     * @return double - the current method
-//     */
-//    public double getTempo() {
-//      return this.tempo;
-//    }
-//
-//    /**
-//     * A method to add one on the tempo everytime it is called.
-//     */
-//    public void addTempo() {
-//      tempo++;
-//    }
-//  }
-
 }

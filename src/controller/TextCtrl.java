@@ -9,7 +9,7 @@ import view.IAnimatorView;
  * text style which will show the state of the shape after each motion.
  */
 public class TextCtrl implements IAnimatorController {
-  private IAnimatorView view;
+  private final IAnimatorView view;
   private final String filename;
 
   /**
