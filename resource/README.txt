@@ -130,7 +130,7 @@ Graphics to Graphics2D for more operations.
 
 We also create a main method which is where we start running our animation and command-line to run
 the view. Beside that, we create an AnimatorViewCreator to make a factory method so that depend on
-what the command-line want to show the view at, we will create the specify view as required.
+what the command-line want to show the view at, we will create to specify view as required.
 
 
 ASSIGNMENT 7
@@ -150,7 +150,7 @@ interface, we have 3 methods which are getTimer which get the timer of the model
 the speed from the user input and lastly start - a method so that when the controller called start,
 it will start the view in the way the user want to see either svg, text, visual, or interactive.
 For our Interactive controller, beside implements our IAnimatorController interface, we also need
-to implement an ActionListener, and a KeyListener. By implementing these listener, we will also
+to implement an ActionListener, and a KeyListener. By implementing these listeners, we will also
 have to override the method of that listener which is actionPerformed and KeyTyped, KeyPressed, and
 KeyReleased to properly assign the key and button to do the action we decide.
 
@@ -161,15 +161,18 @@ everytime our shape run the animation, we mutate straight on the shape and this 
 implement the restart and loop since our model has been mutated with the animation/commands.
 
 Then when we create our two animations class, we have another method in ICommand which will print
-out the command in String formate which let us know what it did. For example, "canvas 300 300",
+out the command in String format which let us know what it did. For example, "canvas 300 300",
 "rectangle name background min-x 0 min-y 0 width 800 height 800 color 1 1 0.9 from 1 to 200 \n".
 Furthermore, for the 2 animations, we create a CustomMotionFile,
-QuickSortFile and ICreationMotionFile, which is our new interface for readfile part.
+QuickSortFile and ICreateMotionFile, which is our new interface for readfile part.
 
 We also create an AnimationStart class which we pull out duplicate code in both our visual and
 interactive controller which its jobs is how to run the actionPerformed. Other than that. we create
 Mock view to test if our view called successfully to the constructor and we add test for those new
 added method.
+
+Our two Custom Animation is called QuickSort and ADayInEgypt. To create the animation, create an
+ICreateMotionFile object and called createFile(String name), run it with the program.
 
 Contributors names and contact info
 Khanh Nguyen
