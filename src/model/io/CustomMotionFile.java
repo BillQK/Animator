@@ -65,7 +65,34 @@ public class CustomMotionFile implements ICreateMotionFIle {
             + "change-color name rec19 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199 \n"
             + "change-color name rec20 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199 \n"
             + "change-color name rec21 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199 \n"
+            + "move name moon moveto 500 100 400 100 from 100 to 199 \n"
 
+            + "move name rec1 moveto 100 400 150 400 from 100 to 199 \n"
+            + "move name rec2 moveto 150 400 200 400 from 100 to 199 \n"
+            + "move name rec3 moveto 200 400 250 400 from 100 to 199 \n"
+            + "move name rec4 moveto 250 400 300 400 from 100 to 199 \n"
+            + "move name rec5 moveto 300 400 350 400 from 100 to 199 \n"
+            + "move name rec6 moveto 350 400 400 400 from 100 to 199 \n"
+
+            + "move name rec7 moveto 125 375 175 375 from 100 to 199 \n"
+            + "move name rec8 moveto 175 375 225 375 from 100 to 199 \n"
+            + "move name rec9 moveto 225 375 275 375 from 100 to 199 \n"
+            + "move name rec10 moveto 275 375 325 375 from 100 to 199 \n"
+            + "move name rec11 moveto 325 375 375 375 from 100 to 199 \n"
+
+            + "move name rec12 moveto 150 350 200 350 from 100 to 199 \n"
+            + "move name rec13 moveto 200 350 250 350 from 100 to 199 \n"
+            + "move name rec14 moveto 250 350 300 350 from 100 to 199 \n"
+            + "move name rec15 moveto 300 350 350 350 from 100 to 199 \n"
+
+            + "move name rec16 moveto 175 325 225 325 from 100 to 199 \n"
+            + "move name rec17 moveto 225 325 275 325 from 100 to 199 \n"
+            + "move name rec18 moveto 275 325 325 325 from 100 to 199 \n"
+
+            + "move name rec19 moveto 200 300 250 300 from 100 to 199 \n"
+            + "move name rec20 moveto 250 300 300 300 from 100 to 199 \n"
+
+            + "move name rec21 moveto 225 275 275 275 from 100 to 199 \n"
             ;
     return s;
   }
