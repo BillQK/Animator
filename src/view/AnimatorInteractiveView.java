@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import javax.swing.JOptionPane;
 
 import model.IAnimatorModelState;
 import model.shape.AShape;
