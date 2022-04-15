@@ -156,16 +156,6 @@ public class AnimatorTextView implements IAnimatorView {
   }
 
   /**
-   * A method to show an error message.
-   *
-   * @param error String - the error message
-   */
-  @Override
-  public void showErrorMessage(String error) {
-    throw new UnsupportedOperationException("View does not support this method");
-  }
-
-  /**
    * A method to set the list of shapes field to the given list of shape arguments.
    *
    * @param losTempo the given list of Shapes

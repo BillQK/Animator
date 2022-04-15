@@ -1,8 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
-
+import java.awt.Color;
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
 import model.command.CommandType;

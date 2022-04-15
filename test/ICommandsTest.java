@@ -1,7 +1,6 @@
 import org.junit.Test;
 
-import java.awt.*;
-
+import java.awt.Color;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.command.ChangeColor;
@@ -22,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 public class ICommandsTest {
 
   IAnimatorModel s = new SimpleAnimatorModel.TweenBuilder()
-          .addRectangle("1", 10,10,30,30, 250,250,250,
+            .addRectangle("1", 10,10,30,30, 250,250,250,
                                 0, 30)
             .addMove("1", 2,2, 30,30, 0,10)
             .addColorChange("1", 2,2,2, 100,100,100,5, 20)
@@ -61,5 +60,17 @@ public class ICommandsTest {
     assertEquals(s1.getWidth(), 20, delta);
   }
 
+  @Test
+  public void testsetShape() {
+    AShape newS = s.getShapes().get(0).getTheShape();
+    assertEquals( c1.getTheShape().getName(), "2");
+    c1.setShape(newS);
+    assertEquals(c1.getTheShape().getName(),"1");
+  }
+
+  @Test
+  public void testgetShape() {
+    assertEquals( c1.getShape().getName(), "2");
+  }
 
 }

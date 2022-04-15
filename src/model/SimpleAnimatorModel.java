@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -29,44 +29,22 @@ import model.utils.Time;
  * IAnimationModel<AShape> </AShape> to add and delete the specific shape and animation.
  */
 public class SimpleAnimatorModel implements IAnimatorModel {
-  private LinkedHashMap<String, AShape> shapes;
-  private LinkedHashMap<String, List<ICommands>> commands;
+  private final LinkedHashMap<String, AShape> shapes;
+  private final LinkedHashMap<String, List<ICommands>> commands;
   private final int width;
   private final int height;
-//  private final TweenBuilder Original;
 
   /**
    * A constructor for SimpleAnimationModel class with the SimpleAnimator ModelBuilder builder.
    *
    * @param tweenBuilder the builder pattern builder
    */
-  private SimpleAnimatorModel(TweenBuilder tweenBuilder) {
-//    LinkedHashMap<String, AShape> newMap = new LinkedHashMap<>();
-//    for (AShape s : tweenBuilder.shapes.values()) {
-//      newMap.put(s.getName(), s.getTheShape());
-//    }
+  public SimpleAnimatorModel(TweenBuilder tweenBuilder) {
     this.shapes = tweenBuilder.shapes;
     this.commands = tweenBuilder.commands;
     this.width = tweenBuilder.width;
     this.height = tweenBuilder.height;
-//    this.Original = tweenBuilder;
   }
-
-
-//  public void restart() {
-//    LinkedHashMap<String, AShape> newMap = new LinkedHashMap<>();
-//    LinkedHashMap<String, ICommands> newComMap = new LinkedHashMap<>();
-//    for (AShape s : Original.shapes.values()) {
-//      newMap.put(s.getName(), s.getTheShape());
-////      for (ICommands c : Original.commands.get(s.getName())) {
-////        newComMap.put(s.getName(), )
-////      }
-//    }
-//
-//    this.shapes = Original.shapes;
-//    this.commands = Original.commands;
-//  }
-
 
   /**
    * A method to add the specific shape to the model.
@@ -172,6 +150,12 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     return new ArrayList<>(this.commands.get(id));
   }
 
+  /**
+   * A Method to get the List of ICommands of the specific shape's id.
+   *
+   * @param id the given string to get the list of command for the specific shape.
+   * @return List<ICommands> - the list of commands
+   */
   public List<ICommands> getExecutableCommand(String id) {
     return this.commands.get(id);
   }
@@ -198,11 +182,21 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     return shape;
   }
 
+  /**
+   * A method to get the height of the canvas.
+   *
+   * @return int - the height of the canvas
+   */
   @Override
   public int getHeight() {
     return height;
   }
 
+  /**
+   * A method to get the width of the canvas.
+   *
+   * @return int - the width of the canvas
+   */
   @Override
   public int getWidth() {
     return width;
@@ -225,6 +219,11 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     return Collections.max(time);
   }
 
+  /**
+   * A method to get the last end time of the whole animations.
+   *
+   * @return double - the last end time of the animation
+   */
   @Override
   public double getLastTimeCommands() {
     List<Double> time = new ArrayList<>();

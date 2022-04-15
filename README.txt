@@ -88,6 +88,8 @@ motion 2 3.0 10.0 40.0 100.0 400.0 10 10 10     30.0 10.0 40.0 400.0 500.0 10 10
 motion 2 30.0 10.0 40.0 400.0 500.0 10 10 10     35.0 10.0 30.0 400.0 500.0 10 10 10 
 motion 2 35.0 10.0 30.0 400.0 500.0 10 10 10     40.0 10.0 30.0 403.0 50.0 10 10 10 
 
+
+
 ASSIGNMENT 6
 We start our assignment 6 by first fixing our builder in the SimpleAnimatorModel class.
 We decide to build a complete new and upgraded builder
@@ -129,6 +131,44 @@ Graphics to Graphics2D for more operations.
 We also create a main method which is where we start running our animation and command-line to run
 the view. Beside that, we create an AnimatorViewCreator to make a factory method so that depend on
 what the command-line want to show the view at, we will create the specify view as required.
+
+
+ASSIGNMENT 7
+For this assignment, we first create a new view class called AnimatorInteractiveView which extends
+JFrame and implements IAnimatorView. This class operate almost the same to AnimatorVisualView, but
+we add in 6 more fields in the class to represent the button click which are start/resume, pause,
+restart, speed up, speed down, loop button and an extra boolean field to give true when the loop
+button is click and turn on the loop cycle and false when it turn off the loop cycle.
+We also add in 4 extra methods which are addListener to add an ActionListener for the 6 buttons
+and an addKeyListener which add the KeyListener to all the 6 button fields. The other 2 method
+setIsLoop which set the IsLoop field to the given boolean we want and getIsLoop is to get the
+current isLoop field status.
+
+Then we start to create an IAnimatorController interface to later on create 4 controller and each
+controller is for 4 of the view class: InteractiveCtrl, VisualCtrl, TextCtrl, SVGCtrl. In our
+interface, we have 3 methods which are getTimer which get the timer of the model, getSpeed to get
+the speed from the user input and lastly start - a method so that when the controller called start,
+it will start the view in the way the user want to see either svg, text, visual, or interactive.
+For our Interactive controller, beside implements our IAnimatorController interface, we also need
+to implement an ActionListener, and a KeyListener. By implementing these listener, we will also
+have to override the method of that listener which is actionPerformed and KeyTyped, KeyPressed, and
+KeyReleased to properly assign the key and button to do the action we decide.
+
+While doing that, we add an extra method in the ICommand which is setShapes which set the shape of
+the command to the given new shape we put in. The reason we did this is that everytime our
+interactive view will show our deep copy of the shape and not on the main shape itself. Since
+everytime our shape run the animation, we mutate straight on the shape and this won't allow to
+implement the restart and loop since our model has been mutated with the animation/commands.
+
+Then when we create our two animations class, we have another method in ICommand which will print
+out the command in String formate which let us know what it did. For example, "canvas 300 300",
+"retangle name rec1 min-x ....". Furthermore, for the 2 animations, we create a CustomMotionFile,
+QuickSortFile and ICreationMotionFile, which is our new interface for readfile part.
+
+We also create an AnimationStart class which we pull out duplicate code in both our visual and
+interactive controller which its jobs is how to run the actionPerformed. Other than that. we create
+Mock view to test if our view called successfully to the constructor and we add test for those new
+added method.
 
 Contributors names and contact info
 Khanh Nguyen

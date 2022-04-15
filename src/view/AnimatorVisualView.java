@@ -133,16 +133,6 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     this.setVisible(true);
   }
 
-  /**
-   * A method to show an error message.
-   *
-   * @param error String - the error message
-   */
-  @Override
-  public void showErrorMessage(String error) {
-    JOptionPane.showMessageDialog(this, error,
-            "Error", JOptionPane.ERROR_MESSAGE);
-  }
 
   /**
    * A method to set the list of shapes field to the given list of shape arguments.

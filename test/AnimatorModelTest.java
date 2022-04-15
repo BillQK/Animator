@@ -1,7 +1,7 @@
 import org.junit.Test;
 
-import java.awt.*;
 
+import java.awt.Color;
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.command.ChangeColor;
@@ -642,6 +642,19 @@ public class AnimatorModelTest {
     }
 
     System.out.println(s.getShapes().get(0).getPosition().getX());
+  }
+
+  @Test
+  public void testGetLastTimeCommand() {
+    s = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10,10,30,30, 250,250,250,
+                    0, 30)
+            .addMove("1", 10,10, 30,30, 0,10)
+            .addMove("1", 30,30,45,45, 10, 15)
+            .addMove("1", 45,45,60,60, 15, 30)
+            .build();
+
+    assertEquals( 30, s.getLastTimeCommands(), delta);
   }
 
 }

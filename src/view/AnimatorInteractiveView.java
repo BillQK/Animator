@@ -124,7 +124,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
    */
   @Override
   public String getDetails() {
-    return null;
+    throw new UnsupportedOperationException("View does not support this method");
   }
 
   /**
@@ -134,7 +134,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
    */
   @Override
   public void writeFile(String fileName) {
-
+    throw new UnsupportedOperationException("View does not support this method");
   }
 
   /**
@@ -179,17 +179,6 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   @Override
   public void makeVisible() {
     this.setVisible(true);
-  }
-
-  /**
-   * A method to show an error message.
-   *
-   * @param error String - the error message
-   */
-  @Override
-  public void showErrorMessage(String error) {
-    JOptionPane.showMessageDialog(this, error,
-            "Error", JOptionPane.ERROR_MESSAGE);
   }
 
   /**

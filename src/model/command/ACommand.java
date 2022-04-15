@@ -1,7 +1,6 @@
 package model.command;
 
-import java.awt.*;
-
+import java.awt.Color;
 import model.shape.AShape;
 import model.utils.ArgumentsCheck;
 import model.utils.Posn;
@@ -72,11 +71,22 @@ public abstract class ACommand implements ICommands {
   @Override
   public abstract void execute(double time);
 
+  /**
+   * Set the shape of the command to the new given shape.
+   *
+   * @param s the new given shape.
+   */
   @Override
   public void setShape(AShape s) {
     this.shape = s;
   }
 
+  /**
+   * Get the shape of the command.
+   *
+   * @return AShape - the shape that have the command
+   */
+  @Override
   public AShape getShape() {
     return this.shape;
   }
