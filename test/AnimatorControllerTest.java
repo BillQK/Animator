@@ -15,6 +15,9 @@ import view.ViewMock;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * A test class for animator controller test.
+ */
 public class AnimatorControllerTest {
 
   StringBuilder log = new StringBuilder();

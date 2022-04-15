@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import controller.IAnimatorController;
 import model.IAnimatorModelState;
 import model.command.ICommandsState;
 import model.shape.AShape;

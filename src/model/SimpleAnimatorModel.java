@@ -401,7 +401,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
       addCommandsHelper(c, commands);
     }
 
-    private static void addCommandsHelper(ICommands c, LinkedHashMap<String, List<ICommands>> commands) {
+    private static void addCommandsHelper(ICommands c, LinkedHashMap<String,
+            List<ICommands>> commands) {
       CommandType commandType = c.getType();
       AShape addShape = c.getTheShape();
       int size = commands.get(addShape.getName()).size();
@@ -422,9 +423,9 @@ public class SimpleAnimatorModel implements IAnimatorModel {
       List<ICommands> commandsList = commands.get(addShape.getName());
       for (int i = 0; i < size; i++) {
         ICommands current = commandsList.get(i);
-        double Start = current.getStart();
+        double currentStart = current.getStart();
 
-        if (start < Start) {
+        if (start < currentStart) {
           commandsList.add(i, c);
         }
       }

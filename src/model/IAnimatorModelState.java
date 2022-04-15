@@ -24,8 +24,8 @@ public interface IAnimatorModelState {
   /**
    * A method to get the list of commands in the model.
    *
-   * @return a List - a list of command
    * @param id - String id of the shape
+   * @return a List - a list of command
    * @throws IllegalArgumentException If the id does not found
    */
   List<ICommandsState> getCommands(String id);

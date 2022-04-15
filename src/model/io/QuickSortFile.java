@@ -1,6 +1,6 @@
 package model.io;
 
-import java.awt.*;
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,6 +17,10 @@ import model.shape.Shape;
 import model.utils.Posn;
 import model.utils.Time;
 
+
+/**
+ * A representation of the QuickSort animation.
+ */
 public class QuickSortFile implements ICreateMotionFIle {
   private final int numShape;
   private final AShape[] shapeList;
@@ -30,6 +34,10 @@ public class QuickSortFile implements ICreateMotionFIle {
   private static int startTime = 0;
   private static int endTime = 1;
 
+  /**
+   * A constructor for QuickSort.
+   * @param numShape int number of shape.
+   */
   public QuickSortFile(int numShape) {
     this.numShape = numShape;
     this.areaList = new double[numShape];

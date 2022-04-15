@@ -44,7 +44,7 @@ public final class AnimationStart {
   /**
    * Method to run the animation in the controller.
    *
-   * @param ms the deep copy list of <AShape> to run the animation
+   * @param ms the deep copy list of AShape to run the animation
    * @param model the model to get the shape
    * @param t the speed
    * @param view the view to show it

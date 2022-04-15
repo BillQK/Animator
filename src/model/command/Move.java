@@ -40,8 +40,10 @@ public class Move extends ACommand {
 
   @Override
   public String getCommandString() {
-    return "move name " + this.shape.getName() + " moveto " + this.origin.getX() + " " + this.origin.getY() + " "
-            + this.destination.getX() + " " + this.destination.getY() + " from " + (int) this.getStart() + " to " + (int) this.getEnd();
+    return "move name " + this.shape.getName() + " moveto " + this.origin.getX() + " "
+            + this.origin.getY() + " "
+            + this.destination.getX() + " " + this.destination.getY() + " from "
+            + (int) this.getStart() + " to " + (int) this.getEnd();
   }
 
   /**
@@ -76,7 +78,7 @@ public class Move extends ACommand {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   * end height + end color
+   *         end height + end color
    */
   @Override
   public String getEndsState() {

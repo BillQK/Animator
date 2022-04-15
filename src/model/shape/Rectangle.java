@@ -1,6 +1,6 @@
 package model.shape;
 
-import java.awt.Color;
+import java.awt.*;
 
 import model.utils.Time;
 
@@ -110,8 +110,9 @@ public class Rectangle extends AShape {
   public String getCommand() {
     return "rectangle name " + this.getName() + " min-x " + this.getPosition().getX()
             + " min-y " + this.getPosition().getY() + " width " + this.getWidth() + " height "
-            + this.getHeight() + " color " + (double) this.getColor().getRed() /10 + " "
-            + (double) this.getColor().getGreen() / 10 + " " + (double) this.getColor().getBlue() / 10 + " from "
+            + this.getHeight() + " color " + (double) this.getColor().getRed() / 10 + " "
+            + (double) this.getColor().getGreen() / 10 + " "
+            + (double) this.getColor().getBlue() / 10 + " from "
             + (int) this.getTime().getStartTime() + " to " + (int) this.getTime().getEndTime();
   }
 

@@ -566,6 +566,8 @@ public class AnimatorModelTest {
             .addColorChange("2", 10, 10, 10,
                     100, 100, 100, 2, 3)
             .build();
+    assertEquals(s.getHeight(), 0);
+    assertEquals(s.getWidth(), 0);
   }
 
 
@@ -638,10 +640,9 @@ public class AnimatorModelTest {
 
     for (ICommands c : s.getExecutableCommand("1")) {
       c.execute(7);
-
     }
 
-    System.out.println(s.getShapes().get(0).getPosition().getX());
+    assertEquals(s.getShapes().get(0).getPosition().getX(), 24.0, 0.01);
   }
 
   @Test

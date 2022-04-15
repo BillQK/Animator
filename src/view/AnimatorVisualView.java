@@ -7,10 +7,8 @@ import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
-import controller.IAnimatorController;
 import model.IAnimatorModelState;
 import model.shape.AShape;
 
@@ -43,7 +41,7 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     //set the bound problems
     scroll.setBounds(100, 100, 300, 500);
-    scroll.setPreferredSize(new Dimension(800,800));
+    scroll.setPreferredSize(new Dimension(800, 800));
 
     this.add(scroll, BorderLayout.CENTER);
     this.pack();

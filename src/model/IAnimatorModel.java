@@ -12,8 +12,6 @@ import model.shape.AShape;
  */
 public interface IAnimatorModel extends IAnimatorModelState {
 
-//  void restart();
-
   /**
    * A method to add the specific shape to the model.
    *

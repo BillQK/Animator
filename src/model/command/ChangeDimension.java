@@ -42,18 +42,15 @@ public class ChangeDimension extends ACommand {
     double newW = calculateW(time);
     double newH = calculateH(time);
 
-//    AShape s = this.shape.getTheShape();
     this.shape.setWidth(newW);
     this.shape.setHeight(newH);
-//    s.setWidth(newW);
-//    s.setHeight(newH);
   }
 
   @Override
   public String getCommandString() {
-    // scale name R scaleto 50 100 25 100 from 51 to 70
     return "scale name " + this.shape.getName() + " moveto " + this.startW + " " + this.startH + " "
-            + this.endW + " " + this.endH + " from " + (int) this.getStart() + " " + (int) this.getEnd();
+            + this.endW + " " + this.endH + " from " + (int) this.getStart() + " "
+            + (int) this.getEnd();
 
   }
 
@@ -61,7 +58,7 @@ public class ChangeDimension extends ACommand {
    * Get the state of the shape after the command.
    *
    * @return a String with the shape's end time + end position + end width +
-   * end height + end color
+   *         end height + end color
    */
   @Override
   public String getEndsState() {
