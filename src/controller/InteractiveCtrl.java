@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ import model.shape.AShape;
  * with button click which user can press the button to manipulate the view to start, pause,
  * resume, restart, looping, increase and decrease the speed.
  */
-public class InteractiveCtrl implements IAnimatorController, ActionListener {
+public class InteractiveCtrl implements IAnimatorController, ActionListener, KeyListener {
   private IAnimatorModel model;
   private IAnimatorView view;
   private final JOptionPane popUp;
@@ -30,7 +32,7 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
   private Tempo t;
 
   private boolean isLoop;
-  private double lastCmdTime;
+  private final double lastCmdTime;
 
   /**
    * Constructor for InteractiveCtrl with the given model, view and speed.
@@ -58,7 +60,10 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
   @Override
   public void start() {
 
-    this.view.setListener(this);
+    this.view.addListener(this);
+    this.view.addKeyListener(this);
+
+    view.makeVisible();
 
     this.t = new Tempo(0);
 
@@ -140,7 +145,11 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
     return this.speed;
   }
 
-
+  /**
+   * Invoked when a button has been performed.
+   *
+   * @param ae ActionEvent - the event to be processed
+   */
   public void actionPerformed(ActionEvent ae) {
     switch (ae.getActionCommand()) {
       case "Start Button":
@@ -179,4 +188,67 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener {
     }
   }
 
+  /**
+   * Invoked when a key has been typed.
+   *
+   * @param e the event to be processed
+   */
+  @Override
+  public void keyTyped(KeyEvent e) {
+    throw new UnsupportedOperationException("1");
+  }
+
+  /**
+   * Invoked when a key has been pressed.
+   *
+   * @param e the event to be processed
+   */
+  @Override
+  public void keyPressed(KeyEvent e) {
+    switch (e.getKeyCode()) {
+      case KeyEvent.VK_R:
+        this.timer.restart();
+        this.createNewModel();
+        this.t = new Tempo(0);
+        break;
+      case KeyEvent.VK_S:
+        this.timer.start();
+        break;
+      case KeyEvent.VK_P:
+        this.timer.stop();
+        break;
+      case KeyEvent.VK_U:
+        this.speed += 10;
+        this.timer.setDelay(1000 / (int) this.speed);
+        break;
+      case KeyEvent.VK_D:
+        if (this.speed <= 0) {
+          this.timer.setDelay(this.timer.getDelay());
+        } else {
+          if (this.speed - 10 <= 0) {
+            this.timer.setDelay(this.timer.getDelay());
+          } else {
+            this.speed -= 10;
+            this.timer.setDelay(1000 / (int) this.speed);
+          }
+        }
+        break;
+      case KeyEvent.VK_L:
+        this.isLoop = !isLoop;
+        view.setIsLoop(isLoop);
+        break;
+      default:
+        throw new IllegalArgumentException("Button cannot applied");
+    }
+  }
+
+  /**
+   * Invoked when a key has been released.
+   *
+   * @param e the event to be processed
+   */
+  @Override
+  public void keyReleased(KeyEvent e) {
+    throw new UnsupportedOperationException("2");
+  }
 }
