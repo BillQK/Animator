@@ -130,7 +130,7 @@ Graphics to Graphics2D for more operations.
 
 We also create a main method which is where we start running our animation and command-line to run
 the view. Beside that, we create an AnimatorViewCreator to make a factory method so that depend on
-what the command-line want to show the view at, we will create the specify view as required.
+what the command-line want to show the view at, we will create to specify view as required.
 
 
 ASSIGNMENT 7
@@ -150,7 +150,7 @@ interface, we have 3 methods which are getTimer which get the timer of the model
 the speed from the user input and lastly start - a method so that when the controller called start,
 it will start the view in the way the user want to see either svg, text, visual, or interactive.
 For our Interactive controller, beside implements our IAnimatorController interface, we also need
-to implement an ActionListener, and a KeyListener. By implementing these listener, we will also
+to implement an ActionListener, and a KeyListener. By implementing these listeners, we will also
 have to override the method of that listener which is actionPerformed and KeyTyped, KeyPressed, and
 KeyReleased to properly assign the key and button to do the action we decide.
 
