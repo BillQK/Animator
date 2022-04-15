@@ -26,7 +26,7 @@ public class QuickSortFile implements ICreateMotionFIle {
   private static final int yPosition = 150;
   private static final double WIDTH = 10;
   private static final int end = 500;
-  private Random random;
+  private final Random random;
   private static int startTime = 0;
   private static int endTime = 1;
 
