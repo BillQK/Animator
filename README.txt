@@ -161,15 +161,18 @@ everytime our shape run the animation, we mutate straight on the shape and this 
 implement the restart and loop since our model has been mutated with the animation/commands.
 
 Then when we create our two animations class, we have another method in ICommand which will print
-out the command in String formate which let us know what it did. For example, "canvas 300 300",
+out the command in String format which let us know what it did. For example, "canvas 300 300",
 "rectangle name background min-x 0 min-y 0 width 800 height 800 color 1 1 0.9 from 1 to 200 \n".
 Furthermore, for the 2 animations, we create a CustomMotionFile,
-QuickSortFile and ICreationMotionFile, which is our new interface for readfile part.
+QuickSortFile and ICreateMotionFile, which is our new interface for readfile part.
 
 We also create an AnimationStart class which we pull out duplicate code in both our visual and
 interactive controller which its jobs is how to run the actionPerformed. Other than that. we create
 Mock view to test if our view called successfully to the constructor and we add test for those new
 added method.
+
+Our two Custom Animation is called QuickSort and ADayInEgypt. To create the animation, create an
+ICreateMotionFile object and called createFile(String name), run it with the program.
 
 Contributors names and contact info
 Khanh Nguyen

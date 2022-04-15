@@ -31,7 +31,7 @@ public class Main {
    * @param args the given array of arguments to run the main method through
    */
   public static void main(String[] args) {
-    new CustomMotionFile().createFile("pyramid");
+    new CustomMotionFile().createFile("ADayInEgypt");
     Map<String, String> commandLine = new HashMap<>();
     IAnimatorView view = null;
     JOptionPane popUp = new JOptionPane();
@@ -103,10 +103,8 @@ public class Main {
         ctrl.start();
         break;
       default:
-//        view.makeVisible();
         throw new IllegalArgumentException("Controller cannot be null");
 
-//         ctrl = new VisualCtrl(model, view, sec);
     }
 
 
