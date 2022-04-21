@@ -1,5 +1,4 @@
 # Animator
-ANIMATOR
 This program is to animate objects.
 
 SUMMARY/OVERVIEW
