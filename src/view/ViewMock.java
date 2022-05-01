@@ -140,4 +140,46 @@ public class ViewMock implements IAnimatorView {
     log.append("getIsLoopMethod ");
     return false;
   }
+
+  /**
+   * Method to set the boolean IsLoop into the given boolean.
+   *
+   * @param outline boolean - the given boolean to set the IsLoop as
+   */
+  @Override
+  public void setIsOutline(boolean outline) {
+    log.append("setIsOutlineMethod ");
+  }
+
+  /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
+  @Override
+  public boolean getIsOutline() {
+    log.append("getIsOutlineMethod ");
+    return false;
+  }
+
+  /**
+   * Method to set the boolean IsOutline into the given boolean.
+   *
+   * @param discreteT boolean - the given boolean to set the IsOutline as
+   */
+  @Override
+  public void setIsDiscreteT(boolean discreteT) {
+    log.append("setIsDiscreteTMethod ");
+  }
+
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  @Override
+  public boolean getIsDiscreteT() {
+    log.append("getIsDiscreteTMethod ");
+    return false;
+  }
 }

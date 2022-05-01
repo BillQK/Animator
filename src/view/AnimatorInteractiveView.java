@@ -7,10 +7,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.List;
 
+import javax.swing.JPanel;
 import javax.swing.JFrame;
-import javax.swing.JToggleButton;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
+import javax.swing.JToggleButton;
+
 
 import model.IAnimatorModelState;
 import model.shape.AShape;
@@ -28,7 +31,11 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private final JButton speedup;
   private final JButton speeddown;
   private final JToggleButton loop;
+  private final JCheckBox outline;
+  private final JCheckBox discreteT;
   private boolean isLoop;
+  private boolean isOutline;
+  private boolean isDiscreteT;
 
   /**
    * Constructor of the AnimatorInteractiveView. This is where we set up our JFrame and adding our
@@ -42,6 +49,8 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.setSize(model.getWidth(), model.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.isLoop = false;
+    this.isOutline = false;
+    this.isDiscreteT = true;
 
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(model.getWidth(), model.getHeight()));
@@ -53,7 +62,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     scroll.setBounds(50, 30, 300, 50);
     this.add(scroll, BorderLayout.CENTER);
 
-    javax.swing.JPanel buttonPanel = new javax.swing.JPanel();
+    JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout());
     panel.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -80,6 +89,14 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     loop = new JToggleButton("Loop");
     loop.setActionCommand("Loop Button");
     buttonPanel.add(loop);
+
+    outline = new JCheckBox("Outline");
+    outline.setActionCommand("Outline Check");
+    buttonPanel.add(outline);
+
+    discreteT = new JCheckBox("Discrete Time");
+    discreteT.setActionCommand("Discrete Time Check");
+    buttonPanel.add(discreteT);
 
     this.pack();
 
@@ -148,6 +165,8 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     speedup.addActionListener(listener);
     speeddown.addActionListener(listener);
     loop.addActionListener(listener);
+    outline.addActionListener(listener);
+    discreteT.addActionListener(listener);
   }
 
   /**
@@ -162,6 +181,8 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     speedup.addKeyListener(klistener);
     speeddown.addKeyListener(klistener);
     loop.addKeyListener(klistener);
+    outline.addKeyListener(klistener);
+    discreteT.addKeyListener(klistener);
   }
 
   /**
@@ -212,6 +233,44 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   @Override
   public boolean getIsLoop() {
     return this.isLoop;
+  }
+
+  /**
+   * Method to set the boolean IsOutline into the given boolean.
+   *
+   * @param outline boolean - the given boolean to set the IsOutline as
+   */
+  public void setIsOutline(boolean outline) {
+    this.isOutline = outline;
+    this.panel.setIsOutline(outline);
+  }
+
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  public boolean getIsOutline() {
+    return this.isOutline;
+  }
+
+  /**
+   * Method to set the boolean IsDiscreteT into the given boolean.
+   *
+   * @param discreteT boolean - the given boolean to set the IsDiscreteT as
+   */
+  public void setIsDiscreteT(boolean discreteT) {
+    this.isDiscreteT = discreteT;
+    this.panel.setIsDiscreteT(discreteT);
+  }
+
+  /**
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+    return this.isDiscreteT;
   }
 
 }

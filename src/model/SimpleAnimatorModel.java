@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.TreeSet;
 
 import model.command.ChangeColor;
 import model.command.ChangeDimension;
@@ -16,6 +17,7 @@ import model.command.Move;
 import model.io.TweenModelBuilder;
 import model.shape.AShape;
 import model.shape.Ellipse;
+import model.shape.Plus;
 import model.shape.Rectangle;
 import model.shape.Shape;
 import model.utils.ArgumentsCheck;
@@ -31,6 +33,7 @@ import model.utils.Time;
 public class SimpleAnimatorModel implements IAnimatorModel {
   private final LinkedHashMap<String, AShape> shapes;
   private final LinkedHashMap<String, List<ICommands>> commands;
+  private TreeSet<Integer> discreteTime;
   private final int width;
   private final int height;
 
@@ -42,6 +45,7 @@ public class SimpleAnimatorModel implements IAnimatorModel {
   public SimpleAnimatorModel(TweenBuilder tweenBuilder) {
     this.shapes = tweenBuilder.shapes;
     this.commands = tweenBuilder.commands;
+    this.discreteTime = tweenBuilder.discreteTime;
     this.width = tweenBuilder.width;
     this.height = tweenBuilder.height;
   }
@@ -233,6 +237,11 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     return Collections.max(time);
   }
 
+  @Override
+  public TreeSet<Integer> getDiscreteTimeInteger() {
+    return this.discreteTime;
+  }
+
   /**
    * Represents a simple animation builder that will add shapes and animations to the model.
    */
@@ -240,12 +249,14 @@ public class SimpleAnimatorModel implements IAnimatorModel {
 
     private final LinkedHashMap<String, AShape> shapes;
     private final LinkedHashMap<String, List<ICommands>> commands;
+    private TreeSet<Integer> discreteTime;
     private int width;
     private int height;
 
     public TweenBuilder() {
       this.shapes = new LinkedHashMap<>();
       this.commands = new LinkedHashMap<>();
+      this.discreteTime = new TreeSet<>();
     }
 
     /**
@@ -346,6 +357,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
       List<ICommands> mtRL = new ArrayList<>();
       this.shapes.put(name, shape);
       this.commands.put(name, mtRL);
+      this.discreteTime.add(startOfLife);
+      this.discreteTime.add(endOfLife);
       return this;
     }
 
@@ -392,7 +405,55 @@ public class SimpleAnimatorModel implements IAnimatorModel {
       List<ICommands> mtRL = new ArrayList<>();
       this.shapes.put(name, shape);
       this.commands.put(name, mtRL);
+      this.discreteTime.add(startOfLife);
+      this.discreteTime.add(endOfLife);
+      return this;
+    }
 
+    /**
+     * Add a new plus to the model with the given specifications.
+     *
+     * @param name        the unique name given to this shape
+     * @param lx          the minimum x-coordinate of a corner of the
+     *                    plus
+     * @param ly          the minimum y-coordinate of a corner of the
+     *                    plus
+     * @param width       the width of the plus
+     * @param height      the height of the plus
+     * @param red         the red component of the color of the plus
+     * @param green       the green component of the color of the plus
+     * @param blue        the blue component of the color of the plus
+     * @param startOfLife the time tick at which this plus appears
+     * @param endOfLife   the time tick at which this plus disappears
+     * @return the builder object
+     */
+    @Override
+    public TweenModelBuilder<IAnimatorModel> addPlus(String name, float lx, float ly,
+                                                     float width, float height,
+                                                     float red, float green, float blue,
+                                                     int startOfLife, int endOfLife) {
+      if (startOfLife > endOfLife) {
+        throw new IllegalArgumentException("The start time cannot be bigger than end time");
+      }
+      if (ArgumentsCheck.lessThanOrEqualsToOne(red, green, blue)) {
+        red = red * 255;
+        green = green * 255;
+        blue = blue * 255;
+      }
+      ArgumentsCheck.colorRange((int) red, (int) green, (int) blue);
+      ArgumentsCheck.lessThanZero(width, height, red, green, blue);
+
+      // Assign Variable
+      Color c = new Color((int) red, (int) green, (int) blue);
+      AShape shape = new Plus(name, Shape.PLUS, c, lx, ly, width, height,
+              new Time(startOfLife, endOfLife));
+
+      // Add Variable into data structure
+      List<ICommands> mtRL = new ArrayList<>();
+      this.shapes.put(name, shape);
+      this.commands.put(name, mtRL);
+      this.discreteTime.add(startOfLife);
+      this.discreteTime.add(endOfLife);
       return this;
     }
 
@@ -471,7 +532,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
 
       ICommands com = new Move(s, startTime, endTime, origin, destination);
       this.addCommands(com);
-
+      this.discreteTime.add(startTime);
+      this.discreteTime.add(endTime);
 
       return this;
     }
@@ -527,7 +589,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
 
       ICommands com = new ChangeColor(s, startTime, endTime, oldC, newC);
       this.addCommands(com);
-
+      this.discreteTime.add(startTime);
+      this.discreteTime.add(endTime);
       return this;
     }
 
@@ -567,7 +630,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
       ICommands com = new ChangeDimension(s, startTime, endTime, fromSx, fromSy,
               toSx, toSy);
       this.addCommands(com);
-
+      this.discreteTime.add(startTime);
+      this.discreteTime.add(endTime);
 
       return this;
     }

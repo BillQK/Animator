@@ -63,6 +63,29 @@ public interface TweenModelBuilder<T> {
           int startOfLife, int endOfLife);
 
   /**
+   * Add a new plus to the model with the given specifications.
+   *
+   * @param name        the unique name given to this shape
+   * @param lx          the minimum x-coordinate of a corner of the
+   *                    plus
+   * @param ly          the minimum y-coordinate of a corner of the
+   *                    plus
+   * @param width       the width of the plus
+   * @param height      the height of the plus
+   * @param red         the red component of the color of the plus
+   * @param green       the green component of the color of the plus
+   * @param blue        the blue component of the color of the plus
+   * @param startOfLife the time tick at which this plus appears
+   * @param endOfLife   the time tick at which this plus disappears
+   * @return the builder object
+   */
+  TweenModelBuilder<T> addPlus(String name,
+                               float lx, float ly,
+                               float width, float height,
+                               float red, float green, float blue,
+                               int startOfLife, int endOfLife);
+
+  /**
    * Move the specified shape to the given position during the given time
    * interval.
    *

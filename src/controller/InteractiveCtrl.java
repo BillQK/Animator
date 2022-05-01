@@ -30,6 +30,8 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
   private Tempo t;
 
   private boolean isLoop;
+  private boolean isOutline;
+  private boolean isDiscreteT;
   private final double lastCmdTime;
 
   /**
@@ -48,6 +50,8 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
     this.t = null;
 
     this.isLoop = false;
+    this.isOutline = false;
+    this.isDiscreteT = false;
     this.lastCmdTime = model.getLastTimeCommands();
   }
 
@@ -89,7 +93,7 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
         timer.stop();
       }
 
-      AnimationStart.execute(ms, model, t, view);
+      AnimationStart.execute(ms, model, t, view, isDiscreteT);
     }
   };
 
@@ -151,6 +155,14 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
         this.isLoop = !isLoop;
         view.setIsLoop(isLoop);
         break;
+      case "Outline Check":
+        this.isOutline = !isOutline;
+        view.setIsOutline(isOutline);
+        break;
+      case "Discrete Time Check":
+        this.isDiscreteT = !isDiscreteT;
+        view.setIsDiscreteT(isDiscreteT);
+        break;
       default:
         throw new IllegalArgumentException("Button cannot applied");
     }
@@ -204,6 +216,14 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
       case KeyEvent.VK_L:
         this.isLoop = !isLoop;
         view.setIsLoop(isLoop);
+        break;
+      case KeyEvent.VK_O:
+        this.isOutline = !isOutline;
+        view.setIsOutline(isOutline);
+        break;
+      case KeyEvent.VK_T:
+        this.isDiscreteT = !isDiscreteT;
+        view.setIsDiscreteT(isDiscreteT);
         break;
       default:
         throw new IllegalArgumentException("Button cannot applied");

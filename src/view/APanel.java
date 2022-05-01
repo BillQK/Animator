@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import model.shape.AShape;
-import model.shape.Shape;
+
 
 /**
  * Represent the APanel class which extends APanel, which is where we paint out visual view
@@ -16,6 +16,8 @@ import model.shape.Shape;
  */
 public class APanel extends JPanel {
   private List<AShape> shapes;
+  private boolean isOutline;
+  private boolean isDiscreteT;
 
   /**
    * Constructor for APanel class.
@@ -46,15 +48,81 @@ public class APanel extends JPanel {
       int h = (int) s.getHeight();
       Color c = s.getColor();
 
-      if (s.getType() == Shape.RECTANGLE) {
-        g2.setColor(c);
-        g2.fillRect(x,y,w,h);
-        g2.drawRect(x,y,w,h);
-      } else if (s.getType() == Shape.ELLIPSE) {
-        g2.setColor(c);
-        g2.fillOval(x,y,w,h);
-        g2.drawOval(x,y,w,h);
+      if (!isOutline) {
+        switch (s.getType()) {
+          case RECTANGLE:
+            g2.setColor(c);
+            g2.fillRect(x,y,w,h);
+            g2.drawRect(x,y,w,h);
+            break;
+          case ELLIPSE:
+            g2.setColor(c);
+            g2.fillOval(x,y,w,h);
+            g2.drawOval(x,y,w,h);
+            break;
+          case PLUS:
+            g2.setColor(c);
+            g2.fillRect(x + (w/4), y, w/2, h);
+            g2.fillRect(x, y + (h/4), w, h/2);
+            g2.drawRect(x + (w/4), y, w/2, h);
+            g2.drawRect(x, y + (h/4), w, h/2);
+            break;
+        }
       }
+      if (isOutline) {
+        switch (s.getType()) {
+          case RECTANGLE:
+            g2.setColor(c);
+            g2.drawRect(x,y,w,h);
+            break;
+          case ELLIPSE:
+            g2.setColor(c);
+            g2.drawOval(x,y,w,h);
+            break;
+          case PLUS:
+            g2.setColor(c);
+
+            //North Center
+            g2.drawLine(x + (w/4), y, x + (w * 3/4), y);
+            //North Right
+            g2.drawLine(x + (w * 3/4), y, x + (w * 3/4), y + (h/4));
+            //North Left
+            g2.drawLine(x + (w/4), y, x + (w/4), y + (h/4));
+
+            //West Center
+            g2.drawLine(x, y + (h/4), x, y + (h * 3/4));
+            //West Right
+            g2.drawLine(x, y + (h/4), x + (w/4), y + (h/4));
+            //West Left
+            g2.drawLine(x, y + (h * 3/4), x + (w/4), y + (h * 3/4));
+
+            //South Center
+            g2.drawLine(x + (w/4), y + h, x + (w * 3/4), y + h);
+            //South Left
+            g2.drawLine(x + (w/4), y + (h * 3/4), x + (w/4), y + h);
+            //South Right
+            g2.drawLine(x + (w * 3/4), y + (h * 3/4), x + (w * 3/4), y + h);
+
+            //East Center
+            g2.drawLine(x + w, y + (h/4), x + w, y + (h * 3/4));
+            //East Left
+            g2.drawLine(x + (w * 3/4), y + (h/4), x + w, y + (h/4));
+            //East Right
+            g2.drawLine(x + (w * 3/4), y + (h * 3/4), x + w, y + (h * 3/4));
+
+            break;
+        }
+      }
+
+//      if (s.getType() == RECTANGLE) {
+//        g2.setColor(c);
+//        g2.fillRect(x,y,w,h);
+//        g2.drawRect(x,y,w,h);
+//      } else if (s.getType() == ELLIPSE) {
+//        g2.setColor(c);
+//        g2.fillOval(x,y,w,h);
+//        g2.drawOval(x,y,w,h);
+//      }
     }
     g2.setTransform(transform);
 
@@ -70,6 +138,14 @@ public class APanel extends JPanel {
       throw new IllegalArgumentException("The list of shapes cannot be null");
     }
     return this.shapes = s;
+  }
+
+  public void setIsOutline(boolean outline) {
+    this.isOutline = outline;
+  }
+
+  public void setIsDiscreteT(boolean discreteT) {
+    this.isDiscreteT = discreteT;
   }
 
 }

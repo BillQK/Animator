@@ -166,5 +166,41 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
+  /**
+   * Method to set the boolean IsOutline into the given boolean.
+   *
+   * @param outline boolean - the given boolean to set the IsOutline as
+   */
+  public void setIsOutline(boolean outline) {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  public boolean getIsOutline() {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  /**
+   * Method to set the boolean IsDiscreteT into the given boolean.
+   *
+   * @param discreteT boolean - the given boolean to set the IsDiscreteT as
+   */
+  public void setIsDiscreteT(boolean discreteT) {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  /**
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
 
 }

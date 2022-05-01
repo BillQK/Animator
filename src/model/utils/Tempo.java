@@ -26,5 +26,11 @@ public class Tempo {
     tempo++;
   }
 
+  public void addGivenTempo(int given) {
+    if (given > 0) {
+      tempo += (given - 1);
+    }
+  }
+
 }
 

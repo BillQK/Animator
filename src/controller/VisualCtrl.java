@@ -52,7 +52,7 @@ public class VisualCtrl implements IAnimatorController {
     ms.addAll(model.getShapes());
 
     ActionListener timeListner = ae -> {
-      AnimationStart.execute(ms, model, t, view);
+      AnimationStart.execute(ms, model, t, view, true);
     };
 
     this.timer = new Timer(1000 / (int) this.speed, timeListner);

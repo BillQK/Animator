@@ -2,6 +2,7 @@ package model;
 
 
 import java.util.List;
+import java.util.TreeSet;
 
 import model.command.ICommandsState;
 import model.shape.AShape;
@@ -60,5 +61,7 @@ public interface IAnimatorModelState {
    * @return double - the last end time of the animation
    */
   double getLastTimeCommands();
+
+  TreeSet<Integer> getDiscreteTimeInteger();
 
 }
