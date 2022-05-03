@@ -1,4 +1,6 @@
 canvas 410 199
+slow-motion 57 67 1
+slow-motion 68 78 1
 rectangle name disk1 min-x 190.0 min-y 161.0 width 20.0 height 11 color 0.44510168 0.34150472 0.5947177 from 1 to 9230
 rectangle name disk2 min-x 183.57143 min-y 172.0 width 32.857143 height 11 color 0.13853869 0.68150055 0.28790247 from 1 to 9230
 rectangle name disk3 min-x 177.14285 min-y 183.0 width 45.714287 height 11 color 0.038578514 0.26578543 0.5134078 from 1 to 9230

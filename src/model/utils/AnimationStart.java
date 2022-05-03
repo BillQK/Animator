@@ -42,8 +42,7 @@ public final class AnimationStart {
     if (!isDiscreteT) {
       run(ms, model, t, view);
     }
-    if (
-            isDiscreteT) {
+    if (isDiscreteT) {
       runDiscrete(ms, model, t, view);
     }
   }
@@ -75,6 +74,14 @@ public final class AnimationStart {
     view.makeVisible();
   }
 
+  /**
+   * Method to run the animation in the controller but with discrete time.
+   *
+   * @param ms    the deep copy list of AShape to run the animation
+   * @param model the model to get the shape
+   * @param t     the speed
+   * @param view  the view to show it
+   */
   private static void runDiscrete(List<AShape> ms, IAnimatorModel model, Tempo t,
                                   IAnimatorView view) {
     List<AShape> losTempo = new ArrayList<>();

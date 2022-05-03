@@ -24,9 +24,13 @@ import static org.junit.Assert.fail;
  */
 public class AnimatorSVGViewTest {
   IAnimatorModelState model;
+  IAnimatorModelState modelWithPlus;
   IAnimatorView view;
+  IAnimatorView viewWithPlus;
   IAnimatorModel inputFileToModel;
   IAnimatorView inputFileView;
+  IAnimatorModel inputFileToModelWithPlus;
+  IAnimatorView inputFileViewWithPlus;
 
   @Before
   public void setUp() {
@@ -47,6 +51,14 @@ public class AnimatorSVGViewTest {
                     50, 50, 0, 10)
             .build();
 
+    modelWithPlus = new SimpleAnimatorModel.TweenBuilder()
+            .addPlus("1", 10,10, 30, 30, 120,120,120, 0, 100)
+            .addMove("1", 10, 10,50,50,0,15)
+            .addColorChange("1", 120,120,120, 30,30,30,10,20)
+            .addOval("2", 10,10,40, 50, 2,2,2,0,50)
+            .addScaleToChange("2", 40,50, 20,20, 0,40)
+            .build();
+
     try {
       inputFileToModel = new AnimationFileReader().readFile("resource/toh-3.txt",
               new SimpleAnimatorModel.TweenBuilder());
@@ -55,7 +67,18 @@ public class AnimatorSVGViewTest {
     }
 
     inputFileView = new AnimatorSVGView(model, 20);
+
+    try {
+      inputFileToModelWithPlus = new AnimationFileReader().readFile("resource/pyramid-with-plus-shape.txt",
+              new SimpleAnimatorModel.TweenBuilder());
+    } catch (FileNotFoundException e) {
+      fail();
+    }
+
+    inputFileViewWithPlus = new AnimatorSVGView(modelWithPlus,20);
+
     view = new AnimatorSVGView(model, 1);
+    viewWithPlus = new AnimatorSVGView(modelWithPlus, 1);
   }
 
   @Test
@@ -89,6 +112,38 @@ public class AnimatorSVGViewTest {
                     "attributeName=\"cy\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n" +
                     "</ellipse>\n" +
                     "</svg>");
+  }
+
+  @Test
+  public void testGetDetailsWithPlusShape() {
+    assertEquals(viewWithPlus.getDetails(), "<svg width=\"700\" height=\"500\" "
+            + "version=\"1.1\"\n" + "     xmlns=\"http://www.w3.org/2000/svg\">\n"
+            + "<rect id=\"1\" x=\"17.5\" y=\"10.0\" width=\"15.0\" height=\"30.0\" "
+            + "fill=\"rgb(120,120,120)\" visibility=\"visible\" >\n"
+            + "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"15000.0ms\" "
+            + "attributeName=\"x\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n"
+            + "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"15000.0ms\" "
+            + "attributeName=\"y\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n"
+            + "<animate attributeType=\"xml\" begin=\"10000.0ms\" dur=\"10000.0ms\" "
+            + "attributeName=\"rgb\" from=\"(120,120,120)\" to=\"(30,30,30)\" " +
+            "fill=\"freeze\" /> \n" + "</rect>\n"
+            + "<rect id=\"1\" x=\"10.0\" y=\"17.5\" width=\"30.0\" height=\"15.0\" "
+            + "fill=\"rgb(120,120,120)\" visibility=\"visible\" >\n"
+            + "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"15000.0ms\" "
+            + "attributeName=\"x\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n"
+            + "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"15000.0ms\" "
+            + "attributeName=\"y\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n"
+            + "<animate attributeType=\"xml\" begin=\"10000.0ms\" dur=\"10000.0ms\" "
+            + "attributeName=\"rgb\" from=\"(120,120,120)\" to=\"(30,30,30)\" "
+            + "fill=\"freeze\" /> \n" + "</rect>\n"
+            + "<ellipse id=\"2\" cx=\"10.0\" cy=\"10.0\" rx=\"40.0\" ry=\"50.0\" "
+            + "fill=\"rgb(2,2,2)\" visibility=\"visible\" >\n"
+            + "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"40000.0ms\" "
+            + "attributeName=\"xR\" from=\"40.0\" to=\"20.0\" fill=\"freeze\" /> \n"
+            + "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"40000.0ms\" "
+            + "attributeName=\"yR\" from=\"50.0\" to=\"20.0\" fill=\"freeze\" />\n"
+            + "</ellipse>\n"
+            + "</svg>");
   }
 
   @Test
@@ -157,4 +212,37 @@ public class AnimatorSVGViewTest {
                     "</ellipse>\n" +
                     "</svg>");
   }
+
+  @Test
+  public void testInputFileSVFWithPlus() {
+    assertEquals(inputFileViewWithPlus.getDetails(), "<svg width=\"700\" height=\"500\" " +
+            "version=\"1.1\"\n" +
+            "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
+            "<rect id=\"1\" x=\"17.5\" y=\"10.0\" width=\"15.0\" height=\"30.0\" " +
+            "fill=\"rgb(120,120,120)\" visibility=\"visible\" >\n" +
+            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"750.0ms\" " +
+            "attributeName=\"x\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n" +
+            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"750.0ms\" " +
+            "attributeName=\"y\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"500.0ms\" dur=\"500.0ms\" " +
+            "attributeName=\"rgb\" from=\"(120,120,120)\" to=\"(30,30,30)\" fill=\"freeze\" /> \n" +
+            "</rect>\n" +
+            "<rect id=\"1\" x=\"10.0\" y=\"17.5\" width=\"30.0\" height=\"15.0\" " +
+            "fill=\"rgb(120,120,120)\" visibility=\"visible\" >\n" +
+            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"750.0ms\" " +
+            "attributeName=\"x\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" /> \n" +
+            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"750.0ms\" " +
+            "attributeName=\"y\" from=\"10.0\" to=\"50.0\" fill=\"freeze\" />\n" +
+            "<animate attributeType=\"xml\" begin=\"500.0ms\" dur=\"500.0ms\" " +
+            "attributeName=\"rgb\" from=\"(120,120,120)\" to=\"(30,30,30)\" " +
+            "fill=\"freeze\" /> \n" +
+            "</rect>\n" +
+            "<ellipse id=\"2\" cx=\"10.0\" cy=\"10.0\" rx=\"40.0\" ry=\"50.0\" " +
+            "fill=\"rgb(2,2,2)\" visibility=\"visible\" >\n" +
+            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"2000.0ms\" " +
+            "attributeName=\"xR\" from=\"40.0\" to=\"20.0\" fill=\"freeze\" /> \n" +
+            "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"2000.0ms\" " +
+            "attributeName=\"yR\" from=\"50.0\" to=\"20.0\" fill=\"freeze\" />\n" +
+            "</ellipse>\n" +
+            "</svg>");}
 }

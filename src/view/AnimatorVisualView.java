@@ -175,14 +175,14 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
-  /**
-   * Method to get the IsOutline current boolean.
-   *
-   * @return boolean - the current IsOutline boolean
-   */
-  public boolean getIsOutline() {
-    throw new UnsupportedOperationException("View doesn't support this method");
-  }
+    /**
+     * Method to get the IsOutline current boolean.
+     *
+     * @return boolean - the current IsOutline boolean
+     */
+    public boolean getIsOutline() {
+      throw new UnsupportedOperationException("View doesn't support this method");
+    }
 
   /**
    * Method to set the boolean IsDiscreteT into the given boolean.
@@ -193,14 +193,14 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
-  /**
-   * Method to get the IsDiscreteT current boolean.
-   *
-   * @return boolean - the current IsDiscreteT boolean
-   */
-  public boolean getIsDiscreteT() {
-    throw new UnsupportedOperationException("View doesn't support this method");
-  }
+    /**
+     * Method to get the IsDiscreteT current boolean.
+     *
+     * @return boolean - the current IsDiscreteT boolean
+     */
+    public boolean getIsDiscreteT() {
+      throw new UnsupportedOperationException("View doesn't support this method");
+    }
 
 
 }

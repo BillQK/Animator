@@ -18,6 +18,7 @@ public class APanel extends JPanel {
   private List<AShape> shapes;
   private boolean isOutline;
   private boolean isDiscreteT;
+  private boolean isSlowMo;
 
   /**
    * Constructor for APanel class.
@@ -113,16 +114,6 @@ public class APanel extends JPanel {
             break;
         }
       }
-
-//      if (s.getType() == RECTANGLE) {
-//        g2.setColor(c);
-//        g2.fillRect(x,y,w,h);
-//        g2.drawRect(x,y,w,h);
-//      } else if (s.getType() == ELLIPSE) {
-//        g2.setColor(c);
-//        g2.fillOval(x,y,w,h);
-//        g2.drawOval(x,y,w,h);
-//      }
     }
     g2.setTransform(transform);
 
@@ -140,10 +131,20 @@ public class APanel extends JPanel {
     return this.shapes = s;
   }
 
+  /**
+   * A method to set the IsOutline to the given boolean.
+   *
+   * @param outline the given boolean
+   */
   public void setIsOutline(boolean outline) {
     this.isOutline = outline;
   }
 
+  /**
+   * A method to set the IsDiscreteT to the given boolean.
+   *
+   * @param discreteT the given boolean
+   */
   public void setIsDiscreteT(boolean discreteT) {
     this.isDiscreteT = discreteT;
   }

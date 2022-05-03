@@ -32,13 +32,14 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
   private boolean isLoop;
   private boolean isOutline;
   private boolean isDiscreteT;
+  private boolean isSlowMo;
   private final double lastCmdTime;
 
   /**
    * Constructor for InteractiveCtrl with the given model, view and speed.
    *
    * @param model IAnimatorModel - the given model
-   * @param view IAnimatorView - the given view
+   * @param view  IAnimatorView - the given view
    * @param speed double - the view given speed
    */
   public InteractiveCtrl(IAnimatorModel model, IAnimatorView view, double speed) {
@@ -52,6 +53,7 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
     this.isLoop = false;
     this.isOutline = false;
     this.isDiscreteT = false;
+    this.isSlowMo = false;
     this.lastCmdTime = model.getLastTimeCommands();
   }
 
@@ -84,6 +86,20 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
   ActionListener ac = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
+
+      int tick = model.getSlowMoTempoAt((int) t.getTempo());
+      if (tick != -1 && !isSlowMo) {
+        isSlowMo = true;
+        timer.stop();
+        timer = new Timer(1000 / tick, ac);
+        timer.start();
+      } else if (isSlowMo) {
+        isSlowMo = false;
+        timer.stop();
+        timer = new Timer(1000 / (int) speed, ac);
+        timer.start();
+      }
+      System.out.println("Tempo: " + tick);
 
       if (isLoop && (lastCmdTime - t.getTempo() < 0.000001)) {
         timer.restart();
@@ -226,7 +242,7 @@ public class InteractiveCtrl implements IAnimatorController, ActionListener, Key
         view.setIsDiscreteT(isDiscreteT);
         break;
       default:
-        throw new IllegalArgumentException("Button cannot applied");
+        throw new IllegalArgumentException("Key cannot applied");
     }
   }
 

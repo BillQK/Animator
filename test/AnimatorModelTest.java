@@ -2,6 +2,8 @@ import org.junit.Test;
 
 
 import java.awt.Color;
+import java.util.TreeSet;
+
 import model.IAnimatorModel;
 import model.SimpleAnimatorModel;
 import model.command.ChangeColor;
@@ -523,7 +525,7 @@ public class AnimatorModelTest {
     AShape ellip = new Ellipse("E", Shape.ELLIPSE, new Color(250, 30, 10),
             3, 4, 30, 30, new Time(0, 30));
 
-    ICommands c = new Move(ellip, 0, 15, new Posn(3,4), new Posn(30, 20));
+    ICommands c = new Move(ellip, 0, 15, new Posn(3, 4), new Posn(30, 20));
 
     s.addShape(ellip);
     s.addCommands(c);
@@ -613,12 +615,12 @@ public class AnimatorModelTest {
   @Test
   public void testExtraForBuilder() {
     s = new SimpleAnimatorModel.TweenBuilder()
-            .addRectangle("1", 10,10,30,30, 250,250,250,
+            .addRectangle("1", 10, 10, 30, 30, 250, 250, 250,
                     0, 30)
-            .addMove("1", 2,2, 30,30, 0,10)
-            .addColorChange("1", 2,2,2, 100,100,100,5, 20)
-            .addScaleToChange("1", 4,4, 20,20,0,10)
-            .addMove("1", 2,2,13,13, 15, 30)
+            .addMove("1", 2, 2, 30, 30, 0, 10)
+            .addColorChange("1", 2, 2, 2, 100, 100, 100, 5, 20)
+            .addScaleToChange("1", 4, 4, 20, 20, 0, 10)
+            .addMove("1", 2, 2, 13, 13, 15, 30)
             .build();
 
     assertEquals(s.getCommands("1").get(0).getType(), CommandType.MOVE);
@@ -630,11 +632,11 @@ public class AnimatorModelTest {
   @Test
   public void testExecute() {
     s = new SimpleAnimatorModel.TweenBuilder()
-            .addRectangle("1", 10,10,30,30, 250,250,250,
+            .addRectangle("1", 10, 10, 30, 30, 250, 250, 250,
                     0, 30)
-            .addMove("1", 10,10, 30,30, 0,10)
-            .addMove("1", 30,30,45,45, 10, 15)
-            .addMove("1", 45,45,60,60, 15, 30)
+            .addMove("1", 10, 10, 30, 30, 0, 10)
+            .addMove("1", 30, 30, 45, 45, 10, 15)
+            .addMove("1", 45, 45, 60, 60, 15, 30)
             .build();
 
 
@@ -648,14 +650,52 @@ public class AnimatorModelTest {
   @Test
   public void testGetLastTimeCommand() {
     s = new SimpleAnimatorModel.TweenBuilder()
-            .addRectangle("1", 10,10,30,30, 250,250,250,
+            .addRectangle("1", 10, 10, 30, 30, 250, 250, 250,
                     0, 30)
-            .addMove("1", 10,10, 30,30, 0,10)
-            .addMove("1", 30,30,45,45, 10, 15)
-            .addMove("1", 45,45,60,60, 15, 30)
+            .addMove("1", 10, 10, 30, 30, 0, 10)
+            .addMove("1", 30, 30, 45, 45, 10, 15)
+            .addMove("1", 45, 45, 60, 60, 15, 30)
             .build();
 
-    assertEquals( 30, s.getLastTimeCommands(), delta);
+    assertEquals(30, s.getLastTimeCommands(), delta);
+  }
+
+  @Test
+  public void testgetDiscreteTimeInteger() {
+    s = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10, 10, 30, 30, 250, 250, 250,
+                    0, 30)
+            .addMove("1", 10, 10, 30, 30, 0, 10)
+            .addMove("1", 30, 30, 45, 45, 10, 15)
+            .addMove("1", 45, 45, 60, 60, 15, 30)
+            .build();
+
+    TreeSet<Integer> time = new TreeSet<Integer>();
+    time.add(0);
+    time.add(10);
+    time.add(15);
+    time.add(30);
+
+    assertEquals(time, s.getDiscreteTimeInteger());
+  }
+
+  @Test
+  public void testgetSlowMoTempoAt() {
+    s = new SimpleAnimatorModel.TweenBuilder()
+            .addRectangle("1", 10, 10, 30, 30, 250, 250, 250,
+                    0, 30)
+            .addMove("1", 10, 10, 30, 30, 0, 10)
+            .addMove("1", 30, 30, 45, 45, 10, 15)
+            .addMove("1", 45, 45, 60, 60, 15, 30)
+            .addTimeIntervals(0, 5, 5)
+            .addTimeIntervals(10, 15, 5)
+            .build();
+
+    assertEquals(-1, s.getSlowMoTempoAt(8));
+    assertEquals(5, s.getSlowMoTempoAt(14));
+    assertEquals(5, s.getSlowMoTempoAt(13));
+    assertEquals(-1, s.getSlowMoTempoAt(20));
+
   }
 
 }

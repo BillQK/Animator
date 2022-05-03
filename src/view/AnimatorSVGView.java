@@ -7,6 +7,7 @@ import java.util.List;
 import model.IAnimatorModelState;
 import model.command.ICommandsState;
 import model.shape.AShape;
+import model.shape.Shape;
 
 /**
  * The AnimatorSVGView class which extends AnimatorTextView which will run on some operations
@@ -69,12 +70,28 @@ public class AnimatorSVGView extends AnimatorTextView {
     List<AShape> los = model.getShapes();
 
     for (AShape s : los) {
-      details += s.getSVG();
-      List<ICommandsState> loc = model.getCommands(s.getName());
-      for (ICommandsState c : loc) {
-        details += c.getSVG(tempo);
+      if (s.getType() == Shape.PLUS) {
+        details += s.getSVG();
+        List<ICommandsState> loc = model.getCommands(s.getName());
+        for (ICommandsState c : loc) {
+          details += c.getSVG(tempo);
+        }
+        details += s.getSVGEndShape() + "\n";
+
+        details += s.getSVG2ndRec();
+        List<ICommandsState> loc2 = model.getCommands(s.getName());
+        for (ICommandsState c : loc2) {
+          details += c.getSVG(tempo);
+        }
+        details += s.getSVGEndShape() + "\n";
+      } else {
+        details += s.getSVG();
+        List<ICommandsState> loc = model.getCommands(s.getName());
+        for (ICommandsState c : loc) {
+          details += c.getSVG(tempo);
+        }
+        details += s.getSVGEndShape() + "\n";
       }
-      details += s.getSVGEndShape() + "\n";
     }
     details += "</svg>";
 

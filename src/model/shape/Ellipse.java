@@ -61,6 +61,15 @@ public class Ellipse extends AShape {
   }
 
   /**
+   * Get a textual description of the plus shape images second rectangle.
+   *
+   * @return a String - SVG shape description
+   */
+  public String getSVG2ndRec() {
+    throw new UnsupportedOperationException("This class doesn't support this method");
+  }
+
+  /**
    * Get a textual description of the shape's width/xRadius dimension.
    *
    * @return A String - SVG shape width/xRadius

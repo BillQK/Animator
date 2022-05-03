@@ -55,4 +55,27 @@ public class AnimatorInteractiveViewTest {
     assertEquals(false, view.getIsLoop());
   }
 
+  @Test
+  public void setIsOutline() {
+    assertEquals(false, view.getIsOutline());
+    view.setIsOutline(true);
+    assertEquals(true, view.getIsOutline());
+  }
+
+  @Test
+  public void getIsOutline() {
+    assertEquals(false, view.getIsOutline());
+  }
+
+  @Test
+  public void setIsDiscreteT() {
+    assertEquals(false, view.getIsDiscreteT());
+    view.setIsDiscreteT(true);
+    assertEquals(true, view.getIsDiscreteT());
+  }
+
+  @Test
+  public void getIsDiscreteT() {
+    assertEquals(false, view.getIsDiscreteT());
+  }
 }

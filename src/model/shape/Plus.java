@@ -49,9 +49,24 @@ public class Plus extends AShape {
    * @return a String - SVG shape description
    */
   public String getSVG() {
-    return "<rect id=\"" + this.getName() + "\" x=\"" + this.getPosition().getX()
-            + "\" y=\"" + this.getPosition().getY() + "\" width=\"" + this.getWidth()
+    return "<rect id=\"" + this.getName() + "\" x=\"" + (this.getPosition().getX()
+            + (this.getWidth() / 4))
+            + "\" y=\"" + this.getPosition().getY() + "\" width=\"" + this.getWidth() / 2
             + "\" height=\"" + this.getHeight() + "\" fill=\"rgb(" + this.getColor().getRed()
+            + "," + this.getColor().getGreen() + "," + this.getColor().getBlue()
+            + ")\" visibility=\"visible\" >\n";
+  }
+
+  /**
+   * Get a textual description of the plus shape images second rectangle.
+   *
+   * @return a String - SVG shape description
+   */
+  public String getSVG2ndRec() {
+    return "<rect id=\"" + this.getName() + "\" x=\"" + this.getPosition().getX()
+            + "\" y=\"" + (this.getPosition().getY() + (this.getHeight() / 4)) + "\" width=\""
+            + this.getWidth()
+            + "\" height=\"" + this.getHeight() / 2 + "\" fill=\"rgb(" + this.getColor().getRed()
             + "," + this.getColor().getGreen() + "," + this.getColor().getBlue()
             + ")\" visibility=\"visible\" >\n";
   }
@@ -104,7 +119,7 @@ public class Plus extends AShape {
   // rectangle name R min-x 200 min-y 200 width 50 height 100 color 1
   @Override
   public String getCommand() {
-    return "rectangle name " + this.getName() + " min-x " + this.getPosition().getX()
+    return "plus name " + this.getName() + " min-x " + this.getPosition().getX()
             + " min-y " + this.getPosition().getY() + " width " + this.getWidth() + " height "
             + this.getHeight() + " color " + (double) this.getColor().getRed() / 10 + " "
             + (double) this.getColor().getGreen() / 10 + " "

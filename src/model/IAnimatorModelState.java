@@ -1,7 +1,9 @@
 package model;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import model.command.ICommandsState;
@@ -62,6 +64,22 @@ public interface IAnimatorModelState {
    */
   double getLastTimeCommands();
 
+  /**
+   * A method to get the TreeSet of Integer of discrete time (start and end)
+   * of the whole animations.
+   *
+   * @return TreeSet of Integer - a set of all start and end time of all animations and shapes
+   */
   TreeSet<Integer> getDiscreteTimeInteger();
+
+  /**
+   * A method to get the slow-motion tempo at the given tick.
+   *
+   * @param tick the given tick
+   * @return int - the slow-motion tempo or -1 if there are no slow-motion tempo at the tick
+   */
+  int getSlowMoTempoAt(int tick);
+
+  //  TreeMap<Integer, Integer> getTimeInterval();
 
 }

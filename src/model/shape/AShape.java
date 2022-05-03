@@ -195,6 +195,13 @@ public abstract class AShape {
   public abstract String getSVG();
 
   /**
+   * Get a textual description of the plus shape images second rectangle.
+   *
+   * @return a String - SVG shape description
+   */
+  public abstract String getSVG2ndRec();
+
+  /**
    * Get a textual description of the shape's width/xRadius dimension.
    *
    * @return A String - SVG shape width/xRadius

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import model.command.ChangeColor;
@@ -34,6 +35,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
   private final LinkedHashMap<String, AShape> shapes;
   private final LinkedHashMap<String, List<ICommands>> commands;
   private TreeSet<Integer> discreteTime;
+  private TreeMap<Integer, Integer> timeintervals;
+  private List<Integer> slowmoTempo;
   private final int width;
   private final int height;
 
@@ -46,6 +49,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     this.shapes = tweenBuilder.shapes;
     this.commands = tweenBuilder.commands;
     this.discreteTime = tweenBuilder.discreteTime;
+    this.timeintervals = tweenBuilder.timeintervals;
+    this.slowmoTempo = tweenBuilder.slowmoTempo;
     this.width = tweenBuilder.width;
     this.height = tweenBuilder.height;
   }
@@ -242,6 +247,23 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     return this.discreteTime;
   }
 
+  public int getSlowMoTempoAt(int tick) {
+    Integer floorStart = timeintervals.floorKey(tick);
+    if (floorStart != null) {
+      if (tick < timeintervals.get(floorStart)) {
+        List<Integer> lostart = new ArrayList<>();
+        lostart.addAll(timeintervals.keySet());
+        int index = lostart.indexOf(floorStart);
+        return slowmoTempo.get(index);
+      }
+    }
+    return -1;
+  }
+
+  //  public TreeMap<Integer, Integer> getTimeInterval() {
+  //    return this.timeintervals;
+  //  }
+
   /**
    * Represents a simple animation builder that will add shapes and animations to the model.
    */
@@ -250,6 +272,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     private final LinkedHashMap<String, AShape> shapes;
     private final LinkedHashMap<String, List<ICommands>> commands;
     private TreeSet<Integer> discreteTime;
+    private TreeMap<Integer, Integer> timeintervals;
+    private List<Integer> slowmoTempo;
     private int width;
     private int height;
 
@@ -257,6 +281,8 @@ public class SimpleAnimatorModel implements IAnimatorModel {
       this.shapes = new LinkedHashMap<>();
       this.commands = new LinkedHashMap<>();
       this.discreteTime = new TreeSet<>();
+      this.timeintervals = new TreeMap<>();
+      this.slowmoTempo = new ArrayList<>();
     }
 
     /**
@@ -300,6 +326,46 @@ public class SimpleAnimatorModel implements IAnimatorModel {
         time.add(c.getEnd());
       }
       return Collections.max(time);
+    }
+
+    @Override
+    public TweenModelBuilder<IAnimatorModel> addTimeIntervals(int start, int end, int tempo) {
+      ArgumentsCheck.lessThanZero(start, end, tempo);
+      if (end < start) {
+        throw new IllegalArgumentException("Invalid time interval");
+      }
+      if (tempo == 0) {
+        throw new IllegalArgumentException("Tempo for Slow Motion cannot be zero");
+      }
+
+      Integer ceilingStart = timeintervals.ceilingKey(start);
+      Integer floorStart = timeintervals.floorKey(start);
+      int index = -1;
+
+      if (floorStart != null) {
+        if (start < timeintervals.get(floorStart)) {
+          throw new IllegalArgumentException("Overlapping time");
+        }
+      }
+
+      if (ceilingStart != null) {
+        if (end > timeintervals.get(ceilingStart)) {
+          throw new IllegalArgumentException("Overlapping time");
+        } else {
+          List<Integer> lostart = new ArrayList<>();
+          lostart.addAll(timeintervals.keySet());
+          index = lostart.indexOf(ceilingStart);
+        }
+      }
+
+      timeintervals.put(start, end);
+
+      if (index != -1) {
+        slowmoTempo.add(index, tempo);
+      } else {
+        slowmoTempo.add(tempo);
+      }
+      return this;
     }
 
     /**

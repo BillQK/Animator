@@ -1,0 +1,69 @@
+canvas 400 500
+rectangle name background min-x 0 min-y 0 width 800 height 800 color 1 1 0.9 from 1 to 200
+plus name rec1 min-x 100 min-y 400 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+rectangle name rec2 min-x 150 min-y 400 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+plus name rec3 min-x 200 min-y 400 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+rectangle name rec4 min-x 250 min-y 400 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+plus name rec5 min-x 300 min-y 400 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+rectangle name rec6 min-x 350 min-y 400 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+plus name rec7 min-x 125 min-y 375 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+rectangle name rec8 min-x 175 min-y 375 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+plus name rec9 min-x 225 min-y 375 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+rectangle name rec10 min-x 275 min-y 375 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+plus name rec11 min-x 325 min-y 375 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+rectangle name rec12 min-x 150 min-y 350 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+plus name rec13 min-x 200 min-y 350 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+rectangle name rec14 min-x 250 min-y 350 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+plus name rec15 min-x 300 min-y 350 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+rectangle name rec16 min-x 175 min-y 325 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+plus name rec17 min-x 225 min-y 325 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+rectangle name rec18 min-x 275 min-y 325 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+plus name rec19 min-x 200 min-y 300 width 50 height 25 color 0.1 0.1 0.9 from 1 to 200
+rectangle name rec20 min-x 250 min-y 300 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+plus name rec21 min-x 225 min-y 275 width 50 height 25 color 0.1 0.9 0.1 from 1 to 200
+oval name moon center-x 500 center-y 100 x-radius 50 y-radius 50 color 1 0.1 0.1 from 1 to 200
+change-color name background colorto 1 1 0.9 0 0 0  from 1 to 199
+change-color name moon colorto 1 0.1 0.1 1 1 1 from 1 to 199
+change-color name rec1 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec2 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec3 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec4 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec5 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec6 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec7 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec8 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec9 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec10 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec11 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec12 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec13 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec14 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec15 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec16 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec17 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec18 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec19 colorto 0.1 0.1 0.9 0.1 0.9 0.1 from 1 to 199
+change-color name rec20 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+change-color name rec21 colorto 0.1 0.9 0.1 0.1 0.1 0.9 from 1 to 199
+move name moon moveto 500 100 400 100 from 100 to 199
+move name rec1 moveto 100 400 150 400 from 100 to 199
+move name rec2 moveto 150 400 200 400 from 100 to 199
+move name rec3 moveto 200 400 250 400 from 100 to 199
+move name rec4 moveto 250 400 300 400 from 100 to 199
+move name rec5 moveto 300 400 350 400 from 100 to 199
+move name rec6 moveto 350 400 400 400 from 100 to 199
+move name rec7 moveto 125 375 175 375 from 100 to 199
+move name rec8 moveto 175 375 225 375 from 100 to 199
+move name rec9 moveto 225 375 275 375 from 100 to 199
+move name rec10 moveto 275 375 325 375 from 100 to 199
+move name rec11 moveto 325 375 375 375 from 100 to 199
+move name rec12 moveto 150 350 200 350 from 100 to 199
+move name rec13 moveto 200 350 250 350 from 100 to 199
+move name rec14 moveto 250 350 300 350 from 100 to 199
+move name rec15 moveto 300 350 350 350 from 100 to 199
+move name rec16 moveto 175 325 225 325 from 100 to 199
+move name rec17 moveto 225 325 275 325 from 100 to 199
+move name rec18 moveto 275 325 325 325 from 100 to 199
+move name rec19 moveto 200 300 250 300 from 100 to 199
+move name rec20 moveto 250 300 300 300 from 100 to 199
+move name rec21 moveto 225 275 275 275 from 100 to 199

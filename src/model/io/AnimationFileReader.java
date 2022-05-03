@@ -40,6 +40,11 @@ public class AnimationFileReader {
       String command = sc.next();
       ShapeInfo shapeInfo;
       switch (command) {
+        case "slow-motion":
+          SlowMoInfo slowmoInfo = readSlowMoInfo(sc);
+          builder.addTimeIntervals(slowmoInfo.getStartTime(), slowmoInfo.getEndTime(),
+                  slowmoInfo.getSlowMoTempo());
+          break;
         case "canvas":
           CanvasInfo canvasInfo = readCanvasInfo(sc);
           builder.setBounds(canvasInfo.getWidth(), canvasInfo.getHeight());
@@ -111,6 +116,14 @@ public class AnimationFileReader {
       }
     }
     return builder.build();
+  }
+
+  private SlowMoInfo readSlowMoInfo(Scanner sc) {
+    SlowMoInfo info = new SlowMoInfo();
+    info.setStartTime(sc.nextInt());
+    info.setEndTime(sc.nextInt());
+    info.setSlowMoTempo(sc.nextInt());
+    return info;
   }
 
   private CanvasInfo readCanvasInfo(Scanner sc) {
@@ -357,6 +370,36 @@ public class AnimationFileReader {
 
     int getHeight() {
       return height;
+    }
+  }
+
+  class SlowMoInfo {
+    private int startT;
+    private int endT;
+    private int tempo;
+
+    void setStartTime(int st) {
+      startT = st;
+    }
+
+    void setEndTime(int et) {
+      endT = et;
+    }
+
+    void setSlowMoTempo(int t) {
+      tempo = t;
+    }
+
+    int getStartTime() {
+      return startT;
+    }
+
+    int getEndTime() {
+      return endT;
+    }
+
+    int getSlowMoTempo() {
+      return tempo;
     }
   }
 
