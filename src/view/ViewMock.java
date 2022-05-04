@@ -163,16 +163,6 @@ public class ViewMock implements IAnimatorView {
   }
 
   /**
-   * Method to get the IsOutline current boolean.
-   * @return boolean - the current IsOutline boolean
-   */
-  @Override
-  public boolean getIsOutline() {
-    log.append("getIsOutlineMethod ");
-    return false;
-  }
-
-  /**
    * Method to set the boolean IsOutline into the given boolean.
    *
    * @param discreteT boolean - the given boolean to set the IsOutline as
