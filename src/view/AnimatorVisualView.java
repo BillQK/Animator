@@ -1,10 +1,13 @@
 package view;
 
+
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.List;
+
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -147,16 +150,6 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   }
 
   /**
-   * Method to set the boolean IsLoop into the given boolean.
-   *
-   * @param loop boolean - the given boolean to set the IsLoop as
-   */
-  @Override
-  public void setIsLoop(boolean loop) {
-    throw new UnsupportedOperationException("View doesn't support this method");
-  }
-
-  /**
    * Method to get the IsLoop current boolean.
    *
    * @return boolean - the current IsLoop boolean
@@ -167,11 +160,12 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   }
 
   /**
-   * Method to set the boolean IsOutline into the given boolean.
+   * Method to set the boolean IsLoop into the given boolean.
    *
-   * @param outline boolean - the given boolean to set the IsOutline as
+   * @param loop boolean - the given boolean to set the IsLoop as
    */
-  public void setIsOutline(boolean outline) {
+  @Override
+  public void setIsLoop(boolean loop) {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
@@ -185,6 +179,32 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
   }
 
   /**
+   * Method to set the boolean IsOutline into the given boolean.
+   *
+   * @param outline boolean - the given boolean to set the IsOutline as
+   */
+  public void setIsOutline(boolean outline) {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  /**
+<<<<<<< HEAD
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+=======
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  public boolean getIsOutline() {
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  /**
    * Method to set the boolean IsDiscreteT into the given boolean.
    *
    * @param discreteT boolean - the given boolean to set the IsDiscreteT as
@@ -193,6 +213,8 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
+<<<<<<< HEAD
+=======
   /**
    * Method to get the IsDiscreteT current boolean.
    *
@@ -202,5 +224,6 @@ public class AnimatorVisualView extends JFrame implements IAnimatorView {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
 
 }

@@ -69,7 +69,8 @@ public class AnimatorSVGViewTest {
     inputFileView = new AnimatorSVGView(model, 20);
 
     try {
-      inputFileToModelWithPlus = new AnimationFileReader().readFile("resource/pyramid-with-plus-shape.txt",
+      inputFileToModelWithPlus = new AnimationFileReader().readFile(
+              "resource/pyramid-with-plus-shape.txt",
               new SimpleAnimatorModel.TweenBuilder());
     } catch (FileNotFoundException e) {
       fail();

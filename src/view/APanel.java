@@ -1,13 +1,11 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import model.shape.AShape;
 
@@ -19,8 +17,8 @@ import model.shape.AShape;
 public class APanel extends JPanel {
   private List<AShape> shapes;
   private boolean isOutline;
-  //  private boolean isDiscreteT;
-  //  private boolean isSlowMo;
+  private boolean isSlowMo;
+
 
   /**
    * Constructor for APanel class.
@@ -72,7 +70,6 @@ public class APanel extends JPanel {
 
             break;
           default:
-
             break;
         }
       }
@@ -154,7 +151,6 @@ public class APanel extends JPanel {
    * @param discreteT the given boolean
    */
   public void setIsDiscreteT(boolean discreteT) {
-    boolean isDiscreteT = discreteT;
   }
 
 }

@@ -248,7 +248,7 @@ public class SimpleAnimatorModel implements IAnimatorModel {
   }
 
   /**
-   * a method that get slowmo tempto
+   * a method that get slowmo tempo.
    * @param tick the given tick
    * @return an int
    */
@@ -283,7 +283,7 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     private int height;
 
     /**
-     * A constructor for tween builder;
+     * A constructor for tween builder.
      */
     public TweenBuilder() {
       this.shapes = new LinkedHashMap<>();
