@@ -6,7 +6,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JPanel;
+
 import model.shape.AShape;
 
 
@@ -53,20 +55,20 @@ public class APanel extends JPanel {
         switch (s.getType()) {
           case RECTANGLE:
             g2.setColor(c);
-            g2.fillRect(x,y,w,h);
-            g2.drawRect(x,y,w,h);
+            g2.fillRect(x, y, w, h);
+            g2.drawRect(x, y, w, h);
             break;
           case ELLIPSE:
             g2.setColor(c);
-            g2.fillOval(x,y,w,h);
-            g2.drawOval(x,y,w,h);
+            g2.fillOval(x, y, w, h);
+            g2.drawOval(x, y, w, h);
             break;
           case PLUS:
             g2.setColor(c);
-            g2.fillRect(x + (w/4), y, w/2, h);
-            g2.fillRect(x, y + (h/4), w, h/2);
-            g2.drawRect(x + (w/4), y, w/2, h);
-            g2.drawRect(x, y + (h/4), w, h/2);
+            g2.fillRect(x + (w / 4), y, w / 2, h);
+            g2.fillRect(x, y + (h / 4), w, h / 2);
+            g2.drawRect(x + (w / 4), y, w / 2, h);
+            g2.drawRect(x, y + (h / 4), w, h / 2);
             break;
         }
       }
@@ -74,42 +76,42 @@ public class APanel extends JPanel {
         switch (s.getType()) {
           case RECTANGLE:
             g2.setColor(c);
-            g2.drawRect(x,y,w,h);
+            g2.drawRect(x, y, w, h);
             break;
           case ELLIPSE:
             g2.setColor(c);
-            g2.drawOval(x,y,w,h);
+            g2.drawOval(x, y, w, h);
             break;
           case PLUS:
             g2.setColor(c);
 
             //North Center
-            g2.drawLine(x + (w/4), y, x + (w * 3/4), y);
+            g2.drawLine(x + (w / 4), y, x + (w * 3 / 4), y);
             //North Right
-            g2.drawLine(x + (w * 3/4), y, x + (w * 3/4), y + (h/4));
+            g2.drawLine(x + (w * 3 / 4), y, x + (w * 3 / 4), y + (h / 4));
             //North Left
-            g2.drawLine(x + (w/4), y, x + (w/4), y + (h/4));
+            g2.drawLine(x + (w / 4), y, x + (w / 4), y + (h / 4));
 
             //West Center
-            g2.drawLine(x, y + (h/4), x, y + (h * 3/4));
+            g2.drawLine(x, y + (h / 4), x, y + (h * 3 / 4));
             //West Right
-            g2.drawLine(x, y + (h/4), x + (w/4), y + (h/4));
+            g2.drawLine(x, y + (h / 4), x + (w / 4), y + (h / 4));
             //West Left
-            g2.drawLine(x, y + (h * 3/4), x + (w/4), y + (h * 3/4));
+            g2.drawLine(x, y + (h * 3 / 4), x + (w / 4), y + (h * 3 / 4));
 
             //South Center
-            g2.drawLine(x + (w/4), y + h, x + (w * 3/4), y + h);
+            g2.drawLine(x + (w / 4), y + h, x + (w * 3 / 4), y + h);
             //South Left
-            g2.drawLine(x + (w/4), y + (h * 3/4), x + (w/4), y + h);
+            g2.drawLine(x + (w / 4), y + (h * 3 / 4), x + (w / 4), y + h);
             //South Right
-            g2.drawLine(x + (w * 3/4), y + (h * 3/4), x + (w * 3/4), y + h);
+            g2.drawLine(x + (w * 3 / 4), y + (h * 3 / 4), x + (w * 3 / 4), y + h);
 
             //East Center
-            g2.drawLine(x + w, y + (h/4), x + w, y + (h * 3/4));
+            g2.drawLine(x + w, y + (h / 4), x + w, y + (h * 3 / 4));
             //East Left
-            g2.drawLine(x + (w * 3/4), y + (h/4), x + w, y + (h/4));
+            g2.drawLine(x + (w * 3 / 4), y + (h / 4), x + w, y + (h / 4));
             //East Right
-            g2.drawLine(x + (w * 3/4), y + (h * 3/4), x + w, y + (h * 3/4));
+            g2.drawLine(x + (w * 3 / 4), y + (h * 3 / 4), x + w, y + (h * 3 / 4));
 
             break;
         }
