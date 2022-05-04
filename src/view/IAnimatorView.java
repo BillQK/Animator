@@ -88,6 +88,13 @@ public interface IAnimatorView {
   void setShapes(List<AShape> losTempo);
 
   /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
+  boolean getIsLoop();
+
+  /**
    * Method to set the boolean IsLoop into the given boolean.
    *
    * @param loop boolean - the given boolean to set the IsLoop as
@@ -95,11 +102,11 @@ public interface IAnimatorView {
   void setIsLoop(boolean loop);
 
   /**
-   * Method to get the IsLoop current boolean.
+   * Method to get the IsOutline current boolean.
    *
-   * @return boolean - the current IsLoop boolean
+   * @return boolean - the current IsOutline boolean
    */
-  boolean getIsLoop();
+  boolean getIsOutline();
 
   /**
    * Method to set the boolean IsOutline into the given boolean.
@@ -108,12 +115,12 @@ public interface IAnimatorView {
    */
   void setIsOutline(boolean outline);
 
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    boolean getIsOutline();
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  boolean getIsDiscreteT();
 
   /**
    * Method to set the boolean IsOutline into the given boolean.
@@ -121,13 +128,6 @@ public interface IAnimatorView {
    * @param discreteT boolean - the given boolean to set the IsOutline as
    */
   void setIsDiscreteT(boolean discreteT);
-
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    boolean getIsDiscreteT();
 
 
 }

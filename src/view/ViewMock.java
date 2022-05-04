@@ -121,6 +121,17 @@ public class ViewMock implements IAnimatorView {
   }
 
   /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
+  @Override
+  public boolean getIsLoop() {
+    log.append("getIsLoopMethod ");
+    return false;
+  }
+
+  /**
    * Method to set the boolean IsLoop into the given boolean.
    *
    * @param loop boolean - the given boolean to set the IsLoop as
@@ -136,8 +147,8 @@ public class ViewMock implements IAnimatorView {
    * @return boolean - the current IsLoop boolean
    */
   @Override
-  public boolean getIsLoop() {
-    log.append("getIsLoopMethod ");
+  public boolean getIsOutline() {
+    log.append("getIsOutlineMethod ");
     return false;
   }
 
@@ -151,16 +162,16 @@ public class ViewMock implements IAnimatorView {
     log.append("setIsOutlineMethod ");
   }
 
-    /**
-     * Method to get the IsLoop current boolean.
-     *
-     * @return boolean - the current IsLoop boolean
-     */
-    @Override
-    public boolean getIsOutline() {
-      log.append("getIsOutlineMethod ");
-      return false;
-    }
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  @Override
+  public boolean getIsDiscreteT() {
+    log.append("getIsDiscreteTMethod ");
+    return false;
+  }
 
   /**
    * Method to set the boolean IsOutline into the given boolean.
@@ -171,16 +182,5 @@ public class ViewMock implements IAnimatorView {
   public void setIsDiscreteT(boolean discreteT) {
     log.append("setIsDiscreteTMethod ");
   }
-
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    @Override
-    public boolean getIsDiscreteT() {
-      log.append("getIsDiscreteTMethod ");
-      return false;
-    }
 
 }

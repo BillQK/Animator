@@ -1,20 +1,17 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.List;
-
-import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JToggleButton;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
-import javax.swing.JToggleButton;
-
-
+import javax.swing.JPanel;
 import model.IAnimatorModelState;
 import model.shape.AShape;
 
@@ -36,7 +33,6 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private boolean isLoop;
   private boolean isOutline;
   private boolean isDiscreteT;
-  private boolean isSlowmo;
 
   /**
    * Constructor of the AnimatorInteractiveView. This is where we set up our JFrame and adding our
@@ -52,7 +48,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.isLoop = false;
     this.isOutline = false;
     this.isDiscreteT = false;
-    this.isSlowmo = false;
+    boolean isSlowmo = false;
 
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(model.getWidth(), model.getHeight()));
@@ -218,6 +214,16 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   }
 
   /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
+  @Override
+  public boolean getIsLoop() {
+    return this.isLoop;
+  }
+
+  /**
    * Method to set the boolean IsLoop into the given boolean.
    *
    * @param loop boolean - the given boolean to set the IsLoop as
@@ -228,13 +234,12 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   }
 
   /**
-   * Method to get the IsLoop current boolean.
+   * Method to get the IsOutline current boolean.
    *
-   * @return boolean - the current IsLoop boolean
+   * @return boolean - the current IsOutline boolean
    */
-  @Override
-  public boolean getIsLoop() {
-    return this.isLoop;
+  public boolean getIsOutline() {
+    return this.isOutline;
   }
 
   /**
@@ -247,14 +252,14 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.panel.setIsOutline(outline);
   }
 
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    public boolean getIsOutline() {
-      return this.isOutline;
-    }
+  /**
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+    return this.isDiscreteT;
+  }
 
   /**
    * Method to set the boolean IsDiscreteT into the given boolean.
@@ -265,15 +270,6 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.isDiscreteT = discreteT;
     this.panel.setIsDiscreteT(discreteT);
   }
-
-    /**
-     * Method to get the IsDiscreteT current boolean.
-     *
-     * @return boolean - the current IsDiscreteT boolean
-     */
-    public boolean getIsDiscreteT() {
-      return this.isDiscreteT;
-    }
 
 
 }

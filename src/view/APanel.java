@@ -19,7 +19,6 @@ import model.shape.AShape;
 public class APanel extends JPanel {
   private List<AShape> shapes;
   private boolean isOutline;
-  private boolean isDiscreteT;
   private boolean isSlowMo;
 
   /**
@@ -70,6 +69,8 @@ public class APanel extends JPanel {
             g2.drawRect(x + (w / 4), y, w / 2, h);
             g2.drawRect(x, y + (h / 4), w, h / 2);
             break;
+          default:
+            break;
         }
       }
       if (isOutline) {
@@ -114,6 +115,8 @@ public class APanel extends JPanel {
             g2.drawLine(x + (w * 3 / 4), y + (h * 3 / 4), x + w, y + (h * 3 / 4));
 
             break;
+          default:
+            break;
         }
       }
     }
@@ -148,7 +151,7 @@ public class APanel extends JPanel {
    * @param discreteT the given boolean
    */
   public void setIsDiscreteT(boolean discreteT) {
-    this.isDiscreteT = discreteT;
+    // empty
   }
 
 }

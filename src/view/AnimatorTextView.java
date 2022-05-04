@@ -165,6 +165,16 @@ public class AnimatorTextView implements IAnimatorView {
   }
 
   /**
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
+  @Override
+  public boolean getIsLoop() {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+  /**
    * Method to set the boolean IsLoop into the given boolean.
    *
    * @param loop boolean - the given boolean to set the IsLoop as
@@ -175,12 +185,11 @@ public class AnimatorTextView implements IAnimatorView {
   }
 
   /**
-   * Method to get the IsLoop current boolean.
+   * Method to get the IsOutline current boolean.
    *
-   * @return boolean - the current IsLoop boolean
+   * @return boolean - the current IsOutline boolean
    */
-  @Override
-  public boolean getIsLoop() {
+  public boolean getIsOutline() {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
@@ -193,14 +202,14 @@ public class AnimatorTextView implements IAnimatorView {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    public boolean getIsOutline() {
-      throw new UnsupportedOperationException("View doesn't support this method");
-    }
+  /**
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
 
   /**
    * Method to set the boolean IsDiscreteT into the given boolean.
@@ -210,14 +219,5 @@ public class AnimatorTextView implements IAnimatorView {
   public void setIsDiscreteT(boolean discreteT) {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
-
-    /**
-     * Method to get the IsDiscreteT current boolean.
-     *
-     * @return boolean - the current IsDiscreteT boolean
-     */
-    public boolean getIsDiscreteT() {
-      throw new UnsupportedOperationException("View doesn't support this method");
-    }
 
 }

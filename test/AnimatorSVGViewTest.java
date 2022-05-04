@@ -52,11 +52,11 @@ public class AnimatorSVGViewTest {
             .build();
 
     modelWithPlus = new SimpleAnimatorModel.TweenBuilder()
-            .addPlus("1", 10,10, 30, 30, 120,120,120, 0, 100)
-            .addMove("1", 10, 10,50,50,0,15)
-            .addColorChange("1", 120,120,120, 30,30,30,10,20)
-            .addOval("2", 10,10,40, 50, 2,2,2,0,50)
-            .addScaleToChange("2", 40,50, 20,20, 0,40)
+            .addPlus("1", 10, 10, 30, 30, 120, 120, 120, 0, 100)
+            .addMove("1", 10, 10, 50, 50, 0, 15)
+            .addColorChange("1", 120, 120, 120, 30, 30, 30, 10, 20)
+            .addOval("2", 10, 10, 40, 50, 2, 2, 2, 0, 50)
+            .addScaleToChange("2", 40, 50, 20, 20, 0, 40)
             .build();
 
     try {
@@ -69,13 +69,14 @@ public class AnimatorSVGViewTest {
     inputFileView = new AnimatorSVGView(model, 20);
 
     try {
-      inputFileToModelWithPlus = new AnimationFileReader().readFile("resource/pyramid-with-plus-shape.txt",
+      inputFileToModelWithPlus = new AnimationFileReader().readFile(
+              "resource/pyramid-with-plus-shape.txt",
               new SimpleAnimatorModel.TweenBuilder());
     } catch (FileNotFoundException e) {
       fail();
     }
 
-    inputFileViewWithPlus = new AnimatorSVGView(modelWithPlus,20);
+    inputFileViewWithPlus = new AnimatorSVGView(modelWithPlus, 20);
 
     view = new AnimatorSVGView(model, 1);
     viewWithPlus = new AnimatorSVGView(modelWithPlus, 1);
@@ -244,5 +245,6 @@ public class AnimatorSVGViewTest {
             "<animate attributeType=\"xml\" begin=\"0.0ms\" dur=\"2000.0ms\" " +
             "attributeName=\"yR\" from=\"50.0\" to=\"20.0\" fill=\"freeze\" />\n" +
             "</ellipse>\n" +
-            "</svg>");}
+            "</svg>");
+  }
 }
