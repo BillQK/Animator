@@ -12,7 +12,7 @@ public interface TweenModelBuilder<T> {
    * Add the given slow-motion time intervals and tempo to the model.
    *
    * @param start the start time of the intervals when to play the slow-motion animation
-   * @param end the end time of the intervals when to stop playing the slow-motion animation
+   * @param end   the end time of the intervals when to stop playing the slow-motion animation
    * @param tempo the slow-motion tempo for the animation to be play at
    * @return the builder object
    */

@@ -5,8 +5,12 @@ import java.awt.Color;
 import model.utils.Time;
 
 /**
+<<<<<<< HEAD
  * This class represents the specific Plus shape which have a Plus shapetype, color,
  * positions and dimensions.
+=======
+ * a representation of plus class.
+>>>>>>> d479cf66704d6499cb32769588ded3f5a01dba37
  */
 public class Plus extends AShape {
 

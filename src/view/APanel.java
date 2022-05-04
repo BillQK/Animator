@@ -69,8 +69,11 @@ public class APanel extends JPanel {
             g2.fillRect(x, y + (h / 4), w, h / 2);
             g2.drawRect(x + (w / 4), y, w / 2, h);
             g2.drawRect(x, y + (h / 4), w, h / 2);
+<<<<<<< HEAD
             break;
           default:
+=======
+>>>>>>> d479cf66704d6499cb32769588ded3f5a01dba37
             break;
         }
       }

@@ -247,6 +247,11 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     return this.discreteTime;
   }
 
+  /**
+   * a method that get slowmo tempto
+   * @param tick the given tick
+   * @return an int
+   */
   public int getSlowMoTempoAt(int tick) {
     Integer floorStart = timeintervals.floorKey(tick);
     if (floorStart != null) {
@@ -277,6 +282,9 @@ public class SimpleAnimatorModel implements IAnimatorModel {
     private int width;
     private int height;
 
+    /**
+     * A constructor for tween builder;
+     */
     public TweenBuilder() {
       this.shapes = new LinkedHashMap<>();
       this.commands = new LinkedHashMap<>();
