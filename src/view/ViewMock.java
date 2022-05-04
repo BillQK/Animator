@@ -163,6 +163,7 @@ public class ViewMock implements IAnimatorView {
   }
 
   /**
+<<<<<<< HEAD
    * Method to get the IsOutline current boolean.
    *
    * @return boolean - the current IsOutline boolean
@@ -170,6 +171,15 @@ public class ViewMock implements IAnimatorView {
   @Override
   public boolean getIsDiscreteT() {
     log.append("getIsDiscreteTMethod ");
+=======
+   * Method to get the IsLoop current boolean.
+   *
+   * @return boolean - the current IsLoop boolean
+   */
+  @Override
+  public boolean getIsOutline() {
+    log.append("getIsOutlineMethod ");
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
     return false;
   }
 
@@ -183,4 +193,18 @@ public class ViewMock implements IAnimatorView {
     log.append("setIsDiscreteTMethod ");
   }
 
+<<<<<<< HEAD
+=======
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  @Override
+  public boolean getIsDiscreteT() {
+    log.append("getIsDiscreteTMethod ");
+    return false;
+  }
+
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
 }

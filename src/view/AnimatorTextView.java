@@ -203,11 +203,19 @@ public class AnimatorTextView implements IAnimatorView {
   }
 
   /**
+<<<<<<< HEAD
    * Method to get the IsDiscreteT current boolean.
    *
    * @return boolean - the current IsDiscreteT boolean
    */
   public boolean getIsDiscreteT() {
+=======
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  public boolean getIsOutline() {
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
@@ -220,4 +228,16 @@ public class AnimatorTextView implements IAnimatorView {
     throw new UnsupportedOperationException("View doesn't support this method");
   }
 
+<<<<<<< HEAD
+=======
+  /**
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+    throw new UnsupportedOperationException("View doesn't support this method");
+  }
+
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
 }

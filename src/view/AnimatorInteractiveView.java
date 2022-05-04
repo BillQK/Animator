@@ -48,7 +48,11 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.isLoop = false;
     this.isOutline = false;
     this.isDiscreteT = false;
+<<<<<<< HEAD
     boolean isSlowmo = false;
+=======
+
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
 
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(model.getWidth(), model.getHeight()));
@@ -253,12 +257,21 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   }
 
   /**
+<<<<<<< HEAD
    * Method to get the IsDiscreteT current boolean.
    *
    * @return boolean - the current IsDiscreteT boolean
    */
   public boolean getIsDiscreteT() {
     return this.isDiscreteT;
+=======
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  public boolean getIsOutline() {
+    return this.isOutline;
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
   }
 
   /**
@@ -271,5 +284,17 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.panel.setIsDiscreteT(discreteT);
   }
 
+<<<<<<< HEAD
+=======
+  /**
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+    return this.isDiscreteT;
+  }
+
+>>>>>>> 977aa0c7e733742f5f29c4d3af2b4f8bf7fcd1f8
 
 }
