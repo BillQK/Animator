@@ -1,0 +1,171 @@
+<svg width="700" height="500" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+<rect id="background" x="0.0" y="0.0" width="800.0" height="800.0" fill="rgb(255,255,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(255,255,229)" to="(0,0,0)" fill="freeze" /> 
+</rect>
+<rect id="rec1" x="112.5" y="400.0" width="25.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="100.0" to="150.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec1" x="100.0" y="406.25" width="50.0" height="12.5" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="100.0" to="150.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec2" x="150.0" y="400.0" width="50.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="150.0" to="200.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec3" x="212.5" y="400.0" width="25.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec3" x="200.0" y="406.25" width="50.0" height="12.5" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec4" x="250.0" y="400.0" width="50.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="250.0" to="300.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec5" x="312.5" y="400.0" width="25.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="300.0" to="350.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec5" x="300.0" y="406.25" width="50.0" height="12.5" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="300.0" to="350.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec6" x="350.0" y="400.0" width="50.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="350.0" to="400.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="400.0" to="400.0" fill="freeze" />
+</rect>
+<rect id="rec7" x="137.5" y="375.0" width="25.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="125.0" to="175.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec7" x="125.0" y="381.25" width="50.0" height="12.5" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="125.0" to="175.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec8" x="175.0" y="375.0" width="50.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="175.0" to="225.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec9" x="237.5" y="375.0" width="25.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="225.0" to="275.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec9" x="225.0" y="381.25" width="50.0" height="12.5" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="225.0" to="275.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec10" x="275.0" y="375.0" width="50.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="275.0" to="325.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec11" x="337.5" y="375.0" width="25.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="325.0" to="375.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec11" x="325.0" y="381.25" width="50.0" height="12.5" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="325.0" to="375.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="375.0" to="375.0" fill="freeze" />
+</rect>
+<rect id="rec12" x="150.0" y="350.0" width="50.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="150.0" to="200.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="350.0" to="350.0" fill="freeze" />
+</rect>
+<rect id="rec13" x="212.5" y="350.0" width="25.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="350.0" to="350.0" fill="freeze" />
+</rect>
+<rect id="rec13" x="200.0" y="356.25" width="50.0" height="12.5" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="350.0" to="350.0" fill="freeze" />
+</rect>
+<rect id="rec14" x="250.0" y="350.0" width="50.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="250.0" to="300.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="350.0" to="350.0" fill="freeze" />
+</rect>
+<rect id="rec15" x="312.5" y="350.0" width="25.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="300.0" to="350.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="350.0" to="350.0" fill="freeze" />
+</rect>
+<rect id="rec15" x="300.0" y="356.25" width="50.0" height="12.5" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="300.0" to="350.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="350.0" to="350.0" fill="freeze" />
+</rect>
+<rect id="rec16" x="175.0" y="325.0" width="50.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="175.0" to="225.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="325.0" to="325.0" fill="freeze" />
+</rect>
+<rect id="rec17" x="237.5" y="325.0" width="25.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="225.0" to="275.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="325.0" to="325.0" fill="freeze" />
+</rect>
+<rect id="rec17" x="225.0" y="331.25" width="50.0" height="12.5" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="225.0" to="275.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="325.0" to="325.0" fill="freeze" />
+</rect>
+<rect id="rec18" x="275.0" y="325.0" width="50.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="275.0" to="325.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="325.0" to="325.0" fill="freeze" />
+</rect>
+<rect id="rec19" x="212.5" y="300.0" width="25.0" height="25.0" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="300.0" to="300.0" fill="freeze" />
+</rect>
+<rect id="rec19" x="200.0" y="306.25" width="50.0" height="12.5" fill="rgb(25,25,229)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,25,229)" to="(25,229,25)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="200.0" to="250.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="300.0" to="300.0" fill="freeze" />
+</rect>
+<rect id="rec20" x="250.0" y="300.0" width="50.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="250.0" to="300.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="300.0" to="300.0" fill="freeze" />
+</rect>
+<rect id="rec21" x="237.5" y="275.0" width="25.0" height="25.0" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="225.0" to="275.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="275.0" to="275.0" fill="freeze" />
+</rect>
+<rect id="rec21" x="225.0" y="281.25" width="50.0" height="12.5" fill="rgb(25,229,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(25,229,25)" to="(25,25,229)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="x" from="225.0" to="275.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="y" from="275.0" to="275.0" fill="freeze" />
+</rect>
+<ellipse id="moon" cx="500.0" cy="100.0" rx="50.0" ry="50.0" fill="rgb(255,25,25)" visibility="visible" >
+<animate attributeType="xml" begin="1000.0ms" dur="198000.0ms" attributeName="rgb" from="(255,25,25)" to="(255,255,255)" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="cx" from="500.0" to="400.0" fill="freeze" /> 
+<animate attributeType="xml" begin="100000.0ms" dur="99000.0ms" attributeName="cy" from="100.0" to="100.0" fill="freeze" />
+</ellipse>
+</svg>
