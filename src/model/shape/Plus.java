@@ -4,6 +4,9 @@ import java.awt.Color;
 
 import model.utils.Time;
 
+/**
+ * a representation of plus class.
+ */
 public class Plus extends AShape {
 
   /**
