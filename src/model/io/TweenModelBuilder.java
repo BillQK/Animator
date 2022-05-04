@@ -17,6 +17,7 @@ public interface TweenModelBuilder<T> {
    * @return the builder object
    */
   TweenModelBuilder<T> addTimeIntervals(int start, int end, int tempo);
+
   /**
    * Set the bounds of the canvas for the animation.
    *

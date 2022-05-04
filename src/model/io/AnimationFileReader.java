@@ -7,8 +7,6 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
-import model.shape.Plus;
-
 /**
  * This class represents a file reader for the animation file. This reads in the
  * file in the prescribed file format, and relies on a model builder interface.

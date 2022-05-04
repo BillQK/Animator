@@ -108,12 +108,12 @@ public interface IAnimatorView {
    */
   void setIsOutline(boolean outline);
 
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    boolean getIsOutline();
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  boolean getIsOutline();
 
   /**
    * Method to set the boolean IsOutline into the given boolean.
@@ -122,12 +122,12 @@ public interface IAnimatorView {
    */
   void setIsDiscreteT(boolean discreteT);
 
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    boolean getIsDiscreteT();
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  boolean getIsDiscreteT();
 
 
 }

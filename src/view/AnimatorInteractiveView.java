@@ -36,7 +36,6 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
   private boolean isLoop;
   private boolean isOutline;
   private boolean isDiscreteT;
-  private boolean isSlowmo;
 
   /**
    * Constructor of the AnimatorInteractiveView. This is where we set up our JFrame and adding our
@@ -52,7 +51,7 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.isLoop = false;
     this.isOutline = false;
     this.isDiscreteT = false;
-    this.isSlowmo = false;
+
 
     this.panel = new APanel();
     this.panel.setPreferredSize(new Dimension(model.getWidth(), model.getHeight()));
@@ -247,14 +246,14 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.panel.setIsOutline(outline);
   }
 
-    /**
-     * Method to get the IsOutline current boolean.
-     *
-     * @return boolean - the current IsOutline boolean
-     */
-    public boolean getIsOutline() {
-      return this.isOutline;
-    }
+  /**
+   * Method to get the IsOutline current boolean.
+   *
+   * @return boolean - the current IsOutline boolean
+   */
+  public boolean getIsOutline() {
+    return this.isOutline;
+  }
 
   /**
    * Method to set the boolean IsDiscreteT into the given boolean.
@@ -266,14 +265,14 @@ public class AnimatorInteractiveView extends JFrame implements IAnimatorView {
     this.panel.setIsDiscreteT(discreteT);
   }
 
-    /**
-     * Method to get the IsDiscreteT current boolean.
-     *
-     * @return boolean - the current IsDiscreteT boolean
-     */
-    public boolean getIsDiscreteT() {
-      return this.isDiscreteT;
-    }
+  /**
+   * Method to get the IsDiscreteT current boolean.
+   *
+   * @return boolean - the current IsDiscreteT boolean
+   */
+  public boolean getIsDiscreteT() {
+    return this.isDiscreteT;
+  }
 
 
 }
